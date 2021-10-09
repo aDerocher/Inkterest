@@ -1,0 +1,84 @@
+-- Insert Data into the tables ======================
+
+
+INSERT INTO users(
+    username, 
+    profile_picture, 
+    email, 
+    firstname, 
+    lastname, 
+    password,
+)
+VALUES
+(       
+    'user1',
+    'https://randomuser.me/api/portraits/men/13.jpg',
+    'user1@user1.com',
+    'User',
+    'User1',
+    'password',
+),
+(       
+    'user2',
+    'https://randomuser.me/api/portraits/women/13.jpg',
+    'user2@user2.com',
+    'User',
+    'User2',
+    'password',
+),
+(       
+    'user3',
+    'https://randomuser.me/api/portraits/men/13.jpg',
+    'user3@user3.com',
+    'User',
+    'User3',
+    'password',
+),
+(       
+    'user4',
+    'https://randomuser.me/api/portraits/women/13.jpg',
+    'user4@user4.com',
+    'User',
+    'User4',
+    'password',
+),
+(       
+    'user5',
+    'https://randomuser.me/api/portraits/men/13.jpg',
+    'user5@user5.com',
+    'User',
+    'User5',
+    'password',
+),
+(       
+    'user6',
+    'https://randomuser.me/api/portraits/women/13.jpg',
+    'user6@user6.com',
+    'User',
+    'User6',
+    'password',
+),
+(       
+    'user7',
+    'https://randomuser.me/api/portraits/men/13.jpg',
+    'user7@user7.com',
+    'User',
+    'User7',
+    'password',
+),
+(       
+    'user8',
+    'https://randomuser.me/api/portraits/women/13.jpg',
+    'user8@user8.com',
+    'User',
+    'User8',
+    'password',
+),
+(       
+    'user9',
+    'https://randomuser.me/api/portraits/men/13.jpg',
+    'user9@user9.com',
+    'User',
+    'User9',
+    'password',
+);

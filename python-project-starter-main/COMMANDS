@@ -1,3 +1,3 @@
-CREATE USER inkterest_user WITH CREATEDB PASSWORD "password";
+CREATE USER inkterest_user WITH CREATEDB PASSWORD 'password';
 
 CREATE DATABASE inkterest_db WITH OWNER inkterest_user;
