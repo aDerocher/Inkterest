@@ -29,8 +29,7 @@ function NewInkForm() {
             image: selectedFiles[0],
             title: title,
             subtitle: subtitle,
-            destination_link:
-            destination_link
+            destination_link: destination_link
         }
 
         dispatch(createInk(newImage))
