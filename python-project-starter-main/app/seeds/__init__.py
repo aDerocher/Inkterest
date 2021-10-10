@@ -1,6 +1,10 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .follows import seed_follows, undo_follows
+from .canvases import seed_canvases, undo_canvases
+from .categories import seed_categories, undo_categories
+from .inks import seed_inks, undo_inks
+from .ink_on_canvases import seed_ink_on_canvases, undo_ink_on_canvases
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -12,6 +16,10 @@ seed_commands = AppGroup('seed')
 def seed():
     seed_users()
     seed_follows()
+    seed_categories()
+    seed_inks()
+    seed_canvases()
+    seed_ink_on_canvases()
     # Add other seed functions here
 
 
@@ -20,4 +28,8 @@ def seed():
 def undo():
     undo_users()
     undo_follows()
+    undo_categories()
+    undo_inks()
+    undo_canvases()
+    undo_ink_on_canvases()
     # Add other undo functions here
