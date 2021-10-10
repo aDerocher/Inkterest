@@ -4,7 +4,7 @@ from app.models import db, Ink
 # Adds a demo user, you can add other users here if you want
 def seed_inks():
     ink1 = Ink(
-            creator_id = 1
+            creator_id = 1,
             image = "",
             title = "Ink Title",
             subtitle = "This is my first tattoo!",
