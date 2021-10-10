@@ -115,7 +115,7 @@ function NewInkForm() {
             handleFiles(fileInputRef.current.files);
         }
     }
-    
+
     // ========================================== COMPONENT
 
     return (
