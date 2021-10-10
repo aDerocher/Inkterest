@@ -1,0 +1,148 @@
+:root{
+    --red-btn: red;
+    --red-btn-hover:rgb(197, 22, 22);
+    --ink-tile-btn: rgb(235,235,235);
+    --ink-tile-btn-hover: white
+
+}
+
+
+.tile-container{
+    width: 200px;
+    min-height: 200px;
+    max-height: 600px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.tile-container:hover .image-container{
+    background-color: rgba(0,0,0,.4);
+}
+.tile-container:hover 
+.ink-tile-bottom-buttons,
+.tile-container:hover  
+.ink-tile-top-buttons{
+    opacity: 1;
+}
+
+.image-container{
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 2;
+    border-radius: 16px;
+    background-size: cover;
+    background-position: center;
+}
+
+.ink-tile-image{
+    /* background-color: rgb(168, 212, 65); */
+    min-height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+
+
+.tile-footer:hover{
+    text-decoration: underline;
+}
+.tile-footer{
+    /* background-color: rgb(0, 255, 157); */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.tile-footer > *{
+    margin: 8px;
+    margin-right: 0;
+}
+
+.user-image{
+    height: 34px;
+    width: 34px;
+    border-radius: 17px;
+}
+.username{
+    font-size: 11pt;
+}
+.username > a{
+    text-decoration: none;
+    color: black;
+}
+
+/* ======= Button COntainer Classes ================== */
+.ink-tile-top-buttons{
+    /* background-color: saddlebrown; */
+    opacity: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+
+}
+.ink-tile-bottom-buttons{
+    /* background-color: saddlebrown; */
+    opacity: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.ink-tile-bottom-buttons-left{
+    /* background-color: rgb(87, 142, 214); */
+    width: 40%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+.ink-tile-bottom-buttons-right{
+    /* background-color: rgb(214, 140, 87); */
+    width: 40%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+}
+/* ======= Button Classes ================== */
+
+.ink-tile-btn{
+    border: none;
+    outline: none;
+    margin: 6px 3px;
+    padding: 0 12px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    height: 30px;
+    border-radius: 15px;
+}
+.ink-tile-btn-s{
+    background-color: var(--ink-tile-btn);
+    height: 32px;
+    width: 32px;
+    border-radius: 18px;
+    margin: 0 4px;
+    padding: 0px;
+
+}
+.ink-save-btn{
+    background-color: var(--red-btn);
+    height: 36px;
+    border-radius: 18px;
+    color: white;
+    justify-self: flex-end;
+    align-self: flex-end;
+}
+
+.ink-dest-link-btn{
+    background-color: var(--ink-tile-btn);
+    color: black;
+    bottom: 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ink-save-btn:hover{ background-color: var(--red-btn-hover);}
+.ink-dest-link-btn:hover{ background-color: var(--ink-tile-btn-hover);}
+.ink-tile-btn-s:hover{ background-color: var(--ink-tile-btn-hover);}
