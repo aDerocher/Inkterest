@@ -1,4 +1,4 @@
-from app.models import db, User
+from app.models import db, User, Follow
 
 
 # Adds a demo user, you can add other users here if you want
@@ -27,7 +27,7 @@ def seed_users():
         last_name='Rolls',
         password='password',
         )
-
+        
     db.session.add(demo)
     db.session.add(leena)
     db.session.add(rick)

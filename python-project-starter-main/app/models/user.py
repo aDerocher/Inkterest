@@ -13,7 +13,7 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
-    created_on = db.Column(db.DateTime(), default=datetime.utcnow)
+    created_at = db.Column(db.DateTime(), default=datetime.utcnow)
 
     @property
     def password(self):
@@ -34,5 +34,5 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'first_name': self.first_name,
             'last_name': self.last_name,
-            'created_on': self.created_on
+            'created_at': self.created_at
         }
