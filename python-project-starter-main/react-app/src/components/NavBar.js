@@ -3,12 +3,9 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import "../styles/navbar.css"
-<<<<<<< HEAD
 import Modal from './Modal';
-=======
 import pinkSquidLogo from "./../images/squid-circle-icon-Black.png"
 import magGlass from "./../images/magGlass.png"
->>>>>>> main
 
 const NavBar = () => {
   const [show, setShow] = useState(false)
