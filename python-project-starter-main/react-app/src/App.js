@@ -34,7 +34,7 @@ function App() {
     {user && <NavBar />}
     {user === null && <NavBar_Splash />}
 
-      <LogoutButton />
+      {/* <LogoutButton /> */}
       <Switch>
         <Route path='/' exact={true} >
           <h1>Splash Page!</h1>
