@@ -9,7 +9,7 @@ ink_routes = Blueprint('inks', __name__)
 
 
 @ink_routes.route('/new-ink', methods=["POST"])
-# @login_required
+@login_required
 def upload_image():
     form = NewInkForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
