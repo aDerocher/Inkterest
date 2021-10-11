@@ -23,15 +23,15 @@ const NavBar = () => {
     <nav className='nav-bar'>
         <div className="nav-section nav-items-left">
             <div className="nav-item no-pad">
-                <img className='nav-icon' src={pinkSquidBanner} alt="" />
+                <img className='nav-banner' src={pinkSquidBanner} alt="" />
             </div>
         </div>
 
         <div className="nav-section nav-search-container">
-            <div className='nav-search-box'>
+            {/* <div className='nav-search-box'>
                 <img className="search-icon" src={magGlass} alt="" />
                 <input className='nav-search-input' type="text" placeholder="Search" />
-            </div>
+            </div> */}
         </div>
 
         <div className="nav-section nav-items-right">

@@ -1,16 +1,33 @@
 
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
-import "../styles/navbar.css"
 import Modal from './Modal';
 import pinkSquidLogo from "./../images/squid-circle-icon-Black.png"
 import magGlass from "./../images/magGlass.png"
+import demoProfImage from "./../images/prof-Img_defaultSquid.png"
+import checkmark from "./../images/checkMark-darkGrey.png"
+import "../styles/navbar.css"
+import "../styles/profileDD.css"
 
 const NavBar = () => {
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
+  const history = useHistory();
+  const user = useSelector(state => state.session.user);
+  
+  const showDropDown = () => {
+    // equasion to show dropdown?
+    // or use modal?
+  }
+
+  const toProfile = (e) => {
+    e.preventDefault();
+    history.push(`/users/${user.id}`);
+  }
 
   return (
+    <>
     <nav className='nav-bar'>
         <div className="nav-section nav-items-left">
             <div className="nav-item no-pad">
@@ -46,6 +63,34 @@ const NavBar = () => {
             </div>
         </div>
     </nav>
+
+    <div className='profile-dd-container'>
+        <div className="prof-dd-row prof-dd-title">Currently an</div>
+
+        <div className="prof-dd-card pd-hov">
+            <img className='prof-dd-uimg' src={demoProfImage} alt="" />
+            <div className="prof-dd-card-content" onClick={e => toProfile(e)}>
+                <p className='pd-text pd-name'>Aldous H</p>
+                <p className='pd-text pd-acctype'>Personal</p>
+                <p className='pd-text pd-email'>ahuxley@bnw.com</p>
+            </div>
+            <img className="pd-checkmark" src={checkmark} alt="" />
+        </div>
+        <br />
+        <div className="prof-dd-row prof-dd-title">Your accounts</div>
+        <div className="prof-dd-row pd-hov"><a href="#">Add account</a></div>
+        <div className="prof-dd-row pd-hov"><a href="#">Convert to business</a></div>
+        <br />
+        <div className="prof-dd-row prof-dd-title">More options</div>
+        <div className="prof-dd-row pd-hov"><a href="#">Settings</a></div>
+        <div className="prof-dd-row pd-hov"><a href="#">Tune your home feed</a></div>
+        <div className="prof-dd-row pd-hov"><a href="#">Install the Windows app</a></div>
+        <div className="prof-dd-row pd-hov"><a href="#">Get help</a></div>
+        <div className="prof-dd-row pd-hov"><a href="#">See terms and privacy</a></div>
+        <div className="prof-dd-row pd-hov"><a href="#">Log out</a></div>
+    </div>
+
+    </>
   );
 }
 
