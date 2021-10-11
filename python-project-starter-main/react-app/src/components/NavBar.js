@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import Modal from './Modal';
@@ -12,9 +13,17 @@ import "../styles/profileDD.css"
 
 const NavBar = () => {
   const [show, setShow] = useState(false)
-
+  const history = useHistory()
+  const user = useSelector(state => state.session.user);
+  
   const showDropDown = () => {
-      
+    // equasion to show dropdown?
+    // or use modal?
+  }
+
+  const toProfile = () => {
+    e.preventDefault();
+    history.push(`/users/${user.id}`)
   }
 
   return (
@@ -60,7 +69,7 @@ const NavBar = () => {
 
         <div className="prof-dd-card pd-hov">
             <img className='prof-dd-uimg' src={demoProfImage} alt="" />
-            <div className="prof-dd-card-content">
+            <div className="prof-dd-card-content" onClick={e => toProfile(e)}>
                 <p className='pd-text pd-name'>Aldous H</p>
                 <p className='pd-text pd-acctype'>Personal</p>
                 <p className='pd-text pd-email'>ahuxley@bnw.com</p>
