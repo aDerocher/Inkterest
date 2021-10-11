@@ -4,11 +4,11 @@ from app.models import db, Ink_On_Canvas
 # Adds a demo user, you can add other users here if you want
 def seed_ink_on_canvases():
     ink_on_canvas1= Ink_On_Canvas(
-        ink_id = 1
+        ink_id = 1,
         canvas_id = 1
     )
     ink_on_canvas2= Ink_On_Canvas(
-        ink_id = 1
+        ink_id = 1,
         canvas_id = 2
     )
 
