@@ -58,6 +58,7 @@ export const login = (email, password) => async (dispatch) => {
 }
 
 export const logout = () => async (dispatch) => {
+    console.log("im about to fetch logout from the backend");
   const response = await fetch('/api/auth/logout', {
     headers: {
       'Content-Type': 'application/json',

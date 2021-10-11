@@ -1,17 +1,26 @@
 import React from "react";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory } from "react-router-dom";
 import demoProfImage from "./../images/prof-Img_defaultSquid.png";
 import checkmark from "./../images/checkMark-darkGrey.png";
-
+import { logout }from "./../store/session"
 // import '../styles/modal.css'
 
 const ProfileModal = (props) => {
   const history = useHistory();
+  const dispatch = useDispatch()
   const user = useSelector(state => state.session.user);
+
   const toProfile = (e) => {
     e.preventDefault();
     history.push(`/users/${user.id}`);
+    props.onClose()
+  };
+
+  const onLogout = async (e) => {
+      e.preventDefault()
+    await dispatch(logout());
+    history.push("/")
   };
 
   if (!props.show) {
@@ -65,7 +74,7 @@ const ProfileModal = (props) => {
             <div className="prof-dd-row pd-hov">
               <a href="#">See terms and privacy</a>
             </div>
-            <div className="prof-dd-row pd-hov">
+            <div className="prof-dd-row pd-hov" onClick={onLogout}>
               <a href="#">Log out</a>
             </div>
           </div>
