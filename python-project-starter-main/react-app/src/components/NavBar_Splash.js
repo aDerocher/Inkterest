@@ -1,22 +1,30 @@
 
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import "../styles/navbar.css"
-import pinkSquidLogo from "./../images/squid-circle-icon-Black.png"
+import pinkSquidBanner from "./../images/bannerLogo-pinkBlack.png"
 import magGlass from "./../images/magGlass.png"
+import { login } from '../../src/store/session';
+
 
 const NavBar = () => {
+  const dispatch = useDispatch();
+  const history = useHistory()
+
+  const loginDemo = (e) => {
+    e.preventDefault();
+    const data = dispatch(login("demo@aa.com", "password"));
+    history.push("/inks")
+  }
+
   return (
     <nav className='nav-bar'>
         <div className="nav-section nav-items-left">
             <div className="nav-item no-pad">
-                <img className='nav-icon' src={pinkSquidLogo} alt="" />
+                <img className='nav-icon' src={pinkSquidBanner} alt="" />
             </div>
-            <div className="nav-item">
-              <a href="/">Home</a>
-            </div>
-            <div className="nav-item">Today</div>
         </div>
 
         <div className="nav-section nav-search-container">
@@ -28,11 +36,9 @@ const NavBar = () => {
 
         <div className="nav-section nav-items-right">
             <div className="nav-item no-pad">
-              <a href="/">Demo User</a>
+              <a href="/profile-page">About</a>
             </div>
-            <div className="nav-item no-pad">
-              <a href="/profile-page">business</a>
-            </div>
+            <div className="nav-item no-pad" onClick={e=>loginDemo(e)}>Demo User</div>
             <div className="nav-item no-pad">
               <a href="/login">log in</a>
             </div>
