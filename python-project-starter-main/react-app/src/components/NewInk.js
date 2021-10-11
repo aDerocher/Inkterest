@@ -24,6 +24,7 @@ function NewInkForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(selectedFiles[0])
         const newImage = {
             creator_id: sessionUser.id,
             image: selectedFiles[0],
@@ -38,13 +39,13 @@ function NewInkForm() {
                 setSubtitle('');
                 setDestination_link('');
             })
-        history.push(`/`);
+        // history.push(`/`);
     };
 
     // ========================================== DROPZONE VALIDATIONS
 
     const validateFile = (file) => {
-        const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/x-icon'];
+        const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
         if (validTypes.indexOf(file.type) === -1) return false
         return true;
     }

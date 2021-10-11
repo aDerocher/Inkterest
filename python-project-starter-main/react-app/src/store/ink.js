@@ -14,13 +14,13 @@ export const createInk = (newInk) => async (dispatch) => {
 
     const formData = new FormData();
     formData.append("creator_id", creator_id);
-    if (image) formData.append("imageUrl", image);
+    if (image) formData.append("image", image);
     formData.append("title", title);
     formData.append("subtitle", subtitle);
     formData.append("destination_link", destination_link);
 
     const response = await fetch('/api/inks/new-ink', {
-        method: 'POST',
+        method: "POST",
         body: formData
     });
 
