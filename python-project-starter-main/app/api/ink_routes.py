@@ -67,4 +67,4 @@ def delete_image(ink_id):
     # return updated list of inks once sucessful delete
     inks = Ink.query.all()
 
-    return {'inks': [ink.to_dict() for ink in inks]}
+    return { "deleted": "deleted" }

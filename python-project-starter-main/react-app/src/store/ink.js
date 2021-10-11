@@ -57,7 +57,7 @@ export const removeInk = (inkId) => async (dispatch) => {
 
     if (response.ok) {
         const inks = await response.json();
-        dispatch(getInks(inks));
+        dispatch(deleteInk(inks));
     }
 }
 
