@@ -6,6 +6,7 @@ import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
+import NewInkForm from './components/NewInk';
 import User from './components/User';
 import { authenticate } from './store/session';
 
@@ -33,6 +34,9 @@ function App() {
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path='/inks/new-ink' exact={true} >
+          <NewInkForm />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
