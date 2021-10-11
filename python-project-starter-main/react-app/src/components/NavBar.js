@@ -11,7 +11,9 @@ const NavBar = () => {
             <div className="nav-item no-pad">
                 <img className='nav-icon' src="./../../logos-wip/squid-circle-icon-Black.png" alt="" />
             </div>
-            <div className="nav-item">Home</div>
+            <div className="nav-item">
+              <a href="/">Home</a>
+            </div>
             <div className="nav-item">Today</div>
         </div>
 
@@ -23,10 +25,18 @@ const NavBar = () => {
         </div>
 
         <div className="nav-section nav-items-right">
-            <div className="nav-item no-pad">Be</div>
-            <div className="nav-item no-pad">Bu</div>
-            <div className="nav-item no-pad">A</div>
-            <div className="nav-item no-pad">V</div>
+            <div className="nav-item no-pad">
+              <a href="/">about</a>
+            </div>
+            <div className="nav-item no-pad">
+              <a href="/profile-page">business</a>
+            </div>
+            <div className="nav-item no-pad">
+              <a href="/login">log in</a>
+            </div>
+            <div className="nav-item no-pad">
+              <a href="/sign-up">sign up</a>
+            </div>
         </div>
     </nav>
   );

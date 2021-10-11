@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import NewInkForm from './components/NewInk';
 import User from './components/User';
 import { authenticate } from './store/session';
+import LogoutButton from './components/auth/LogoutButton'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -28,6 +29,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
+      <LogoutButton />
       <Switch>
         <Route path='/' exact={true} >
           <h1>My Home Page</h1>
