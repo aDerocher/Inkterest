@@ -41,7 +41,7 @@ const inkReducer = (state = initialState, action) => {
     let newState = [ ...state ]
     switch (action.type) {
         case ADD_INK:
-            return [ ...newState, ...action.ink ]
+            return [ ...newState, action.ink ]
         default:
             return state;
     }

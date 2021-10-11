@@ -18,7 +18,7 @@ def upload_image():
         return {"errors": "image required"}, 400
 
     ink = request.files['image']
-    print(upload_file_to_s3(ink))
+
     if not allowed_file(ink.filename):
         return {"errors": "file type not permitted"}, 400
 
@@ -36,14 +36,14 @@ def upload_image():
 
     if form.validate_on_submit():
         new_ink = Ink(
-            creator_id=current_user.id,
+            creator_id=current_user.get_id(),
             image=url,
             title=form.title.data,
             subtitle=form.subtitle.data,
             destination_link=form.destination_link.data
         )
 
-    db.session.add(new_ink)
-    db.session.commit()
+        db.session.add(new_ink)
+        db.session.commit()
 
     return {"url": url}

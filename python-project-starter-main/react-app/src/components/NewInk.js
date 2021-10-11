@@ -36,7 +36,7 @@ function NewInkForm() {
                 setSubtitle('');
                 setDestination_link('');
             })
-        // history.push(`/`);
+        history.push(`/`);
     };
 
     const updateImage = (e) => {
