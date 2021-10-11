@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import Modal from './Modal';
 import pinkSquidLogo from "./../images/squid-circle-icon-Black.png"
@@ -10,6 +10,7 @@ import demoProfImage from "./../images/prof-Img_defaultSquid.png"
 import checkmark from "./../images/checkMark-darkGrey.png"
 import "../styles/navbar.css"
 import "../styles/profileDD.css"
+import ProfileModal from './ProfileModal';
 
 const NavBar = () => {
 
@@ -17,7 +18,7 @@ const NavBar = () => {
   const [show, setShow] = useState(false);
   const history = useHistory();
   const user = useSelector(state => state.session.user);
-  
+
   const showDropDown = () => {
     // equasion to show dropdown?
     // or use modal?
@@ -61,12 +62,13 @@ const NavBar = () => {
               <Modal onClose={() => setShow(false)} show={show} /> */}
             </div>
             <div className="nav-item no-pad">
-              <a href="/sign-up">sign up</a>
+              <button onClick={() => setShow(true) }>V</button>
+              <ProfileModal onClose={() => setShow(false)} show={show}/>
             </div>
         </div>
     </nav>
 
-    <div className='profile-dd-container'>
+    {/* <div className='profile-dd-container'>
         <div className="prof-dd-row prof-dd-title">Currently an</div>
 
         <div className="prof-dd-card pd-hov">
@@ -90,6 +92,9 @@ const NavBar = () => {
         <div className="prof-dd-row pd-hov"><a href="#">Get help</a></div>
         <div className="prof-dd-row pd-hov"><a href="#">See terms and privacy</a></div>
         <div className="prof-dd-row pd-hov"><a href="#">Log out</a></div>
+    </div> */}
+    <div>
+
     </div>
 
     </>
