@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
@@ -7,9 +7,11 @@ import "../styles/navbar.css"
 import pinkSquidBanner from "./../images/bannerLogo-pinkBlack.png"
 import magGlass from "./../images/magGlass.png"
 import { login } from '../../src/store/session';
+import Modal from './Modal';
 
 
 const NavBar = () => {
+  const [show, setShow] = useState(false)
   const dispatch = useDispatch();
   const history = useHistory()
 
@@ -40,7 +42,8 @@ const NavBar = () => {
             </div>
             <div className="nav-item no-pad" onClick={e=>loginDemo(e)}>Demo User</div>
             <div className="nav-item no-pad">
-              <a href="/login">log in</a>
+              <button onClick={() => setShow(true) }>Log In</button>
+              <Modal onClose={() => setShow(false)} show={show} />
             </div>
             <div className="nav-item no-pad">
               <a href="/sign-up">sign up</a>

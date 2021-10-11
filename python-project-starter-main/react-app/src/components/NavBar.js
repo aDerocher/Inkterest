@@ -8,7 +8,7 @@ import pinkSquidLogo from "./../images/squid-circle-icon-Black.png"
 import magGlass from "./../images/magGlass.png"
 
 const NavBar = () => {
-  const [show, setShow] = useState(false)
+  // const [show, setShow] = useState(false)
 
   return (
     <nav className='nav-bar'>
@@ -38,8 +38,8 @@ const NavBar = () => {
             </div>
             <div className="nav-item no-pad">
               {/* <a onClick={() => setShow(show) } href="/login">Log in</a> */}
-              <button onClick={() => setShow(true) }>Log In</button>
-              <Modal onClose={() => setShow(false)} show={show} />
+              {/* <button onClick={() => setShow(true) }>Log In</button>
+              <Modal onClose={() => setShow(false)} show={show} /> */}
             </div>
             <div className="nav-item no-pad">
               <a href="/sign-up">sign up</a>
