@@ -12,8 +12,8 @@ import "../styles/navbar.css"
 import "../styles/profileDD.css"
 
 const NavBar = () => {
-  const [show, setShow] = useState(false)
-  const history = useHistory()
+  const [show, setShow] = useState(false);
+  const history = useHistory();
   const user = useSelector(state => state.session.user);
   
   const showDropDown = () => {
@@ -21,9 +21,9 @@ const NavBar = () => {
     // or use modal?
   }
 
-  const toProfile = () => {
+  const toProfile = (e) => {
     e.preventDefault();
-    history.push(`/users/${user.id}`)
+    history.push(`/users/${user.id}`);
   }
 
   return (
