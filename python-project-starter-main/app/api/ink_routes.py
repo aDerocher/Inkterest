@@ -7,7 +7,14 @@ from app.aws import (
 
 ink_routes = Blueprint('inks', __name__)
 
+# Get all inks
+@ink_routes.route('')
+@login_required
+def get_images():
+    inks = Ink.query.all()
+    return {'inks': [ink.to_dict() for ink in inks]}
 
+# Create new ink
 @ink_routes.route('/new-ink', methods=["POST"])
 @login_required
 def upload_image():
