@@ -1,11 +1,13 @@
 // --------------------------- Defined Action Types as Constants ---------------------
 
-const ADD_INK = 'users/INK';
+const ADD_INK = 'users/NEW_INK';
+const GET_INKS = 'users/GET_INKS';
 
 
 // --------------------------- Defined Action Creator(s) --------------------------
 
 const addInk = (ink) => ({ type: ADD_INK, ink });
+const getInks = (inks) => ({ type: GET_INKS, inks });
 
 // ---------------------------  Defined Thunk(s) --------------------------------
 
@@ -30,6 +32,21 @@ export const createInk = (newInk) => async (dispatch) => {
     };
 };
 
+// get all inks
+export const listAllInks = () => async (dispatch) => {
+    const response = await fetch(`/api/inks`, {
+        method: 'GET'
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+
+        const inks = data.inks
+        dispatch(getInks(inks));
+        return response;
+    }
+}
+
 // ---------------------------  State & Reducer --------------------------------
 
 
@@ -43,6 +60,8 @@ const inkReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_INK:
             return [ ...newState, action.ink ]
+        case GET_INKS:
+            return [ ...action.inks ]
         default:
             return state;
     }

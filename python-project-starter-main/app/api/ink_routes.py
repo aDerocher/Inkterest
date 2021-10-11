@@ -8,8 +8,7 @@ from app.aws import (
 ink_routes = Blueprint('inks', __name__)
 
 # Get all inks
-@ink_routes.route('')
-@login_required
+@ink_routes.route('/')
 def get_images():
     inks = Ink.query.all()
     return {'inks': [ink.to_dict() for ink in inks]}
@@ -50,7 +49,16 @@ def upload_image():
             destination_link=form.destination_link.data
         )
 
+        data = {
+            "creator_id": current_user.get_id(),
+            "image": url,
+            "title": form.title.data,
+            "subtitle": form.subtitle.data,
+            "destination_link": form.destination_link.data,
+            "category_1": form.category1.data
+        }
+
         db.session.add(new_ink)
         db.session.commit()
 
-    return {"url": url}
+        return data
