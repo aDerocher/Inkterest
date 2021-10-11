@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Redirect } from 'react-router-dom';
-import { createInk } from '../store/ink'
+import { createInk, listAllInks } from '../store/ink'
 // import '../../reset.css'
 
 
@@ -17,8 +17,11 @@ function NewInkForm() {
     const [destination_link, setDestination_link] = useState('');
     const [selectedFile, setSelectedFile] = useState(null);
 
-    if (!sessionUser) return <Redirect to="/" />;
+    useEffect(() => {
+        dispatch(listAllInks())
+    }, [dispatch])
 
+    if (!sessionUser) return <Redirect to="/" />;
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -36,7 +39,7 @@ function NewInkForm() {
                 setSubtitle('');
                 setDestination_link('');
             })
-        history.push(`/`);
+        // history.push(`/`);
     };
 
     const updateImage = (e) => {
