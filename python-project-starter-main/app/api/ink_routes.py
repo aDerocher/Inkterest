@@ -54,10 +54,11 @@ def upload_image():
 
 
 # delete ink - simple
-@ink_routes.route('/delete')
+@ink_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
 def delete_image(ink_id):
-    ink = Ink.query.get(ink_id)
+    ink = Ink.query.get(Ink.id == ink_id)
 
-    db.session.delete(ink)
-    db.session.commit()
+    ink.delete()
+
     return 'Deleted'

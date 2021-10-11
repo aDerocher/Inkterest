@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Redirect } from 'react-router-dom';
-import { createInk, listAllInks } from '../store/ink'
+import { createInk, listAllInks, removeInk } from '../store/ink'
 import '../styles/ink.css'
 
 
@@ -47,6 +47,11 @@ function NewInkForm() {
     const updateImage = (e) => {
         const file = e.target.files[0];
         setSelectedFile(file);
+    }
+
+    const handleDelete = (e, inkId) => {
+        e.preventDefault()
+        dispatch(removeInk(inkId))
     }
 
     // ========================================== COMPONENT
@@ -98,8 +103,9 @@ function NewInkForm() {
                             src={ink.image}
                         />
                         <button
-                            className={`delete ${ink.id}`}
+                            className={`delete-${ink.id}`}
                             key={ink.id}
+                            onClick={(e) => handleDelete(e, ink.id)}
                         >
                         Delete Ink
                         </button>
