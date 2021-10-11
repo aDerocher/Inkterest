@@ -37,7 +37,7 @@ function App() {
       <LogoutButton />
       <Switch>
         <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <h1>Splash Page!</h1>
         </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -49,7 +49,7 @@ function App() {
           <NewInkForm />
         </ProtectedRoute>
         <ProtectedRoute path='/inks' exact={true}>
-          <h1>inks page</h1>
+          <h1>Inks Page</h1>
         </ProtectedRoute>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
