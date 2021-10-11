@@ -33,15 +33,15 @@ function App() {
     <BrowserRouter>
     {user && <NavBar />}
     {user === null && <NavBar_Splash />}
-      
+
       <LogoutButton />
       <Switch>
         <Route path='/' exact={true} >
           <h1>Splash Page!</h1>
         </Route>
-        <Route path='/login' exact={true}>
+        {/* <Route path='/login' exact={true}>
           <LoginForm />
-        </Route>
+        </Route> */}
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>

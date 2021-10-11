@@ -12,6 +12,8 @@ import "../styles/navbar.css"
 import "../styles/profileDD.css"
 
 const NavBar = () => {
+
+  // const [show, setShow] = useState(false)
   const [show, setShow] = useState(false);
   const history = useHistory();
   const user = useSelector(state => state.session.user);
@@ -55,8 +57,8 @@ const NavBar = () => {
             </div>
             <div className="nav-item no-pad">
               {/* <a onClick={() => setShow(show) } href="/login">Log in</a> */}
-              <button onClick={() => setShow(true) }>Log In</button>
-              <Modal onClose={() => setShow(false)} show={show} />
+              {/* <button onClick={() => setShow(true) }>Log In</button>
+              <Modal onClose={() => setShow(false)} show={show} /> */}
             </div>
             <div className="nav-item no-pad">
               <a href="/sign-up">sign up</a>
