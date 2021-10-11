@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import Modal from './Modal';
 import pinkSquidLogo from "./../images/squid-circle-icon-Black.png"
@@ -15,7 +15,7 @@ const NavBar = () => {
   const [show, setShow] = useState(false);
   const history = useHistory();
   const user = useSelector(state => state.session.user);
-  
+
   const showDropDown = () => {
     // equasion to show dropdown?
     // or use modal?
