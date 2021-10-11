@@ -1,12 +1,15 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import "../styles/navbar.css"
+import Modal from './Modal';
 import pinkSquidLogo from "./../images/squid-circle-icon-Black.png"
 import magGlass from "./../images/magGlass.png"
 
 const NavBar = () => {
+  const [show, setShow] = useState(false)
+
   return (
     <nav className='nav-bar'>
         <div className="nav-section nav-items-left">
@@ -34,7 +37,9 @@ const NavBar = () => {
               <a href="/profile-page">business</a>
             </div>
             <div className="nav-item no-pad">
-              <a href="/login">log in</a>
+              {/* <a onClick={() => setShow(show) } href="/login">Log in</a> */}
+              <button onClick={() => setShow(true) }>Log In</button>
+              <Modal onClose={() => setShow(false)} show={show} />
             </div>
             <div className="nav-item no-pad">
               <a href="/sign-up">sign up</a>
