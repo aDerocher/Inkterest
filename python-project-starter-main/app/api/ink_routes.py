@@ -7,7 +7,7 @@ from app.aws import (
 
 ink_routes = Blueprint('inks', __name__)
 
-# Get all inks
+# Get all inks - simple
 @ink_routes.route('/')
 def get_images():
     inks = Ink.query.all()
@@ -48,17 +48,17 @@ def upload_image():
             subtitle=form.subtitle.data,
             destination_link=form.destination_link.data
         )
-
-        data = {
-            "creator_id": current_user.get_id(),
-            "image": url,
-            "title": form.title.data,
-            "subtitle": form.subtitle.data,
-            "destination_link": form.destination_link.data,
-            "category_1": form.category1.data
-        }
-
         db.session.add(new_ink)
         db.session.commit()
+        return new_ink.to_dict()
 
-        return data
+
+# delete ink - simple
+@ink_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_image(ink_id):
+    ink = Ink.query.get(Ink.id == ink_id)
+
+    ink.delete()
+
+    return 'Deleted'

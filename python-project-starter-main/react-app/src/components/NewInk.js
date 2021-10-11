@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Redirect } from 'react-router-dom';
-import { createInk, listAllInks } from '../store/ink'
-// import '../../reset.css'
+import { createInk, listAllInks, removeInk } from '../store/ink'
+import '../styles/ink.css'
 
 
 
 function NewInkForm() {
     const history = useHistory();
     const dispatch = useDispatch();
+    // direct access to session user/slice of state
     const sessionUser = useSelector(state => state.session.user);
-
+    // direct access to inks array/slice of state
+    const inks = useSelector(state => state.inks)
 
     const [title, setTitle] = useState('');
     const [subtitle, setSubtitle] = useState('');
@@ -45,6 +47,11 @@ function NewInkForm() {
     const updateImage = (e) => {
         const file = e.target.files[0];
         setSelectedFile(file);
+    }
+
+    const handleDelete = (e, inkId) => {
+        e.preventDefault()
+        dispatch(removeInk(inkId))
     }
 
     // ========================================== COMPONENT
@@ -86,6 +93,25 @@ function NewInkForm() {
                     submit ink
                 </button>
             </form>
+
+            {
+                inks?.map((ink) => {
+                    return <span>
+                        <img
+                            className={`ink ${ink.id}`}
+                            key={ink.id}
+                            src={ink.image}
+                        />
+                        <button
+                            className={`delete-${ink.id}`}
+                            key={ink.id}
+                            onClick={(e) => handleDelete(e, ink.id)}
+                        >
+                        Delete Ink
+                        </button>
+                    </span>
+                })
+            }
         </div>
     );
 }

@@ -2,12 +2,14 @@
 
 const ADD_INK = 'users/NEW_INK';
 const GET_INKS = 'users/GET_INKS';
+const DELETE_INK = 'users/DELETE_INK';
 
 
 // --------------------------- Defined Action Creator(s) --------------------------
 
 const addInk = (ink) => ({ type: ADD_INK, ink });
 const getInks = (inks) => ({ type: GET_INKS, inks });
+const deleteInk = (ink) => ({ type: DELETE_INK, ink });
 
 // ---------------------------  Defined Thunk(s) --------------------------------
 
@@ -47,6 +49,21 @@ export const listAllInks = () => async (dispatch) => {
     }
 }
 
+// delete ink
+export const removeInk = (inkId) => async (dispatch) => {
+    // console.log(JSON.stringify({ink_id: inkId}))
+    const response = await fetch(`/api/inks/${inkId}`, {
+        method: 'DELETE',
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(deleteInk(data));
+        return response;
+    }
+}
+
+
 // ---------------------------  State & Reducer --------------------------------
 
 
@@ -61,6 +78,8 @@ const inkReducer = (state = initialState, action) => {
         case ADD_INK:
             return [ ...newState, action.ink ]
         case GET_INKS:
+            return [ ...action.inks ]
+        case DELETE_INK:
             return [ ...action.inks ]
         default:
             return state;
