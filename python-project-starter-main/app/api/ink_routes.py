@@ -5,7 +5,7 @@ from app.models import db, Ink
 from app.aws import (
     upload_file_to_s3, allowed_file, get_unique_filename)
 
-ink_routes = Blueprint('ink', __name__)
+ink_routes = Blueprint('inks', __name__)
 
 
 @ink_routes.route('/new-ink', methods=["POST"])
@@ -36,7 +36,7 @@ def upload_image():
 
     if form.validate_on_submit():
         new_ink = Ink(
-            creator_id=current_user.get_id(),
+            creator_id=current_user.id,
             image=url,
             title=form.title.data,
             subtitle=form.subtitle.data,
