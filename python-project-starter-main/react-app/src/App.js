@@ -35,18 +35,21 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <Route path='/inks/new-ink' exact={true} >
+        <ProtectedRoute path='/inks/new-ink' exact={true} >
           <NewInkForm />
-        </Route>
+        </ProtectedRoute>
+        <ProtectedRoute path='/inks' exact={true}>
+          <h1>inks page</h1>
+        </ProtectedRoute>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
+        <Route path='/' exact={true} >
           <h1>My Home Page</h1>
-        </ProtectedRoute>
+        </Route>
       </Switch>
     </BrowserRouter>
   );
