@@ -24,7 +24,6 @@ function NewInkForm() {
         e.preventDefault();
         console.log(selectedFile)
         const newImage = {
-            creator_id: sessionUser.id,
             image: selectedFile,
             title: title,
             subtitle: subtitle,

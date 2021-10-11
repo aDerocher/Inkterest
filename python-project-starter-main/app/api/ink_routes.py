@@ -17,8 +17,8 @@ def upload_image():
     if "image" not in request.files:
         return {"errors": "image required"}, 400
 
-    ink = request.files["image"]
-
+    ink = request.files['image']
+    print(upload_file_to_s3(ink))
     if not allowed_file(ink.filename):
         return {"errors": "file type not permitted"}, 400
 

@@ -10,10 +10,9 @@ const addInk = (ink) => ({ type: ADD_INK, ink });
 
 // create image
 export const createInk = (newInk) => async (dispatch) => {
-    const { creator_id, image, title, subtitle, destination_link } = newInk;
+    const { image, title, subtitle, destination_link } = newInk;
 
     const formData = new FormData();
-    formData.append("creator_id", creator_id);
     if (image) formData.append("image", image);
     formData.append("title", title);
     formData.append("subtitle", subtitle);
