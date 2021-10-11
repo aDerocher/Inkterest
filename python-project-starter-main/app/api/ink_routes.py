@@ -11,7 +11,9 @@ ink_routes = Blueprint('inks', __name__)
 @ink_routes.route('/')
 def get_images():
     inks = Ink.query.all()
+    print(inks)
     return {'inks': [ink.to_dict() for ink in inks]}
+
 
 # Create new ink
 @ink_routes.route('/new-ink', methods=["POST"])
@@ -54,11 +56,15 @@ def upload_image():
 
 
 # delete ink - simple
-@ink_routes.route('/<int:id>', methods=['DELETE'])
+@ink_routes.route('/<int:ink_id>/delete', methods=['DELETE'])
 @login_required
 def delete_image(ink_id):
-    ink = Ink.query.get(Ink.id == ink_id)
+    ink = Ink.query.get(ink_id)
 
-    ink.delete()
+    db.session.delete(ink)
+    db.session.commit()
 
-    return 'Deleted'
+    # return updated list of inks once sucessful delete
+    inks = Ink.query.all()
+
+    return {'inks': [ink.to_dict() for ink in inks]}
