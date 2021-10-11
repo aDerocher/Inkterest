@@ -48,26 +48,16 @@ def upload_image():
             subtitle=form.subtitle.data,
             destination_link=form.destination_link.data
         )
-
-        data = {
-            "creator_id": current_user.get_id(),
-            "image": url,
-            "title": form.title.data,
-            "subtitle": form.subtitle.data,
-            "destination_link": form.destination_link.data,
-            "category_1": form.category1.data
-        }
-
         db.session.add(new_ink)
         db.session.commit()
-
-        return data
+        return new_ink.to_dict()
 
 
 # delete ink - simple
 @ink_routes.route('/delete')
 def delete_image(ink_id):
     ink = Ink.query.get(ink_id)
+
     db.session.delete(ink)
     db.session.commit()
     return 'Deleted'
