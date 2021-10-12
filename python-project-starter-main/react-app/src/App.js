@@ -13,14 +13,15 @@ import NewCanvasForm from './components/NewCanvas';
 import NavBar_Splash from './components/NavBar_Splash';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
-  const user = useSelector(state => state.session.user);
+  const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -32,21 +33,24 @@ function App() {
 
   return (
     <BrowserRouter>
-    {user && <NavBar />}
-    {user === null && <NavBar_Splash />}
+      {user && <NavBar />}
+      {user === null && <NavBar_Splash />}
 
       {/* <LogoutButton /> */}
       <Switch>
-        <Route path='/' exact={true} >
+        <Route path="/" exact={true}>
           <h1>Splash Page!</h1>
+        </Route>
+        <Route path="/profile-page" exact={true}>
+          <Profile_page />
         </Route>
         {/* <Route path='/login' exact={true}>
           <LoginForm />
         </Route> */}
-        <Route path='/sign-up' exact={true}>
+        <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/inks/new-ink' exact={true} >
+        <ProtectedRoute path="/inks/new-ink" exact={true}>
           <NewInkForm />
         </ProtectedRoute>
         <ProtectedRoute path='/canvases/new-canvas' exact={true} >
@@ -55,10 +59,10 @@ function App() {
         <ProtectedRoute path='/inks' exact={true}>
           <h1>Inks Page</h1>
         </ProtectedRoute>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+        <ProtectedRoute path="/users" exact={true}>
+          <UsersList />
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
+        <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
         </ProtectedRoute>
       </Switch>

@@ -51,15 +51,13 @@ export const listAllInks = () => async (dispatch) => {
 
 // delete ink
 export const removeInk = (inkId) => async (dispatch) => {
-    // console.log(JSON.stringify({ink_id: inkId}))
-    const response = await fetch(`/api/inks/${inkId}`, {
-        method: 'DELETE',
+    const response = await fetch(`/api/inks/${inkId}/delete`, {
+        method: 'DELETE'
     });
 
     if (response.ok) {
-        const data = await response.json();
-        dispatch(deleteInk(data));
-        return response;
+        const inks = await response.json();
+        dispatch(deleteInk(inks));
     }
 }
 
@@ -80,7 +78,7 @@ const inkReducer = (state = initialState, action) => {
         case GET_INKS:
             return [ ...action.inks ]
         case DELETE_INK:
-            return [ ...action.inks ]
+            return newState.filter((el) => action.ink.id !== el.id)
         default:
             return state;
     }
