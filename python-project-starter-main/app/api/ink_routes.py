@@ -61,6 +61,8 @@ def upload_image():
 def delete_image(ink_id):
     ink = Ink.query.get(ink_id)
 
+    # validations needed!
+    # if current_user.get_id() == ink.creator_id:
     db.session.delete(ink)
     db.session.commit()
 
