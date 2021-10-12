@@ -18,6 +18,7 @@ const NavBar = () => {
   const loginDemo = (e) => {
     e.preventDefault();
     const data = dispatch(login("demo@aa.com", "password"));
+    console.log(data)
     history.push("/inks")
   }
 
@@ -40,12 +41,12 @@ const NavBar = () => {
             <div className="nav-item no-pad">
               <a href="/profile-page">About</a>
             </div>
-            <div className="nav-item no-pad" onClick={e=>loginDemo(e)}>Demo User</div>
-            <div className="nav-item no-pad">
+            <div className="nav-item nav-splash-item no-pad" onClick={e=>loginDemo(e)}>Demo User</div>
+            <div className="nav-item nav-splash-item no-pad">
               <button onClick={() => setShow(true) }>Log In</button>
               <Modal onClose={() => setShow(false)} show={show} />
             </div>
-            <div className="nav-item no-pad">
+            <div className="nav-item nav-splash-item no-pad">
               <a href="/sign-up">sign up</a>
             </div>
         </div>

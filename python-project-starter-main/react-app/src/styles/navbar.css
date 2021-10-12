@@ -37,6 +37,7 @@
 .nav-items-right > *{
     width: 46px;
 }
+
 .nav-icon{
     max-height: 30px;
     max-width: 30px;
@@ -47,8 +48,8 @@
     border: none;
     padding: 0;
     margin: 0;
-    max-height: 30px;
-    max-width: 30px;
+    height: 30px;
+    width: 30px;
     text-align: center;
 }
 .user-letter{
@@ -99,4 +100,12 @@
     outline: none;
     border: none;
     font-size: 12pt;
+}
+
+/* ======= Nav Splash Modifications ========================*/
+.nav-splash-item{
+    background-color: var(--soft-grey);
+    width: fit-content;
+    padding: 0 12px;
+    margin: 4px;
 }
