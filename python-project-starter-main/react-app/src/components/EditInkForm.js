@@ -39,11 +39,6 @@ function EditInkForm() {
         }
 
         dispatch(changeInk(ink, inkId))
-            .then(() => {
-                setTitle('');
-                setSubtitle('');
-                setDestination_link('');
-            })
         history.push(`/inks/new-ink`);
     };
 
