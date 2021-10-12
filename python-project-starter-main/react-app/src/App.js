@@ -15,6 +15,7 @@ import NavBar_Splash from "./components/NavBar_Splash";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Profile_page from "./components/Profile-page";
 import EditInkForm from "./components/EditInkForm"
+import DiscoverInks from "./components/DiscoverInks";
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
       <Switch>
         <Route path="/" exact={true}>
           <h1>Splash Page!</h1>
+          <DiscoverInks />
         </Route>
         <Route path="/profile-page" exact={true}>
           <Profile_page />

@@ -36,7 +36,6 @@ function CanvasList() {
             </div>
         ))}
     </div>
-    
   );
 }
 
