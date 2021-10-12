@@ -14,7 +14,7 @@ function NewInkForm() {
     // direct access to session user/slice of state
     const sessionUser = useSelector(state => state.session.user);
     // direct access to ink slice of state - houses ONE ink
-    const ink = useSelector(state => state?.ink[0])
+    const ink = useSelector(state => state?.ink)
 
 
     const [title, setTitle] = useState(ink?.title);
@@ -23,7 +23,10 @@ function NewInkForm() {
 
     useEffect(() => {
         dispatch(listOneInk(inkId))
-    }, [dispatch])
+        setTitle(ink?.title)
+        setSubtitle(ink?.subtitle)
+        setDestination_link(ink?.destination_link)
+    }, [dispatch, ink?.title, ink?.subtitle, ink?.destination_link])
 
 
     if (!sessionUser) return <Redirect to="/" />;

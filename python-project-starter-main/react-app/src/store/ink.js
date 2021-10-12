@@ -89,7 +89,7 @@ export const removeInk = (inkId) => async (dispatch) => {
 
 
 // Image state
-const initialState = [1, 2, 3];
+const initialState = [];
 
 
 // Image reducer

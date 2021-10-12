@@ -26,15 +26,15 @@ export const listOneInk = (inkId) => async (dispatch) => {
 
 
 // Image state
-const initialState = [];
+const initialState = {};
 
 
 // Image reducer
 const inkReducer = (state = initialState, action) => {
-    let newState = [ ...state ]
+    let newState = { ...state }
     switch (action.type) {
         case GET_INK:
-            return [ action.ink ]
+            return action.ink
         default:
             return state;
     }

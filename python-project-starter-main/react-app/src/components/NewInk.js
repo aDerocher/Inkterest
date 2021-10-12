@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Redirect, NavLink } from 'react-router-dom';
 import { createInk, listAllInks, removeInk } from '../store/ink'
+import { listOneInk } from '../store/oneInk'
 import '../styles/ink.css'
 
 
@@ -54,6 +55,10 @@ function NewInkForm() {
         dispatch(removeInk(inkId))
     }
 
+    const handleEditBtn = (inkId) => {
+        history.push(`/inks/${inkId}/edit`)
+    }
+
     // ========================================== COMPONENT
 
     return (
@@ -102,7 +107,7 @@ function NewInkForm() {
                             src={ink.image}
                             onClick={(e) => handleDelete(e, ink.id)}
                         />
-                        <NavLink to={`/inks/${ink.id}/edit`}>Edit</NavLink>
+                        <button onClick={() => handleEditBtn(ink.id)}>Edit</button>
                     </span>
                 })
             }
