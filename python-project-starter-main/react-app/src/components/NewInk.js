@@ -27,7 +27,7 @@ function NewInkForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(selectedFile)
+
         const newImage = {
             image: selectedFile,
             title: title,
@@ -98,17 +98,11 @@ function NewInkForm() {
                 inks?.map((ink) => {
                     return <span>
                         <img
-                            className={`ink ${ink.id}`}
+                            className={`ink ink-${ink.id}`}
                             key={ink.id}
                             src={ink.image}
-                        />
-                        <button
-                            className={`delete-${ink.id}`}
-                            key={ink.id}
                             onClick={(e) => handleDelete(e, ink.id)}
-                        >
-                        Delete Ink
-                        </button>
+                        />
                     </span>
                 })
             }

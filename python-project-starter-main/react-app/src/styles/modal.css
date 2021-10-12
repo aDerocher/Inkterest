@@ -9,6 +9,12 @@
     align-items: center;
     justify-content: center;
 }
+.prof-dd-modal{
+    background-color: transparent;
+    justify-content: flex-end;
+    margin-top: -15px;
+    margin-right: 20px;
+}
 
 .modal-content {
     width: 500px;
