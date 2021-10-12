@@ -23,7 +23,7 @@ def new_canvas():
     if form.validate_on_submit():
         new_canvas = Canvas(
             creator_id=current_user.get_id(),
-            name=name,
+            name=form.name.data,
         )
         db.session.add(new_canvas)
         db.session.commit()
