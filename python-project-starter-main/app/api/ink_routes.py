@@ -1,24 +1,31 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.forms import NewInkForm
+from app.forms import NewInkForm, EditInkForm
 from app.models import db, Ink
 from app.aws import (
-    upload_file_to_s3, allowed_file, get_unique_filename)
+    upload_file_to_s3, allowed_file, get_unique_filename
+)
 
 ink_routes = Blueprint('inks', __name__)
 
 # Get all inks - simple
 @ink_routes.route('/')
-def get_images():
+def get_inks():
     inks = Ink.query.all()
-    print(inks)
     return {'inks': [ink.to_dict() for ink in inks]}
+
+
+# Get one ink - simple
+@ink_routes.route('/<int:ink_id>')
+def get_ink(ink_id):
+    ink  = Ink.query.get(ink_id)
+    return ink.to_dict()
 
 
 # Create new ink
 @ink_routes.route('/new-ink', methods=["POST"])
 @login_required
-def upload_image():
+def upload_ink():
     form = NewInkForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
@@ -55,15 +62,36 @@ def upload_image():
         return new_ink.to_dict()
 
 
+# edit ink
+@ink_routes.route('/<int:ink_id>/edit', methods=['PATCH'])
+@login_required
+def edit_ink(ink_id):
+    ink = Ink.query.get(ink_id)
+
+    form = EditInkForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    if current_user and form.validate_on_submit():
+        ink.title = form.title.data
+        ink.subtitle = form.subtitle.data
+        ink.destination_link = form.destination_link.data
+        db.session.commit()
+
+    return ink.to_dict()
+
+
 # delete ink - simple
 @ink_routes.route('/<int:ink_id>/delete', methods=['DELETE'])
 @login_required
-def delete_image(ink_id):
+def delete_ink(ink_id):
     ink = Ink.query.get(ink_id)
 
-    # validations needed!
-    # if current_user.get_id() == ink.creator_id:
-    db.session.delete(ink)
-    db.session.commit()
+    # Make sure to test this validation once login form is setup!
+        # condition - Try to delete an ink a different user - Should not work
+        # condition - Try to delete as a logged out user - Should not work
+
+    if current_user and current_user.get_id() == ink.creator_id:
+        db.session.delete(ink)
+        db.session.commit()
 
     return ink.to_dict()
