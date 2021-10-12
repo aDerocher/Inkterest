@@ -12,6 +12,7 @@ import LogoutButton from "./components/auth/LogoutButton";
 import NavBar_Splash from "./components/NavBar_Splash";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Profile_page from "./components/Profile-page";
+import Pin_builder from "./components/Pin-builder";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -42,6 +43,9 @@ function App() {
         </Route>
         <Route path="/profile-page" exact={true}>
           <Profile_page />
+        </Route>
+        <Route path='/pin-builder' exact={true}>
+          <Pin_builder />
         </Route>
         {/* <Route path='/login' exact={true}>
           <LoginForm />
