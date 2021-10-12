@@ -40,7 +40,7 @@ function NewInkForm() {
                 setSubtitle('');
                 setDestination_link('');
             })
-        // history.push(`/inks/new-ink`);
+        history.push(`/inks/new-ink`);
     };
 
     // ===================== COMPONENT =====================
