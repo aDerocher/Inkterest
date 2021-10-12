@@ -1,6 +1,7 @@
 // --------------------------- Defined Action Types as Constants ---------------------
 
 const ADD_INK = 'users/NEW_INK';
+const GET_INK = 'users/GET_INK';
 const GET_INKS = 'users/GET_INKS';
 const EDIT_INK = 'users/GET_INK';
 const DELETE_INK = 'users/DELETE_INK';
@@ -9,6 +10,7 @@ const DELETE_INK = 'users/DELETE_INK';
 // --------------------------- Defined Action Creator(s) --------------------------
 
 const addInk = (ink) => ({ type: ADD_INK, ink });
+const getInk = (ink) => ({ type: GET_INK, ink });
 const getInks = (inks) => ({ type: GET_INKS, inks });
 const editInk = (ink) => ({ type: EDIT_INK, ink });
 const deleteInk = (ink) => ({ type: DELETE_INK, ink });
@@ -36,6 +38,20 @@ export const createInk = (newInk) => async (dispatch) => {
     };
 };
 
+// get one ink
+export const listOneInk = (inkId) => async (dispatch) => {
+    const response = await fetch(`/api/inks/${inkId}`, {
+        method: 'GET'
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+
+        const ink = data
+        dispatch(getInk(ink));
+        return response;
+    }
+}
 
 // get all inks
 export const listAllInks = () => async (dispatch) => {
@@ -98,6 +114,8 @@ const inksReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_INK:
             return [ ...newState, action.ink ]
+        case GET_INK:
+            return [ action.ink ]
         case GET_INKS:
             return [ ...action.inks ]
         case EDIT_INK:

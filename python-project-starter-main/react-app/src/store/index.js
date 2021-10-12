@@ -7,7 +7,6 @@ import canvases from './canvas'
 
 const rootReducer = combineReducers({
   session,
-  ink,
   inks,
   canvases,
 });
