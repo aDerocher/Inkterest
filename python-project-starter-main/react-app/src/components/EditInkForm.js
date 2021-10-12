@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Redirect, useParams } from 'react-router-dom';
-import { listOneInk, changeInk } from '../store/ink'
+import { listOneInk } from '../store/oneInk'
+import { changeInk } from '../store/ink'
 import '../styles/ink.css'
 
 
@@ -13,7 +14,7 @@ function NewInkForm() {
     // direct access to session user/slice of state
     const sessionUser = useSelector(state => state.session.user);
     // direct access to ink slice of state - houses ONE ink
-    const ink = useSelector(state => state.inks[0])
+    const ink = useSelector(state => state?.ink[0])
 
 
     const [title, setTitle] = useState(ink?.title);

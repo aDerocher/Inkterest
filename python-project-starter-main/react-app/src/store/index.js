@@ -2,12 +2,14 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
 import inks from './ink'
+import ink from './oneInk'
 import canvases from './canvas'
 
 const rootReducer = combineReducers({
   session,
+  ink,
   inks,
-  canvases
+  canvases,
 });
 
 

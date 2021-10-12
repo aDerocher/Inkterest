@@ -1,7 +1,6 @@
 // --------------------------- Defined Action Types as Constants ---------------------
 
 const ADD_INK = 'users/NEW_INK';
-const GET_INK = 'users/GET_INK';
 const GET_INKS = 'users/GET_INKS';
 const EDIT_INK = 'users/GET_INK';
 const DELETE_INK = 'users/DELETE_INK';
@@ -10,7 +9,6 @@ const DELETE_INK = 'users/DELETE_INK';
 // --------------------------- Defined Action Creator(s) --------------------------
 
 const addInk = (ink) => ({ type: ADD_INK, ink });
-const getInk = (ink) => ({ type: GET_INK, ink });
 const getInks = (inks) => ({ type: GET_INKS, inks });
 const editInk = (ink) => ({ type: EDIT_INK, ink });
 const deleteInk = (ink) => ({ type: DELETE_INK, ink });
@@ -38,21 +36,6 @@ export const createInk = (newInk) => async (dispatch) => {
     };
 };
 
-// get one ink
-export const listOneInk = (inkId) => async (dispatch) => {
-    const response = await fetch(`/api/inks/${inkId}`, {
-        method: 'GET'
-    });
-
-    if (response.ok) {
-        const data = await response.json();
-
-        const ink = data
-        console.log(ink)
-        dispatch(getInk(ink));
-        return response;
-    }
-}
 
 // get all inks
 export const listAllInks = () => async (dispatch) => {
@@ -106,31 +89,24 @@ export const removeInk = (inkId) => async (dispatch) => {
 
 
 // Image state
-const initialState = [];
+const initialState = [1, 2, 3];
 
 
 // Image reducer
-const inkReducer = (state = initialState, action) => {
+const inksReducer = (state = initialState, action) => {
     let newState = [ ...state ]
     switch (action.type) {
         case ADD_INK:
             return [ ...newState, action.ink ]
-        case GET_INK:
-            return [ action.ink ]
         case GET_INKS:
             return [ ...action.inks ]
         case EDIT_INK:
-            return newState.map((el) => {
-                if (el.id === action.ink.id) {
-                     el = action.ink
-                }
-            })
+            return newState
         case DELETE_INK:
             return newState.filter((el) => action.ink.id !== el.id)
         default:
             return state;
     }
 }
-
 // Export the reducer
-export default inkReducer;
+export default inksReducer;
