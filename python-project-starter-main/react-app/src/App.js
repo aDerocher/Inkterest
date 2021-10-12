@@ -14,6 +14,7 @@ import NewCanvasForm from './components/NewCanvas';
 import NavBar_Splash from "./components/NavBar_Splash";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Profile_page from "./components/Profile-page";
+import Pin_builder from "./components/Pin-builder";
 import EditInkForm from "./components/EditInkForm"
 import DiscoverInks from "./components/DiscoverInks";
 
@@ -48,6 +49,9 @@ function App() {
         </Route>
         <Route path="/profile-page" exact={true}>
           <Profile_page />
+        </Route>
+        <Route path='/pin-builder' exact={true}>
+          <Pin_builder />
         </Route>
         {/* <Route path='/login' exact={true}>
           <LoginForm />

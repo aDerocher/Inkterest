@@ -4,11 +4,14 @@ import session from './session'
 import inks from './ink'
 import ink from './oneInk'
 import canvases from './canvas'
+import follows from './follow'
 
 const rootReducer = combineReducers({
   session,
   inks,
   canvases,
+  follows
+
 });
 
 
