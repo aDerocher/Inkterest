@@ -1,25 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { authenticate } from './store/session';
-import User from './components/User';
-import NavBar from './components/NavBar';
-import LoginForm from './components/auth/LoginForm';
-import UsersList from './components/UsersList';
-import SignUpForm from './components/auth/SignUpForm';
-import NewInkForm from './components/NewInk';
-import LogoutButton from './components/auth/LogoutButton'
-import NavBar_Splash from './components/NavBar_Splash';
-import ProtectedRoute from './components/auth/ProtectedRoute';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { authenticate } from "./store/session";
+import User from "./components/User";
+import NavBar from "./components/NavBar";
+import LoginForm from "./components/auth/LoginForm";
+import UsersList from "./components/UsersList";
+import SignUpForm from "./components/auth/SignUpForm";
+import NewInkForm from "./components/NewInk";
+import LogoutButton from "./components/auth/LogoutButton";
+import NavBar_Splash from "./components/NavBar_Splash";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import Profile_page from "./components/Profile-page";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
-  const user = useSelector(state => state.session.user);
+  const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -31,30 +32,33 @@ function App() {
 
   return (
     <BrowserRouter>
-    {user && <NavBar />}
-    {user === null && <NavBar_Splash />}
+      {user && <NavBar />}
+      {user === null && <NavBar_Splash />}
 
       {/* <LogoutButton /> */}
       <Switch>
-        <Route path='/' exact={true} >
+        <Route path="/" exact={true}>
           <h1>Splash Page!</h1>
+        </Route>
+        <Route path="/profile-page" exact={true}>
+          <Profile_page />
         </Route>
         {/* <Route path='/login' exact={true}>
           <LoginForm />
         </Route> */}
-        <Route path='/sign-up' exact={true}>
+        <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/inks/new-ink' exact={true} >
+        <ProtectedRoute path="/inks/new-ink" exact={true}>
           <NewInkForm />
         </ProtectedRoute>
-        <ProtectedRoute path='/inks' exact={true}>
+        <ProtectedRoute path="/inks" exact={true}>
           <h1>Inks Page</h1>
         </ProtectedRoute>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+        <ProtectedRoute path="/users" exact={true}>
+          <UsersList />
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
+        <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
         </ProtectedRoute>
       </Switch>
