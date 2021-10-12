@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
@@ -11,17 +12,16 @@ import "../styles/navbar.css";
 import "../styles/profileDD.css";
 import ProfileModal from "./ProfileModal";
 import Profile_page from "./Profile-page";
+import chevron from "./../images/downChevron.png"
+
 
 const NavBar = () => {
   // const [show, setShow] = useState(false)
   const [show, setShow] = useState(false);
   const history = useHistory();
-  const user = useSelector((state) => state.session.user);
 
-  const showDropDown = () => {
-    // equasion to show dropdown?
-    // or use modal?
-  };
+  const user = useSelector(state => state.session.user);
+  const userNameLetter = user.first_name[0].toUpperCase();
 
   const toProfile = (e) => {
     e.preventDefault();
@@ -29,7 +29,6 @@ const NavBar = () => {
   };
 
   return (
-    <>
       <nav className="nav-bar">
         <div className="nav-section nav-items-left">
           <div className="nav-item no-pad">
@@ -53,26 +52,22 @@ const NavBar = () => {
         </div>
 
         <div className="nav-section nav-items-right">
-          <div className="nav-item no-pad">
-            <a href="/">Demo User</a>
-          </div>
-          <div className="nav-item no-pad">
-            <a href="/profile-page">business</a>
-          </div>
-          <div className="nav-item no-pad">
-            {/* <a onClick={() => setShow(show) } href="/login">Log in</a> */}
-            {/* <button onClick={() => setShow(true) }>Log In</button>
-              <Modal onClose={() => setShow(false)} show={show} /> */}
-          </div>
-          <div className="nav-item no-pad">
-            <button onClick={() => setShow(true)}>V</button>
-            <ProfileModal onClose={() => setShow(false)} show={show} />
-          </div>
-        </div>
-      </nav>
 
-      <div></div>
-    </>
+            <div className="nav-item no-pad">
+                <i className="fas fa-bell"></i>
+            </div>
+            <div className="nav-item no-pad">
+                <i className="fas fa-comment-dots"></i>
+            </div>
+            <div className="nav-item no-pad user-letter" onClick={e=> toProfile(e)}>
+              {userNameLetter}
+            </div>
+            <div className="nav-item no-pad">
+              <button onClick={() => setShow(true) } className="chevron-btn"><i class="fas fa-chevron-down"></i></button>
+              <ProfileModal onClose={() => setShow(false)} show={show}/>
+            </div>
+        </div>
+    </nav>
   );
 };
 

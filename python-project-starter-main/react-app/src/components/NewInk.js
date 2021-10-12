@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, Redirect } from 'react-router-dom';
+import { useHistory, Redirect, NavLink } from 'react-router-dom';
 import { createInk, listAllInks, removeInk } from '../store/ink'
 import '../styles/ink.css'
 
@@ -27,7 +27,7 @@ function NewInkForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(selectedFile)
+
         const newImage = {
             image: selectedFile,
             title: title,
@@ -80,7 +80,7 @@ function NewInkForm() {
                     placeholder='Subtitle'
                 />
                 <input
-                    className='description input'
+                    className='destination input'
                     type='text'
                     value={destination_link}
                     onChange={(e) => setDestination_link(e.target.value)}
@@ -96,19 +96,13 @@ function NewInkForm() {
 
             {
                 inks?.map((ink) => {
-                    return <span>
+                    return <span key={ink.id}>
                         <img
-                            className={`ink ${ink.id}`}
-                            key={ink.id}
+                            className={`ink ink-${ink.id}`}
                             src={ink.image}
-                        />
-                        <button
-                            className={`delete-${ink.id}`}
-                            key={ink.id}
                             onClick={(e) => handleDelete(e, ink.id)}
-                        >
-                        Delete Ink
-                        </button>
+                        />
+                        <NavLink to={`/inks/${ink.id}/edit`}>Edit</NavLink>
                     </span>
                 })
             }
