@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.forms import NewCanvasForm
-from app.models import db, Canvas
+from app.models import db, Canvas, Ink_On_Canvas
 # from app.aws import (
 #     upload_file_to_s3, allowed_file, get_unique_filename)
 
@@ -38,7 +38,12 @@ def new_canvas():
 @login_required
 def delete_canvas(canvas_id):
     canvas = Canvas.query.get(canvas_id)
-    print(canvas)
+    # allInk_Canv_Rels = Ink_On_Canvas.query.filter(Ink_On_Canvas.canvas_id == canvasId).all()
+    # db.session.delete(allInk_Canv_Rels)
+    #===============================================
+    # DELETES, BUT DOES NOT CASCADE TO Ink_on_canvases
+    # Will hit 500 error if canvas has ink. Only blank canvases delete
+    #===============================================
     db.session.delete(canvas)
     db.session.commit()
 

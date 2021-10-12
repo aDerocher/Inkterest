@@ -48,7 +48,6 @@ export const listOneInk = (inkId) => async (dispatch) => {
         const data = await response.json();
 
         const ink = data
-        console.log(ink)
         dispatch(getInk(ink));
         return response;
     }
@@ -110,7 +109,7 @@ const initialState = [];
 
 
 // Image reducer
-const inkReducer = (state = initialState, action) => {
+const inksReducer = (state = initialState, action) => {
     let newState = [ ...state ]
     switch (action.type) {
         case ADD_INK:
@@ -120,17 +119,12 @@ const inkReducer = (state = initialState, action) => {
         case GET_INKS:
             return [ ...action.inks ]
         case EDIT_INK:
-            return newState.map((el) => {
-                if (el.id === action.ink.id) {
-                     el = action.ink
-                }
-            })
+            return newState
         case DELETE_INK:
             return newState.filter((el) => action.ink.id !== el.id)
         default:
             return state;
     }
 }
-
 // Export the reducer
-export default inkReducer;
+export default inksReducer;

@@ -22,7 +22,6 @@ function CanvasList() {
 
     // Delete a given canvas
     const deleteCanvas = (e, canv_id) => {
-        console.log(canv_id)
         e.preventDefault()
         dispatch(removeCanvas(canv_id))
     }
@@ -37,7 +36,6 @@ function CanvasList() {
             </div>
         ))}
     </div>
-    
   );
 }
 
