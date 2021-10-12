@@ -12,6 +12,7 @@ import LogoutButton from "./components/auth/LogoutButton";
 import NavBar_Splash from "./components/NavBar_Splash";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Profile_page from "./components/Profile-page";
+import EditInkForm from "./components/EditInkForm"
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -51,6 +52,9 @@ function App() {
         </Route>
         <ProtectedRoute path="/inks/new-ink" exact={true}>
           <NewInkForm />
+        </ProtectedRoute>
+        <ProtectedRoute path="/inks/:inkId/edit" exact={true}>
+          <EditInkForm />
         </ProtectedRoute>
         <ProtectedRoute path="/inks" exact={true}>
           <h1>Inks Page</h1>

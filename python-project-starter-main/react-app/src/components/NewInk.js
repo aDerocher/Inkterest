@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, Redirect } from 'react-router-dom';
+import { useHistory, Redirect, NavLink } from 'react-router-dom';
 import { createInk, listAllInks, removeInk } from '../store/ink'
 import '../styles/ink.css'
 
@@ -96,13 +96,13 @@ function NewInkForm() {
 
             {
                 inks?.map((ink) => {
-                    return <span>
+                    return <span key={ink.id}>
                         <img
                             className={`ink ink-${ink.id}`}
-                            key={ink.id}
                             src={ink.image}
                             onClick={(e) => handleDelete(e, ink.id)}
                         />
+                        <NavLink to={`/inks/${ink.id}/edit`}>Edit</NavLink>
                     </span>
                 })
             }

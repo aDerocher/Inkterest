@@ -55,10 +55,10 @@ const NavBar = () => {
         <div className="nav-section nav-items-right">
 
             <div className="nav-item no-pad">
-                <i class="fas fa-bell"></i>
+                <i className="fas fa-bell"></i>
             </div>
             <div className="nav-item no-pad">
-                <i class="fas fa-comment-dots"></i>
+                <i className="fas fa-comment-dots"></i>
             </div>
             <div className="nav-item no-pad user-letter" onClick={e=> toProfile(e)}>
               {userNameLetter}

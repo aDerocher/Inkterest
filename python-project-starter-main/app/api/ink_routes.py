@@ -10,15 +10,22 @@ ink_routes = Blueprint('inks', __name__)
 
 # Get all inks - simple
 @ink_routes.route('/')
-def get_images():
+def get_inks():
     inks = Ink.query.all()
     return {'inks': [ink.to_dict() for ink in inks]}
+
+
+# Get one ink - simple
+@ink_routes.route('/<int:ink_id>')
+def get_ink(ink_id):
+    ink  = Ink.query.get(ink_id)
+    return ink.to_dict()
 
 
 # Create new ink
 @ink_routes.route('/new-ink', methods=["POST"])
 @login_required
-def upload_image():
+def upload_ink():
     form = NewInkForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
@@ -58,7 +65,7 @@ def upload_image():
 # delete ink - simple
 @ink_routes.route('/<int:ink_id>/delete', methods=['DELETE'])
 @login_required
-def delete_image(ink_id):
+def delete_ink(ink_id):
     ink = Ink.query.get(ink_id)
 
     # Make sure to test this validation once login form is setup!
