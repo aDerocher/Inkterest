@@ -82,7 +82,7 @@ const NavBar = () => {
             </div>
             <img className="pd-checkmark" src={checkmark} alt="" />
         </div>
-      </nav>
+  </nav>*/}
 
       <div></div>
     </>
