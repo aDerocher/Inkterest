@@ -69,22 +69,6 @@ const NavBar = () => {
             </div>
         </div>
     </nav>
-
-    {/* <div className='profile-dd-container'>
-        <div className="prof-dd-row prof-dd-title">Currently an</div>
-
-        <div className="prof-dd-card pd-hov">
-            <img className='prof-dd-uimg' src={demoProfImage} alt="" />
-            <div className="prof-dd-card-content" onClick={e => toProfile(e)}>
-                <p className='pd-text pd-name'>Aldous H</p>
-                <p className='pd-text pd-acctype'>Personal</p>
-                <p className='pd-text pd-email'>ahuxley@bnw.com</p>
-            </div>
-            <img className="pd-checkmark" src={checkmark} alt="" />
-        </div>
-      </nav>
-
-      <div></div>
     </>
   );
 };

@@ -12,6 +12,7 @@ import LogoutButton from './components/auth/LogoutButton'
 import NewCanvasForm from './components/NewCanvas';
 import NavBar_Splash from './components/NavBar_Splash';
 import ProtectedRoute from './components/auth/ProtectedRoute';
+import Profile_page from './components/Profile-page';
 
 
 function App() {

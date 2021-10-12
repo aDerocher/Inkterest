@@ -49,15 +49,15 @@ export const listAllCanvases = () => async (dispatch) => {
 
 // delete canvas
 export const removeCanvas = (canvasId) => async (dispatch) => {
-    // console.log(JSON.stringify({canvas_id: canvasId}))
+    // console.log(canvasId, "++++++++++++++++")
     const response = await fetch(`/api/canvases/${canvasId}`, {
-        method: 'DELETE',
+        method: 'DELETE'
     });
 
     if (response.ok) {
         const data = await response.json();
         dispatch(deleteCanvas(data));
-        return response;
+        // return response;
     }
 }
 

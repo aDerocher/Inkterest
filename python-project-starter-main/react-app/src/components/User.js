@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import CanvasList from './CanvasList'
 
 function User() {
   const [user, setUser] = useState({});
@@ -31,6 +32,10 @@ function User() {
       <li>
         <strong>Email</strong> {user.email}
       </li>
+      <li>
+        <p>temporary link: <a href='/canvases/new-canvas'>new Canvas</a></p>
+      </li>
+      <CanvasList />
     </ul>
   );
 }

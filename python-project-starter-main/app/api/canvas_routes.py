@@ -7,11 +7,14 @@ from app.models import db, Canvas
 
 canvas_routes = Blueprint('canvases', __name__)
 
+
 # Get all canvases - simple
 @canvas_routes.route('/')
 def get_all_canvases():
     canvases = Canvas.query.all()
     return {'canvases': [canvas.to_dict() for canvas in canvases]}
+
+
 
 # Create new canvas
 @canvas_routes.route('/new-canvas', methods=["POST"])
@@ -31,11 +34,13 @@ def new_canvas():
 
 
 # delete canvas - simple
-@canvas_routes.route('/<int:id>', methods=['DELETE'])
+@canvas_routes.route('/<int:canvas_id>', methods=['DELETE'])
 @login_required
 def delete_canvas(canvas_id):
-    canvas = Canvas.query.get(Canvas.id == canvas_id)
+    canvas = Canvas.query.get(canvas_id)
+    print(canvas)
+    db.session.delete(canvas)
+    db.session.commit()
 
-    canvas.delete()
-
-    return 'Deleted'
+    # return "aww shit"
+    return canvas.to_dict()
