@@ -9,22 +9,23 @@ import '../styles/ink.css'
 function NewInkForm() {
     const history = useHistory();
     const dispatch = useDispatch();
-    const params = useParams();
+    const { inkId } = useParams();
+
     // direct access to session user/slice of state
     const sessionUser = useSelector(state => state.session.user);
-    // direct access to ink array/slice of state
+    // direct access to ink slice of state - houses ONE ink
     const ink = useSelector(state => state.inks)
+    console.log(ink)
 
 
+    const [title, setTitle] = useState(ink[0]?.title);
+    const [subtitle, setSubtitle] = useState(ink?.subtitle);
+    const [destination_link, setDestination_link] = useState(ink?.destination_link);
 
     useEffect(() => {
-        dispatch(listOneInk(params.inkId))
-        console.log(ink)
-    }, [dispatch])
+        dispatch(listOneInk(inkId))
+    }, [dispatch, title])
 
-    const [title, setTitle] = useState('');
-    const [subtitle, setSubtitle] = useState('');
-    const [destination_link, setDestination_link] = useState('');
 
     if (!sessionUser) return <Redirect to="/" />;
 
@@ -33,17 +34,30 @@ function NewInkForm() {
         // history.push(`/`);
     };
 
-    // ========================================== COMPONENT
+    // ===================== COMPONENT =====================
 
     return (
         <div>
-                <h1>{ink?.id}</h1>
+            <h1>{ink?.title}</h1>
             <form onSubmit={handleSubmit}>
-                
-                <input />
-                <input />
-                <input />
-                <input />
+
+                <input
+                    type='text'
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                />
+                <input
+                    type='text'
+                    placeholder='Subtitle'
+                    value={subtitle}
+                    onChange={(e) => setSubtitle(e.target.value)}
+                />
+                <input
+                    type='text'
+                    placeholder='Add a link to your site'
+                    value={destination_link}
+                    onChange={(e) => setDestination_link(e.target.value)}
+                />
                 <button type='Submit'>Submit</button>
             </form>
         </div>

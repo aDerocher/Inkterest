@@ -80,7 +80,7 @@ function NewInkForm() {
                     placeholder='Subtitle'
                 />
                 <input
-                    className='description input'
+                    className='destination input'
                     type='text'
                     value={destination_link}
                     onChange={(e) => setDestination_link(e.target.value)}

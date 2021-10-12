@@ -46,6 +46,7 @@ export const listOneInk = (inkId) => async (dispatch) => {
         const data = await response.json();
 
         const ink = data
+        console.log(ink)
         dispatch(getInk(ink));
         return response;
     }
@@ -93,7 +94,7 @@ const inkReducer = (state = initialState, action) => {
         case ADD_INK:
             return [ ...newState, action.ink ]
         case GET_INK:
-            return action.ink
+            return [ action.ink ]
         case GET_INKS:
             return [ ...action.inks ]
         case DELETE_INK:
