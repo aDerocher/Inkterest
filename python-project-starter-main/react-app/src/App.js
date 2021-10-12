@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import SignUpForm from './components/auth/SignUpForm';
 import NewInkForm from './components/NewInk';
 import LogoutButton from './components/auth/LogoutButton'
+import NewCanvasForm from './components/NewCanvas';
 import NavBar_Splash from './components/NavBar_Splash';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 
@@ -47,6 +48,9 @@ function App() {
         </Route>
         <ProtectedRoute path='/inks/new-ink' exact={true} >
           <NewInkForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/canvases/new-canvas' exact={true} >
+          <NewCanvasForm />
         </ProtectedRoute>
         <ProtectedRoute path='/inks' exact={true}>
           <h1>Inks Page</h1>
