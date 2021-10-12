@@ -28,6 +28,7 @@
     justify-content: center;
 }
 .nav-item:hover{
+    cursor: pointer;
     background-color: var(--soft-grey);
 }
 .no-pad{
@@ -39,6 +40,20 @@
 .nav-icon{
     max-height: 30px;
     max-width: 30px;
+}
+.chevron-btn{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    max-height: 30px;
+    max-width: 30px;
+    text-align: center;
+}
+.user-letter{
+    font-size: 10pt ;
+    color: var(--charcoal-grey);
 }
 .nav-banner{
     max-height: 30px;
