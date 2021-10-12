@@ -5,7 +5,6 @@ import { listOneInk } from '../store/ink'
 import '../styles/ink.css'
 
 
-
 function NewInkForm() {
     const history = useHistory();
     const dispatch = useDispatch();
@@ -15,10 +14,9 @@ function NewInkForm() {
     const sessionUser = useSelector(state => state.session.user);
     // direct access to ink slice of state - houses ONE ink
     const ink = useSelector(state => state.inks)
-    console.log(ink)
 
 
-    const [title, setTitle] = useState(ink[0]?.title);
+    const [title, setTitle] = useState(ink?.title);
     const [subtitle, setSubtitle] = useState(ink?.subtitle);
     const [destination_link, setDestination_link] = useState(ink?.destination_link);
 

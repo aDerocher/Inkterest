@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.forms import NewInkForm
+from app.forms import NewInkForm, EditInkForm
 from app.models import db, Ink
 from app.aws import (
     upload_file_to_s3, allowed_file, get_unique_filename
@@ -60,6 +60,24 @@ def upload_ink():
         db.session.add(new_ink)
         db.session.commit()
         return new_ink.to_dict()
+
+
+# edit ink
+@ink_routes.route('/<int:ink_id>/edit', methods=['PATCH'])
+@login_required
+def edit_ink(ink_id):
+    ink = Ink.query.get(ink_id)
+
+    form = EditInkForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    if current_user and form.validate_on_submit():
+        ink.title = form.title.data
+        ink.subtitle = form.subtitle.data
+        ink.destination_link = form.destination_link.data
+        db.session.commit()
+
+    return ink.to_dict()
 
 
 # delete ink - simple
