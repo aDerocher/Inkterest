@@ -49,7 +49,6 @@ export const listAllCanvases = () => async (dispatch) => {
 
 // delete canvas
 export const removeCanvas = (canvasId) => async (dispatch) => {
-    // console.log(canvasId, "++++++++++++++++")
     const response = await fetch(`/api/canvases/${canvasId}`, {
         method: 'DELETE'
     });
@@ -57,7 +56,6 @@ export const removeCanvas = (canvasId) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(deleteCanvas(data));
-        // return response;
     }
 }
 
@@ -78,7 +76,7 @@ const canvasReducer = (state = initialState, action) => {
         case GET_CANVASES:
             return [ ...action.canvases ]
         case DELETE_CANVAS:
-            return [ ...action.canvases ]
+            return newState.filter((el) => action.canvas.id !== el.id)
         default:
             return state;
     }
