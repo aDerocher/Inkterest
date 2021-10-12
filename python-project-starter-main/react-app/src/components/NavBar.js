@@ -6,8 +6,7 @@ import LogoutButton from './auth/LogoutButton';
 import Modal from './Modal';
 import pinkSquidLogo from "./../images/squid-circle-icon-Black.png"
 import magGlass from "./../images/magGlass.png"
-import demoProfImage from "./../images/prof-Img_defaultSquid.png"
-import checkmark from "./../images/checkMark-darkGrey.png"
+import chevron from "./../images/downChevron.png"
 import "../styles/navbar.css"
 import "../styles/profileDD.css"
 import ProfileModal from './ProfileModal';
@@ -18,11 +17,7 @@ const NavBar = () => {
   const [show, setShow] = useState(false);
   const history = useHistory();
   const user = useSelector(state => state.session.user);
-
-  const showDropDown = () => {
-    // equasion to show dropdown?
-    // or use modal?
-  }
+    const userNameLetter = user.first_name[0].toUpperCase();
 
   const toProfile = (e) => {
     e.preventDefault();
@@ -51,18 +46,16 @@ const NavBar = () => {
 
         <div className="nav-section nav-items-right">
             <div className="nav-item no-pad">
-              <a href="/">Demo User</a>
+                <i class="fas fa-bell"></i>
             </div>
             <div className="nav-item no-pad">
-              <a href="/profile-page">business</a>
+                <i class="fas fa-comment-dots"></i>
+            </div>
+            <div className="nav-item no-pad user-letter" onClick={e=> toProfile(e)}>
+              {userNameLetter}
             </div>
             <div className="nav-item no-pad">
-              {/* <a onClick={() => setShow(show) } href="/login">Log in</a> */}
-              {/* <button onClick={() => setShow(true) }>Log In</button>
-              <Modal onClose={() => setShow(false)} show={show} /> */}
-            </div>
-            <div className="nav-item no-pad">
-              <button onClick={() => setShow(true) }>V</button>
+              <button onClick={() => setShow(true) } className="chevron-btn"><i class="fas fa-chevron-down"></i></button>
               <ProfileModal onClose={() => setShow(false)} show={show}/>
             </div>
         </div>
