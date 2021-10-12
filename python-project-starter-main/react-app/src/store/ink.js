@@ -78,7 +78,7 @@ const inkReducer = (state = initialState, action) => {
         case GET_INKS:
             return [ ...action.inks ]
         case DELETE_INK:
-            return [ ...newState ]
+            return newState.filter((el) => action.ink.id !== el.id)
         default:
             return state;
     }

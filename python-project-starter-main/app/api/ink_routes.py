@@ -64,7 +64,4 @@ def delete_image(ink_id):
     db.session.delete(ink)
     db.session.commit()
 
-    # return updated list of inks once sucessful delete
-    inks = Ink.query.all()
-
-    return { "deleted": "deleted" }
+    return ink.to_dict()
