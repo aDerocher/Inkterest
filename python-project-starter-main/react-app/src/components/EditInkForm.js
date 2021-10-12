@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Redirect, useParams } from 'react-router-dom';
-import { listOneInk } from '../store/ink'
+import { listOneInk, changeInk } from '../store/ink'
 import '../styles/ink.css'
 
 
@@ -13,7 +13,7 @@ function NewInkForm() {
     // direct access to session user/slice of state
     const sessionUser = useSelector(state => state.session.user);
     // direct access to ink slice of state - houses ONE ink
-    const ink = useSelector(state => state.inks)
+    const ink = useSelector(state => state.inks[0])
 
 
     const [title, setTitle] = useState(ink?.title);
@@ -22,14 +22,25 @@ function NewInkForm() {
 
     useEffect(() => {
         dispatch(listOneInk(inkId))
-    }, [dispatch, title])
+    }, [dispatch])
 
 
     if (!sessionUser) return <Redirect to="/" />;
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // history.push(`/`);
+    const handleSubmit = (inkId) => {
+        const ink = {
+            title: title,
+            subtitle: subtitle,
+            destination_link: destination_link
+        }
+
+        dispatch(changeInk(ink, inkId))
+            .then(() => {
+                setTitle('');
+                setSubtitle('');
+                setDestination_link('');
+            })
+        // history.push(`/inks/new-ink`);
     };
 
     // ===================== COMPONENT =====================
@@ -37,7 +48,7 @@ function NewInkForm() {
     return (
         <div>
             <h1>{ink?.title}</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={() => handleSubmit(ink?.id)}>
 
                 <input
                     type='text'
