@@ -1,1 +1,12 @@
 /* TODO Add site wide styles */
+:root{
+
+    /* Navbar Colors */
+    --off-white: rgb(240, 240, 240);
+    --soft-grey: rgb(230, 230, 230);
+    --hover-grey: rgb(220, 220, 220);
+
+    /* Profile Dropdown */
+    --hover-grey-yellow: rgb(236, 236, 232);
+    --charcoal-grey: #333;
+}

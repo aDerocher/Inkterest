@@ -1,12 +1,4 @@
-:root{
-    --soft-grey: rgb(230, 230, 230);
-    --hover-grey: rgb(202, 202, 202);
-}
 
-body{
-    padding: 0;
-    margin: 0;
-}
 .nav-bar{
     /* background-color: rgb(194, 120, 24); */
     width: 98%;
@@ -52,11 +44,11 @@ body{
     max-height: 30px;
     padding: 0 8px;
 }
+/* =========== Search Bar =================== */
 .search-icon{
     width: 18px;
     height: 18px;
 }
-/* =========== Search Bar =================== */
 .nav-search-container{
     /* background-color: rgb(98, 214, 104); */
     display: flex;
@@ -67,6 +59,9 @@ body{
 }
 .nav-search-box:hover{
     background-color: var(--hover-grey);
+}
+.nav-search-input{
+    background-color: var(--off-white);
 }
 .nav-search-box:hover .nav-search-input{
     background-color: var(--hover-grey);
@@ -89,84 +84,4 @@ body{
     outline: none;
     border: none;
     font-size: 12pt;
-}
-
-:root{
-    --hover-grey: rgb(236, 236, 232);
-    --soft-grey: rgb(189, 189, 189);
-    --charcoal-grey: rgb(56, 56, 56);
-}
-.profile-dd-container{
-    /* background-color: darkorange; */
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 10px;
-    border-radius: 20px;
-    box-shadow: 0 0 10px rgb(0, 0, 0, .5);
-}
-.profile-dd-container a{
-    text-decoration: none;
-}
-
-.prof-dd-row{
-    padding: 8px 12px;
-    border-radius: 8px;
-}
-.prof-dd-row > a {
-    font-weight: bold;
-    text-decoration: none;
-    color: var(--charcoal-grey);
-}
-.prof-dd-title{
-    font-size: 9pt;
-    color: var(--soft-grey)
-}
-
-/* ==== card styling ============== */
-.prof-dd-card{
-    /* background-color: darkorchid; */
-    padding: 12px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-    border-radius: 8px;
-}
-.prof-dd-uimg{
-    width: 60px;
-    height: 60px;
-}
-.pd-checkmark{
-    height: 15px;
-    width: 15px;
-}
-.prof-dd-card-content{
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    margin: 0 10px;
-}
-.pd-text{
-    margin: 0;
-    padding: 0;
-}
-.pd-name{
-    font-weight: bold;
-    margin: 2px 0;
-}
-.pd-acctype{
-    font-size: 10pt;
-    color: var(--soft-grey)
-}
-.pd-email{
-    font-size: 10pt;
-    color: var(--soft-grey)
-
-}
-
-.pd-hov:hover{
-    background-color: var(--hover-grey);
 }
