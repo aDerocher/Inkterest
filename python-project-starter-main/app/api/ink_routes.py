@@ -3,7 +3,8 @@ from flask_login import login_required, current_user
 from app.forms import NewInkForm
 from app.models import db, Ink
 from app.aws import (
-    upload_file_to_s3, allowed_file, get_unique_filename)
+    upload_file_to_s3, allowed_file, get_unique_filename
+)
 
 ink_routes = Blueprint('inks', __name__)
 
@@ -11,7 +12,6 @@ ink_routes = Blueprint('inks', __name__)
 @ink_routes.route('/')
 def get_images():
     inks = Ink.query.all()
-    print(inks)
     return {'inks': [ink.to_dict() for ink in inks]}
 
 
@@ -61,9 +61,12 @@ def upload_image():
 def delete_image(ink_id):
     ink = Ink.query.get(ink_id)
 
-    # validations needed!
-    # if current_user.get_id() == ink.creator_id:
-    db.session.delete(ink)
-    db.session.commit()
+    # Make sure to test this validation once login form is setup!
+        # condition - Try to delete an ink a different user - Should not work
+        # condition - Try to delete as a logged out user - Should not work
+
+    if current_user and current_user.get_id() == ink.creator_id:
+        db.session.delete(ink)
+        db.session.commit()
 
     return ink.to_dict()
