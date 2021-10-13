@@ -20,6 +20,11 @@ const NavBarSplash = () => {
     history.push("/inks")
   }
 
+  const goAbout = (e) => {
+      loginDemo(e);
+      history.push("/inks");
+  }
+
   return (
     <nav className='nav-bar'>
         <div className="nav-section nav-items-left">
@@ -37,11 +42,11 @@ const NavBarSplash = () => {
 
         <div className="nav-section nav-items-right">
             <div className="nav-item no-pad">
-              <a href="/profile-page">About</a>
+            <button onClick={e => goAbout(e)}>About</button>
             </div>
             <div className="nav-item nav-splash-item no-pad" onClick={e=>loginDemo(e)}>Demo User</div>
             <div className="nav-item nav-splash-item no-pad">
-              <button onClick={() => setShow(true) }>Log In</button>
+              <button onClick={e=>loginDemo(e)}>Log In</button>
               <Modal onClose={() => setShow(false)} show={show} />
             </div>
             <div className="nav-item nav-splash-item no-pad">
