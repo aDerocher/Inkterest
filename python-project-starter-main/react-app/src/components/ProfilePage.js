@@ -10,10 +10,8 @@ function ProfilePage() {
   let history = useHistory();
   const dispatch = useDispatch();
 
+  // options are for the new-ink/new-canvas dropdown menu
   const options = [
-
-    // { value: 'NEW-INK', label: 'Ink', className: 'create-option' },
-    // { value: 'NEW-CANVAS', label: 'Canvas', className: 'create-option' },
     {
         type: 'group', name: 'create', items: [
             { value: 'ink', label: 'Ink', className: 'create-option' },
@@ -23,7 +21,6 @@ function ProfilePage() {
   ];
 
   const [show, setShow] = useState(false);
-  // const defaultOption = options[0];
 
   const redirect = () => {
     history.push("/settings");
@@ -33,8 +30,10 @@ function ProfilePage() {
     if (options.value === "ink") {
       history.push("/inks/new-ink");
     } else {
-      history.push("/canvases/new-canvas");
+        setShow(true)
     }
+    // plus.innerHTML = "qqq"
+    console.log(plus)
   };
 
   useEffect(() => {
@@ -43,7 +42,7 @@ function ProfilePage() {
   }, [dispatch]);
 
   const user = useSelector((state) => state.session.user);
-
+  const plus = document.getElementById("plus-btn")
   const allFollows = useSelector((state) => state.follows);
   console.log(allFollows?.followers?.Followers.length)
 
@@ -70,7 +69,9 @@ function ProfilePage() {
         </div>
         <div className="profile-page-upload">
             {/* <button>Add</button> */}
+            <CreateCanvasModal onClose={() => setShow(false)} show={show}/>
             <Dropdown
+                id='plus-btn'
                 options={options}
                 onChange={pinCreateHandler}
                 placeholder="+"
@@ -79,8 +80,6 @@ function ProfilePage() {
                 controlClassName="control"
                 // className="fas fa-plus"
             />
-            {/* <button onClick={() => setShow(true) } className="chevron-btn">CREATE</button> */}
-            {/* <CreateCanvasModal onClose={() => setShow(false)} show={show}/> */}
         </div>
       </div>
       <div className="profile-page-collection"></div>
