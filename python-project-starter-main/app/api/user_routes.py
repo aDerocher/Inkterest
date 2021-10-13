@@ -1,6 +1,7 @@
-from flask import Blueprint, jsonify
-from flask_login import login_required
-from app.models import User, Follow
+from flask import Blueprint, jsonify, request
+from flask_login import login_required, current_user
+from app.models import User, Follow, db
+from app.forms import ProfileEditForm
 
 
 user_routes = Blueprint('users', __name__)
@@ -26,3 +27,21 @@ def user(id):
         'followers': {'followers': [follower.to_dict() for follower in followers]},
         'followeds': {'followeds': [followed.to_dict() for followed in followeds]}
       }
+
+# edit user
+@user_routes.route("/<int:id>/edit", methods=["PATCH"])
+@login_required
+def edit_user(id):
+    user = User.query.get(id)
+
+    form = ProfileEditForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    if current_user and form.validate_on_submit():
+        user.firstName = form.firstName.data
+        user.lastName = form.lastName.data
+        user.email = form.email.data
+        user.username = form.username.data
+        db.session.commit()
+
+    return user.to_dict()

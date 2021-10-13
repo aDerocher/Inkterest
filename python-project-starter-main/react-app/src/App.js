@@ -18,6 +18,7 @@ import PinBuilder from "./components/PinBuilder";
 import EditInkForm from "./components/EditInkForm"
 import DiscoverInks from "./components/DiscoverInks";
 import About from "./components/About";
+import ProfileEdit from './components/ProfileEdit'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -46,7 +47,7 @@ function App() {
         <Route path="/" exact={true}>
             {user && <DiscoverInks />}
             {user === null && <h1>Welcome to Inkterest!</h1>}
-          
+
         </Route>
 
         <Route path="/profile-page" exact={true}>
@@ -55,6 +56,9 @@ function App() {
 
         <Route path='/pin-builder' exact={true}>
           <PinBuilder />
+        </Route>
+        <Route path='/settings' exact={true}>
+          <ProfileEdit />
         </Route>
 
         {/* <Route path='/login' exact={true}>

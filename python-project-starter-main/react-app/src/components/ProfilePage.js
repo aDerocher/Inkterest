@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Dropdown from "react-dropdown";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { listAllFollowers, listAllFolloweds} from "../store/follow";
+import { listAllFollowers, listAllFolloweds } from "../store/follow";
 import "../styles/profile-page.css";
 
 function ProfilePage() {
@@ -31,7 +31,7 @@ function ProfilePage() {
   const user = useSelector((state) => state.session.user);
 
   const allFollows = useSelector((state) => state.follows);
-  console.log(allFollows?.followers?.Followers.length)
+  console.log(allFollows?.followers?.Followers.length);
 
   return (
     <div className="profile-page-container">
@@ -47,8 +47,12 @@ function ProfilePage() {
           </h1>
         </div>
         <div className="profile-contact">{user.email}</div>
-        <div className="profile-follwer/follwing">{allFollows?.followers?.Followers.length}</div>
-        <div className="profile-follwer/follwing">{allFollows?.followeds?.Followed.length}</div>
+        <div className="profile-follwer/follwing">
+          {allFollows?.followers?.Followers.length} follower
+        </div>
+        <div className="profile-follwer/follwing">
+        {allFollows?.followeds?.Followed.length} following
+        </div>
       </div>
       <div className="profile-page-body">
         <div className="profile-page-edit">
@@ -59,7 +63,7 @@ function ProfilePage() {
           <Dropdown
             options={options}
             onChange={pinCreateHandler}
-            className="fas fa-plus"
+            placeholder="➕"
           />
           {/* <i className="fas fa-plus"></i> */}
         </div>
