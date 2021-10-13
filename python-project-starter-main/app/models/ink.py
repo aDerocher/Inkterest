@@ -1,6 +1,8 @@
 from .db import db
 from datetime import datetime
 from .ink_categories import ink_categories
+from .ink_on_canvas import inks_on_canvases
+
 
 class Ink(db.Model):
     __tablename__ = 'inks'
@@ -20,7 +22,13 @@ class Ink(db.Model):
         secondary=ink_categories
         )
 
-    ioc = db.relationship("Ink_On_Canvas", cascade="all,delete", backref="inks")
+    canvases = db.relationship(
+        "Canvas",
+        back_populates="inks",
+        secondary=inks_on_canvases
+        )
+    
+    # ioc = db.relationship("Ink_On_Canvas", cascade="all,delete", back_populates="inks")
 
     def to_dict(self):
         return {
@@ -31,6 +39,7 @@ class Ink(db.Model):
             'subtitle': self.subtitle,
             'destination_link': self.destination_link,
             'categories': [category.to_dict() for category in self.categories],
+            'canvases': [canvases.to_dict() for canvas in self.canvases],
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }
