@@ -11,7 +11,6 @@ export const listAllFollowers = () => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(getFollowers(data));
-    console.log("FOLLOWERS:",data)
     return response;
     }
 };
@@ -24,7 +23,6 @@ export const listAllFolloweds = () => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(getFolloweds(data));
-    console.log("FOLLOWEDS:",data)
     return response;
   }
 };

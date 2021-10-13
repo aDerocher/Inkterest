@@ -26,7 +26,7 @@ function EditInkForm() {
         setTitle(ink?.title)
         setSubtitle(ink?.subtitle)
         setDestination_link(ink?.destination_link)
-    }, [dispatch, ink?.title, ink?.subtitle, ink?.destination_link])
+    }, [dispatch, ink?.title, ink?.subtitle, ink?.destination_link, inkId])
 
 
     if (!sessionUser) return <Redirect to="/" />;
