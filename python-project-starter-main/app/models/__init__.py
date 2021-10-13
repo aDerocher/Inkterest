@@ -4,5 +4,6 @@ from .follow import Follow
 from .ink import Ink
 from .canvas import Canvas
 from .category import Category
-from .ink_on_canvas import Ink_On_Canvas
+# these two are variables, so its ok they're lower case
+from .ink_on_canvas import inks_on_canvases
 from .ink_categories import ink_categories
