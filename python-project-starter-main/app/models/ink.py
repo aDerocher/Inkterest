@@ -21,7 +21,7 @@ class Ink(db.Model):
     ink_type3 = db.relationship("Category", foreign_keys=[category_3], backref="ink3")
 
     ioc = db.relationship("Ink_On_Canvas", cascade="all,delete", backref="inks")
-    
+
     def to_dict(self):
         return {
             'id': self.id,
