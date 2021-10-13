@@ -112,3 +112,24 @@
     padding: 0 12px;
     margin: 4px;
 }
+
+
+.nav-bell{
+    transition: 0.3s;
+}
+.bell-text{
+    color: var(--charcoal-grey);
+    text-decoration: none;
+    display: none;
+    margin-left: 8px;
+    transition: 0.2s;
+}
+.nav-bell:hover{
+    width: 80px;
+    padding-left:16px;
+    justify-content: flex-start;
+}
+.nav-bell:hover .bell-text{
+    display: block;
+    
+}

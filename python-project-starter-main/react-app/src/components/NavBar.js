@@ -47,8 +47,9 @@ const NavBar = () => {
 
         <div className="nav-section nav-items-right">
 
-            <div className="nav-item no-pad">
+            <div className="nav-item nav-bell no-pad">
                 <i className="fas fa-bell"></i>
+                <a href="/about" className='bell-text'>About</a>
             </div>
             <div className="nav-item no-pad">
                 <i className="fas fa-comment-dots"></i>

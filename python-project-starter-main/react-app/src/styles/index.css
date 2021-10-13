@@ -1,6 +1,8 @@
 /* TODO Add site wide styles */
 :root{
 
+    /* Nice Soft Box Shadow*/
+    --soft-boxShad: 0 0 10px rgb(0, 0, 0, .5);
     /* Navbar Colors */
     --off-white: rgb(240, 240, 240);
     --soft-grey: rgb(230, 230, 230);
