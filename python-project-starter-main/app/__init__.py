@@ -5,12 +5,13 @@ from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
 
-from .models import db, User
+from .models import db, User, ink_categories
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.ink_routes import ink_routes
 from .api.canvas_routes import canvas_routes
 from .api.follow_routes import follow_routes
+
 
 from .seeds import seed_commands
 

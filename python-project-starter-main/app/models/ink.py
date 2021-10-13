@@ -1,5 +1,6 @@
 from .db import db
 from datetime import datetime
+from .ink_categories import ink_categories
 
 class Ink(db.Model):
     __tablename__ = 'inks'
@@ -10,15 +11,14 @@ class Ink(db.Model):
     title = db.Column(db.String(100), nullable=False)
     subtitle = db.Column(db.String(500))
     destination_link = db.Column(db.String(2000))
-    category_1 = db.Column(db.Integer, db.ForeignKey("categories.id"))
-    category_2 = db.Column(db.Integer, db.ForeignKey("categories.id"))
-    category_3 = db.Column(db.Integer, db.ForeignKey("categories.id"))
     created_at = db.Column(db.DateTime(), default=datetime.utcnow)
     updated_at = db.Column(db.DateTime(), default=datetime.utcnow)
 
-    ink_type1 = db.relationship("Category", foreign_keys=[category_1], backref="ink1")
-    ink_type2 = db.relationship("Category", foreign_keys=[category_2], backref="ink2")
-    ink_type3 = db.relationship("Category", foreign_keys=[category_3], backref="ink3")
+    categories = db.relationship(
+        "Category",
+        back_populates="inks",
+        secondary=ink_categories
+        )
 
     ioc = db.relationship("Ink_On_Canvas", cascade="all,delete", backref="inks")
 
@@ -30,9 +30,7 @@ class Ink(db.Model):
             'title': self.title,
             'subtitle': self.subtitle,
             'destination_link': self.destination_link,
-            'category_1': self.category_1,
-            'category_2': self.category_2,
-            'category_3': self.category_3,
+            'categories': [category.to_dict() for category in self.categories],
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }
