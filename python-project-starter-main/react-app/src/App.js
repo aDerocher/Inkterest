@@ -41,17 +41,15 @@ function App() {
       {user && <NavBar />}
       {user === null && <NavBarSplash />}
 
-      {/* <LogoutButton /> */}
       <Switch>
         <Route path="/" exact={true}>
             {user && <DiscoverInks />}
             {user === null && <h1>Welcome to Inkterest!</h1>}
-          
         </Route>
 
-        <Route path="/profile-page" exact={true}>
+        {/* <Route path="/profile-page" exact={true}>
             <ProfilePage />
-        </Route>
+        </Route> */}
 
         <Route path='/pin-builder' exact={true}>
           <PinBuilder />
@@ -88,9 +86,10 @@ function App() {
         <ProtectedRoute path="/users/:userId" exact={true}>
             <ProfilePage />
         </ProtectedRoute>
-        <ProtectedRoute path="/about" exact={true}>
+        
+        <Route path="/about" exact={true}>
             <About />
-        </ProtectedRoute>
+        </Route>
       </Switch>
     </BrowserRouter>
   );
