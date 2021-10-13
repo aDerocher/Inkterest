@@ -57,7 +57,7 @@ const NavBar = () => {
               {userNameLetter}
             </div>
             <div className="nav-item no-pad">
-              <button onClick={() => setShow(true) } className="chevron-btn"><i class="fas fa-chevron-down"></i></button>
+              <button onClick={() => setShow(true) } className="chevron-btn"><i className="fas fa-chevron-down"></i></button>
               <ProfileDDModal onClose={() => setShow(false)} show={show}/>
             </div>
         </div>

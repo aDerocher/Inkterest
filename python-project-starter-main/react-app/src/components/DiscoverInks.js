@@ -1,23 +1,22 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
-import { createInk, listAllInks, removeInk } from '../store/ink'
+import { listAllInks } from '../store/ink'
 // need to write this backend request to add in usernames to the ink cards
     // import { listAllUsers } from '../store/users'
 import "../styles/discover-inks.css";
 
 function DiscoverInks() {
-    const history = useHistory();
     const dispatch = useDispatch();
 
     // direct access to session user/slice of state
-    const sessionUser = useSelector(state => state.session.user);
+    // const sessionUser = useSelector(state => state.session.user);
+    
     // direct access to inks array/slice of state
     const inks = useSelector(state => state.inks)
     console.log(inks)
 
     // put all the inks into the state
-    // TODO: 
+    // TODO:
     // see if you can filter these by users interest/categorical relationship
     useEffect(() => {
         dispatch(listAllInks())

@@ -52,30 +52,30 @@ const ProfileModal = (props) => {
             <br />
             <div className="prof-dd-row prof-dd-title">Your accounts</div>
             <div className="prof-dd-row pd-hov">
-              <p href="#">Add account</p>
+              <p>Add account</p>
             </div>
             <div className="prof-dd-row pd-hov">
-              <p href="#">Convert to business</p>
+              <p>Convert to business</p>
             </div>
             <br />
             <div className="prof-dd-row prof-dd-title">More options</div>
             <div className="prof-dd-row pd-hov">
-              <p href="#">Settings</p>
+              <p>Settings</p>
             </div>
             <div className="prof-dd-row pd-hov">
-              <p href="#">Tune your home feed</p>
+              <p>Tune your home feed</p>
             </div>
             <div className="prof-dd-row pd-hov">
-              <p href="#">Install the Windows app</p>
+              <p>Install the Windows app</p>
             </div>
             <div className="prof-dd-row pd-hov">
-              <p href="#">Get help</p>
+              <p>Get help</p>
             </div>
             <div className="prof-dd-row pd-hov">
               <p>See terms and privacy</p>
             </div>
             <div className="prof-dd-row pd-hov" onClick={onLogout}>
-              <p href="#">Log out</p>
+              <p>Log out</p>
             </div>
           </div>
         {/* // </div>
