@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Redirect } from 'react-router-dom';
 import { createInk, listAllInks, removeInk } from '../store/ink'
-import { listOneInk } from '../store/oneInk'
 import '../styles/ink.css'
 
 
@@ -106,6 +105,7 @@ function NewInkForm() {
                             className={`ink ink-${ink.id}`}
                             src={ink.image}
                             onClick={(e) => handleDelete(e, ink.id)}
+                            alt=""
                         />
                         <button onClick={() => handleEditBtn(ink.id)}>Edit</button>
                     </span>

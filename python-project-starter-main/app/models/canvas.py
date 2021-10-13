@@ -11,6 +11,8 @@ class Canvas(db.Model):
     created_at = db.Column(db.DateTime(), default=datetime.utcnow)
     updated_at = db.Column(db.DateTime(), default=datetime.utcnow)
 
+    ioc = db.relationship("Ink_On_Canvas", cascade="all,delete", backref="canvases")
+
     def to_dict(self):
         return {
             'id': self.id,

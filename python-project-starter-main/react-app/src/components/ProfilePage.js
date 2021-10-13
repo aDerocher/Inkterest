@@ -44,7 +44,6 @@ function ProfilePage() {
   const user = useSelector((state) => state.session.user);
   const plus = document.getElementById("plus-btn")
   const allFollows = useSelector((state) => state.follows);
-  console.log(allFollows?.followers?.Followers.length)
 
   return (
     <div className="profile-page-container">

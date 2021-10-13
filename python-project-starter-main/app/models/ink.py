@@ -16,6 +16,12 @@ class Ink(db.Model):
     created_at = db.Column(db.DateTime(), default=datetime.utcnow)
     updated_at = db.Column(db.DateTime(), default=datetime.utcnow)
 
+    ink_type1 = db.relationship("Category", foreign_keys=[category_1], backref="ink1")
+    ink_type2 = db.relationship("Category", foreign_keys=[category_2], backref="ink2")
+    ink_type3 = db.relationship("Category", foreign_keys=[category_3], backref="ink3")
+
+    ioc = db.relationship("Ink_On_Canvas", cascade="all,delete", backref="inks")
+
     def to_dict(self):
         return {
             'id': self.id,
