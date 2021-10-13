@@ -1,6 +1,6 @@
 import React from "react";
 
-function Pin_builder() {
+function PinBuilder() {
   return (
     <div className="pin-builder-container">
       <div className="pin-builder-header">
@@ -17,4 +17,4 @@ function Pin_builder() {
   );
 }
 
-export default Pin_builder;
+export default PinBuilder;

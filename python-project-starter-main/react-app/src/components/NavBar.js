@@ -1,18 +1,12 @@
 
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
-import LogoutButton from "./auth/LogoutButton";
-import Modal from "./Modal";
+import { useHistory } from "react-router-dom";
 import pinkSquidLogo from "./../images/squid-circle-icon-Black.png";
 import magGlass from "./../images/magGlass.png";
-import demoProfImage from "./../images/prof-Img_defaultSquid.png";
-import checkmark from "./../images/checkMark-darkGrey.png";
 import "../styles/navbar.css";
 import "../styles/profileDD.css";
-import ProfileModal from "./ProfileModal";
-import Profile_page from "./Profile-page";
-import chevron from "./../images/downChevron.png"
+import ProfileDDModal from "./ProfileDDModal";
 
 
 const NavBar = () => {
@@ -64,7 +58,7 @@ const NavBar = () => {
             </div>
             <div className="nav-item no-pad">
               <button onClick={() => setShow(true) } className="chevron-btn"><i class="fas fa-chevron-down"></i></button>
-              <ProfileModal onClose={() => setShow(false)} show={show}/>
+              <ProfileDDModal onClose={() => setShow(false)} show={show}/>
             </div>
         </div>
     </nav>

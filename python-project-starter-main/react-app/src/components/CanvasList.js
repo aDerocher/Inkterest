@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
-import { createCanvas, listAllCanvases, removeCanvas } from '../store/canvas'
+// import { useHistory } from "react-router";
+import { listAllCanvases, removeCanvas } from '../store/canvas'
 import "../styles/canvas-list.css";
 
 function CanvasList() {
-    const history = useHistory();
+    // const history = useHistory();
     const dispatch = useDispatch();
 
     // direct access to session user/slice of state
@@ -32,7 +32,9 @@ function CanvasList() {
             <div id={c.id}>
                 <p>{c.name}</p>
                 <p>{c.id}</p>
-                <button onClick={e=>deleteCanvas(e, c.id)}>Delete canvas #{c.id}</button>
+                {sessionUser.id === c.creator_id && 
+                    <button onClick={e=>deleteCanvas(e, c.id)}>Delete canvas #{c.id}</button>
+                }
             </div>
         ))}
     </div>
