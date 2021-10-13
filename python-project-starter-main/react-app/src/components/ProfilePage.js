@@ -31,7 +31,6 @@ function ProfilePage() {
   const user = useSelector((state) => state.session.user);
 
   const allFollows = useSelector((state) => state.follows);
-  console.log(allFollows?.followers?.Followers.length)
 
   return (
     <div className="profile-page-container">

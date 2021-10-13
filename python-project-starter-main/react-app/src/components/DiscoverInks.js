@@ -10,10 +10,9 @@ function DiscoverInks() {
 
     // direct access to session user/slice of state
     // const sessionUser = useSelector(state => state.session.user);
-    
+
     // direct access to inks array/slice of state
     const inks = useSelector(state => state.inks)
-    console.log(inks)
 
     // put all the inks into the state
     // TODO:
