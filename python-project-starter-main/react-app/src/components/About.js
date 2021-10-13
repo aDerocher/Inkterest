@@ -21,14 +21,14 @@ function About() {
                 <div className="profile-name">
                 <h1>Alwyn Grant</h1>
                 </div>
-                <div className="profile-contact">am.derocher@gmail.com</div>
+                <div className="profile-contact">email@email.com</div>
                 <div className='link-buttons-container'>
-
-                    {/* I cant figure out how to link these externally */}
-                    <a href="https://github.com/AlwynGrant">Google</a>
-                    <a target="_blank" href="google.com"><button className="link-btn git-link" onclick="window.location.href='https://github.com/AlwynGrant';"></button></a>
-                    {/* <button className="link-btn linkedin-link" onClick="window.location.href='linkedIn.com';">in</button> */}
-                    <button className="link-btn linkedin-link" onClick={e => go(e)}>in</button>
+                    <a target="_blank" href="https://github.com/AlwynGrant">
+                        <button className="link-btn git-link" onclick="window.location.href='https://github.com/AlwynGrant';"></button>
+                    </a>
+                    <a target="_blank" href="https://www.linkedin.com">
+                        <button className="link-btn linkedin-link" onClick="window.location.href='https://www.linkedin.com/in/andrew-derocher-54003789/';">in</button>
+                    </a>
                 </div>
             </div>
 
@@ -39,10 +39,15 @@ function About() {
                 <div className="profile-name">
                 <h1>Andrew Derocher</h1>
                 </div>
-                <div className="profile-contact">am.derocher@gmail.com</div>
+                <div className="profile-contact">andrew@andrewderocher.com</div>
                 <div className='link-buttons-container'>
-                    <button className="link-btn git-link" onClick="window.location.href='https://github.com/aDerocher';"></button>
-                    <button className="link-btn linkedin-link" onClick="window.location.href='https://www.linkedin.com/in/andrew-derocher-54003789/';">in</button>
+                    <a target="_blank" href="https://github.com/aDerocher">
+                        <button className="link-btn git-link" onClick="window.location.href='https://github.com/aDerocher';"></button>
+                    </a>
+                    <a target="_blank" href="https://www.linkedin.com/in/andrew-derocher-54003789/">
+                        <button className="link-btn linkedin-link" onClick="window.location.href='https://www.linkedin.com/in/andrew-derocher-54003789/';">in</button>
+                    </a>
+                    {/* <a target="_blank" href="https://www.linkedin.com/in/andrew-derocher-54003789/"><button className="link-btn linkedin-link" onClick="window.location.href='https://www.linkedin.com/in/andrew-derocher-54003789/';">in</button> */}
                 </div>
             </div>
 
@@ -53,10 +58,14 @@ function About() {
                 <div className="profile-name">
                 <h1>Grant Chiu</h1>
                 </div>
-                <div className="profile-contact">am.derocher@gmail.com</div>
+                <div className="profile-contact">email@email.com</div>
                 <div className='link-buttons-container'>
-                    <button className="link-btn git-link" onClick="window.location.href='https://github.com/grantc00';"></button>
-                    <button className="link-btn linkedin-link" onClick="window.location.href='https://www.linkedin.com/in/grant-chiu-964766206/';">in</button>
+                    <a target="_blank" href="https://github.com/grantc00">
+                        <button className="link-btn git-link" onClick="window.location.href='https://github.com/grantc00';"></button>
+                    </a>
+                    <a target="_blank" href="https://www.linkedin.com/in/grant-chiu-964766206/">
+                        <button className="link-btn linkedin-link" onClick="window.location.href='https://www.linkedin.com/in/grant-chiu-964766206/';">in</button>
+                    </a>
                 </div>
             </div>
     </div>
