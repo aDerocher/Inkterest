@@ -1,5 +1,4 @@
-from app.models import db, Ink
-
+from app.models import db, Ink, Category
 
 # Adds a demo user, you can add other users here if you want
 def seed_inks():
@@ -9,11 +8,12 @@ def seed_inks():
             title = "Ink Title",
             subtitle = "This is my first tattoo!",
             destination_link = "google.com",
-            category_1 = 1,
-            category_2 = 2,
-            category_3 = 3,
     )
 
+    ink1.categories.append(Category.query.get(5))
+    ink1.categories.append(Category.query.get(2))
+    ink1.categories.append(Category.query.get(3))
+    ink1.categories.append(Category.query.get(4))
     db.session.add(ink1)
 
 

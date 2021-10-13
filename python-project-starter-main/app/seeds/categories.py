@@ -34,6 +34,7 @@ def seed_categories():
         category = "illustrative"
     )
 
+
     db.session.add(category1)
     db.session.add(category2)
     db.session.add(category3)
