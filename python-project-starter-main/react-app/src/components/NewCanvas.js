@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, Redirect } from 'react-router-dom';
-import { createCanvas, listAllCanvases, removeCanvas } from '../store/canvas'
+import { Redirect } from 'react-router-dom';
+import { createCanvas, listAllCanvases } from '../store/canvas'
 import '../styles/canvas.css'
 
 
 
 function NewCanvasForm() {
-    const history = useHistory();
     const dispatch = useDispatch();
     // direct access to session user/slice of state
     const sessionUser = useSelector(state => state.session.user);
-    // direct access to inks array/slice of state
-    const canvases = useSelector(state => state.canvases)
 
     const [name, setName] = useState('');
     const [isPrivate, setIsPrivate] = useState(false);

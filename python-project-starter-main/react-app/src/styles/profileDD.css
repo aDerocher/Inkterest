@@ -2,8 +2,9 @@
 .profile-dd-container{
     background-color: white;
     margin-right: 20px;
+    top: 80px;
     float: right;
-    position: relative;
+    position: fixed;
     width: 300px;
     display: flex;
     flex-direction: column;
@@ -21,7 +22,7 @@
     padding: 8px 12px;
     border-radius: 8px;
 }
-.prof-dd-row > a {
+.prof-dd-row > a, .prof-dd-row > p {
     font-weight: bold;
     text-decoration: none;
     color: var(--charcoal-grey);

@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import demoProfImage from "./../images/prof-Img_defaultSquid.png";
 import checkmark from "./../images/checkMark-darkGrey.png";
-import { logout }from "./../store/session"
+import { logout }from "../store/session"
 import '../styles/modal.css'
 
 const ProfileModal = (props) => {
@@ -52,30 +52,30 @@ const ProfileModal = (props) => {
             <br />
             <div className="prof-dd-row prof-dd-title">Your accounts</div>
             <div className="prof-dd-row pd-hov">
-              <a href="#">Add account</a>
+              <p href="#">Add account</p>
             </div>
             <div className="prof-dd-row pd-hov">
-              <a href="#">Convert to business</a>
+              <p href="#">Convert to business</p>
             </div>
             <br />
             <div className="prof-dd-row prof-dd-title">More options</div>
             <div className="prof-dd-row pd-hov">
-              <a href="#">Settings</a>
+              <p href="#">Settings</p>
             </div>
             <div className="prof-dd-row pd-hov">
-              <a href="#">Tune your home feed</a>
+              <p href="#">Tune your home feed</p>
             </div>
             <div className="prof-dd-row pd-hov">
-              <a href="#">Install the Windows app</a>
+              <p href="#">Install the Windows app</p>
             </div>
             <div className="prof-dd-row pd-hov">
-              <a href="#">Get help</a>
+              <p href="#">Get help</p>
             </div>
             <div className="prof-dd-row pd-hov">
-              <a href="#">See terms and privacy</a>
+              <p>See terms and privacy</p>
             </div>
             <div className="prof-dd-row pd-hov" onClick={onLogout}>
-              <a href="#">Log out</a>
+              <p href="#">Log out</p>
             </div>
           </div>
         {/* // </div>

@@ -28,25 +28,25 @@ function DiscoverInks() {
     <div className="discover-inks-container">
         {inks?.map((i) => (
 
-            <div className='tile-container'>
-            <div className="image-container" >
-                <div className="ink-tile-top-buttons">
-                    <button className='ink-tile-btn ink-save-btn'>Save</button>
-                </div>
-                {/* <img className='ink-tile-image' src="./../../logos-wip/squid-and-text-onBlack.png" alt=""> */}
-                <div className="ink-tile-bottom-buttons">
-                    <button className='ink-tile-btn ink-dest-link-btn'>etsyisthegreatest.com</button>
-                    <div className='ink-tile-bottom-buttons-right'>
-                        <button className='ink-tile-btn ink-tile-btn-s'>&#8683;</button>
-                        <button className='ink-tile-btn ink-tile-btn-s'>...</button>
+            <div key={i.id} className='tile-container'>
+                <div className="image-container" >
+                    <div className="ink-tile-top-buttons">
+                        <button className='ink-tile-btn ink-save-btn'>Save</button>
+                    </div>
+                    {/* <img className='ink-tile-image' src="./../../logos-wip/squid-and-text-onBlack.png" alt=""> */}
+                    <div className="ink-tile-bottom-buttons">
+                        <button className='ink-tile-btn ink-dest-link-btn'>etsyisthegreatest.com</button>
+                        <div className='ink-tile-bottom-buttons-right'>
+                            <button className='ink-tile-btn ink-tile-btn-s'>&#8683;</button>
+                            <button className='ink-tile-btn ink-tile-btn-s'>...</button>
+                        </div>
                     </div>
                 </div>
+                <div className="tile-footer">
+                    <img className='user-image' src="https://randomuser.me/api/portraits/lego/1.jpg" alt="" />
+                    <p className="username"><a href={`/users/${i.creator_id}`}>{i.creator_id}</a></p>
+                </div>
             </div>
-            <div className="tile-footer">
-                <img className='user-image' src="https://randomuser.me/api/portraits/lego/1.jpg" alt="" />
-                <p className="username"><a href={`/users/${i.creator_id}`}>{i.creator_id}</a></p>
-            </div>
-        </div>
 
         ))}
     </div>

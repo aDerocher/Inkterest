@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { listAllFollowers, listAllFolloweds} from "../store/follow";
 import "../styles/profile-page.css";
 
-function Profile_page() {
+function ProfilePage() {
   let history = useHistory();
   const dispatch = useDispatch();
 
@@ -69,4 +69,4 @@ function Profile_page() {
   );
 }
 
-export default Profile_page;
+export default ProfilePage;

@@ -44,12 +44,15 @@
 }
 .chevron-btn{
     background-color: transparent;
+    /* background-image: url("./../images/downChevron.png"); */
     outline: none;
     border: none;
     padding: 0;
     margin: 0;
     height: 30px;
     width: 30px;
+    color: var(--charcoal-grey);
+    font-size: 11pt;
     text-align: center;
 }
 .user-letter{

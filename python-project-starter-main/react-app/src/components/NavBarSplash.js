@@ -1,16 +1,14 @@
 
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { NavLink, useHistory } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+import { useHistory } from 'react-router-dom';
 import "../styles/navbar.css"
 import pinkSquidBanner from "./../images/bannerLogo-pinkBlack.png"
-import magGlass from "./../images/magGlass.png"
-import { login } from '../../src/store/session';
+import { login } from '../store/session';
 import Modal from './Modal';
 
 
-const NavBar = () => {
+const NavBarSplash = () => {
   const [show, setShow] = useState(false)
   const dispatch = useDispatch();
   const history = useHistory()
@@ -54,4 +52,4 @@ const NavBar = () => {
   );
 }
 
-export default NavBar;
+export default NavBarSplash;

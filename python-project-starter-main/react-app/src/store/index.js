@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
 import inks from './ink'
-import ink from './oneInk'
+import oneInk from './oneInk'
 import canvases from './canvas'
 import follows from './follow'
 
@@ -10,8 +10,8 @@ const rootReducer = combineReducers({
   session,
   inks,
   canvases,
-  follows
-
+  follows,
+  oneInk
 });
 
 
