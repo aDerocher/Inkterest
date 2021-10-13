@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { authenticate } from "./store/session";
-import User from "./components/User";
+// import User from "./components/User";
 import NavBar from "./components/NavBar";
 // import LoginForm from "./components/auth/LoginForm";
 import UsersList from "./components/UsersList";
@@ -45,6 +45,7 @@ function App() {
         <Route path="/" exact={true}>
             {user && <DiscoverInks />}
             {user === null && <h1>Welcome to Inkterest!</h1>}
+
         </Route>
 
         {/* <Route path="/profile-page" exact={true}>
