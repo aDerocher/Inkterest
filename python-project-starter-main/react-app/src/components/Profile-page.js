@@ -28,9 +28,9 @@ function Profile_page() {
   }, [dispatch]);
 
   const user = useSelector((state) => state.session.user);
-
+  console.log(user);
   const allFollows = useSelector((state) => state.follows);
-
+  console.log(user);
 
   return (
     <div className="profile-page-container">
