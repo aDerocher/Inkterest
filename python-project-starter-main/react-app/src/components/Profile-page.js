@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Dropdown from "react-dropdown";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { listAllFollows } from "../store/follow";
+import { listAllFollowers, listAllFolloweds} from "../store/follow";
 import "../styles/profile-page.css";
 
 function Profile_page() {
@@ -24,13 +24,14 @@ function Profile_page() {
     }
   };
   useEffect(() => {
-    dispatch(listAllFollows());
+    dispatch(listAllFolloweds());
+    dispatch(listAllFollowers());
   }, [dispatch]);
 
   const user = useSelector((state) => state.session.user);
 
   const allFollows = useSelector((state) => state.follows);
-
+  console.log(allFollows?.followers?.Followers.length)
 
   return (
     <div className="profile-page-container">
@@ -46,7 +47,8 @@ function Profile_page() {
           </h1>
         </div>
         <div className="profile-contact">{user.email}</div>
-        <div className="profile-follwer/follwing">{allFollows?.followers?.length}</div>
+        <div className="profile-follwer/follwing">{allFollows?.followers?.Followers.length}</div>
+        <div className="profile-follwer/follwing">{allFollows?.followeds?.Followed.length}</div>
       </div>
       <div className="profile-page-body">
         <div className="profile-page-edit">
