@@ -49,6 +49,7 @@ def upload_ink():
 
     url = upload["url"]
 
+    print(form.canvas_id.data, '=======================================================')
     if form.validate_on_submit():
         new_ink = Ink(
             creator_id=current_user.get_id(),
@@ -63,9 +64,9 @@ def upload_ink():
         db.session.add(new_ink)
         db.session.commit()
 
-        new_ink.canvases.append(Canvas.query.get(form.canvas_id.data))
-
-        db.session.commit()
+        if form.canvas_id.data != None:
+            new_ink.canvases.append(Canvas.query.get(form.canvas_id.data))
+            db.session.commit()
 
         return new_ink.to_dict()
 

@@ -75,3 +75,4 @@ def ink_on_canvas():
     db.session.commit()
 
     return canvas.to_dict()
+
