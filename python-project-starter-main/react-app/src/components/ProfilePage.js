@@ -2,13 +2,17 @@ import React, { useState, useEffect } from "react";
 import Dropdown from "react-dropdown";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { listAllFollowers, listAllFolloweds } from "../store/follow";
 import "../styles/profile-page.css";
 import CreateCanvasModal from "./CreateCanvasModal"
+import ProfileModal from "./ProfileDDModal";
+import FollowersModal from "./FollowersModal";
+import FollowingsModal from "./FollowingsModal";
 import { useParams } from "react-router-dom";
 import { listUsersCanvases } from "./../store/canvas"
 
 function ProfilePage() {
-    
+
     const params = useParams()
     const viewingUserId = params.userId;
 
@@ -26,9 +30,12 @@ function ProfilePage() {
   ];
 
   const [show, setShow] = useState(false);
+  const [showFollowers, setShowFollowers] = useState(false);
+  const [showFollowings, setShowFollowings] = useState(false);
+
 
   const redirect = () => {
-    history.push("/settings");
+    history.push("/profile-edit");
   };
 
   const pinCreateHandler = (options) => {
@@ -39,11 +46,21 @@ function ProfilePage() {
     }
   };
 
+  // useEffect(() => {
+  //   dispatch(listAllFolloweds());
+  //   dispatch(listAllFollowers());
+  // }, [dispatch]);
+
+  const user = useSelector((state) => state.session.user);
+  const plus = document.getElementById("plus-btn")
+  // const allFollows = useSelector((state) => state.follows);
+  // console.log(allFollows?.followers?.Followers.length);
+  // console.log(user.followed.length);
+  // console.log(user.followers);
   useEffect(() => {
     dispatch(listUsersCanvases(viewingUserId));
   }, [dispatch]);
 
-  const user = useSelector((state) => state.session.user);
   const curUserCanvases = []
 
   return (
@@ -60,15 +77,19 @@ function ProfilePage() {
           </h1>
         </div>
         <div className="profile-contact">{user.email}</div>
-        <div className="profile-follwer/follwing">{user?.followers?.length}</div>
-        <div className="profile-follwer/follwing">{user?.followed?.length}</div>
+        <div className="profile-follwer/follwing">
+          {/* <p onClick={}>{user.followers.length} follower</p> */}
+          <button onClick={() => setShowFollowers(true)} >{user.followers.length} follower</button>
+          <FollowersModal onClose={() => setShowFollowers(false)} show={showFollowers}/>
+        </div>
+        <button onClick={() => setShowFollowings(true)} >{user?.followed?.length} following</button>
+          <FollowingsModal onClose={() => setShowFollowings(false)} show={showFollowings}/>
       </div>
       <div className="profile-page-body">
         <div className="profile-page-edit">
           <button onClick={redirect}>Edit</button>
         </div>
         <div className="profile-page-upload">
-            {/* <button>Add</button> */}
             <CreateCanvasModal onClose={() => setShow(false)} show={show}/>
             <Dropdown
                 id='plus-btn'
