@@ -14,10 +14,10 @@ import NewCanvasForm from './components/NewCanvas';
 import NavBarSplash from "./components/NavBarSplash";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import ProfilePage from "./components/ProfilePage";
-import PinBuilder from "./components/PinBuilder";
 import EditInkForm from "./components/EditInkForm"
 import DiscoverInks from "./components/DiscoverInks";
 import About from "./components/About";
+import SplashPage from "./components/SplashPage";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -38,22 +38,12 @@ function App() {
 
   return (
     <BrowserRouter>
-      {user && <NavBar />}
-      {user === null && <NavBarSplash />}
+      {user ? <NavBar /> : <NavBarSplash />}
 
       <Switch>
+
         <Route path="/" exact={true}>
-            {user && <DiscoverInks />}
-            {user === null && <h1>Welcome to Inkterest!</h1>}
-
-        </Route>
-
-        {/* <Route path="/profile-page" exact={true}>
-            <ProfilePage />
-        </Route> */}
-
-        <Route path='/pin-builder' exact={true}>
-          <PinBuilder />
+            {user ? <DiscoverInks /> : <SplashPage />}
         </Route>
 
         {/* <Route path='/login' exact={true}>
@@ -87,10 +77,11 @@ function App() {
         <ProtectedRoute path="/users/:userId" exact={true}>
             <ProfilePage />
         </ProtectedRoute>
-        
+
         <Route path="/about" exact={true}>
             <About />
         </Route>
+
       </Switch>
     </BrowserRouter>
   );
