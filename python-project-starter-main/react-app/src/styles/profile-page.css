@@ -93,9 +93,11 @@
  /* ================== Canvas Tile Styling ====================================== */
 
  .users-canvases-collection{
-    background-color: rgb(207, 49, 62);
-    width: 100%;
-    padding: 20px 20px;
+    border-top: 2px solid lightgrey;
+    /* background-color: rgb(207, 49, 62); */
+    max-width: 100%;
+    margin: 20px 0;
+    padding: 20px 50px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -103,32 +105,34 @@
 
  }
  .canvas-tile{
-     background-color: rgb(49, 52, 207);
+     /* background-color: rgb(49, 52, 207); */
      margin: 10px 10px;
      width: 150px;
      height: 100px;
-}
+    }
 
-.canvas-tile-image-container{
+    .canvas-tile-image-container{
     width: 150px;
     height: 75px;
     overflow: hidden;
     display: flex;
     align-items: space-between;
     justify-content: space-between;
+    border-radius: 6px;
 }
 
 
 .canvas-tile-image{
-    background-color: rgb(119, 119, 119);
+    /* background-color: rgb(119, 119, 119); */
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 .canvas-tile-footer{
-     background-color: rgb(112, 211, 218);
-     
-    }
+    /* background-color: rgb(112, 211, 218); */
+    padding: 4px;
+    text-overflow: ellipsis;
+}
     
 .canvas-tile-image-lock{
     background-color: var(--soft-grey);
@@ -143,8 +147,7 @@
 .canvas-tile-image-container:hover .canvas-tile-image-pen{ opacity: 1;}
 .canvas-tile-image-pen{
     opacity: 0;
-    /* background-color: var(--soft-grey); */
-    background-color: green;
+    background-color: var(--soft-grey);
     max-height: 100px;
     max-width: 100px;
     border-radius: 50%;

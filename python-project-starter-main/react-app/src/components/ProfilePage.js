@@ -125,7 +125,7 @@ function ProfilePage() {
 
                         </div>
                         <div className="canvas-tile-footer">
-                            <p>c.name</p>
+                            <p>{c.name}</p>
                         </div>
                     </div>
               ))}
