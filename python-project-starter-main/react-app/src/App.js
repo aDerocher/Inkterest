@@ -56,7 +56,7 @@ function App() {
         <Route path='/pin-builder' exact={true}>
           <PinBuilder />
         </Route>
-        <Route path='/settings' exact={true}>
+        <Route path='/profile-edit' exact={true}>
           <ProfileEdit />
         </Route>
 
@@ -91,7 +91,7 @@ function App() {
         <ProtectedRoute path="/users/:userId" exact={true}>
             <ProfilePage />
         </ProtectedRoute>
-        
+
         <Route path="/about" exact={true}>
             <About />
         </Route>

@@ -41,8 +41,8 @@ def edit_user(id):
     form["csrf_token"].data = request.cookies["csrf_token"]
 
     if current_user and form.validate_on_submit():
-        user.firstName = form.firstName.data
-        user.lastName = form.lastName.data
+        user.first_name = form.first_name.data
+        user.last_name = form.last_name.data
         user.email = form.email.data
         user.username = form.username.data
         db.session.commit()

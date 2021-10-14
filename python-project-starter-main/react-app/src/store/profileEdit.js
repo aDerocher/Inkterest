@@ -7,13 +7,13 @@ const editProfile = (profile) => ({ type: EDIT_PROFILE, profile });
 // ---------------------------  Defined Thunk(s) --------------------------------
 //edit profile
 export const changeProfile = (profile, userId) => async (dispatch) => {
-  const { firstName, lastName, email, userName } = profile;
+  const { first_name, last_name, email, username } = profile;
 
   const formData = new FormData();
-  formData.append("firstName", firstName);
-  formData.append("lastName", lastName);
+  formData.append("first_name", first_name);
+  formData.append("last_name", last_name);
   formData.append("email", email);
-  formData.append("userName", userName);
+  formData.append("username", username);
 
   const response = await fetch(`/api/users/${userId}/edit`, {
     method: "PATCH",
@@ -21,8 +21,11 @@ export const changeProfile = (profile, userId) => async (dispatch) => {
   });
 
   if (response.ok) {
+    console.log("if response ok");
     const data = await response.json();
     dispatch(editProfile(data));
+  } else {
+    return ["An error occurred. Please try again."];
   }
 };
 

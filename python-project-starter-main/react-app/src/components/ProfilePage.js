@@ -23,7 +23,7 @@ function ProfilePage() {
   const [show, setShow] = useState(false);
 
   const redirect = () => {
-    history.push("/settings");
+    history.push("/profile-edit");
   };
 
   const pinCreateHandler = (options) => {
@@ -36,15 +36,17 @@ function ProfilePage() {
     console.log(plus)
   };
 
-  useEffect(() => {
-    dispatch(listAllFolloweds());
-    dispatch(listAllFollowers());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(listAllFolloweds());
+  //   dispatch(listAllFollowers());
+  // }, [dispatch]);
 
   const user = useSelector((state) => state.session.user);
   const plus = document.getElementById("plus-btn")
-  const allFollows = useSelector((state) => state.follows);
-  console.log(allFollows?.followers?.Followers.length);
+  // const allFollows = useSelector((state) => state.follows);
+  // console.log(allFollows?.followers?.Followers.length);
+  // console.log(user.followed.length);
+  // console.log(user.followers);
 
   return (
     <div className="profile-page-container">
@@ -61,10 +63,10 @@ function ProfilePage() {
         </div>
         <div className="profile-contact">{user.email}</div>
         <div className="profile-follwer/follwing">
-          {allFollows?.followers?.Followers.length} follower
+          {user.followers.length} follower
         </div>
         <div className="profile-follwer/follwing">
-        {allFollows?.followeds?.Followed.length} following
+        {user.followed.length} following
         </div>
       </div>
       <div className="profile-page-body">
