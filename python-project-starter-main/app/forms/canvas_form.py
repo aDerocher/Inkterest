@@ -6,5 +6,5 @@ from wtforms.validators import DataRequired
 
 class NewCanvasForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
-    isPrivate = BooleanField('Is Private', default=False)
+    private_canvas = BooleanField('Is Private', default=False)
 

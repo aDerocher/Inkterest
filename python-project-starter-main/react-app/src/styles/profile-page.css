@@ -45,6 +45,9 @@
 .control:hover{ background-color: var(--soft-grey); }
 .control{
     /* background-color: rgb(128, 68, 0); */
+    background-image: url("./../images/plusSign-darkGrey.png");
+    background-position: center center;
+    background-size: cover;
    height: 36px;
    width: 36px;
    border-radius: 18px;

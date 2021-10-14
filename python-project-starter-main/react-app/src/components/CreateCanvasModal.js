@@ -13,14 +13,24 @@ function CreateCanvasModal(props) {
     
     const [name, setName] = useState('');
     const [isPrivate, setIsPrivate] = useState(false);
+    const [errors, setErrors] = useState([]);
     
+    useEffect(() => {
+        let newErrors = [];
+        if (name.length < 2 ) newErrors.push("Name must be at least 3 characters")
+        if (name.length > 50 ) newErrors.push("Canvas names can not exceed 50 characters")
+        setErrors(newErrors)
+
+    }, [name])
+
     
     // ========================================== Submission Function
     const handleSubmit = (e) => {
+        console.log(isPrivate, 'iiiiiiiiiiis....')
         e.preventDefault();
         const newCanvas = {
             name: name,
-            isPrivate: isPrivate,
+            private_canvas: isPrivate,
         }
         dispatch(createCanvas(newCanvas))
             .then(() => {
@@ -36,27 +46,45 @@ function CreateCanvasModal(props) {
     // ========================================== COMPONENT
     return (
     <div className="cc-modal" onClick={props.onClose}>
+        <div onClick={e => e.stopPropagation() }>
             <form className="cc-modal-body" onSubmit={handleSubmit}>
+                
+                <div>
+                {errors.map((error, ind) => (
+                    <div key={ind}>{error}</div>
+                ))}
+                </div>
+
+                <label htmlFor='canvName'>Canvas Name</label>
                 <input
                     className='canvName input'
+                    name="canvName"
                     type='text'
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder='Canvas Name'
+                    maxLength={50}
                 />
                 <input
                     className='canvPrivate input'
                     type='checkbox'
+                    checked={isPrivate}
                     value={isPrivate}
-                    onChange={(e) => setIsPrivate(e.target.value)}
-                />
+                    onChange={(e) => {
+                        console.log('the box changed from: ', isPrivate)
+                        setIsPrivate(!isPrivate)
+                        console.log('to: ', isPrivate)
+                    }}
+                    />
                 <button
                     type='submit'
                     className='file-upload-btn'
+                    disabled={errors.length > 0}
                     >
                     Create
                 </button>
             </form>
+        </div>
     </div>    
   );
 }

@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User, follows
+from app.models import User, follows, Canvas
 
 
 user_routes = Blueprint('users', __name__)

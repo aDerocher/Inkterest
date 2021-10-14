@@ -8,7 +8,7 @@ from app.models import db, Canvas
 canvas_routes = Blueprint('canvases', __name__)
 
 
-# Get all canvases - simple
+# Get all canvases - simple ================================================
 @canvas_routes.route('/')
 def get_all_canvases():
     canvases = Canvas.query.all()
@@ -16,24 +16,33 @@ def get_all_canvases():
 
 
 
-# Create new canvas
+# Create new canvas ========================================================
 @canvas_routes.route('/new-canvas', methods=["POST"])
 @login_required
 def new_canvas():
     form = NewCanvasForm()
+    # print(NewCanvasForm, "NewCanvasForm==================================")
     form["csrf_token"].data = request.cookies["csrf_token"]
-
     if form.validate_on_submit():
         new_canvas = Canvas(
             creator_id=current_user.get_id(),
             name=form.name.data,
+            private_canvas=form.private_canvas.data
         )
+        # print(new_canvas, "New_canvas==================================")
         db.session.add(new_canvas)
         db.session.commit()
         return new_canvas.to_dict()
 
 
-# delete canvas - simple
+@canvas_routes.route('/users/<int:id>')
+@login_required
+def user(id):
+    canvases = Canvas.query.filter(Canvas.creator_id == id)
+
+    return {'usersCanvases': [canvas.to_dict() for canvas in canvases]}
+
+# delete canvas - simple========================================================
 @canvas_routes.route('/<int:canvas_id>', methods=['DELETE'])
 @login_required
 def delete_canvas(canvas_id):

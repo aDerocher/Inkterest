@@ -2,11 +2,16 @@ import React, { useState, useEffect } from "react";
 import Dropdown from "react-dropdown";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { listAllFollowers, listAllFolloweds} from "../store/follow";
 import "../styles/profile-page.css";
 import CreateCanvasModal from "./CreateCanvasModal"
+import { useParams } from "react-router-dom";
+import { listUsersCanvases } from "./../store/canvas"
 
 function ProfilePage() {
+    
+    const params = useParams()
+    const viewingUserId = params.userId;
+
   let history = useHistory();
   const dispatch = useDispatch();
 
@@ -32,18 +37,14 @@ function ProfilePage() {
     } else {
         setShow(true)
     }
-    // plus.innerHTML = "qqq"
-    console.log(plus)
   };
 
   useEffect(() => {
-    dispatch(listAllFolloweds());
-    dispatch(listAllFollowers());
+    dispatch(listUsersCanvases(viewingUserId));
   }, [dispatch]);
 
   const user = useSelector((state) => state.session.user);
-  const plus = document.getElementById("plus-btn")
-  const allFollows = useSelector((state) => state.follows);
+  const curUserCanvases = []
 
   return (
     <div className="profile-page-container">
@@ -59,8 +60,8 @@ function ProfilePage() {
           </h1>
         </div>
         <div className="profile-contact">{user.email}</div>
-        <div className="profile-follwer/follwing">{allFollows?.followers?.Followers.length}</div>
-        <div className="profile-follwer/follwing">{allFollows?.followeds?.Followed.length}</div>
+        <div className="profile-follwer/follwing">{user?.followers?.length}</div>
+        <div className="profile-follwer/follwing">{user?.followed?.length}</div>
       </div>
       <div className="profile-page-body">
         <div className="profile-page-edit">
@@ -81,7 +82,11 @@ function ProfilePage() {
             />
         </div>
       </div>
-      <div className="profile-page-collection"></div>
+      <div className="profile-page-collection">
+          {curUserCanvases?.map((c) => (
+              <p key={c.id}>c.name</p>
+          ))}
+      </div>
     </div>
   );
 }
