@@ -56,12 +56,17 @@ def upload_ink():
             image=url,
             title=form.title.data,
             subtitle=form.subtitle.data,
-            destination_link=form.destination_link.data
+            destination_link=form.destination_link.data,
         )
 
 
         db.session.add(new_ink)
         db.session.commit()
+
+        new_ink.canvases.append(Canvas.query.get(form.canvas_id.data))
+
+        db.session.commit()
+
         return new_ink.to_dict()
 
 
