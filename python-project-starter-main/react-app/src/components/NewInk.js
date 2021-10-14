@@ -10,7 +10,7 @@ import '../styles/new-ink.css'
 function NewInkForm() {
     const history = useHistory();
     const dispatch = useDispatch();
-    
+
     // direct access to session user/slice of state
     const sessionUser = useSelector(state => state.session.user);
 
@@ -25,7 +25,8 @@ function NewInkForm() {
     const [destination_link, setDestination_link] = useState('');
     const [selectedFile, setSelectedFile] = useState(null);
     const [select, setSelect] = useState(null)
-    console.log(select)
+    const selectedCanvas = canvases?.filter((el) => el.name === select)
+
 
     useEffect(() => {
         dispatch(listAllCanvases())
@@ -40,7 +41,8 @@ function NewInkForm() {
             image: selectedFile,
             title: title,
             subtitle: subtitle,
-            destination_link: destination_link
+            destination_link: destination_link,
+            canvas_id: selectedCanvas[0].id
         }
 
         dispatch(createInk(newImage))
