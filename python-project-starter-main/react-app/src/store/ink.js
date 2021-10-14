@@ -19,13 +19,14 @@ const deleteInk = (ink) => ({ type: DELETE_INK, ink });
 
 // create image
 export const createInk = (newInk) => async (dispatch) => {
-    const { image, title, subtitle, destination_link } = newInk;
+    const { image, title, subtitle, destination_link, canvas_id } = newInk;
 
     const formData = new FormData();
     if (image) formData.append("image", image);
     formData.append("title", title);
     formData.append("subtitle", subtitle);
     formData.append("destination_link", destination_link);
+    formData.append("canvas_id", canvas_id);
 
     const response = await fetch('/api/inks/new-ink', {
         method: "POST",
