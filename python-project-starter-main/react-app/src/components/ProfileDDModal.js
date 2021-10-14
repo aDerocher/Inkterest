@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import demoProfImage from "./../images/prof-Img_defaultSquid.png";
 import checkmark from "./../images/checkMark-darkGrey.png";
 import { logout }from "../store/session"
-import '../styles/modal.css'
+import '../styles/profileDD-modal.css'
 
 const ProfileModal = (props) => {
   const history = useHistory();
@@ -28,7 +28,7 @@ const ProfileModal = (props) => {
   }
 
   return (
-    <div className="modal prof-dd-modal" onClick={props.onClose}>
+    <div className="prof-dd-modal" onClick={props.onClose}>
     {/* //   <div className="modal-content" >
     //     <div className="modal-header">
     //       <h4 className="modal-title">Modal title</h4>

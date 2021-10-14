@@ -5,6 +5,22 @@ import { listAllInks } from '../store/ink'
     // import { listAllUsers } from '../store/users'
 import "../styles/discover-inks-two.css";
 
+
+// ======================================================
+// ======================================================
+// ======================================================
+// ======================================================
+
+// This is just a testing grounds page for rendering the inks on the 
+// main page in the cool stratified way that pinterest does
+
+// ======================================================
+// ======================================================
+// ======================================================
+// ======================================================
+
+
+
 function DiscoverInksTwo() {
     const dispatch = useDispatch();
     let count = 0;

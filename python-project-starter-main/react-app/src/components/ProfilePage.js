@@ -10,6 +10,7 @@ import FollowersModal from "./FollowersModal";
 import FollowingsModal from "./FollowingsModal";
 import { useParams } from "react-router-dom";
 import { listUsersCanvases } from "./../store/canvas"
+import canvasCover from "./../images/squid-circle-icon-Black.png"
 
 function ProfilePage() {
 
@@ -52,6 +53,7 @@ function ProfilePage() {
   // }, [dispatch]);
 
   const user = useSelector((state) => state.session.user);
+  const curUserCanvases = useSelector((state) => state.canvases);
   const plus = document.getElementById("plus-btn")
   // const allFollows = useSelector((state) => state.follows);
   // console.log(allFollows?.followers?.Followers.length);
@@ -61,7 +63,6 @@ function ProfilePage() {
     dispatch(listUsersCanvases(viewingUserId));
   }, [dispatch]);
 
-  const curUserCanvases = []
 
   return (
     <div className="profile-page-container">
@@ -104,9 +105,31 @@ function ProfilePage() {
         </div>
       </div>
       <div className="profile-page-collection">
-          {curUserCanvases?.map((c) => (
-              <p key={c.id}>c.name</p>
-          ))}
+            <div className="users-canvases-collection">
+
+                {curUserCanvases?.map((c) => (
+                    <div className="canvas-tile" key={c.id}>
+                        <div className="canvas-tile-image-container">
+
+                            <div className="canvas-tile-image-lock" hidden={!c.private_canvas} >
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div className="canvas-tile-image-pen">
+                                <i class="fas fa-pen"></i>
+                            </div>
+
+                            { c.inks[0] &&
+                                <img className="canvas-tile-image" src={c.inks[0]} alt="Canvas Cover"/>}
+                            { !c.inks[0] &&
+                                <img className="canvas-tile-image" src={canvasCover} alt="Canvas Cover"/>}
+
+                        </div>
+                        <div className="canvas-tile-footer">
+                            <p>c.name</p>
+                        </div>
+                    </div>
+              ))}
+            </div>
       </div>
     </div>
   );
