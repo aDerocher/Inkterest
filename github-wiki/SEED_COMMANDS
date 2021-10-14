@@ -11,6 +11,14 @@ INSERT INTO users(
 )
 VALUES
 (       
+    'deeeem0',
+    'https://randomuser.me/api/portraits/men/13.jpg',
+    'user0@user1.com',
+    'Demo',
+    'Usere',
+    'password',
+),
+(       
     'user1',
     'https://randomuser.me/api/portraits/men/13.jpg',
     'user1@user1.com',
