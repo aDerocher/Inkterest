@@ -5,7 +5,8 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
-    height: 400px;
+    min-height: 400px;
+    flex-grow: 2;
 }
 .c-0{
     border: 1px solid blue;
