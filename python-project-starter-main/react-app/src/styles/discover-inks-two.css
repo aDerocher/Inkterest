@@ -1,0 +1,56 @@
+.discover-inks-container{
+    border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    height: 400px;
+}
+.c-0{
+    border: 1px solid blue;
+    height: 100px;
+    width: 30%;
+
+}
+.c-1{
+    border: 1px solid blue;
+    height: 130px;
+    width: 30%;
+
+    float: left;
+    position: relative;
+}
+.c-2{
+    border: 1px solid blue;
+    height: 180px;
+    width: 30%;
+} 
+
+/* .discover-inks-container{
+    border: 2px solid red;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+.c-0{
+    border: 1px solid blue;
+    height: 100px;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-auto-flow: dense;
+}
+.c-1{
+    border: 1px solid blue;
+    height: 130px;
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+    grid-auto-flow: dense;
+}
+.c-2{
+    border: 1px solid blue;
+    height: 180px;
+    grid-column-start: 3;
+  grid-column-end: 4;
+  grid-auto-flow: dense;
+} */
