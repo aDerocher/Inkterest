@@ -93,7 +93,7 @@ const canvasReducer = (state = initialState, action) => {
         case GET_CANVASES:
             return [ ...action.canvases ]
         case GET_USERS_CANVASES:
-            return [ ...newState, action.usersCanvases ]
+            return [ ...action.usersCanvases ]
         case DELETE_CANVAS:
             return newState.filter((el) => action.canvas.id !== el.id)
         default:
