@@ -62,14 +62,14 @@ function ProfileEdit() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div className="userName-container">
+          {/* <div className="userName-container">
             <label>User Name</label>
             <input
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
-          </div>
+          </div> */}
           <button className="save-button" type="Submit">
             Save
           </button>
