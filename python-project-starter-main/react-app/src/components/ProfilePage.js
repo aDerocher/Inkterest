@@ -81,10 +81,10 @@ function ProfilePage() {
           {/* <p onClick={}>{user.followers.length} follower</p> */}
           <button onClick={() => setShowFollowers(true)} >{user.followers.length} follower</button>
           <FollowersModal onClose={() => setShowFollowers(false)} show={showFollowers}/>
-        </div>
         <button onClick={() => setShowFollowings(true)} >{user?.followed?.length} following</button>
           <FollowingsModal onClose={() => setShowFollowings(false)} show={showFollowings}/>
       </div>
+        </div>
       <div className="profile-page-body">
         <div className="profile-page-edit">
           <button onClick={redirect}>Edit</button>

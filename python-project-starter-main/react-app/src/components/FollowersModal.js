@@ -6,9 +6,9 @@ const FollowersModal = props => {
 
     const allFollowers = useSelector(state => state.session.user.followers)
 
-    useEffect(() => {
-        console.log(allFollowers, "all followerssssssssssssssssssssssssssss")
-    }, [allFollowers])
+    // useEffect(() => {
+    //     console.log(allFollowers, "all followerssssssssssssssssssssssssssss")
+    // }, [allFollowers])
 
     if(!props.show) {
         return null
@@ -24,7 +24,7 @@ const FollowersModal = props => {
 
                     {allFollowers.map((f) => (
                         <div key={f[0]} className="follows-modal-row">
-                            <div>
+                            <div className='follow-user-container'>
                                 <img src="" alt="circle" />
                                 <p>Username</p>
                             </div>
@@ -32,7 +32,7 @@ const FollowersModal = props => {
                             <button className='toggle-follow-btn'>follow</button>
                         </div>
                     ))}
-   
+
                 </div>
             </div>
         </div>

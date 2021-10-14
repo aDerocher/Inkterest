@@ -1,7 +1,10 @@
-import React from 'react';
-import '../styles/modal.css'
+import React, {useEffect}from 'react';
+import { useSelector } from 'react-redux';
+import '../styles/follows-modal.css'
 
 const FollowingsModal = props => {
+    const allFollowings = useSelector(state => state.session.user.followed)
+
     if(!props.show) {
         return null
     }
@@ -11,12 +14,21 @@ const FollowingsModal = props => {
             <div className='modal-content' onClick={e => e.stopPropagation() }>
                 <div className='modal-header'>
                     <h4 className='modal-title'>Following</h4>
-                </div>
-                <div className='modal-body'>
-                    This is Following content
-                </div>
-                <div className='modal-footer'>
                     <button onClick={props.onClose} className='button'>Close</button>
+                </div>
+                <div className='follows-modal-body'>
+
+                    {allFollowings.map((f) => (
+                        <div key={f[0]} className="follows-modal-row">
+                            <div className='follow-user-container'>
+                                <img src="" alt="circle" />
+                                <p>Username</p>
+                            </div>
+
+                            <button className='toggle-follow-btn'>follow</button>
+                        </div>
+                    ))}
+
                 </div>
             </div>
         </div>
