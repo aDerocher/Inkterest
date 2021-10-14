@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Redirect, NavLink } from 'react-router-dom';
 import '../styles/reset-styles.css'
+import '../styles/ink-page.css'
 
 function InkPage() {
     const history = useHistory();
@@ -25,7 +26,7 @@ function InkPage() {
             <div className='ink-container'>
                 <div className='ink-left'>
                     <img
-                        className='preview-file'
+                        className='preview-img'
                         src={null}
                         alt='preview'
                     />
