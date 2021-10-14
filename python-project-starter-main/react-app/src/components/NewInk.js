@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Redirect } from 'react-router-dom';
 import { createInk, listAllInks, removeInk } from '../store/ink'
-import '../styles/ink.css'
-
+import '../styles/reset-styles.css'
+import '../styles/new-ink.css'
 
 
 function NewInkForm() {
@@ -12,16 +12,16 @@ function NewInkForm() {
     // direct access to session user/slice of state
     const sessionUser = useSelector(state => state.session.user);
     // direct access to inks array/slice of state
-    const inks = useSelector(state => state.inks)
+    // const inks = useSelector(state => state.inks)
 
     const [title, setTitle] = useState('');
     const [subtitle, setSubtitle] = useState('');
     const [destination_link, setDestination_link] = useState('');
     const [selectedFile, setSelectedFile] = useState(null);
 
-    useEffect(() => {
-        dispatch(listAllInks())
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(listAllInks())
+    // }, [dispatch])
 
     if (!sessionUser) return <Redirect to="/" />;
 
@@ -61,44 +61,53 @@ function NewInkForm() {
     // ========================================== COMPONENT
 
     return (
-        <div>
-            <form className="container" onSubmit={handleSubmit}>
-                <input
-                    className="file input"
-                    type="file"
-                    accept='image/*'
-                    onChange={updateImage}
-                />
-                <input
-                    className='title input'
-                    type='text'
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    placeholder='Title'
-                />
-                <input
-                    className='subtitle input'
-                    type='text'
-                    value={subtitle}
-                    onChange={(e) => setSubtitle(e.target.value)}
-                    placeholder='Subtitle'
-                />
-                <input
-                    className='destination input'
-                    type='text'
-                    value={destination_link}
-                    onChange={(e) => setDestination_link(e.target.value)}
-                    placeholder='Add a link to your site'
-                />
-                <button
-                    type='submit'
-                    className='file-upload-btn'
-                    >
-                    submit ink
-                </button>
-            </form>
+        <div className='container'>
+            <div className='form-container'>
+                <form className="new-ink-form" onSubmit={handleSubmit}>
+                    <div className='form-top'>
+                        <input value='SAVE TO CANVAS'/>
+                    </div>
 
-            {
+                    <div className='form-bottom'>
+
+                    </div>
+                    <input
+                        className="file input"
+                        type="file"
+                        accept='image/*'
+                        onChange={updateImage}
+                    />
+                    <input
+                        className='title input'
+                        type='text'
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        placeholder='Title'
+                    />
+                    <input
+                        className='subtitle input'
+                        type='text'
+                        value={subtitle}
+                        onChange={(e) => setSubtitle(e.target.value)}
+                        placeholder='Subtitle'
+                    />
+                    <input
+                        className='destination input'
+                        type='text'
+                        value={destination_link}
+                        onChange={(e) => setDestination_link(e.target.value)}
+                        placeholder='Add a link to your site'
+                    />
+                    <button
+                        type='submit'
+                        className='file-upload-btn'
+                        >
+                        submit ink
+                    </button>
+                </form>
+            </div>
+
+            {/* {
                 inks?.map((ink) => {
                     return <span key={ink.id}>
                         <img
@@ -110,7 +119,7 @@ function NewInkForm() {
                         <button onClick={() => handleEditBtn(ink.id)}>Edit</button>
                     </span>
                 })
-            }
+            } */}
         </div>
     );
 }

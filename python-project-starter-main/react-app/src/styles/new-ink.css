@@ -1,0 +1,51 @@
+.container {
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    height: 650px;
+    width: 880px;
+    border: 1px solid black;
+    border-radius: 16px;
+    padding: 40px;
+}
+
+.new-ink-form {
+
+}
+
+.form-top {
+
+}
+
+.form-bottom {
+    
+}
+
+input {
+
+}
+
+.file {
+
+}
+
+.title {
+
+}
+
+.subtitle {
+
+}
+
+.destination {
+
+}
+
+.file-upload-btn {
+
+}
