@@ -1,3 +1,5 @@
+/* ==========CONTAINERS============ */
+
 .container {
     background-color: #e6e6e6;
     height: 100%;
@@ -23,6 +25,8 @@
 .new-ink-form {
 
 }
+
+/* ==============INNER COMPONENTS================ */
 
 .form-top {
     display: flex;
@@ -56,13 +60,16 @@
     align-items: center;
 }
 
+/* ============INDIVIDUAL ELEMENTS============== */
+
 textarea,
 input {
     border: none;
 }
 
 textarea:focus,
-input:focus {
+input:focus,
+select:focus {
     outline: none;
 }
 
@@ -70,6 +77,31 @@ input[type="file"] {
     width: 380px;
     display: none;
 }
+
+#canvas-list {
+    background-color: #e6e6e6;
+    display: flex;
+    align-items: center;
+    border: none;
+    padding: 10px;
+    width: 173px;
+    height: 40px;
+    border-radius: 8px 0px 0px 8px;
+    /* border-radius: 0px 8px 8px 0px; */
+}
+
+.canvas-selector {
+    background-color: #e60023;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 72px;
+    border-radius: 0px 8px 8px 0px;
+}
+
+
 
 .file-input {
     background-color: #e6e6e6;
@@ -108,6 +140,7 @@ input[type="file"] {
     font-weight: bold;
     overflow: hidden;
     resize: none;
+    padding-bottom: 20px;
     }
 
 .subtitle {
@@ -120,6 +153,7 @@ input[type="file"] {
     min-height: 21px;
     font-size: 18px;
     overflow: hidden;
+    padding-bottom: 10px;
 }
 
 .destination {
@@ -132,6 +166,7 @@ input[type="file"] {
     min-height: 21px;
     font-size: 18px;
     overflow: hidden;
+    padding-bottom: 10px;
 }
 
 .file-upload-btn {
