@@ -21,12 +21,12 @@ function About() {
                 <div className="profile-name">
                 <h1>Alwyn Grant</h1>
                 </div>
-                <div className="profile-contact">email@email.com</div>
+                <div className="profile-contact">marzgrant@gmail.com</div>
                 <div className='link-buttons-container'>
-                    <a target="_blank" href="https://github.com/AlwynGrant">
+                    <a target="_blank" rel="noreferrer" href="https://github.com/AlwynGrant">
                         <button className="link-btn git-link" onclick="window.location.href='https://github.com/AlwynGrant';"></button>
                     </a>
-                    <a target="_blank" href="https://www.linkedin.com">
+                    <a target="_blank" rel="noreferrer" href="https://www.linkedin.com">
                         <button className="link-btn linkedin-link" onClick="window.location.href='https://www.linkedin.com/in/andrew-derocher-54003789/';">in</button>
                     </a>
                 </div>
@@ -41,10 +41,10 @@ function About() {
                 </div>
                 <div className="profile-contact">andrew@andrewderocher.com</div>
                 <div className='link-buttons-container'>
-                    <a target="_blank" href="https://github.com/aDerocher">
+                    <a target="_blank" rel="noreferrer" href="https://github.com/aDerocher">
                         <button className="link-btn git-link" onClick="window.location.href='https://github.com/aDerocher';"></button>
                     </a>
-                    <a target="_blank" href="https://www.linkedin.com/in/andrew-derocher-54003789/">
+                    <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/andrew-derocher-54003789/">
                         <button className="link-btn linkedin-link" onClick="window.location.href='https://www.linkedin.com/in/andrew-derocher-54003789/';">in</button>
                     </a>
                     {/* <a target="_blank" href="https://www.linkedin.com/in/andrew-derocher-54003789/"><button className="link-btn linkedin-link" onClick="window.location.href='https://www.linkedin.com/in/andrew-derocher-54003789/';">in</button> */}
@@ -60,16 +60,16 @@ function About() {
                 </div>
                 <div className="profile-contact">email@email.com</div>
                 <div className='link-buttons-container'>
-                    <a target="_blank" href="https://github.com/grantc00">
+                    <a target="_blank" rel="noreferrer" href="https://github.com/grantc00">
                         <button className="link-btn git-link" onClick="window.location.href='https://github.com/grantc00';"></button>
                     </a>
-                    <a target="_blank" href="https://www.linkedin.com/in/grant-chiu-964766206/">
+                    <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/grant-chiu-964766206/">
                         <button className="link-btn linkedin-link" onClick="window.location.href='https://www.linkedin.com/in/grant-chiu-964766206/';">in</button>
                     </a>
                 </div>
             </div>
     </div>
-    
+
   );
 }
 

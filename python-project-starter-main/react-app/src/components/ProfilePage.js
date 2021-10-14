@@ -5,8 +5,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { listAllFollowers, listAllFolloweds } from "../store/follow";
 import "../styles/profile-page.css";
 import CreateCanvasModal from "./CreateCanvasModal"
+import { useParams } from "react-router-dom";
+import { listUsersCanvases } from "./../store/canvas"
 
 function ProfilePage() {
+
+    const params = useParams()
+    const viewingUserId = params.userId;
+
   let history = useHistory();
   const dispatch = useDispatch();
 
@@ -32,8 +38,6 @@ function ProfilePage() {
     } else {
         setShow(true)
     }
-    // plus.innerHTML = "qqq"
-    console.log(plus)
   };
 
   // useEffect(() => {
@@ -47,6 +51,11 @@ function ProfilePage() {
   // console.log(allFollows?.followers?.Followers.length);
   // console.log(user.followed.length);
   // console.log(user.followers);
+  useEffect(() => {
+    dispatch(listUsersCanvases(viewingUserId));
+  }, [dispatch]);
+
+  const curUserCanvases = []
 
   return (
     <div className="profile-page-container">
@@ -87,7 +96,11 @@ function ProfilePage() {
             />
         </div>
       </div>
-      <div className="profile-page-collection"></div>
+      <div className="profile-page-collection">
+          {curUserCanvases?.map((c) => (
+              <p key={c.id}>c.name</p>
+          ))}
+      </div>
     </div>
   );
 }

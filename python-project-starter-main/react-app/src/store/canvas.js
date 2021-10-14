@@ -2,6 +2,7 @@
 
 const ADD_CANVAS = 'users/NEW_CANVAS';
 const GET_CANVASES = 'users/GET_CANVASES';
+const GET_USERS_CANVASES = 'users/GET_USERS_CANVASES';
 const DELETE_CANVAS = 'users/DELETE_CANVAS';
 
 
@@ -9,17 +10,18 @@ const DELETE_CANVAS = 'users/DELETE_CANVAS';
 
 const addCanvas = (canvas) => ({ type: ADD_CANVAS, canvas });
 const getCanvases = (canvases) => ({ type: GET_CANVASES, canvases });
+const getUsersCanvases = (usersCanvases) => ({ type: GET_USERS_CANVASES, usersCanvases });
 const deleteCanvas = (canvas) => ({ type: DELETE_CANVAS, canvas });
 
 // ---------------------------  Defined Thunk(s) --------------------------------
 
 // create canvas
 export const createCanvas = (newCanvas) => async (dispatch) => {
-    const { name, isPrivate } = newCanvas;
+    const { name, private_canvas } = newCanvas;
 
     const formData = new FormData();
     formData.append("name", name);
-    formData.append("isPrivate", isPrivate);
+    formData.append("private_canvas", private_canvas);
 
     const response = await fetch('/api/canvases/new-canvas', {
         method: "POST",
@@ -43,6 +45,21 @@ export const listAllCanvases = () => async (dispatch) => {
 
         const canvases = data.canvases
         dispatch(getCanvases(canvases));
+        return response;
+    }
+}
+
+// get a users canvases
+export const listUsersCanvases = (userId) => async (dispatch) => {
+    const response = await fetch(`/api/canvases/users/${userId}`, {
+        method: 'GET'
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+
+        const usersCanvases = data.usersCanvases
+        dispatch(getUsersCanvases(usersCanvases));
         return response;
     }
 }
@@ -75,6 +92,8 @@ const canvasReducer = (state = initialState, action) => {
             return [ ...newState, action.canvas ]
         case GET_CANVASES:
             return [ ...action.canvases ]
+        case GET_USERS_CANVASES:
+            return [ ...action.usersCanvases ]
         case DELETE_CANVAS:
             return newState.filter((el) => action.canvas.id !== el.id)
         default:

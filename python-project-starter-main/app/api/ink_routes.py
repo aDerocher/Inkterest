@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.forms import NewInkForm, EditInkForm
-from app.models import db, Ink
+from app.models import db, Ink, Canvas, User
 from app.aws import (
     upload_file_to_s3, allowed_file, get_unique_filename
 )
@@ -49,7 +49,6 @@ def upload_ink():
 
     url = upload["url"]
 
-    print("TESTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",current_user)
     if form.validate_on_submit():
         new_ink = Ink(
             creator_id=current_user.get_id(),
@@ -59,6 +58,8 @@ def upload_ink():
             subtitle=form.subtitle.data,
             destination_link=form.destination_link.data
         )
+
+
         db.session.add(new_ink)
         db.session.commit()
         return new_ink.to_dict()
