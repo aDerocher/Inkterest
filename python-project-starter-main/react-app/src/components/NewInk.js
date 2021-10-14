@@ -10,7 +10,7 @@ import '../styles/new-ink.css'
 function NewInkForm() {
     const history = useHistory();
     const dispatch = useDispatch();
-    
+
     // direct access to session user/slice of state
     const sessionUser = useSelector(state => state.session.user);
     const canvases = useSelector(state => state.canvases)
@@ -19,7 +19,7 @@ function NewInkForm() {
     // const inks = useSelector(state => state.inks)
 
     // direct access to canvases array/slice of state
-    
+
     const [title, setTitle] = useState('');
     const [subtitle, setSubtitle] = useState('');
     const [destination_link, setDestination_link] = useState('');
@@ -93,7 +93,7 @@ function NewInkForm() {
                                     canvases?.map((canvas) => {
                                         // <div key={canvas.id}>
                                         <p>{canvas.id}</p>
-                                        //  return <option key={canvas.id} value={canvas.name}>{canvas.name}</option> 
+                                        //  return <option key={canvas.id} value={canvas.name}>{canvas.name}</option>
                                             // <option  value={canvas.name}>{canvas.name}</option>
                                         // </div>
 
@@ -105,7 +105,7 @@ function NewInkForm() {
                                 <option>Add to your canvas</option>
                                 {canvases?.length > 0 && (
                                     canvases?.map((canvas) => {
-                                         return <option key={canvas.id} value={canvas.name}>{canvas.name}</option> 
+                                         return <option key={canvas.id} value={canvas.name}>{canvas.name}</option>
                                     }))
                                 }
                             </select>
