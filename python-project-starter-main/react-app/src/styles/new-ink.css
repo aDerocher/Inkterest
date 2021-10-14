@@ -14,7 +14,7 @@
 .form-container {
     height: 650px;
     width: 800px;
-    background-color: antiquewhite;
+    background-color: #ffffff;
     border-radius: 16px;
     padding: 40px;
     margin: 40px;
@@ -25,8 +25,6 @@
 }
 
 .form-top {
-
-    background-color: rgb(105, 105, 92);
     display: flex;
     justify-content: flex-end;
     width: 800px;
@@ -34,7 +32,6 @@
 }
 
 .form-bottom {
-    background-color: cadetblue;
     width:800px;
     height: 550px;
     margin-top: 20px;
@@ -42,17 +39,15 @@
 }
 
 .bottom-left {
-    background-color: chartreuse;
     width: 380px;
     height: 510px;
     display:flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
 }
 
 .bottom-right {
-    background-color: crimson;
     width: 420px;
     height: 510px;
     display:flex;
@@ -77,9 +72,28 @@ input[type="file"] {
 }
 
 .file-input {
-    border: 1px solid black;
-    transform: translateY(230px);
-    
+    background-color: #e6e6e6;
+    /* border: 1px solid black; */
+    transform: translateY(-60px);
+    position: absolute;
+    width: 380px;
+    height: 450px;
+    border-radius: 10px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    text-align: center;
+}
+
+.dotted-div {
+    border: 2px dashed rgb(200, 198, 198);
+    width: 100%;
+    height: 95%;
+    border-radius: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .title {
@@ -123,7 +137,7 @@ input[type="file"] {
 .file-upload-btn {
     width: 380px;
     height: 48px;
-    font-weight: bolder;
+    font-weight: bold;
     border-radius: 24px;
     border: none;
 }
