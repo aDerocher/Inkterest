@@ -1,13 +1,9 @@
-html, body {
+/* html, body {
     overflow: hidden;
     height: 100%;
     width: 100vw;
-}
+} */
 
-body {
-    display: flex;
-    justify-content: center;
-}
 .splash-container {
     width: 100%;
     height: 100%;
@@ -18,7 +14,7 @@ body {
 .top-container {
     background-color: antiquewhite;
     width: 100%;
-    height: 600px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: center;
