@@ -29,5 +29,5 @@ class Canvas(db.Model):
             'name': self.name,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'inks': [inks.to_dict() for ink in self.inks]
+            'inks': [ink.to_dict() for ink in self.inks]
         }

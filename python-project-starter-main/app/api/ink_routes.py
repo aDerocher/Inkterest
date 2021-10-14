@@ -49,9 +49,11 @@ def upload_ink():
 
     url = upload["url"]
 
+    print("TESTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",current_user)
     if form.validate_on_submit():
         new_ink = Ink(
             creator_id=current_user.get_id(),
+            creator_username=current_user.username,
             image=url,
             title=form.title.data,
             subtitle=form.subtitle.data,

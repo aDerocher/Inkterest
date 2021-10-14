@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.forms import NewCanvasForm
-from app.models import db, Canvas, Ink_On_Canvas
+from app.models import db, Canvas
 # from app.aws import (
 #     upload_file_to_s3, allowed_file, get_unique_filename)
 
