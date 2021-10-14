@@ -9,7 +9,7 @@ from app.aws import (
 ink_routes = Blueprint('inks', __name__)
 
 # Get all inks - simple
-@ink_routes.route('/')
+@ink_routes.route('')
 def get_inks():
     inks = Ink.query.all()
     return {'inks': [ink.to_dict() for ink in inks]}
@@ -45,11 +45,11 @@ def upload_ink():
         # if the dictionary doesn't have a url key
         # it means that there was an error when we tried to upload
         # so we send back that error message
+        print(upload, 'FAILED!!!!!!!!!!!')
         return upload, 400
-
+    print(upload, 'SUCCESS!!!!!!!!')
     url = upload["url"]
 
-    print(form.canvas_id.data, '=======================================================')
     if form.validate_on_submit():
         new_ink = Ink(
             creator_id=current_user.get_id(),

@@ -11,3 +11,8 @@
 
 1. flask seed all
     -- to remove seed data: flask seed undo
+
+
+
+<!-- HEROKU LOGS COMMAND -->
+heroku logs --tail --app inkterest
