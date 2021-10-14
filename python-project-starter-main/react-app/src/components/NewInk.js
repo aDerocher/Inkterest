@@ -10,10 +10,13 @@ import '../styles/new-ink.css'
 function NewInkForm() {
     const history = useHistory();
     const dispatch = useDispatch();
+    
     // direct access to session user/slice of state
     const sessionUser = useSelector(state => state.session.user);
+
     // direct access to inks array/slice of state
     // const inks = useSelector(state => state.inks)
+
     // direct access to canvases array/slice of state
     const canvases = useSelector(state => state.canvases)
 
