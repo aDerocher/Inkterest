@@ -30,7 +30,7 @@
 
 .form-top {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     width: 800px;
     height: 40px;
 }
@@ -40,6 +40,22 @@
     height: 550px;
     margin-top: 20px;
     display: flex;
+}
+
+.top-left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 30px;
+    width: 40px;
+    height: 40px;
+}
+
+.top-right {
+    display: flex;
+    justify-content: flex-end;
+    width: 400px;
+    height: 40px;
 }
 
 .bottom-left {

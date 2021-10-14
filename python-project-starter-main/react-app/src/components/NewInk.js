@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, Redirect } from 'react-router-dom';
+import { useHistory, Redirect, NavLink } from 'react-router-dom';
 import { createInk, listAllInks, removeInk } from '../store/ink'
 import { listAllCanvases } from '../store/canvas'
 import '../styles/reset-styles.css'
@@ -14,13 +14,14 @@ function NewInkForm() {
     const sessionUser = useSelector(state => state.session.user);
     // direct access to inks array/slice of state
     const inks = useSelector(state => state.inks)
-    // direct access to inks array/slice of state
+    // direct access to canvases array/slice of state
     const canvases = useSelector(state => state.canvases)
 
     const [title, setTitle] = useState('');
     const [subtitle, setSubtitle] = useState('');
     const [destination_link, setDestination_link] = useState('');
     const [selectedFile, setSelectedFile] = useState(null);
+    console.log(selectedFile)
 
     useEffect(() => {
         dispatch(listAllCanvases())
@@ -68,14 +69,23 @@ function NewInkForm() {
             <div className='form-container'>
                 <form className="new-ink-form" onSubmit={handleSubmit}>
                     <div className='form-top'>
-                        <select id='canvas-list'>
-                            {
-                                canvases?.map((canvas) => {
-                                    return <option value={canvas.name}>{canvas.name}</option>
-                                })
-                            }
-                        </select>
-                        <div className='canvas-selector'>Canvas</div>
+                        <div className='top-left'>
+                            <ion-icon name="arrow-back-outline">
+                                {/* FIGURE OUT A FIX FOR THIS */}
+                                <NavLink to={`/users/${sessionUser?.id}`}></NavLink>
+                            </ion-icon>
+                        </div>
+                        <div className='top-right'>
+                            <select id='canvas-list'>
+                                {canvases?.length > 0 && (
+                                    canvases?.map((canvas) => {
+                                        return <option value={canvas.name}>{canvas.name}</option>
+                                        })
+                                    )
+                                }
+                            </select>
+                            <div className='canvas-selector'>Canvas</div>
+                        </div>
                     </div>
 
                     <div className='form-bottom'>
