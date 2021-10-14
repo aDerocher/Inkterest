@@ -19,6 +19,7 @@ import DiscoverInks from "./components/DiscoverInks";
 import About from "./components/About";
 import ProfileEdit from './components/ProfileEdit'
 import SplashPage from "./components/SplashPage";
+import DiscoverInksTwo from "./components/DiscoverInksTwo"
 import InkToCanvasForm from "./components/TestPage";
 
 function App() {
@@ -89,6 +90,10 @@ function App() {
 
         <Route path="/about" exact={true}>
             <About />
+        </Route>
+
+        <Route path="/discover-inks-two" exact={true}>
+            <DiscoverInksTwo />
         </Route>
 
       </Switch>
