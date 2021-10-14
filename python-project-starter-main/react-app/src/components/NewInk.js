@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Redirect, NavLink } from 'react-router-dom';
 import { createInk } from '../store/ink'
-import { listAllCanvases } from '../store/canvas'
+import { listUsersCanvases } from '../store/canvas'
 import '../styles/reset-styles.css'
 import '../styles/new-ink.css'
 
@@ -10,26 +10,28 @@ import '../styles/new-ink.css'
 function NewInkForm() {
     const history = useHistory();
     const dispatch = useDispatch();
-
+    
     // direct access to session user/slice of state
     const sessionUser = useSelector(state => state.session.user);
+    const canvases = useSelector(state => state.canvases)
 
     // direct access to inks array/slice of state
     // const inks = useSelector(state => state.inks)
 
     // direct access to canvases array/slice of state
-    const canvases = useSelector(state => state.canvases)
-
+    
     const [title, setTitle] = useState('');
     const [subtitle, setSubtitle] = useState('');
     const [destination_link, setDestination_link] = useState('');
     const [selectedFile, setSelectedFile] = useState(null);
     const [select, setSelect] = useState(null)
-    const selectedCanvas = canvases?.filter((el) => el.name === select)
+    // const selectedCanvas = canvases?.filter((el) => el.name === select)
 
 
     useEffect(() => {
-        dispatch(listAllCanvases())
+        dispatch(listUsersCanvases(sessionUser?.id))
+        console.log(sessionUser)
+        console.log(canvases)
     }, [dispatch])
 
     if (!sessionUser) return <Redirect to="/" />;
@@ -87,13 +89,24 @@ function NewInkForm() {
                             </ion-icon>
                         </div>
                         <div className='top-right'>
+                                {/* {canvases?.length > 0 && (
+                                    canvases?.map((canvas) => {
+                                        // <div key={canvas.id}>
+                                        <p>{canvas.id}</p>
+                                        //  return <option key={canvas.id} value={canvas.name}>{canvas.name}</option> 
+                                            // <option  value={canvas.name}>{canvas.name}</option>
+                                        // </div>
+
+                                        })
+                                    )
+                                } */}
+
                             <select id='canvas-list' onChange={(e) => setSelect(e.target.value)}>
                                 <option>Add to your canvas</option>
                                 {canvases?.length > 0 && (
                                     canvases?.map((canvas) => {
-                                        return <option key={canvas.id} value={canvas.name}>{canvas.name}</option>
-                                        })
-                                    )
+                                         return <option key={canvas.id} value={canvas.name}>{canvas.name}</option> 
+                                    }))
                                 }
                             </select>
                             <div className='canvas-selector'>Canvas</div>

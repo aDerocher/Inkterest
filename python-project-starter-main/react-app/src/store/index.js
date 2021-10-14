@@ -3,13 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import inks from './ink'
 import canvases from './canvas'
-import follows from './follow'
+// import follows from './follow'
 
 const rootReducer = combineReducers({
   session,
   inks,
   canvases,
-  follows,
+  // follows,
 });
 
 

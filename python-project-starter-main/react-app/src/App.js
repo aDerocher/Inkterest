@@ -17,6 +17,7 @@ import ProfilePage from "./components/ProfilePage";
 import EditInkForm from "./components/EditInkForm"
 import DiscoverInks from "./components/DiscoverInks";
 import About from "./components/About";
+import ProfileEdit from './components/ProfileEdit'
 import SplashPage from "./components/SplashPage";
 import InkToCanvasForm from "./components/TestPage";
 
@@ -45,6 +46,9 @@ function App() {
 
         <Route path="/" exact={true}>
             {user ? <DiscoverInks /> : <SplashPage />}
+        </Route>
+        <Route path='/profile-edit' exact={true}>
+          <ProfileEdit />
         </Route>
 
         {/* <Route path='/login' exact={true}>
