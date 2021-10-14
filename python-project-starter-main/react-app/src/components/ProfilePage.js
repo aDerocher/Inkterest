@@ -5,6 +5,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { listAllFollowers, listAllFolloweds } from "../store/follow";
 import "../styles/profile-page.css";
 import CreateCanvasModal from "./CreateCanvasModal"
+import ProfileModal from "./ProfileDDModal";
+import FollowersModal from "./FollowersModal";
+import FollowingsModal from "./FollowingsModal";
 import { useParams } from "react-router-dom";
 import { listUsersCanvases } from "./../store/canvas"
 
@@ -27,6 +30,9 @@ function ProfilePage() {
   ];
 
   const [show, setShow] = useState(false);
+  const [showFollowers, setShowFollowers] = useState(false);
+  const [showFollowings, setShowFollowings] = useState(false);
+
 
   const redirect = () => {
     history.push("/profile-edit");
@@ -72,11 +78,12 @@ function ProfilePage() {
         </div>
         <div className="profile-contact">{user.email}</div>
         <div className="profile-follwer/follwing">
-          {user.followers.length} follower
+          {/* <p onClick={}>{user.followers.length} follower</p> */}
+          <button onClick={() => setShowFollowers(true)} >{user.followers.length} follower</button>
+          <FollowersModal onClose={() => setShowFollowers(false)} show={showFollowers}/>
         </div>
-        <div className="profile-follwer/follwing">
-        {user.followed.length} following
-        </div>
+        <button onClick={() => setShowFollowings(true)} >{user?.followed?.length} following</button>
+          <FollowingsModal onClose={() => setShowFollowings(false)} show={showFollowings}/>
       </div>
       <div className="profile-page-body">
         <div className="profile-page-edit">
