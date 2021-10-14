@@ -18,6 +18,7 @@ import EditInkForm from "./components/EditInkForm"
 import DiscoverInks from "./components/DiscoverInks";
 import About from "./components/About";
 import SplashPage from "./components/SplashPage";
+import InkToCanvasForm from "./components/TestPage";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -49,6 +50,10 @@ function App() {
         {/* <Route path='/login' exact={true}>
           <LoginForm />
         </Route> */}
+
+        <Route path='/test' exact={true}>
+          <InkToCanvasForm />
+        </Route>
 
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
