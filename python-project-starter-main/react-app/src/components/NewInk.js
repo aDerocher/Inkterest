@@ -25,7 +25,7 @@ function NewInkForm() {
     const [destination_link, setDestination_link] = useState('');
     const [selectedFile, setSelectedFile] = useState(null);
     const [select, setSelect] = useState(null)
-    // const selectedCanvas = canvases?.filter((el) => el.name === select)
+    const selectedCanvas = canvases?.filter((el) => el.name === select)
 
 
     useEffect(() => {
