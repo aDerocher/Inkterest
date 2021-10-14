@@ -13,7 +13,7 @@ function User() {
     (async () => {
       const response = await fetch(`/api/users/${userId}`);
       const data = await response.json();
-      console.log(data, '-------------------------------------');
+      console.log(data.following);
       setUser(data.user);
     })();
   }, [userId]);

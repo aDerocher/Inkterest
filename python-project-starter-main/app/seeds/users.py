@@ -1,4 +1,4 @@
-from app.models import db, User, Follow
+from app.models import db, User, follows
 
 
 # Adds a demo user, you can add other users here if you want
@@ -26,11 +26,19 @@ def seed_users():
         first_name='Rick',
         last_name='Rolls',
         password='password',
-        )
-        
+    )
+
+
     db.session.add(demo)
     db.session.add(leena)
     db.session.add(rick)
+
+    demo.followers.append(User.query.get(2))
+    demo.followers.append(User.query.get(3))
+    # account for user being unable to follow himself!
+    # demo.followers.append(User.query.get(1))
+    leena.followers.append(User.query.get(3))
+    rick.followers.append(User.query.get(1))
 
     db.session.commit()
 

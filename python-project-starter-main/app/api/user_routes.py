@@ -1,7 +1,9 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import User, Follow, db
+from app.models import User, db
 from app.forms import ProfileEditForm
+
+
 
 
 user_routes = Blueprint('users', __name__)
@@ -17,6 +19,7 @@ def users():
 @user_routes.route('/<int:id>')
 @login_required
 def user(id):
+    follow = follows.query.all()
     user = User.query.get(id)
     followers = Follow.query.filter(Follow.follower_id == id).all()
     # x = {'followers': [follower.to_dict() for follower in followers]}
@@ -45,3 +48,5 @@ def edit_user(id):
         db.session.commit()
 
     return user.to_dict()
+
+    return None

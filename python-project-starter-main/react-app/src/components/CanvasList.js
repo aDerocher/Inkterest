@@ -12,7 +12,6 @@ function CanvasList() {
     const sessionUser = useSelector(state => state.session.user);
     // direct access to inks array/slice of state
     const canvases = useSelector(state => state.canvases)
-    console.log(canvases)
 
     // put all the canvases into the state
     // TODO: filter by user Id
@@ -32,7 +31,7 @@ function CanvasList() {
             <div id={c.id}>
                 <p>{c.name}</p>
                 <p>{c.id}</p>
-                {sessionUser.id === c.creator_id && 
+                {sessionUser.id === c.creator_id &&
                     <button onClick={e=>deleteCanvas(e, c.id)}>Delete canvas #{c.id}</button>
                 }
             </div>

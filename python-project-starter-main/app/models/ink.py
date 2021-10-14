@@ -1,32 +1,45 @@
 from .db import db
 from datetime import datetime
+from .ink_categories import ink_categories
+from .ink_on_canvas import inks_on_canvases
+
 
 class Ink(db.Model):
     __tablename__ = 'inks'
 
     id = db.Column(db.Integer, primary_key=True)
     creator_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    creator_username = db.Column(db.String, db.ForeignKey("users.username"), nullable=False)
     image = db.Column(db.String(2000), nullable=False)
     title = db.Column(db.String(100), nullable=False)
     subtitle = db.Column(db.String(500))
     destination_link = db.Column(db.String(2000))
-    category_1 = db.Column(db.Integer, db.ForeignKey("categories.id"))
-    category_2 = db.Column(db.Integer, db.ForeignKey("categories.id"))
-    category_3 = db.Column(db.Integer, db.ForeignKey("categories.id"))
     created_at = db.Column(db.DateTime(), default=datetime.utcnow)
     updated_at = db.Column(db.DateTime(), default=datetime.utcnow)
+
+    categories = db.relationship(
+        "Category",
+        back_populates="inks",
+        secondary=ink_categories
+        )
+
+    canvases = db.relationship(
+        "Canvas",
+        back_populates="inks",
+        secondary=inks_on_canvases
+        )
 
     def to_dict(self):
         return {
             'id': self.id,
             'creator_id': self.creator_id,
+            'creator_username': self.creator_username,
             'image': self.image,
             'title': self.title,
             'subtitle': self.subtitle,
             'destination_link': self.destination_link,
-            'category_1': self.category_1,
-            'category_2': self.category_2,
-            'category_3': self.category_3,
+            'categories': [category.to_dict() for category in self.categories],
+            'canvases': [canvas.to_dict() for canvas in self.canvases],
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }

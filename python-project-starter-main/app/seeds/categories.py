@@ -34,6 +34,7 @@ def seed_categories():
         category = "illustrative"
     )
 
+
     db.session.add(category1)
     db.session.add(category2)
     db.session.add(category3)
@@ -54,5 +55,5 @@ def seed_categories():
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
 def undo_categories():
-    db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
+    db.session.execute('TRUNCATE categories RESTART IDENTITY CASCADE;')
     db.session.commit()

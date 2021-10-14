@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { authenticate } from "./store/session";
-import User from "./components/User";
+// import User from "./components/User";
 import NavBar from "./components/NavBar";
 // import LoginForm from "./components/auth/LoginForm";
 import UsersList from "./components/UsersList";
@@ -42,7 +42,6 @@ function App() {
       {user && <NavBar />}
       {user === null && <NavBarSplash />}
 
-      {/* <LogoutButton /> */}
       <Switch>
         <Route path="/" exact={true}>
             {user && <DiscoverInks />}
@@ -50,9 +49,9 @@ function App() {
 
         </Route>
 
-        <Route path="/profile-page" exact={true}>
+        {/* <Route path="/profile-page" exact={true}>
             <ProfilePage />
-        </Route>
+        </Route> */}
 
         <Route path='/pin-builder' exact={true}>
           <PinBuilder />
@@ -92,9 +91,10 @@ function App() {
         <ProtectedRoute path="/users/:userId" exact={true}>
             <ProfilePage />
         </ProtectedRoute>
-        <ProtectedRoute path="/about" exact={true}>
+        
+        <Route path="/about" exact={true}>
             <About />
-        </ProtectedRoute>
+        </Route>
       </Switch>
     </BrowserRouter>
   );

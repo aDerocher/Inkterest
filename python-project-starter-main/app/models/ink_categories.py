@@ -1,8 +1,7 @@
 from .db import db
 
-
-inks_on_canvases = db.Table(
-    "inks_on_canvases",
+ink_categories = db.Table(
+    "ink_categories",
     db.Column(
         "ink_id",
         db.Integer,
@@ -10,9 +9,9 @@ inks_on_canvases = db.Table(
         primary_key=True
     ),
     db.Column(
-        "canvas_id",
+        "category_id",
         db.Integer,
-        db.ForeignKey("canvases.id"),
+        db.ForeignKey("categories.id"),
         primary_key=True
     )
 )

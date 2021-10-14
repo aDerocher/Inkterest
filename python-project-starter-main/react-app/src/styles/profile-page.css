@@ -30,3 +30,60 @@
     flex: row;
     justify-content: space-between;
 }
+
+ /* ================== Create -- Dropdown Menu =========================== */
+.plus-dd{
+    /* background-color: rgb(158, 125, 88); */
+    text-align: end;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/* this part controls the "+" portion */
+.control:hover{ background-color: var(--soft-grey); }
+.control{
+    /* background-color: rgb(128, 68, 0); */
+   height: 36px;
+   width: 36px;
+   border-radius: 18px;
+   padding: 0;
+   background-color: white;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+/* Sets the 'create' label for the two dropdown options */
+.menu{
+    /* background-color: green; */
+   color: grey;
+   padding: 10px;
+   margin-bottom: 6px;
+   width: 140px;
+   border-radius: 10px;
+   box-shadow: var(--soft-boxShad);
+}
+/* sets containers for all menu options */
+.menu > * {
+    /* background-color: rgb(128, 0, 96); */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+/* sets the two menu options */
+/* .menu > * :hover{ cursor: pointer; background-color: var(--hover-grey); } */
+.create-option:hover{ cursor: pointer; background-color: var(--hover-grey); }
+.create-option{
+    /* border: 2px solid black; */
+    width: 90%;
+    text-align: left;
+    color: var(--charcoal-grey);
+    font-weight: 900;
+    font-size: 11pt;
+    padding: 6px;
+    border-radius: 8px;
+    
+}
+
