@@ -21,7 +21,7 @@ function About() {
                 <div className="profile-name">
                 <h1>Alwyn Grant</h1>
                 </div>
-                <div className="profile-contact">email@email.com</div>
+                <div className="profile-contact">marzgrant@gmail.com</div>
                 <div className='link-buttons-container'>
                     <a target="_blank" href="https://github.com/AlwynGrant">
                         <button className="link-btn git-link" onclick="window.location.href='https://github.com/AlwynGrant';"></button>
@@ -69,7 +69,7 @@ function About() {
                 </div>
             </div>
     </div>
-    
+
   );
 }
 
