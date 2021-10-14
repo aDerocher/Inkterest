@@ -39,7 +39,6 @@ class Ink(db.Model):
             'subtitle': self.subtitle,
             'destination_link': self.destination_link,
             'categories': [category.to_dict() for category in self.categories],
-            'canvases': [canvas.to_dict() for canvas in self.canvases],
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }

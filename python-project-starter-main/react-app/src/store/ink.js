@@ -26,7 +26,7 @@ export const createInk = (newInk) => async (dispatch) => {
     formData.append("title", title);
     formData.append("subtitle", subtitle);
     formData.append("destination_link", destination_link);
-    formData.append("canvas_id", canvas_id);
+    if (canvas_id) formData.append("canvas_id", canvas_id);
 
     const response = await fetch('/api/inks/new-ink', {
         method: "POST",

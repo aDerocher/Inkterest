@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.forms import NewCanvasForm
-from app.models import db, Canvas
+from app.forms import NewCanvasForm, InkOnCanvasForm
+from app.models import db, Canvas, Ink
 # from app.aws import (
 #     upload_file_to_s3, allowed_file, get_unique_filename)
 
@@ -21,7 +21,7 @@ def get_all_canvases():
 @login_required
 def new_canvas():
     form = NewCanvasForm()
-    # print(NewCanvasForm, "NewCanvasForm==================================")
+
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
         new_canvas = Canvas(
@@ -29,12 +29,13 @@ def new_canvas():
             name=form.name.data,
             private_canvas=form.private_canvas.data
         )
-        # print(new_canvas, "New_canvas==================================")
+
         db.session.add(new_canvas)
         db.session.commit()
         return new_canvas.to_dict()
 
 
+# Get all users canvases ========================================================
 @canvas_routes.route('/users/<int:id>')
 @login_required
 def user(id):
@@ -58,3 +59,20 @@ def delete_canvas(canvas_id):
 
     # return "aww shit"
     return canvas.to_dict()
+
+# Add ink to canvas ========================================================
+
+@canvas_routes.route('/add-ink-to-canvas', methods=['POST'])
+@login_required
+def ink_on_canvas():
+    form = InkOnCanvasForm()
+    canvas_id = form.canvas_id.data
+    ink_id = form.ink_id.data
+
+    canvas = Canvas.query.get(canvas_id)
+    canvas.inks.append(Ink.query.get(ink_id))
+
+    db.session.commit()
+
+    return canvas.to_dict()
+

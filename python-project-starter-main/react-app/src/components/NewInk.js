@@ -44,7 +44,7 @@ function NewInkForm() {
             title: title,
             subtitle: subtitle,
             destination_link: destination_link,
-            // canvas_id: selectedCanvas[0].id
+            canvas_id: (selectedCanvas ? selectedCanvas[0]?.id : null)
         }
 
         dispatch(createInk(newImage))
