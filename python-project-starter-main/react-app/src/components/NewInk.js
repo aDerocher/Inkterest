@@ -70,40 +70,55 @@ function NewInkForm() {
 
                     <div className='form-bottom'>
 
+                        <div className='bottom-left'>
+                            <label
+                            for='file-input'
+                            className="file-input"
+                            >
+                                <div className='dotted-div'>upload</div>
+                            </label>
+                            <input
+                                id='file-input'
+                                type="file"
+                                accept='image/*'
+                                onChange={updateImage}
+                            />
+
+                            <button
+                                type='submit'
+                                className='file-upload-btn'
+                            >
+                                submit ink
+                            </button>
+                        </div>
+
+                        <div className='bottom-right'>
+                            <textarea
+                                className='title input'
+                                type='text'
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                                placeholder='Title'
+                            />
+                            <input
+                                className='subtitle input'
+                                type='text'
+                                value={subtitle}
+                                onChange={(e) => setSubtitle(e.target.value)}
+                                placeholder='Subtitle'
+                            />
+                            <input
+                                className='destination input'
+                                type='text'
+                                value={destination_link}
+                                onChange={(e) => setDestination_link(e.target.value)}
+                                placeholder='Add a link to your site'
+                            />
+
+                        </div>
+
                     </div>
-                    <input
-                        className="file input"
-                        type="file"
-                        accept='image/*'
-                        onChange={updateImage}
-                    />
-                    <input
-                        className='title input'
-                        type='text'
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        placeholder='Title'
-                    />
-                    <input
-                        className='subtitle input'
-                        type='text'
-                        value={subtitle}
-                        onChange={(e) => setSubtitle(e.target.value)}
-                        placeholder='Subtitle'
-                    />
-                    <input
-                        className='destination input'
-                        type='text'
-                        value={destination_link}
-                        onChange={(e) => setDestination_link(e.target.value)}
-                        placeholder='Add a link to your site'
-                    />
-                    <button
-                        type='submit'
-                        className='file-upload-btn'
-                        >
-                        submit ink
-                    </button>
+
                 </form>
             </div>
 
