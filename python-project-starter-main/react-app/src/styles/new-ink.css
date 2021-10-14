@@ -121,14 +121,12 @@ input[type="file"] {
 
 .file-input {
     background-color: #e6e6e6;
-    /* border: 1px solid black; */
     transform: translateY(-60px);
     position: absolute;
     width: 380px;
     height: 450px;
     border-radius: 10px;
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     text-align: center;
 }
@@ -142,6 +140,27 @@ input[type="file"] {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+}
+
+.preview-file {
+    width: 380px;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.preview-btn {
+    background-color: #e60023;
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
 }
 
 .title {
@@ -191,4 +210,5 @@ input[type="file"] {
     font-weight: bold;
     border-radius: 24px;
     border: none;
+    cursor: pointer;
 }

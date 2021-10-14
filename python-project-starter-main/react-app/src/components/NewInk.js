@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Redirect, NavLink } from 'react-router-dom';
-import { createInk, listAllInks, removeInk } from '../store/ink'
+import { createInk } from '../store/ink'
 import { listAllCanvases } from '../store/canvas'
 import '../styles/reset-styles.css'
 import '../styles/new-ink.css'
@@ -13,7 +13,7 @@ function NewInkForm() {
     // direct access to session user/slice of state
     const sessionUser = useSelector(state => state.session.user);
     // direct access to inks array/slice of state
-    const inks = useSelector(state => state.inks)
+    // const inks = useSelector(state => state.inks)
     // direct access to canvases array/slice of state
     const canvases = useSelector(state => state.canvases)
 
@@ -21,7 +21,8 @@ function NewInkForm() {
     const [subtitle, setSubtitle] = useState('');
     const [destination_link, setDestination_link] = useState('');
     const [selectedFile, setSelectedFile] = useState(null);
-    console.log(selectedFile)
+    const [select, setSelect] = useState(null)
+    console.log(select)
 
     useEffect(() => {
         dispatch(listAllCanvases())
@@ -45,7 +46,7 @@ function NewInkForm() {
                 setSubtitle('');
                 setDestination_link('');
             })
-        // history.push(`/`);
+        history.push(`/users/${sessionUser?.id}`);
     };
 
     const updateImage = (e) => {
@@ -53,13 +54,18 @@ function NewInkForm() {
         setSelectedFile(file);
     }
 
-    const handleDelete = (e, inkId) => {
-        e.preventDefault()
-        dispatch(removeInk(inkId))
-    }
+    // const handleDelete = (e, inkId) => {
+    //     e.preventDefault()
+    //     dispatch(removeInk(inkId))
+    // }
 
-    const handleEditBtn = (inkId) => {
-        history.push(`/inks/${inkId}/edit`)
+    // const handleEditBtn = (inkId) => {
+    //     history.push(`/inks/${inkId}/edit`)
+    // }
+
+    const handleDiscardBtn = (e) => {
+        e.preventDefault()
+        setSelectedFile(null)
     }
 
     // ========================================== COMPONENT
@@ -76,10 +82,11 @@ function NewInkForm() {
                             </ion-icon>
                         </div>
                         <div className='top-right'>
-                            <select id='canvas-list'>
+                            <select id='canvas-list' onChange={(e) => setSelect(e.target.value)}>
+                                <option>Add to your canvas</option>
                                 {canvases?.length > 0 && (
                                     canvases?.map((canvas) => {
-                                        return <option value={canvas.name}>{canvas.name}</option>
+                                        return <option key={canvas.id} value={canvas.name}>{canvas.name}</option>
                                         })
                                     )
                                 }
@@ -95,14 +102,38 @@ function NewInkForm() {
                             for='file-input'
                             className="file-input"
                             >
-                                <div className='dotted-div'>upload</div>
+                                { selectedFile
+                                ?
+                                    (
+                                    <>
+                                        <img
+                                            className='preview-file'
+                                            src={URL.createObjectURL(selectedFile)}
+                                            alt='preview'
+                                        />
+                                        <button
+                                            className='preview-btn'
+                                            onClick={(e) => handleDiscardBtn(e)}
+                                            >Discard</button>
+                                    </>
+                                    )
+                                :
+                                    (
+                                    <>
+                                        <div className='dotted-div'>
+                                            <ion-icon className='upload' name="cloud-upload-outline"></ion-icon>
+                                            <div>Click to upload</div>
+                                        </div>
+                                        <input
+                                        id='file-input'
+                                        type="file"
+                                        accept='image/*'
+                                        onChange={updateImage}
+                                        />
+                                    </>
+                                    )
+                                }
                             </label>
-                            <input
-                                id='file-input'
-                                type="file"
-                                accept='image/*'
-                                onChange={updateImage}
-                            />
 
                             <button
                                 type='submit'
