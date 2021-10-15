@@ -44,26 +44,35 @@ const EditInkModal = (props) => {
     return (
         <div className="ink-modal" onClick={props.onClose}>
             <div className="ink-modal-content" onClick={(e) => e.stopPropagation()}>
+                Edit Ink
                 <form className='ink-edit-form' onSubmit={() => handleSubmit(ink?.id)}>
-
+                    <label className='edit-form-label' for='edit-ink-title'>Title</label>
                     <input
+                        className='edit-ink-title'
                         type='text'
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                     />
+                    <label className='edit-form-label' for='edit-ink-subtitle'>Subtitle</label>
                     <input
+                        className='edit-ink-subtitle'
                         type='text'
                         placeholder='Subtitle'
                         value={subtitle}
                         onChange={(e) => setSubtitle(e.target.value)}
                     />
+                    <label className='edit-form-label' for='edit-ink-destination-link'>Destination Link</label>
                     <input
+                        className='edit-ink-destination-link'
                         type='text'
                         placeholder='Add a link to your site'
                         value={destination_link}
                         onChange={(e) => setDestination_link(e.target.value)}
                     />
-                    <button type='Submit'>Submit</button>
+                    <div className='edit-form-btn-container'>
+                        <button className='edit-form-cancel' onClick={props.onClose}>Cancel</button>
+                        <button className='edit-form-submit' type='Submit'>Submit</button>
+                    </div>
                 </form>
 
             </div>
