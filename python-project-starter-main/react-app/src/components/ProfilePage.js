@@ -55,8 +55,7 @@ function ProfilePage() {
     history.push(`/canvases/${c.id}/edit-canvas`)
   }
 
-  const user = useSelector((state) => state.session.user);
-  const plus = document.getElementById("plus-btn");
+
 
   const curUserCanvases = useSelector((state) => state.canvases);
 
@@ -129,7 +128,7 @@ function ProfilePage() {
                             <button className="canvas-tile-image-pen" onClick={(e) => editCanvas(e,c)} >
                                 <i className="fas fa-pen"></i>
                             </button>
-                            
+
                             { c.inks[0] &&
                                 <img className="canvas-tile-image" src={c.inks[0]} alt="Canvas Cover"/>}
                             { !c.inks[0] &&

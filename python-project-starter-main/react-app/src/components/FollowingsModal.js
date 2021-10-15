@@ -7,6 +7,10 @@ import "../styles/follows-modal.css";
 const FollowingsModal = (props) => {
   const allFollowings = useSelector((state) => state.session.user.followed);
 
+  const user = useSelector((state) => state.session.user);
+
+
+
   if (!props.show) {
     return null;
   }
@@ -16,7 +20,7 @@ const FollowingsModal = (props) => {
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <div className="modal-title">
-            <h4>Following</h4>
+            <h4>{user.followed.length} Following</h4>
           </div>
         </div>
         <div className="close-button">
@@ -27,7 +31,7 @@ const FollowingsModal = (props) => {
             <div key={f[0]} className="follows-modal-row">
               <div className="follow-user-container">
                 <img src="" alt="circle" />
-                <p>Username</p>
+                <p>{f[0]}</p>
               </div>
 
               <button className="toggle-follow-btn">Follow</button>
