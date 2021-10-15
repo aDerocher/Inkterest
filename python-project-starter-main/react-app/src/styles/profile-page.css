@@ -1,94 +1,108 @@
 .profile-page-container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .profile-page-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
 }
 
 .image-circle {
-    height: 120px;
-    width: 120px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
+  height: 120px;
+  width: 120px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
 }
 
 .profile-name {
-    font-size: 12px;
-    font-weight: 700;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 36px;
+  font-weight: 350;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .profile-page-body {
-    display: flex;
-    flex: row;
-    justify-content: space-between;
+  display: flex;
+  flex: row;
+  justify-content: space-between;
 }
 
- /* ================== Create -- Dropdown Menu =========================== */
-.plus-dd{
-    /* background-color: rgb(158, 125, 88); */
-    text-align: end;
-    /* border: 1px solid red; */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+.profile-follwer-follwing {
+  font-weight: 700;
+}
+
+.profile-follwer-follwing:hover {
+  cursor: pointer;
+}
+
+/* ================== Create -- Dropdown Menu =========================== */
+.plus-dd {
+  /* background-color: rgb(158, 125, 88); */
+  text-align: end;
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 /* this part controls the "+" portion */
-.control:hover{ background-color: var(--soft-grey); }
-.control{
-    /* background-color: rgb(128, 68, 0); */
-    background-image: url("./../images/plusSign-darkGrey.png");
-    background-position: center center;
-    background-size: cover;
-   height: 36px;
-   width: 36px;
-   border-radius: 18px;
-   padding: 0;
-   background-color: white;
-   display: flex;
-   align-items: center;
-   justify-content: center;
+.control:hover {
+  background-color: var(--soft-grey);
+}
+.control {
+  /* background-color: rgb(128, 68, 0); */
+  background-image: url("./../images/plusSign-darkGrey.png");
+  background-position: center center;
+  background-size: cover;
+  height: 36px;
+  width: 36px;
+  border-radius: 18px;
+  padding: 0;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 /* Sets the 'create' label for the two dropdown options */
-.menu{
-    /* background-color: green; */
-   color: grey;
-   padding: 10px;
-   margin-bottom: 6px;
-   width: 140px;
-   border-radius: 10px;
-   box-shadow: var(--soft-boxShad);
+.menu {
+  /* background-color: green; */
+  color: grey;
+  padding: 10px;
+  margin-bottom: 6px;
+  width: 140px;
+  border-radius: 10px;
+  box-shadow: var(--soft-boxShad);
 }
 /* sets containers for all menu options */
 .menu > * {
-    /* background-color: rgb(128, 0, 96); */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+  /* background-color: rgb(128, 0, 96); */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
 /* sets the two menu options */
 /* .menu > * :hover{ cursor: pointer; background-color: var(--hover-grey); } */
-.create-option:hover{ cursor: pointer; background-color: var(--hover-grey); }
-.create-option{
-    /* border: 2px solid black; */
-    width: 90%;
-    text-align: left;
-    color: var(--charcoal-grey);
-    font-weight: 900;
-    font-size: 11pt;
-    padding: 6px;
-    border-radius: 8px;
-    
+.create-option:hover {
+  cursor: pointer;
+  background-color: var(--hover-grey);
 }
+.create-option {
+  /* border: 2px solid black; */
+  width: 90%;
+  text-align: left;
+  color: var(--charcoal-grey);
+  font-weight: 900;
+  font-size: 11pt;
+  padding: 6px;
+  border-radius: 8px;
+}
+
 
  /* ================== Canvas Tile Styling ====================================== */
 
@@ -169,3 +183,4 @@
 .fas{
     color: #333;
 }
+
