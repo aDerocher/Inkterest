@@ -16,6 +16,7 @@ function InkPage() {
 
     // direct access to ink slice of state - houses ONE ink
     const ink = useSelector(state => state?.inks[0])
+    console.log(ink)
     // direct access to canvases array/slice of state
 
     useEffect(async () => {
@@ -39,15 +40,23 @@ function InkPage() {
                     />
                 </div>
                 <div className='ink-right'>
-                    <div className='ink-drop'>
-                        <button>edit</button>
-                        <button>delete?</button>
+                    <div className='ink-drop' onClick={null}>
+                        <ion-icon className='ink-tools' name="options-outline"></ion-icon>
                     </div>
 
                     <a className='ink-link' href={`https://${ink?.destination_link}`}>{ink?.destination_link}</a>
                     <div className='ink-title'>{ink?.title}</div>
                     <div className='ink-subtitle'>{ink?.subtitle} </div>
-                    <div className='ink-username'>Uploaded by {ink?.creator_username}</div>
+                    <div className='ink-profile'>
+                        <img className='ink-user-img' src='#' alt='user'/>
+                        <div className='user-info'>
+                            <div className='user-text'>
+                                <div className='user-name'>USERNAME</div>
+                                <div className='user-followers'>FOLLOWERS</div>
+                            </div>
+                            {sessionUser !== ink.creator_id && <button className='follow-btn'>FOLLOW</button>  }
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
