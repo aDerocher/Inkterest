@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Redirect } from "react-router-dom";
 import { changeProfile } from "../store/profileEdit";
+import "../styles/profile-edit.css";
 
 function ProfileEdit() {
   const dispatch = useDispatch();
@@ -32,8 +33,11 @@ function ProfileEdit() {
   return (
     <div className="profile-container">
       <div className="profile-header">
-        <form onSubmit={handleSubmit}>
-          <h1>Public Profile</h1>
+        <form className="profile-edit-form" onSubmit={handleSubmit}>
+          <h1 className="profile-form-header">Public Profile</h1>
+          <div className="profile-form-subheader">
+            People visiting your profile will see the following info
+          </div>
           <div className="name-container">
             <div className="firstName-container">
               <label>First Name</label>
@@ -70,9 +74,9 @@ function ProfileEdit() {
               onChange={(e) => setUsername(e.target.value)}
             />
           </div> */}
-          <button className="save-button" type="Submit">
-            Save
-          </button>
+          <div className="save-button">
+            <button type="Submit">Save</button>
+          </div>
         </form>
       </div>
     </div>
