@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Redirect, useParams} from 'react-router-dom';
 import { listOneInk } from '../store/ink'
 import { listOneUser, followUser, unfollowUser } from '../store/user'
+import EditInkModal from './EditInkModal';
 import '../styles/reset-styles.css'
 import '../styles/ink-page.css'
 
@@ -24,6 +25,10 @@ function InkPage() {
     const user = useSelector(state => state?.user[0])
 
     const [isFollowing, setIsFollowing] = useState(null)
+    const [inkDropdown, setInkDropdown] = useState(false)
+
+    const [showEditModal, setShowEditModal] = useState(false);
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
 
     useEffect(() => {
         dispatch(listOneInk(inkId))
@@ -34,9 +39,7 @@ function InkPage() {
         dispatch(listOneUser(inkId))
     }, [dispatch])
 
-
     if (!sessionUser) return <Redirect to="/" />;
-
 
     const handleFollow = (e, userId) => {
         e.preventDefault()
@@ -48,6 +51,23 @@ function InkPage() {
         e.preventDefault()
         dispatch(unfollowUser(userId))
         setIsFollowing(false)
+    }
+
+    const handleDropdown = (e) => {
+        e.preventDefault()
+        if (inkDropdown) setInkDropdown(false)
+        else setInkDropdown(true)
+    }
+
+    const handleDropdownEditClose = (e) => {
+        e.preventDefault()
+        setInkDropdown(false)
+    }
+
+    const handleDropdownDeleteClose = (e) => {
+        e.preventDefault()
+        setInkDropdown(false)
+
     }
 
     // ========================================== COMPONENT
@@ -63,11 +83,29 @@ function InkPage() {
                     />
                 </div>
                 <div className='ink-right'>
-                    {sessionUser?.id === user?.id &&
-                        <div className='ink-drop' onClick={null}>
+
+                    {
+                    sessionUser &&
+                    sessionUser?.id === user?.id &&
+                        <div className='ink-drop' onClick={(e) => handleDropdown(e)}>
                             <ion-icon className='ink-tools' name="options-outline"></ion-icon>
                         </div>
                     }
+
+                    {
+                    inkDropdown &&
+                        (
+                            <div className='tool-btn-container'>
+                                <button className='tool-btn-edit' onClick={(e) => handleDropdownEditClose(e)}>Edit</button>
+                                <EditInkModal
+                                    onClose={() => setShowEditModal(false)}
+                                    show={showEditModal}
+                                />
+                                <button className='tool-btn-delete' onClick={(e) => handleDropdownDeleteClose(e)}>Delete</button>
+                            </div>
+                        )
+                    }
+
 
                     <a className='ink-link' href={`https://${ink?.destination_link}`}>{ink?.destination_link}</a>
                     <div className='ink-title'>{ink?.title}</div>
@@ -80,6 +118,7 @@ function InkPage() {
                                 <div className='user-followers'>{user?.followers.length} followers</div>
                             </div>
                             {
+                            sessionUser &&
                             sessionUser?.id !== user?.id &&
                                 (
                                 isFollowing

@@ -14,7 +14,7 @@ import NewCanvasForm from './components/NewCanvas';
 import NavBarSplash from "./components/NavBarSplash";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import ProfilePage from "./components/ProfilePage";
-import EditInkForm from "./components/EditInkForm"
+
 import DiscoverInks from "./components/DiscoverInks";
 import About from "./components/About";
 import ProfileEdit from './components/ProfileEdit'
@@ -52,7 +52,7 @@ function App() {
         <Route path="/" exact={true}>
             {user ? <DiscoverInks /> : <SplashPage />}
         </Route>
-        
+
         <Route path='/profile-edit' exact={true}>
           <ProfileEdit />
         </Route>
@@ -77,10 +77,6 @@ function App() {
         <Route path="/inks/:inkId" exact={true}>
           <InkPage />
         </Route>
-        
-        <ProtectedRoute path="/inks/:inkId/edit" exact={true}>
-            <EditInkForm />
-        </ProtectedRoute>
 
         <ProtectedRoute path='/canvases/new-canvas' exact={true} >
             <NewCanvasForm />

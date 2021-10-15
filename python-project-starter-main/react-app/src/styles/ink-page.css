@@ -55,6 +55,37 @@
     cursor: pointer;
 }
 
+.tool-btn-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 75px;
+    top: 110px;
+    right: 200px;
+    margin-top: 5px;
+    transform: translateX(-153px);
+}
+
+.tool-btn-edit {
+    border-radius: 8px 8px 0px 0px;
+    border: none;
+    cursor: pointer;
+    padding: 2px;
+    background-color: #e60023;
+    color: white;
+    font-weight: bold;
+}
+
+.tool-btn-delete {
+    border-radius: 0px 0px 8px 8px;
+    border: none;
+    cursor: pointer;
+    padding: 2px;
+    background-color: #e60023;
+    color: white;
+    font-weight: bold;
+}
+
 .ink-link {
     width: 90px;
     height: 28px;

@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Redirect, useParams } from 'react-router-dom';
-// import { listOneInk } from '../store/oneInk'
 import { changeInk, listOneInk } from '../store/ink'
+import "../styles/edit-ink-modal.css";
 
-
-function EditInkForm() {
-    const history = useHistory();
+const EditInkModal = (props) => {
     const dispatch = useDispatch();
     const { inkId } = useParams();
 
     // direct access to session user/slice of state
     const sessionUser = useSelector(state => state.session.user);
+
     // direct access to ink slice of state - houses ONE ink
     const ink = useSelector(state => state?.inks[0])
-
 
     const [title, setTitle] = useState(ink?.title);
     const [subtitle, setSubtitle] = useState(ink?.subtitle);
@@ -27,9 +25,6 @@ function EditInkForm() {
         setDestination_link(ink?.destination_link)
     }, [dispatch, ink?.title, ink?.subtitle, ink?.destination_link, inkId])
 
-
-    if (!sessionUser) return <Redirect to="/" />;
-
     const handleSubmit = (inkId) => {
         const ink = {
             title: title,
@@ -38,37 +33,42 @@ function EditInkForm() {
         }
 
         dispatch(changeInk(ink, inkId))
-        history.push(`/inks/new-ink`);
+        return props.onClose
     };
 
-    // ===================== COMPONENT =====================
+
+    if (!props.show) {
+        return null;
+    }
 
     return (
-        <div>
-            <h1>{ink?.title}</h1>
-            <form onSubmit={() => handleSubmit(ink?.id)}>
+        <div className="ink-modal" onClick={props.onClose}>
+            <div className="ink-modal-content" onClick={(e) => e.stopPropagation()}>
+                <form onSubmit={() => handleSubmit(ink?.id)}>
 
-                <input
-                    type='text'
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                />
-                <input
-                    type='text'
-                    placeholder='Subtitle'
-                    value={subtitle}
-                    onChange={(e) => setSubtitle(e.target.value)}
-                />
-                <input
-                    type='text'
-                    placeholder='Add a link to your site'
-                    value={destination_link}
-                    onChange={(e) => setDestination_link(e.target.value)}
-                />
-                <button type='Submit'>Submit</button>
-            </form>
+                    <input
+                        type='text'
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                    />
+                    <input
+                        type='text'
+                        placeholder='Subtitle'
+                        value={subtitle}
+                        onChange={(e) => setSubtitle(e.target.value)}
+                    />
+                    <input
+                        type='text'
+                        placeholder='Add a link to your site'
+                        value={destination_link}
+                        onChange={(e) => setDestination_link(e.target.value)}
+                    />
+                    <button type='Submit'>Submit</button>
+                </form>
+
+            </div>
         </div>
-    )
-}
+    );
+};
 
-export default EditInkForm;
+export default EditInkModal;
