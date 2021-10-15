@@ -16,7 +16,6 @@ function ProfilePage() {
   const params = useParams();
   const viewingUserId = params.userId;
 
-
   let history = useHistory();
   const dispatch = useDispatch();
 
@@ -36,6 +35,9 @@ function ProfilePage() {
   const [showFollowers, setShowFollowers] = useState(false);
   const [showFollowings, setShowFollowings] = useState(false);
 
+  const user = useSelector((state) => state.session.user);
+
+
   const redirect = () => {
     history.push("/profile-edit");
   };
@@ -48,17 +50,11 @@ function ProfilePage() {
     }
   };
 
-  const user = useSelector((state) => state.session.user);
-  const plus = document.getElementById("plus-btn")
+  const curUserCanvases = useSelector((state) => state.canvases);
   const editCanvas = (e,c) => {
     e.preventDefault();
     history.push(`/canvases/${c.id}/edit-canvas`)
   }
-
-  const user = useSelector((state) => state.session.user);
-  const plus = document.getElementById("plus-btn");
-
-  const curUserCanvases = useSelector((state) => state.canvases);
 
   useEffect(() => {
     dispatch(listUsersCanvases(params.userId));

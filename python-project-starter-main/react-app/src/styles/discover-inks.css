@@ -1,9 +1,11 @@
-:root{
-    --red-btn: red;
-    --red-btn-hover:rgb(197, 22, 22);
-    --ink-tile-btn: rgb(235,235,235);
-    --ink-tile-btn-hover: white
 
+.discover-inks-container{
+    background-color: aquamarine;
+    height: 1000px;
+    padding: 20px 35px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 
@@ -15,6 +17,7 @@
     flex-direction: column;
     border-radius: 16px;
     font-family: Arial, Helvetica, sans-serif;
+    margin: 6px;
 }
 .tile-container:hover .image-container{
     background-color: rgba(0,0,0,.4);
@@ -28,20 +31,27 @@
 
 .image-container{
     /* background-color: blue; */
+    width: 200px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     flex-grow: 2;
+    min-height: 120px;;
+    max-height: 300px;
     border-radius: 16px;
     background-size: cover;
     background-position: center;
 }
 
+/* ========================================== */
+ /* You dont actually see the img element. 
+ It is included in a smaller size, and invisible 
+ in order to get variable sizing on the divs */
 .ink-tile-image{
     /* background-color: rgb(168, 212, 65); */
-    min-height: 100%;
-    object-fit: cover;
+    opacity: 0;
     overflow: hidden;
+    width: 100px;
 }
 
 

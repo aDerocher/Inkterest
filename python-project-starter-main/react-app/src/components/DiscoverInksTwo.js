@@ -47,8 +47,7 @@ function DiscoverInksTwo() {
     }
 
   return (
-    <div className="discover-inks-container">
-
+    <div className="discover-inks-two-container">
         {inks?.map((i) => (
             <div className={`c-${count}`} key={i.id}>
                 <p>div type: c-{count}</p>
