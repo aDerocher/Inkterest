@@ -23,18 +23,16 @@ function InkPage() {
     // direct access to user array/slice of state
     const user = useSelector(state => state?.user[0])
 
-    const [isNotFollowing, setIsNotFollowing] = useState(true)
-    console.log(isNotFollowing)
+    const [isFollowing, setIsFollowing] = useState(null)
 
-    // SERIOUS ISSUE WITH THIS ON INITAL RENDER
     useEffect(() => {
         dispatch(listOneInk(inkId))
+        setIsFollowing(user?.followers.some((el) => el[1] === sessionUser?.id))
+    }, [dispatch, user?.id])
+
+    useEffect(() => {
         dispatch(listOneUser(inkId))
-        if (isNotFollowing === null) {
-            const followerBool = user?.followers.some((el) => el[1] === sessionUser?.id)
-            setIsNotFollowing(followerBool)
-        }
-    }, [])
+    }, [dispatch])
 
 
     if (!sessionUser) return <Redirect to="/" />;
@@ -43,13 +41,13 @@ function InkPage() {
     const handleFollow = (e, userId) => {
         e.preventDefault()
         dispatch(followUser(userId))
-        setIsNotFollowing(false)
+        setIsFollowing(true)
     }
 
     const handleUnFollow = (e, userId) => {
         e.preventDefault()
         dispatch(unfollowUser(userId))
-        setIsNotFollowing(true)
+        setIsFollowing(false)
     }
 
     // ========================================== COMPONENT
@@ -84,9 +82,9 @@ function InkPage() {
                             {
                             sessionUser?.id !== user?.id &&
                                 (
-                                isNotFollowing === true
-                                ? <button className='follow-btn' onClick={(e) => handleFollow(e, user?.id)}>Follow</button>
-                                : <button className='unfollow-btn' onClick={(e) => handleUnFollow(e, user?.id)}>Unfollow</button>
+                                isFollowing
+                                ? <button className='unfollow-btn' onClick={(e) => handleUnFollow(e, user?.id)}>Unfollow</button>
+                                : <button className='follow-btn' onClick={(e) => handleFollow(e, user?.id)}>Follow</button>
                                 )
                             }
                         </div>
