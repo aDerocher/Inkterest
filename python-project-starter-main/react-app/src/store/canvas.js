@@ -59,7 +59,7 @@ export const listUsersCanvases = (userId) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-
+        console.log(data.usersCanvases, '===================')
         const usersCanvases = data.usersCanvases
         dispatch(getUsersCanvases(usersCanvases));
         return response;

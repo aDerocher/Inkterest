@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 // import { useHistory } from "react-router";
-import { createCanvas } from '../store/canvas'
+import { createCanvas, listUsersCanvases } from "./../store/canvas"
 import "../styles/create-canvas-modal.css";
 
 
-function CreateCanvasModal(props) {
+function CanvasEdit() {
+    const { canvasId } = useParams();
     // const history = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
@@ -23,28 +24,29 @@ function CreateCanvasModal(props) {
 
     }, [name])
 
+    useEffect(() => {
+        dispatch(listUsersCanvases(sessionUser.id))
+    }, [dispatch])
+
     
     // ========================================== Submission Function
     const handleSubmit = (e) => {
         e.preventDefault();
-        const newCanvas = {
-            name: name,
-            private_canvas: isPrivate,
-        }
-        dispatch(createCanvas(newCanvas))
-            .then(() => {
-                setName('');
-                setIsPrivate(false);
-            })
+        // const editCanvas = {
+        //     name: name,
+        //     private_canvas: isPrivate,
+        // }
+        // dispatch(createCanvas(newCanvas))
+        //     .then(() => {
+        //         setName('');
+        //         setIsPrivate(false);
+        //     })
     };
 
-    if (!props.show) {
-        return null;
-    }
     // ========================================== COMPONENT
     return (
-    <div className="cc-modal" onClick={props.onClose}>
-        <div onClick={e => e.stopPropagation() }>
+    <div className="cc-modal">
+
             <form className="cc-modal-body" onSubmit={handleSubmit}>
                 
                 <div>
@@ -82,9 +84,9 @@ function CreateCanvasModal(props) {
                     Create
                 </button>
             </form>
-        </div>
+
     </div>    
   );
 }
 
-export default CreateCanvasModal;
+export default CanvasEdit;

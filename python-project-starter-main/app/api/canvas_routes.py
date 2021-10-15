@@ -40,7 +40,7 @@ def new_canvas():
 @login_required
 def user(id):
     canvases = Canvas.query.filter(Canvas.creator_id == id)
-
+    print(canvases, "////////////////////////////")
     return {'usersCanvases': [canvas.to_dict() for canvas in canvases]}
 
 # delete canvas - simple========================================================
