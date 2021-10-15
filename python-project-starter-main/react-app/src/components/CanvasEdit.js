@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
 import { useHistory } from "react-router";
-import { getOneCanvas, editCanvas, removeCanvas } from "./../store/canvas"
+import { getOneCanvas,ink2Canvas, editCanvas, removeCanvas } from "./../store/canvas"
 import "../styles/index.css";
 import "../styles/canvas-edit.css";
 
@@ -13,11 +13,16 @@ function CanvasEdit() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const canvasToEdit = useSelector(state => state.canvases[0])
+    const usersInks = useSelector(state => state.inks)
     
     const [name, setName] = useState('');
     const [isPrivate, setIsPrivate] = useState(false);
     const [errors, setErrors] = useState([]);
     const [errorsHidden, setErrorsHidden] = useState(true);
+    const [ selectInk, setSelectInk ] = useState(null)
+    console.log(selectInk, "-------------------------")
+    const selectedInk = usersInks?.filter((el) => el.title === selectInk)
+
     
     useEffect(() => {
         let newErrors = [];
@@ -32,9 +37,19 @@ function CanvasEdit() {
 
     
     // ========================================== Submission Functions
+
+    const handleAddToCanvas = () => {
+        const form = {
+            canvas_id: canvasToEdit.id,
+            ink_id: selectedInk[0].id
+        }
+        dispatch(ink2Canvas(form))
+    }
+
     const handleSubmit = (e) => {
         setErrorsHidden(false)
         e.preventDefault();
+        // handleAddToCanvas()
         const editedCanvas = {
             name: name,
             private_canvas: isPrivate,
@@ -87,6 +102,15 @@ function CanvasEdit() {
                         }}
                     /> <p><em className="bold">Keep this board secret</em></p>
                 </div>
+
+                <select id='canvas-list' onChange={(e) => setSelectInk(e.target.value)}>
+                    <option>Select an ink</option>
+                    {usersInks?.length > 0 && (
+                        usersInks?.map((ink) => {
+                            return <option key={ink.id} value={ink.id}>{ink.title}</option>
+                        }))
+                    }
+                </select>
 
                 <div className="c-e-buttons-container">
                     <button
