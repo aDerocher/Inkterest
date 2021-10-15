@@ -51,8 +51,8 @@ function App() {
             {user ? <DiscoverInks /> : <SplashPage />}
         </Route>
 
-        <Route path='/profile-edit' exact={true}>
-          <ProfileEdit />
+        <Route path="/users/:userId" exact={true}>
+          <ProfilePage />
         </Route>
 
         <Route path='/inks' exact={true}>
@@ -91,8 +91,8 @@ function App() {
             <CanvasEdit />
         </ProtectedRoute>
 
-        <ProtectedRoute path="/users/:userId" exact={true}>
-            <ProfilePage />
+        <ProtectedRoute path='/profile-edit' exact={true}>
+          <ProfileEdit />
         </ProtectedRoute>
 
       </Switch>
