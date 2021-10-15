@@ -23,7 +23,7 @@ function InkPage() {
     // direct access to user array/slice of state
     const user = useSelector(state => state?.user[0])
 
-    const [isNotFollowing, setIsNotFollowing] = useState(null)
+    const [isNotFollowing, setIsNotFollowing] = useState(true)
     console.log(isNotFollowing)
 
     // SERIOUS ISSUE WITH THIS ON INITAL RENDER
@@ -82,9 +82,12 @@ function InkPage() {
                                 <div className='user-followers'>{user?.followers.length} followers</div>
                             </div>
                             {
-                                isNotFollowing
+                            sessionUser?.id !== user?.id &&
+                                (
+                                isNotFollowing === true
                                 ? <button className='follow-btn' onClick={(e) => handleFollow(e, user?.id)}>Follow</button>
                                 : <button className='unfollow-btn' onClick={(e) => handleUnFollow(e, user?.id)}>Unfollow</button>
+                                )
                             }
                         </div>
                     </div>
