@@ -95,3 +95,17 @@ def ink_on_canvas():
 
     return canvas.to_dict()
 
+
+@canvas_routes.route('/remove-ink-on-canvas', methods=['POST'])
+@login_required
+def remove_ink_on_canvas():
+    form = InkOnCanvasForm()
+    canvas_id = form.canvas_id.data
+    ink_id = form.ink_id.data
+
+    canvas = Canvas.query.get(canvas_id)
+    canvas.inks.remove(Ink.query.get(ink_id))
+    print('===========================================================')
+    db.session.commit()
+
+    return canvas.to_dict()

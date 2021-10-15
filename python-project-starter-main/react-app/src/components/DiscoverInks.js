@@ -28,6 +28,7 @@ function DiscoverInks() {
 
             <div key={i.id} className='tile-container'>
                 <div className="image-container" >
+                    <a href={`/inks/${i.id}`}>link</a>
                     <div className="ink-tile-top-buttons">
                         <button className='ink-tile-btn ink-save-btn'>Save</button>
                     </div>

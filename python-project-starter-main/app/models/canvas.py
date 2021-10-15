@@ -13,9 +13,6 @@ class Canvas(db.Model):
     created_at = db.Column(db.DateTime(), default=datetime.utcnow)
     updated_at = db.Column(db.DateTime(), default=datetime.utcnow)
 
-    # var name = is a relationship | to the Model IOC | will cascade on delete | can be seen on IOC model as "canvases" variable
-    # ioc = db.relationship("Ink_On_Canvas", cascade="all,delete", back_populates="canvases")
-
     inks = db.relationship(
     "Ink",
     back_populates="canvases",

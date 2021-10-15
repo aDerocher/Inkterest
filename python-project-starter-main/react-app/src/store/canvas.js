@@ -6,6 +6,7 @@ const GET_ONE_CANVAS = 'users/GET_ONE_CANVAS';
 const GET_CANVASES = 'users/GET_CANVASES';
 const GET_USERS_CANVASES = 'users/GET_USERS_CANVASES';
 const DELETE_CANVAS = 'users/DELETE_CANVAS';
+const REMOVE_INK_ON_CANVAS = 'users/INK_OFF_CANVAS'
 
 
 // --------------------------- Defined Action Creator(s) --------------------------
@@ -16,6 +17,7 @@ const getCanvas = (canvas) => ({ type: GET_ONE_CANVAS, canvas });
 const getCanvases = (canvases) => ({ type: GET_CANVASES, canvases });
 const getUsersCanvases = (usersCanvases) => ({ type: GET_USERS_CANVASES, usersCanvases });
 const deleteCanvas = (canvas) => ({ type: DELETE_CANVAS, canvas });
+const removeInkOnCanvas = (canvas) => ({ type: REMOVE_INK_ON_CANVAS, canvas });
 
 // ---------------------------  Defined Thunk(s) --------------------------------
 
@@ -137,6 +139,24 @@ export const ink2Canvas = (form) => async (dispatch) => {
     }
 }
 
+export const inkOffCanvas = (form) => async (dispatch) => {
+    const { canvas_id, ink_id } = form;
+
+    const formData = new FormData();
+    formData.append("canvas_id", canvas_id);
+    formData.append("ink_id", ink_id);
+
+    const response = await fetch(`/api/canvases/remove-ink-on-canvas`, {
+        method: 'POST',
+        body: formData
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(removeInkOnCanvas(data));
+    }
+}
+
 
 // ---------------------------  State & Reducer --------------------------------
 
@@ -161,6 +181,8 @@ const canvasReducer = (state = initialState, action) => {
             return [ ...action.usersCanvases ]
         case DELETE_CANVAS:
             return newState.filter((el) => action.canvas.id !== el.id)
+        case REMOVE_INK_ON_CANVAS:
+            return [...newState, action.canvas]
         default:
             return state;
     }

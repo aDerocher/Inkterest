@@ -1,6 +1,7 @@
 
 .nav-bar{
     /* background-color: rgb(194, 120, 24); */
+    background-color: white;
     width: 98%;
     padding: 1%;
     display: flex;
@@ -131,5 +132,5 @@
 }
 .nav-bell:hover .bell-text{
     display: block;
-    
+
 }

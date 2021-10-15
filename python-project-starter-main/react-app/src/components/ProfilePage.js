@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Dropdown from "react-dropdown";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
 import "../styles/profile-page.css";
 
 import CreateCanvasModal from "./CreateCanvasModal";
@@ -49,14 +48,16 @@ function ProfilePage() {
     }
   };
 
+  const user = useSelector((state) => state.session.user);
+  const plus = document.getElementById("plus-btn")
   const editCanvas = (e,c) => {
     e.preventDefault();
     history.push(`/canvases/${c.id}/edit-canvas`)
   }
 
-
   const user = useSelector((state) => state.session.user);
   const plus = document.getElementById("plus-btn");
+
   const curUserCanvases = useSelector((state) => state.canvases);
 
   useEffect(() => {

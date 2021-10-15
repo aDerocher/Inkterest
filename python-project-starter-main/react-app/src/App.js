@@ -21,8 +21,10 @@ import ProfileEdit from './components/ProfileEdit'
 import SplashPage from "./components/SplashPage";
 import DiscoverInksTwo from "./components/DiscoverInksTwo"
 import InkToCanvasForm from "./components/TestPage";
+import InkPage from "./components/InkPage";
 import CanvasEdit from "./components/CanvasEdit"
 import "./styles/index.css"
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -67,10 +69,15 @@ function App() {
             <SignUpForm />
         </Route>
 
+
         <ProtectedRoute path="/inks/new-ink" exact={true}>
             <NewInkForm />
         </ProtectedRoute>
 
+        <Route path="/inks/:inkId" exact={true}>
+          <InkPage />
+        </Route>
+        
         <ProtectedRoute path="/inks/:inkId/edit" exact={true}>
             <EditInkForm />
         </ProtectedRoute>

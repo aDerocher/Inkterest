@@ -11,11 +11,21 @@ def seed_inks():
             destination_link = "google.com",
     )
 
+    ink2 = Ink(
+        creator_id=2,
+        creator_username='leena',
+        image="https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80",
+        title="Hey from leena, like, soooo excited for this right now. ya.",
+        subtitle="This is my first tattoo!",
+        destination_link="google.com",
+    )
+
     ink1.categories.append(Category.query.get(1))
     ink1.categories.append(Category.query.get(3))
     ink1.categories.append(Category.query.get(5))
 
     db.session.add(ink1)
+    db.session.add(ink2)
 
 
     db.session.commit()
