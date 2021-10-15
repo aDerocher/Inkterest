@@ -6,6 +6,8 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    padding-top: 20px;
+    border-top: 1px solid lightgrey;
 }
 
 
@@ -107,6 +109,7 @@
     flex-wrap: nowrap;
     flex-direction: row;
 }
+
 .ink-tile-bottom-buttons-right{
     /* background-color: rgb(214, 140, 87); */
     width: 40%;
