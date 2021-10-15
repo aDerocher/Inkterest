@@ -1,6 +1,6 @@
 /* TODO Add site wide styles */
 :root{
-
+    
     /* Nice Soft Box Shadow*/
     --soft-boxShad: 0 0 10px rgb(0, 0, 0, .5);
     /* Navbar Colors */
@@ -16,11 +16,24 @@
     /* INK TILES - Reds for bottons and button hovers */
     /* INK TILES - Greys for bottons and button hovers */
     --red-btn: red;
-    --red-btn-hover:rgb(197, 22, 22);
+    --red-btn-hover: rgb(197, 22, 22);
     --ink-tile-btn: rgb(235,235,235);
-    --ink-tile-btn-hover: white
+    --ink-tile-btn-hover: white;
 }
 
-body{
+html, body{
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.round-red-button:hover{ background-color: var(--red-btn-hover)}
+.round-red-button{
+    outline: none;
+    border: none;
+    background-color: var(--red-btn);
+    height: 36px;
+    border-radius: 18px;
+    padding-left: 16px;
+    padding-right: 16px;
+    font-weight: bold;
+    color: white;
 }
