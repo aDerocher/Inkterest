@@ -4,17 +4,16 @@ import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { listAllFollowers, listAllFolloweds } from "../store/follow";
 import "../styles/profile-page.css";
-import CreateCanvasModal from "./CreateCanvasModal"
+import CreateCanvasModal from "./CreateCanvasModal";
 import ProfileModal from "./ProfileDDModal";
 import FollowersModal from "./FollowersModal";
 import FollowingsModal from "./FollowingsModal";
 import { useParams } from "react-router-dom";
-import { listUsersCanvases } from "./../store/canvas"
+import { listUsersCanvases } from "./../store/canvas";
 
 function ProfilePage() {
-
-    const params = useParams()
-    const viewingUserId = params.userId;
+  const params = useParams();
+  const viewingUserId = params.userId;
 
   let history = useHistory();
   const dispatch = useDispatch();
@@ -22,17 +21,18 @@ function ProfilePage() {
   // options are for the new-ink/new-canvas dropdown menu
   const options = [
     {
-        type: 'group', name: 'create', items: [
-            { value: 'ink', label: 'Ink', className: 'create-option' },
-            { value: 'canvas', label: 'Canvas', className: 'create-option' }
-        ]
-    }
+      type: "group",
+      name: "create",
+      items: [
+        { value: "ink", label: "Ink", className: "create-option" },
+        { value: "canvas", label: "Canvas", className: "create-option" },
+      ],
+    },
   ];
 
   const [show, setShow] = useState(false);
   const [showFollowers, setShowFollowers] = useState(false);
   const [showFollowings, setShowFollowings] = useState(false);
-
 
   const redirect = () => {
     history.push("/profile-edit");
@@ -42,7 +42,7 @@ function ProfilePage() {
     if (options.value === "ink") {
       history.push("/inks/new-ink");
     } else {
-        setShow(true)
+      setShow(true);
     }
   };
 
@@ -52,7 +52,7 @@ function ProfilePage() {
   // }, [dispatch]);
 
   const user = useSelector((state) => state.session.user);
-  const plus = document.getElementById("plus-btn")
+  const plus = document.getElementById("plus-btn");
   // const allFollows = useSelector((state) => state.follows);
   // console.log(allFollows?.followers?.Followers.length);
   // console.log(user.followed.length);
@@ -61,7 +61,7 @@ function ProfilePage() {
     dispatch(listUsersCanvases(viewingUserId));
   }, [dispatch]);
 
-  const curUserCanvases = []
+  const curUserCanvases = [];
 
   return (
     <div className="profile-page-container">
@@ -77,36 +77,47 @@ function ProfilePage() {
           </h1>
         </div>
         <div className="profile-contact">{user.email}</div>
-        <div className="profile-follwer/follwing">
+        <div className="profile-follwer-follwing">
           {/* <p onClick={}>{user.followers.length} follower</p> */}
-          <button onClick={() => setShowFollowers(true)} >{user.followers.length} follower</button>
-          <FollowersModal onClose={() => setShowFollowers(false)} show={showFollowers}/>
-        <button onClick={() => setShowFollowings(true)} >{user?.followed?.length} following</button>
-          <FollowingsModal onClose={() => setShowFollowings(false)} show={showFollowings}/>
-      </div>
+          <span onClick={() => setShowFollowers(true)}>
+            {user.followers.length} follower
+          </span>
+          <FollowersModal
+            onClose={() => setShowFollowers(false)}
+            show={showFollowers}
+          />
+          <span> • </span>
+          <span onClick={() => setShowFollowings(true)}>
+            {user?.followed?.length} following
+          </span>
+          <FollowingsModal
+            onClose={() => setShowFollowings(false)}
+            show={showFollowings}
+          />
         </div>
+      </div>
       <div className="profile-page-body">
         <div className="profile-page-edit">
           <button onClick={redirect}>Edit</button>
         </div>
         <div className="profile-page-upload">
-            <CreateCanvasModal onClose={() => setShow(false)} show={show}/>
-            <Dropdown
-                id='plus-btn'
-                options={options}
-                onChange={pinCreateHandler}
-                placeholder="+"
-                className="plus-dd"
-                menuClassName="menu"
-                controlClassName="control"
-                // className="fas fa-plus"
-            />
+          <CreateCanvasModal onClose={() => setShow(false)} show={show} />
+          <Dropdown
+            id="plus-btn"
+            options={options}
+            onChange={pinCreateHandler}
+            placeholder="+"
+            className="plus-dd"
+            menuClassName="menu"
+            controlClassName="control"
+            // className="fas fa-plus"
+          />
         </div>
       </div>
       <div className="profile-page-collection">
-          {curUserCanvases?.map((c) => (
-              <p key={c.id}>c.name</p>
-          ))}
+        {curUserCanvases?.map((c) => (
+          <p key={c.id}>c.name</p>
+        ))}
       </div>
     </div>
   );
