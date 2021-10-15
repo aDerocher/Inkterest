@@ -101,7 +101,7 @@ function App() {
             <NewCanvasForm />
         </ProtectedRoute>
 
-        <ProtectedRoute path='/canvases/:canvasId/edit-canvas' exact={true} >
+        <ProtectedRoute path='/canvases/:canvas_id/edit-canvas' exact={true} >
             <CanvasEdit />
         </ProtectedRoute>
 
