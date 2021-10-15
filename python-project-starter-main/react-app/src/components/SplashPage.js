@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import Dropdown from "react-dropdown";
-import { Route, Link, NavLink, useHistory } from "react-router-dom";
+import React from "react";
+// import Dropdown from "react-dropdown";
+// import { Route, Link, NavLink, useHistory } from "react-router-dom";
 import '../styles/splash-page.css'
 
 function SplashPage() {

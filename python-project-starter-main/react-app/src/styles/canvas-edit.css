@@ -1,0 +1,95 @@
+.canv-edit-container {
+    /* border: 2px solid rgb(0, 4, 255); */
+    font-family: Arial, Helvetica, sans-serif;
+    width: fit-content;
+    padding: 0 30px;
+    margin: 30px auto;
+    box-shadow: var(--soft-boxShad);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+}
+.canv-edit-form{
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    padding: 30px 10px;
+
+}
+
+.c-e-close-button:hover{ background-color: var(--soft-grey);}
+.c-e-close-button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 18pt;
+    color: grey;
+    width: 28px;
+    height: 28px;
+    border-radius: 14px;
+    margin-top: 10px;
+    align-self: flex-start;
+}
+
+/* ================ form title ======================= */
+.c-e-title{
+    font-size: 22pt;
+    margin: auto;
+    font-weight: 700;
+    color: var(--charcoal-grey);
+    margin-bottom: 26px;
+}
+
+/* ================ form errors ======================= */
+.c-e-error{
+    color: red;
+}
+
+/* ============================================================= */
+/* ================ inputs and labels ========================== */
+.small-grey-label{
+    font-size: 10pt;
+    margin-top: 10px;
+    color: grey;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.edit-canv-label{
+}
+/* ================ edit name ========================== */
+.edit-canv-input{
+    border: 3px solid var(--soft-grey);
+    padding: 10px;
+    color: var(--charcoal-grey);
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+/* ================ edit private ======================= */
+em.bold{
+    font-weight: bold;
+    font-size: 10pt;
+    padding: 3px;
+}
+.c-e-check-container{
+    display: flex;
+    flex-direction: row;
+    padding: 3px;
+}
+.edit-canv-checkbox{}
+
+/* ================ buttons ======================= */
+
+.c-e-buttons-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.c-e-delete-button{
+
+}
+.edit-canv-submit:hover{ background-color: #555}
+.edit-canv-submit{
+    background-color: var(--charcoal-grey);
+}

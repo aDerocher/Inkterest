@@ -1,16 +1,10 @@
-import React, { useEffect } from "react";
-import Dropdown from "react-dropdown";
-import { Route, Link, NavLink, useHistory } from "react-router-dom";
+import React from "react";
+// import Dropdown from "react-dropdown";
+// import { Route, Link, NavLink, useHistory } from "react-router-dom";
 import "../styles/about.css";
 import squidProfile from "./../images/squid-circle-icon-Black.png"
 
 function About() {
-
-    const options = ["hi"]
-    const go = (e) => {
-        e.preventDefault()
-        window.location.replace("google.com")
-    }
 
   return (
     <div className="about-container">

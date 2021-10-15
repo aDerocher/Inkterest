@@ -16,7 +16,6 @@ import canvasCover from "./../images/squid-circle-icon-Black.png"
 function ProfilePage() {
 
     const params = useParams()
-    const viewingUserId = params.userId;
 
   let history = useHistory();
   const dispatch = useDispatch();
@@ -56,10 +55,9 @@ function ProfilePage() {
 
   const user = useSelector((state) => state.session.user);
   const curUserCanvases = useSelector((state) => state.canvases);
-  const plus = document.getElementById("plus-btn")
 
   useEffect(() => {
-    dispatch(listUsersCanvases(viewingUserId));
+    dispatch(listUsersCanvases(params.userId));
   }, [dispatch]);
 
 
@@ -111,10 +109,10 @@ function ProfilePage() {
                         <div className="canvas-tile-image-container">
 
                             <div className="canvas-tile-image-lock" hidden={!c.private_canvas} >
-                                <i class="fas fa-lock"></i>
+                                <i className="fas fa-lock"></i>
                             </div>
                             <button className="canvas-tile-image-pen" onClick={(e) => editCanvas(e,c)} >
-                                <i class="fas fa-pen"></i>
+                                <i className="fas fa-pen"></i>
                             </button>
                             
                             { c.inks[0] &&
