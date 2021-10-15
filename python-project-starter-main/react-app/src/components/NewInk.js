@@ -61,15 +61,6 @@ function NewInkForm() {
         setSelectedFile(file);
     }
 
-    // const handleDelete = (e, inkId) => {
-    //     e.preventDefault()
-    //     dispatch(removeInk(inkId))
-    // }
-
-    // const handleEditBtn = (inkId) => {
-    //     history.push(`/inks/${inkId}/edit`)
-    // }
-
     const handleDiscardBtn = (e) => {
         e.preventDefault()
         setSelectedFile(null)

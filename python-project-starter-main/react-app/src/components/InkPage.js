@@ -4,6 +4,7 @@ import { useHistory, Redirect, useParams} from 'react-router-dom';
 import { listOneInk } from '../store/ink'
 import { listOneUser, followUser, unfollowUser } from '../store/user'
 import EditInkModal from './EditInkModal';
+import DeleteInkModal from './DeleteInkModal';
 import '../styles/reset-styles.css'
 import '../styles/ink-page.css'
 import '../styles/edit-ink-modal.css'
@@ -30,7 +31,7 @@ function InkPage() {
 
     const [showEditModal, setShowEditModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
-    console.log(showEditModal)
+    console.log(showDeleteModal)
 
     useEffect(() => {
         dispatch(listOneInk(inkId))
@@ -70,7 +71,7 @@ function InkPage() {
 
     const handleDropdownDeleteClose = (e) => {
         e.preventDefault()
-        setInkDropdown(false)
+        setShowDeleteModal(true)
 
     }
 
@@ -142,6 +143,14 @@ function InkPage() {
                     <EditInkModal
                         show={showEditModal}
                         onClose={() => setShowEditModal(false)}
+                    />
+                )
+            }
+            {
+                showDeleteModal && (
+                    <DeleteInkModal
+                        show={showDeleteModal}
+                        onClose={() => setShowDeleteModal(false)}
                     />
                 )
             }
