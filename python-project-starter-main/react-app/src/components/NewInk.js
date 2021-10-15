@@ -69,7 +69,6 @@ function NewInkForm() {
         setSelectedFile(file);
     }
 
-
     const handleDiscardBtn = (e) => {
         e.preventDefault()
         setSelectedFile(null)

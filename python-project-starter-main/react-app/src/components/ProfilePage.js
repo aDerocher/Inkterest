@@ -51,12 +51,14 @@ function ProfilePage() {
     }
   };
 
+
   const curUserCanvases = useSelector((state) => state.canvases);
 
   const goToCanvasProfile = (e, canvas_id) => {
       e.preventDefault();
       history.push(`/canvases/${canvas_id}`)
   }
+
   const editCanvas = (e,c) => {
     e.preventDefault();
     history.push(`/canvases/${c.id}/edit-canvas`)
@@ -128,6 +130,7 @@ function ProfilePage() {
                             <div className="canvas-tile-image-lock" hidden={!c.private_canvas} >
                                 <i className="fas fa-lock"></i>
                             </div>
+
                             <div onClick={e=>e.stopPropagation()}>
                                 <button className="canvas-tile-image-pen" onClick={(e) => editCanvas(e,c)} >
                                     <i className="fas fa-pen"></i>

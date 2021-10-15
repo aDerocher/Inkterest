@@ -3,9 +3,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { authenticate } from "./store/session";
-// import User from "./components/User";
 import NavBar from "./components/NavBar";
-// import LoginForm from "./components/auth/LoginForm";
 import UsersList from "./components/UsersList";
 import SignUpForm from "./components/auth/SignUpForm";
 import NewInkForm from "./components/NewInk";
@@ -14,7 +12,7 @@ import NewCanvasForm from './components/NewCanvas';
 import NavBarSplash from "./components/NavBarSplash";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import ProfilePage from "./components/ProfilePage";
-import EditInkForm from "./components/EditInkForm"
+
 import DiscoverInks from "./components/DiscoverInks";
 import About from "./components/About";
 import ProfileEdit from './components/ProfileEdit'
@@ -53,27 +51,39 @@ function App() {
         <Route path="/" exact={true}>
             {user ? <DiscoverInks /> : <SplashPage />}
         </Route>
-        
-        <Route path='/profile-edit' exact={true}>
-          <ProfileEdit />
+
+        <Route path="/users/:userId" exact={true}>
+          <ProfilePage />
         </Route>
 
-        {/* <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route> */}
+        <Route path='/inks' exact={true}>
+          <DiscoverInks />
+        </Route>
+
+        <Route path="/inks/:inkId" exact={true}>
+          <InkPage />
+        </Route>
+
+        <Route path="/about" exact={true}>
+          <About />
+        </Route>
+
+        {/* TEST ROUTES -- TEMP */}
 
         <Route path='/test' exact={true}>
             <InkToCanvasForm />
         </Route>
 
-        <Route path="/sign-up" exact={true}>
-            <SignUpForm />
+        <Route path="/discover-inks-two" exact={true}>
+          <DiscoverInksTwo />
         </Route>
 
+        {/* TEST ROUTES -- TEMP */}
 
         <ProtectedRoute path="/inks/new-ink" exact={true}>
             <NewInkForm />
         </ProtectedRoute>
+
 
         <Route path="/inks/:inkId" exact={true}>
           <InkPage />
@@ -95,25 +105,9 @@ function App() {
             <CanvasEdit />
         </ProtectedRoute>
 
-        <ProtectedRoute path='/inks' exact={true}>
-            <DiscoverInks />
+        <ProtectedRoute path='/profile-edit' exact={true}>
+          <ProfileEdit />
         </ProtectedRoute>
-
-        <ProtectedRoute path="/users" exact={true}>
-          <UsersList />
-        </ProtectedRoute>
-
-        <ProtectedRoute path="/users/:userId" exact={true}>
-            <ProfilePage />
-        </ProtectedRoute>
-
-        <Route path="/about" exact={true}>
-            <About />
-        </Route>
-
-        <Route path="/discover-inks-two" exact={true}>
-            <DiscoverInksTwo />
-        </Route>
 
       </Switch>
     </BrowserRouter>
