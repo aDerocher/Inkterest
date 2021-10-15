@@ -22,6 +22,7 @@ import InkToCanvasForm from "./components/TestPage";
 import InkPage from "./components/InkPage";
 import CanvasEdit from "./components/CanvasEdit"
 import "./styles/index.css"
+import CanvasProfilePage from "./components/CanvasProfilePage";
 
 
 function App() {
@@ -81,6 +82,19 @@ function App() {
 
         <ProtectedRoute path="/inks/new-ink" exact={true}>
             <NewInkForm />
+        </ProtectedRoute>
+
+
+        <Route path="/inks/:inkId" exact={true}>
+          <InkPage />
+        </Route>
+        
+        <ProtectedRoute path="/inks/:inkId/edit" exact={true}>
+            <EditInkForm />
+        </ProtectedRoute>
+
+        <ProtectedRoute path='/canvases/:canvas_id' exact={true} >
+            <CanvasProfilePage />
         </ProtectedRoute>
 
         <ProtectedRoute path='/canvases/new-canvas' exact={true} >

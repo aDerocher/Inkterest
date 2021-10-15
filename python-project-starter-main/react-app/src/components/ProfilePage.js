@@ -11,11 +11,11 @@ import FollowingsModal from "./FollowingsModal";
 import { useParams } from "react-router-dom";
 import { listUsersCanvases } from "./../store/canvas";
 import canvasCover from "./../images/squid-circle-icon-Black.png"
+import DiscoverInks from "./DiscoverInks";
 
 function ProfilePage() {
   const params = useParams();
   const viewingUserId = params.userId;
-
 
   let history = useHistory();
   const dispatch = useDispatch();
@@ -36,6 +36,9 @@ function ProfilePage() {
   const [showFollowers, setShowFollowers] = useState(false);
   const [showFollowings, setShowFollowings] = useState(false);
 
+  const user = useSelector((state) => state.session.user);
+
+
   const redirect = () => {
     history.push("/profile-edit");
   };
@@ -48,15 +51,18 @@ function ProfilePage() {
     }
   };
 
+
+  const curUserCanvases = useSelector((state) => state.canvases);
+
+  const goToCanvasProfile = (e, canvas_id) => {
+      e.preventDefault();
+      history.push(`/canvases/${canvas_id}`)
+  }
+
   const editCanvas = (e,c) => {
     e.preventDefault();
     history.push(`/canvases/${c.id}/edit-canvas`)
   }
-
-  const user = useSelector((state) => state.session.user);
-  const plus = document.getElementById("plus-btn");
-
-  const curUserCanvases = useSelector((state) => state.canvases);
 
   useEffect(() => {
     dispatch(listUsersCanvases(params.userId));
@@ -118,16 +124,19 @@ function ProfilePage() {
             <div className="users-canvases-collection">
 
                 {curUserCanvases?.map((c) => (
-                    <div className="canvas-tile" key={c.id}>
-                        <div className="canvas-tile-image-container">
+                    <div className="canvas-tile" key={c.id} onClick={e=>goToCanvasProfile(e,c.id)}>
+                        <div className="canvas-tile-image-container" >
 
                             <div className="canvas-tile-image-lock" hidden={!c.private_canvas} >
                                 <i className="fas fa-lock"></i>
                             </div>
-                            <button className="canvas-tile-image-pen" onClick={(e) => editCanvas(e,c)} >
-                                <i className="fas fa-pen"></i>
-                            </button>
 
+                            <div onClick={e=>e.stopPropagation()}>
+                                <button className="canvas-tile-image-pen" onClick={(e) => editCanvas(e,c)} >
+                                    <i className="fas fa-pen"></i>
+                                </button>
+                            </div>
+                            
                             { c.inks[0] &&
                                 <img className="canvas-tile-image" src={c.inks[0]} alt="Canvas Cover"/>}
                             { !c.inks[0] &&
@@ -142,6 +151,7 @@ function ProfilePage() {
             </div>
 
       </div>
+      <DiscoverInks user_id={viewingUserId}/>
     </div>
   );
 }

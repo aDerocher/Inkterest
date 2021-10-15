@@ -69,6 +69,7 @@ export const listAllInks = () => async (dispatch) => {
     }
 }
 
+
 // edit ink
 export const changeInk = (ink, inkId) => async (dispatch) => {
     const { title, subtitle, destination_link } = ink;

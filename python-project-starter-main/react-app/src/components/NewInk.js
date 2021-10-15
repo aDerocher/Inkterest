@@ -26,15 +26,23 @@ function NewInkForm() {
     const [selectedFile, setSelectedFile] = useState(null);
     const [select, setSelect] = useState(null)
     const selectedCanvas = canvases?.filter((el) => el.name === select)
+    const [ errors, setErrors ] = useState([])
 
 
     useEffect(() => {
         dispatch(listUsersCanvases(sessionUser?.id))
-        console.log(sessionUser)
-        console.log(canvases)
+        let newErrors = [];
+        if (title.length < 2 ) newErrors.push("Titles must be longer than 2 characters")
+        setErrors(newErrors)
     }, [dispatch])
 
     if (!sessionUser) return <Redirect to="/" />;
+
+    const destLinkEdit = (val) => {
+        if (!val.startsWith("https://www.")){
+            setDestination_link("https://www." + destination_link)
+        }
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -71,7 +79,7 @@ function NewInkForm() {
     return (
         <div className='container'>
             <div className='form-container'>
-                <form className="new-ink-form" onSubmit={handleSubmit}>
+                <form className="new-ink-form" onSubmit={destLinkEdit(destination_link), handleSubmit}>
                     <div className='form-top'>
                         <div className='top-left'>
                                 <NavLink to={`/users/${sessionUser?.id}`}>
@@ -134,6 +142,7 @@ function NewInkForm() {
                             <button
                                 type='submit'
                                 className='file-upload-btn'
+                                disabled={errors.length > 0}
                             >
                                 submit ink
                             </button>
