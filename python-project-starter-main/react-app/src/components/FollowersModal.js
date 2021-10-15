@@ -1,10 +1,23 @@
-
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "../styles/follows-modal.css";
+import { followUser } from '../store/user'
 
 const FollowersModal = (props) => {
   const allFollowers = useSelector((state) => state.session.user.followers);
+
+  const user = useSelector((state) => state.session.user);
+  const dispatch = useDispatch();
+
+
+
+  const handleFollower = (userId) => {
+    // e.preventDefault();
+    console.log(userId, '-----------------------------');
+    dispatch(followUser(userId))
+  };
+
+  
 
   if (!props.show) {
     return null;
@@ -14,7 +27,7 @@ const FollowersModal = (props) => {
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <div className="modal-title">
-            <h4>Following</h4>
+            <h4>{user.followers.length} Follower</h4>
           </div>
         </div>
         <div className="close-button">
@@ -25,9 +38,11 @@ const FollowersModal = (props) => {
             <div key={f[0]} className="follows-modal-row">
               <div className="follow-user-container">
                 <img src="" alt="circle" />
-                <p>Username</p>
+                <p>{f[0]}</p>
               </div>
-              <button className="toggle-follow-btn">Follow</button>
+              <button onClick={() => handleFollower(f[1])} className="toggle-follow-btn">
+                Follow
+              </button>
             </div>
           ))}
         </div>

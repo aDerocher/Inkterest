@@ -64,6 +64,10 @@ function ProfilePage() {
     history.push(`/canvases/${c.id}/edit-canvas`)
   }
 
+
+
+
+
   useEffect(() => {
     dispatch(listUsersCanvases(params.userId));
   }, [dispatch]);
@@ -136,7 +140,7 @@ function ProfilePage() {
                                     <i className="fas fa-pen"></i>
                                 </button>
                             </div>
-                            
+
                             { c.inks[0] &&
                                 <img className="canvas-tile-image" src={c.inks[0]} alt="Canvas Cover"/>}
                             { !c.inks[0] &&
