@@ -11,6 +11,7 @@ import FollowingsModal from "./FollowingsModal";
 import { useParams } from "react-router-dom";
 import { listUsersCanvases } from "./../store/canvas";
 import canvasCover from "./../images/squid-circle-icon-Black.png"
+import DiscoverInks from "./DiscoverInks";
 
 function ProfilePage() {
   const params = useParams();
@@ -140,6 +141,7 @@ function ProfilePage() {
             </div>
 
       </div>
+      <DiscoverInks user_id={viewingUserId}/>
     </div>
   );
 }

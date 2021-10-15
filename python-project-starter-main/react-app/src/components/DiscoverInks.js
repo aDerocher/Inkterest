@@ -1,35 +1,43 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { listAllInks } from '../store/ink'
-// need to write this backend request to add in usernames to the ink cards
-// import { listAllUsers } from '../store/users'
+import { useHistory } from "react-router";
 import imgPlaceholder from "./../images/squid-circle-icon-Black.png"
 import "../styles/discover-inks.css";
 
-function DiscoverInks() {
+function DiscoverInks(props) {
     const dispatch = useDispatch();
+    const history = useHistory();
+    let inks = useSelector(state => state.inks);
 
-    const inks = useSelector(state => state.inks)
-
+    if(props.user_id !== null && props.user_id !== undefined){
+        inks = inks.filter(i => i.creator_id = props.user_id)
+    }
 
     useEffect(() => {
         dispatch(listAllInks())
     }, [dispatch])
 
+    const goToInkPage = (e,ink_id) => {
+        e.preventDefault();
+        history.push(`/inks/${ink_id}`)
+    }
 
   return (
     <div className="discover-inks-container">
         {inks?.map((i) => (
 
-            <div key={i.id} className='tile-container'>
+            <div key={i.id} className='tile-container' onClick={e => goToInkPage(e,i.id)}>
                 <div className="image-container" style={{
                             backgroundImage: `url(${i.image})`,
                             height: `100%`
                             }}>
-                    <a href={`/inks/${i.id}`}>link</a>
-                    <div className="ink-tile-top-buttons">
-                        <button className='ink-tile-btn ink-save-btn'>Save</button>
-                    </div>
+                    {/* <a href={`/inks/${i.id}`}>link</a> */}
+                    {!props.user_id &&
+                        <div className="ink-tile-top-buttons">
+                            <button className='ink-tile-btn ink-save-btn'>Save</button>
+                        </div>
+                    }
 
                     <img className='ink-tile-image' src={i.image} alt="" />
                     
