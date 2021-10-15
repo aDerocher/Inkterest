@@ -5,13 +5,16 @@ import { useHistory } from 'react-router-dom';
 import "../styles/navbar.css"
 import pinkSquidBanner from "./../images/bannerLogo-pinkBlack.png"
 import { login } from '../store/session';
-import Modal from './Modal';
+import LoginFormModal from './auth/LoginForm'
 
 
 const NavBarSplash = () => {
-  const [show, setShow] = useState(false)
   const dispatch = useDispatch();
   const history = useHistory()
+
+  const [show, setShow] = useState(false)
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showSignUpModal, setShowSignUpModal] = useState(false);
 
   const loginDemo = (e) => {
     e.preventDefault();
@@ -22,7 +25,17 @@ const NavBarSplash = () => {
 
   const goAbout = (e) => {
       loginDemo(e);
-      history.push("/inks");
+      history.push("/inks"); // ??
+  }
+
+  const handleLogin = (e) => {
+    e.preventDefault()
+    setShowLoginModal(true)
+  }
+
+  const handleSignup = (e) => {
+    e.preventDefault()
+    setShowSignUpModal(true)
   }
 
   return (
@@ -42,17 +55,32 @@ const NavBarSplash = () => {
 
         <div className="nav-section nav-items-right">
             <div className="nav-item no-pad">
-            <button onClick={e => goAbout(e)}>About</button>
+              <button onClick={e => goAbout(e)}>About</button>
             </div>
             <div className="nav-item nav-splash-item no-pad" onClick={e=>loginDemo(e)}>Demo User</div>
             <div className="nav-item nav-splash-item no-pad">
-              <button onClick={e=>loginDemo(e)}>Log In</button>
-              <Modal onClose={() => setShow(false)} show={show} />
+              <div onClick={(e) => handleLogin(e)}>Log In</div>
             </div>
             <div className="nav-item nav-splash-item no-pad">
-              <a href="/sign-up">sign up</a>
+              <div >Sign up</div>
             </div>
         </div>
+      {
+        showLoginModal && (
+          <LoginFormModal
+            show={showLoginModal}
+            onClose={() => setShowLoginModal(false)}
+          />
+        )
+      }
+      {/* {
+        showSignUpModal && (
+          <SignUpFormModal
+            show={showSignUpModal}
+            onClose={() => setShowSignUpModal(false)}
+          />
+        )
+      } */}
     </nav>
   );
 }

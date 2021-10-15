@@ -7,7 +7,6 @@ import EditInkModal from './EditInkModal';
 import DeleteInkModal from './DeleteInkModal';
 import '../styles/reset-styles.css'
 import '../styles/ink-page.css'
-import '../styles/edit-ink-modal.css'
 
 function InkPage() {
     const history = useHistory();

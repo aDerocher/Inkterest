@@ -18,9 +18,9 @@ const ProfileModal = (props) => {
   };
 
   const onLogout = async (e) => {
-      e.preventDefault()
-    await dispatch(logout());
+    e.preventDefault()
     history.push("/")
+    await dispatch(logout());
   };
 
   if (!props.show) {
