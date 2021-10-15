@@ -52,6 +52,11 @@ function ProfilePage() {
   };
 
   const curUserCanvases = useSelector((state) => state.canvases);
+
+  const goToCanvasProfile = (e, canvas_id) => {
+      e.preventDefault();
+      history.push(`/canvases/${canvas_id}`)
+  }
   const editCanvas = (e,c) => {
     e.preventDefault();
     history.push(`/canvases/${c.id}/edit-canvas`)
@@ -117,15 +122,17 @@ function ProfilePage() {
             <div className="users-canvases-collection">
 
                 {curUserCanvases?.map((c) => (
-                    <div className="canvas-tile" key={c.id}>
-                        <div className="canvas-tile-image-container">
+                    <div className="canvas-tile" key={c.id} onClick={e=>goToCanvasProfile(e,c.id)}>
+                        <div className="canvas-tile-image-container" >
 
                             <div className="canvas-tile-image-lock" hidden={!c.private_canvas} >
                                 <i className="fas fa-lock"></i>
                             </div>
-                            <button className="canvas-tile-image-pen" onClick={(e) => editCanvas(e,c)} >
-                                <i className="fas fa-pen"></i>
-                            </button>
+                            <div onClick={e=>e.stopPropagation()}>
+                                <button className="canvas-tile-image-pen" onClick={(e) => editCanvas(e,c)} >
+                                    <i className="fas fa-pen"></i>
+                                </button>
+                            </div>
                             
                             { c.inks[0] &&
                                 <img className="canvas-tile-image" src={c.inks[0]} alt="Canvas Cover"/>}

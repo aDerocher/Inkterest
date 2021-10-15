@@ -1,13 +1,14 @@
 
 .discover-inks-container{
     /* background-color: aquamarine; */
-    height: 1000px;
     padding: 20px 35px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     padding-top: 20px;
     border-top: 1px solid lightgrey;
+    height: 100px;
+    max-height: 1000px;
 }
 
 
@@ -20,6 +21,7 @@
     border-radius: 16px;
     font-family: Arial, Helvetica, sans-serif;
     margin: 6px;
+    flex-basis: 20%
 }
 .tile-container:hover .image-container{
     background-color: rgba(0,0,0,.4);

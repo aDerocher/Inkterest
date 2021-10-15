@@ -13,6 +13,9 @@ function DiscoverInks(props) {
     if(props.user_id !== null && props.user_id !== undefined){
         inks = inks.filter(i => i.creator_id = props.user_id)
     }
+    if(props.canvasInksArr !== null && props.canvasInksArr !== undefined){
+        inks = props.canvasInksArr
+    }
 
     useEffect(() => {
         dispatch(listAllInks())
