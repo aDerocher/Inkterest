@@ -110,6 +110,8 @@
 .user-name {
     font-size: 15px;
     font-weight: bold;
+    text-decoration: none;
+    color: black;
 }
 
 .user-followers {
@@ -117,6 +119,20 @@
 }
 
 .follow-btn {
+    background-color: #e60023;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    width: 80px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.unfollow-btn {
     background-color: #e60023;
     color: white;
     font-weight: bold;

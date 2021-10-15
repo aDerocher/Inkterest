@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, Redirect, NavLink, useParams, Link } from 'react-router-dom';
+import { useHistory, Redirect, useParams} from 'react-router-dom';
 import { listOneInk } from '../store/ink'
 import { listOneUser } from '../store/user'
 import '../styles/reset-styles.css'
@@ -23,11 +23,14 @@ function InkPage() {
     // direct access to user array/slice of state
     const user = useSelector(state => state?.user[0])
 
+    // checks to see if sessionUser is NOT following user
+    const sessionUserIsNotFollowingUser = sessionUser?.followed.map((el) => el[1] !== user?.id)
 
     useEffect(() => {
         dispatch(listOneInk(inkId))
         dispatch(listOneUser(inkId))
     }, [dispatch])
+
 
     if (!sessionUser) return <Redirect to="/" />;
 
@@ -46,9 +49,11 @@ function InkPage() {
                     />
                 </div>
                 <div className='ink-right'>
-                    <div className='ink-drop' onClick={null}>
-                        <ion-icon className='ink-tools' name="options-outline"></ion-icon>
-                    </div>
+                    {sessionUser?.id === user?.id &&
+                        <div className='ink-drop' onClick={null}>
+                            <ion-icon className='ink-tools' name="options-outline"></ion-icon>
+                        </div>
+                    }
 
                     <a className='ink-link' href={`https://${ink?.destination_link}`}>{ink?.destination_link}</a>
                     <div className='ink-title'>{ink?.title}</div>
@@ -57,10 +62,21 @@ function InkPage() {
                         <img className='ink-user-img' src={user?.profile_picture} alt='user'/>
                         <div className='user-info'>
                             <div className='user-text'>
-                                <div className='user-name'>{user?.username}</div>
+                                <a className='user-name' href={`/users/${user?.id}`}>{user?.username}</a>
                                 <div className='user-followers'>{user?.followers.length} followers</div>
                             </div>
-                            {sessionUser !== ink?.creator_id && <button className='follow-btn'>Follow</button>  }
+                            {
+                            sessionUser
+                            && sessionUser.id !== ink?.creator_id
+                            && sessionUserIsNotFollowingUser[0]
+                            && <button className='follow-btn' onClick={null}>Follow</button>
+                            }
+                            {
+                            sessionUser
+                            && sessionUser.id !== ink?.creator_id
+                            && !sessionUserIsNotFollowingUser[0]
+                            && <button className='unfollow-btn' onClick={null}>Unfollow</button>
+                            }
                         </div>
                     </div>
                 </div>
