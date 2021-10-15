@@ -21,17 +21,8 @@ def users():
 @user_routes.route('/<int:id>')
 @login_required
 def user(id):
-    follow = follows.query.all()
     user = User.query.get(id)
-    followers = Follow.query.filter(Follow.follower_id == id).all()
-    # x = {'followers': [follower.to_dict() for follower in followers]}
-    followeds = Follow.query.filter(Follow.followed_id == id).all()
-    # y = {'followed': [followed.to_dict() for followed in followeds]}
-    return {
-        'user': user.to_dict(),
-        'followers': {'followers': [follower.to_dict() for follower in followers]},
-        'followeds': {'followeds': [followed.to_dict() for followed in followeds]}
-      }
+    return user.to_dict()
 
 # edit user
 @user_routes.route("/<int:id>/edit", methods=["PATCH"])

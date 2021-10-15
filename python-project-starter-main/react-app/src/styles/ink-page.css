@@ -1,5 +1,4 @@
-.container {
-    background-color: #e6e6e6;
+.ink-page-container {
     height: 100%;
     width: 100vw;
     display: flex;
@@ -12,22 +11,22 @@
     width: 800px;
     background-color: #ffffff;
     border-radius: 16px;
-    padding: 40px;
     margin: 40px;
     display: flex;
     flex-direction: row;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .preview-img {
     width: 380px;
     height: 100%;
-    border-radius: 10px;
+    border-radius: 16px 0px 0px 16px;
     object-fit: cover;
 }
 
 .ink-left {
     width: 380px;
-    height: 510px;
+    height: 100%;
     display:flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -39,6 +38,48 @@
     height: 510px;
     display:flex;
     flex-direction: column;
-    justify-content: space-around;
+    align-items: center;
+}
+/* ============================= */
+
+.ink-drop {
+    width: 380px;
+    height: 48px;
+    margin-top: 10px;
+}
+
+.ink-link {
+    width: 380px;
+    height: 48px;
+    font-weight: bold;
+    color: black;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.ink-title {
+    width: 380px;
+    height: 100px;
+    font-size: 35px;
+    font-weight: bold;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    word-wrap: break-word;
+}
+
+.ink-subtitle {
+    width: 380px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    word-wrap: break-word;
+}
+
+.ink-username {
+    width: 380px;
+    height: 100px;
+    display: flex;
     align-items: center;
 }
