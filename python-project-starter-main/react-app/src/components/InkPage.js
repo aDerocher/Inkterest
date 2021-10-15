@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Redirect, NavLink, useParams, Link } from 'react-router-dom';
 import { listOneInk } from '../store/ink'
+import { listOneUser } from '../store/user'
 import '../styles/reset-styles.css'
 import '../styles/ink-page.css'
 
@@ -12,15 +13,21 @@ function InkPage() {
 
     // direct access to session user/slice of state
     const sessionUser = useSelector(state => state.session.user);
-    const canvases = useSelector(state => state.canvases)
 
     // direct access to ink slice of state - houses ONE ink
     const ink = useSelector(state => state?.inks[0])
-    console.log(ink)
-    // direct access to canvases array/slice of state
 
-    useEffect(async () => {
+    // direct access to canvases array/slice of state
+    const canvases = useSelector(state => state.canvases)
+
+    // direct access to user array/slice of state
+    const user = useSelector(state => state?.user[0])
+    console.log(user)
+
+
+    useEffect(() => {
         dispatch(listOneInk(inkId))
+        dispatch(listOneUser(inkId))
     }, [dispatch])
 
     if (!sessionUser) return <Redirect to="/" />;
@@ -48,13 +55,13 @@ function InkPage() {
                     <div className='ink-title'>{ink?.title}</div>
                     <div className='ink-subtitle'>{ink?.subtitle} </div>
                     <div className='ink-profile'>
-                        <img className='ink-user-img' src='#' alt='user'/>
+                        <img className='ink-user-img' src={user?.profile_picture} alt='user'/>
                         <div className='user-info'>
                             <div className='user-text'>
-                                <div className='user-name'>USERNAME</div>
-                                <div className='user-followers'>FOLLOWERS</div>
+                                <div className='user-name'>{user?.username}</div>
+                                <div className='user-followers'>{user?.followers.length} followers</div>
                             </div>
-                            {sessionUser !== ink.creator_id && <button className='follow-btn'>FOLLOW</button>  }
+                            {sessionUser !== ink?.creator_id && <button className='follow-btn'>FOLLOW</button>  }
                         </div>
                     </div>
                 </div>

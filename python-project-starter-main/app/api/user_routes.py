@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import User, db, Canvas, follows
+from app.models import User, db, Canvas, follows, Ink
 from app.forms import ProfileEditForm
 
 
@@ -21,7 +21,12 @@ def users():
 @user_routes.route('/<int:id>')
 @login_required
 def user(id):
-    user = User.query.get(id)
+    # this id being passed in is actually the ink id
+    # using the ink id to find the first ink matching id
+    ink = Ink.query.get(id)
+    # find user using ink property...
+    user = User.query.get(ink.creator_id)
+    
     return user.to_dict()
 
 # edit user
