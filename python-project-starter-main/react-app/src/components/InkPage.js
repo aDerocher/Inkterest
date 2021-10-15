@@ -6,6 +6,7 @@ import { listOneUser, followUser, unfollowUser } from '../store/user'
 import EditInkModal from './EditInkModal';
 import '../styles/reset-styles.css'
 import '../styles/ink-page.css'
+import '../styles/edit-ink-modal.css'
 
 function InkPage() {
     const history = useHistory();
@@ -29,6 +30,7 @@ function InkPage() {
 
     const [showEditModal, setShowEditModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
+    console.log(showEditModal)
 
     useEffect(() => {
         dispatch(listOneInk(inkId))
@@ -55,13 +57,15 @@ function InkPage() {
 
     const handleDropdown = (e) => {
         e.preventDefault()
+        e.stopPropagation()
         if (inkDropdown) setInkDropdown(false)
         else setInkDropdown(true)
     }
 
     const handleDropdownEditClose = (e) => {
         e.preventDefault()
-        setInkDropdown(false)
+        setShowEditModal(true)
+        // if I try to close the dropdown, modal will not show until I click tooltip btn
     }
 
     const handleDropdownDeleteClose = (e) => {
@@ -96,12 +100,15 @@ function InkPage() {
                     inkDropdown &&
                         (
                             <div className='tool-btn-container'>
-                                <button className='tool-btn-edit' onClick={(e) => handleDropdownEditClose(e)}>Edit</button>
-                                <EditInkModal
-                                    onClose={() => setShowEditModal(false)}
-                                    show={showEditModal}
-                                />
-                                <button className='tool-btn-delete' onClick={(e) => handleDropdownDeleteClose(e)}>Delete</button>
+                                <button
+                                    className='tool-btn-edit'
+                                    onClick={(e) => handleDropdownEditClose(e)}
+                                >Edit</button>
+
+                                <button
+                                    className='tool-btn-delete'
+                                    onClick={(e) => handleDropdownDeleteClose(e)}
+                                >Delete</button>
                             </div>
                         )
                     }
@@ -130,6 +137,14 @@ function InkPage() {
                     </div>
                 </div>
             </div>
+            {
+                showEditModal && (
+                    <EditInkModal
+                        show={showEditModal}
+                        onClose={() => setShowEditModal(false)}
+                    />
+                )
+            }
         </div>
     );
 }

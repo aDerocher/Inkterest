@@ -44,7 +44,7 @@ const EditInkModal = (props) => {
     return (
         <div className="ink-modal" onClick={props.onClose}>
             <div className="ink-modal-content" onClick={(e) => e.stopPropagation()}>
-                <form onSubmit={() => handleSubmit(ink?.id)}>
+                <form className='ink-edit-form' onSubmit={() => handleSubmit(ink?.id)}>
 
                     <input
                         type='text'
