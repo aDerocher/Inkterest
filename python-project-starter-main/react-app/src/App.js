@@ -21,6 +21,7 @@ import ProfileEdit from './components/ProfileEdit'
 import SplashPage from "./components/SplashPage";
 import DiscoverInksTwo from "./components/DiscoverInksTwo"
 import InkToCanvasForm from "./components/TestPage";
+import CanvasEdit from "./components/CanvasEdit"
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -74,6 +75,10 @@ function App() {
 
         <ProtectedRoute path='/canvases/new-canvas' exact={true} >
           <NewCanvasForm />
+        </ProtectedRoute>
+
+        <ProtectedRoute path='/canvases/:canvasId/edit-canvas' exact={true} >
+          <CanvasEdit />
         </ProtectedRoute>
 
         <ProtectedRoute path='/inks' exact={true}>

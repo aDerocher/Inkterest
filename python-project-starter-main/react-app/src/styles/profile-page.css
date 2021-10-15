@@ -146,6 +146,8 @@
 
 .canvas-tile-image-container:hover .canvas-tile-image-pen{ opacity: 1;}
 .canvas-tile-image-pen{
+    outline: none;
+    border: none;
     opacity: 0;
     background-color: var(--soft-grey);
     max-height: 100px;
