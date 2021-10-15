@@ -3,11 +3,6 @@ from flask_login import login_required, current_user
 from app.models import User, db, Canvas, follows, Ink
 from app.forms import ProfileEditForm
 
-
-
-
-
-
 user_routes = Blueprint('users', __name__)
 
 
@@ -18,6 +13,9 @@ def users():
     return {'users': [user.to_dict() for user in users]}
 
 
+# get ONE user on ink page - USE WITH CAUTION!
+# this route uses routabout measures to query for the user (user inkId)
+# IF YOU DONT HAVE DIRECT ACCESS TO A SPECIFIC INK_ID, DO NOT USE THIS ROUTE!
 @user_routes.route('/<int:id>')
 @login_required
 def user(id):
@@ -26,10 +24,11 @@ def user(id):
     ink = Ink.query.get(id)
     # find user using ink property...
     user = User.query.get(ink.creator_id)
-    
+
     return user.to_dict()
 
-# edit user
+
+# edit user profile
 @user_routes.route("/<int:id>/edit", methods=["PATCH"])
 @login_required
 def edit_user(id):
@@ -47,4 +46,28 @@ def edit_user(id):
 
     return user.to_dict()
 
-    return None
+# ========================= FOLLOWS ==============================
+
+# follow a user
+@user_routes.route("/<int:id>/follow", methods=["POST"])
+@login_required
+def follow_user(id):
+    user = User.query.get(id)
+
+    user.followers.append(User.query.get(int(current_user.get_id())))
+
+    db.session.commit()
+
+    return user.to_dict()
+
+# UNfollow a user
+@user_routes.route("/<int:id>/unfollow", methods=["POST"])
+@login_required
+def unfollow_user(id):
+    user = User.query.get(id)
+
+    user.followers.remove(User.query.get(int(current_user.get_id())))
+
+    db.session.commit()
+
+    return user.to_dict()

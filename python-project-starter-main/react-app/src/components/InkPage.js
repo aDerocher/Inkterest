@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Redirect, useParams} from 'react-router-dom';
 import { listOneInk } from '../store/ink'
-import { listOneUser } from '../store/user'
+import { listOneUser, followUser, unfollowUser } from '../store/user'
 import '../styles/reset-styles.css'
 import '../styles/ink-page.css'
 
@@ -23,18 +23,34 @@ function InkPage() {
     // direct access to user array/slice of state
     const user = useSelector(state => state?.user[0])
 
-    // checks to see if sessionUser is NOT following user
-    const sessionUserIsNotFollowingUser = sessionUser?.followed.map((el) => el[1] !== user?.id)
+    const [isNotFollowing, setIsNotFollowing] = useState(null)
+    console.log(isNotFollowing)
 
+    // SERIOUS ISSUE WITH THIS ON INITAL RENDER
     useEffect(() => {
         dispatch(listOneInk(inkId))
         dispatch(listOneUser(inkId))
-    }, [dispatch])
+        if (isNotFollowing === null) {
+            const followerBool = user?.followers.some((el) => el[1] === sessionUser?.id)
+            setIsNotFollowing(followerBool)
+        }
+    }, [])
 
 
     if (!sessionUser) return <Redirect to="/" />;
 
 
+    const handleFollow = (e, userId) => {
+        e.preventDefault()
+        dispatch(followUser(userId))
+        setIsNotFollowing(false)
+    }
+
+    const handleUnFollow = (e, userId) => {
+        e.preventDefault()
+        dispatch(unfollowUser(userId))
+        setIsNotFollowing(true)
+    }
 
     // ========================================== COMPONENT
 
@@ -66,16 +82,9 @@ function InkPage() {
                                 <div className='user-followers'>{user?.followers.length} followers</div>
                             </div>
                             {
-                            sessionUser
-                            && sessionUser.id !== ink?.creator_id
-                            && sessionUserIsNotFollowingUser[0]
-                            && <button className='follow-btn' onClick={null}>Follow</button>
-                            }
-                            {
-                            sessionUser
-                            && sessionUser.id !== ink?.creator_id
-                            && !sessionUserIsNotFollowingUser[0]
-                            && <button className='unfollow-btn' onClick={null}>Unfollow</button>
+                                isNotFollowing
+                                ? <button className='follow-btn' onClick={(e) => handleFollow(e, user?.id)}>Follow</button>
+                                : <button className='unfollow-btn' onClick={(e) => handleUnFollow(e, user?.id)}>Unfollow</button>
                             }
                         </div>
                     </div>
