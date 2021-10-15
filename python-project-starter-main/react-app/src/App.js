@@ -3,9 +3,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { authenticate } from "./store/session";
-// import User from "./components/User";
 import NavBar from "./components/NavBar";
-// import LoginForm from "./components/auth/LoginForm";
 import UsersList from "./components/UsersList";
 import SignUpForm from "./components/auth/SignUpForm";
 import NewInkForm from "./components/NewInk";
@@ -57,26 +55,33 @@ function App() {
           <ProfileEdit />
         </Route>
 
-        {/* <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route> */}
+        <Route path='/inks' exact={true}>
+          <DiscoverInks />
+        </Route>
+
+        <Route path="/inks/:inkId" exact={true}>
+          <InkPage />
+        </Route>
+
+        <Route path="/about" exact={true}>
+          <About />
+        </Route>
+
+        {/* TEST ROUTES -- TEMP */}
 
         <Route path='/test' exact={true}>
             <InkToCanvasForm />
         </Route>
 
-        <Route path="/sign-up" exact={true}>
-            <SignUpForm />
+        <Route path="/discover-inks-two" exact={true}>
+          <DiscoverInksTwo />
         </Route>
 
+        {/* TEST ROUTES -- TEMP */}
 
         <ProtectedRoute path="/inks/new-ink" exact={true}>
             <NewInkForm />
         </ProtectedRoute>
-
-        <Route path="/inks/:inkId" exact={true}>
-          <InkPage />
-        </Route>
 
         <ProtectedRoute path='/canvases/new-canvas' exact={true} >
             <NewCanvasForm />
@@ -86,25 +91,9 @@ function App() {
             <CanvasEdit />
         </ProtectedRoute>
 
-        <ProtectedRoute path='/inks' exact={true}>
-            <DiscoverInks />
-        </ProtectedRoute>
-
-        <ProtectedRoute path="/users" exact={true}>
-          <UsersList />
-        </ProtectedRoute>
-
         <ProtectedRoute path="/users/:userId" exact={true}>
             <ProfilePage />
         </ProtectedRoute>
-
-        <Route path="/about" exact={true}>
-            <About />
-        </Route>
-
-        <Route path="/discover-inks-two" exact={true}>
-            <DiscoverInksTwo />
-        </Route>
 
       </Switch>
     </BrowserRouter>
