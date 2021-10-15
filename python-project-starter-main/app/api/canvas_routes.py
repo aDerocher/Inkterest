@@ -14,7 +14,12 @@ def get_all_canvases():
     canvases = Canvas.query.all()
     return {'canvases': [canvas.to_dict() for canvas in canvases]}
 
-
+# Get one canvas - simple ================================================
+@canvas_routes.route('/<int:canvas_id>', methods=['GET'])
+@login_required
+def get_one_canvas(canvas_id):
+    canvas = Canvas.query.get(canvas_id)
+    return { 'canvas': [canvas.to_dict()] }
 
 # Create new canvas ========================================================
 @canvas_routes.route('/new-canvas', methods=["POST"])
@@ -35,12 +40,26 @@ def new_canvas():
         return new_canvas.to_dict()
 
 
+# Edit selected canvas - simple ================================================
+@canvas_routes.route('/<int:canvas_id>', methods=['PATCH'])
+@login_required
+def edit_one_canvas(canvas_id):
+    canvas = Canvas.query.get(canvas_id)
+    form = NewCanvasForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    
+    if current_user and form.validate_on_submit():
+        canvas.name = form.name.data
+        canvas.private_canvas = form.private_canvas.data
+        db.session.commit()
+    return { 'canvas': [canvas.to_dict()] }
+
+
 # Get all users canvases ========================================================
 @canvas_routes.route('/users/<int:id>')
 @login_required
 def user(id):
     canvases = Canvas.query.filter(Canvas.creator_id == id)
-
     return {'usersCanvases': [canvas.to_dict() for canvas in canvases]}
 
 # delete canvas - simple========================================================

@@ -49,7 +49,7 @@ def upload_ink():
 
     url = upload["url"]
 
-    print(form.canvas_id.data, '=======================================================')
+    # print(form.canvas_id.data, '=======================================================')
     if form.validate_on_submit():
         new_ink = Ink(
             creator_id=current_user.get_id(),

@@ -21,6 +21,8 @@ import ProfileEdit from './components/ProfileEdit'
 import SplashPage from "./components/SplashPage";
 import DiscoverInksTwo from "./components/DiscoverInksTwo"
 import InkToCanvasForm from "./components/TestPage";
+import CanvasEdit from "./components/CanvasEdit"
+import "./styles/index.css"
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -48,6 +50,7 @@ function App() {
         <Route path="/" exact={true}>
             {user ? <DiscoverInks /> : <SplashPage />}
         </Route>
+        
         <Route path='/profile-edit' exact={true}>
           <ProfileEdit />
         </Route>
@@ -57,27 +60,31 @@ function App() {
         </Route> */}
 
         <Route path='/test' exact={true}>
-          <InkToCanvasForm />
+            <InkToCanvasForm />
         </Route>
 
         <Route path="/sign-up" exact={true}>
-          <SignUpForm />
+            <SignUpForm />
         </Route>
 
         <ProtectedRoute path="/inks/new-ink" exact={true}>
-          <NewInkForm />
+            <NewInkForm />
         </ProtectedRoute>
 
         <ProtectedRoute path="/inks/:inkId/edit" exact={true}>
-          <EditInkForm />
+            <EditInkForm />
         </ProtectedRoute>
 
         <ProtectedRoute path='/canvases/new-canvas' exact={true} >
-          <NewCanvasForm />
+            <NewCanvasForm />
+        </ProtectedRoute>
+
+        <ProtectedRoute path='/canvases/:canvasId/edit-canvas' exact={true} >
+            <CanvasEdit />
         </ProtectedRoute>
 
         <ProtectedRoute path='/inks' exact={true}>
-          <DiscoverInks />
+            <DiscoverInks />
         </ProtectedRoute>
 
         <ProtectedRoute path="/users" exact={true}>

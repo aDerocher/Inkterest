@@ -1,4 +1,5 @@
 /* TODO Add site wide styles */
+
 :root {
   /* Nice Soft Box Shadow*/
   --soft-boxShad: 0 0 10px rgb(0, 0, 0, 0.5);
@@ -19,7 +20,22 @@
   --ink-tile-btn-hover: white;
 }
 
-body {
+html, body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
+
+
+.round-red-button:hover{ background-color: var(--red-btn-hover)}
+.round-red-button{
+    outline: none;
+    border: none;
+    background-color: var(--red-btn);
+    height: 36px;
+    border-radius: 18px;
+    padding-left: 16px;
+    padding-right: 16px;
+    font-weight: bold;
+    color: white;
+}
+

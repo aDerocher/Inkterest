@@ -1,6 +1,8 @@
+
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import "../styles/follows-modal.css";
+
 
 const FollowingsModal = (props) => {
   const allFollowings = useSelector((state) => state.session.user.followed);

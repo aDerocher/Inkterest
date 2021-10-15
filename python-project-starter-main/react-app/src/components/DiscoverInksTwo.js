@@ -1,9 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { listAllInks } from '../store/ink'
 // need to write this backend request to add in usernames to the ink cards
     // import { listAllUsers } from '../store/users'
 import "../styles/discover-inks-two.css";
+
+
+// ======================================================
+// ======================================================
+// ======================================================
+// ======================================================
+
+// This is just a testing grounds page for rendering the inks on the 
+// main page in the cool stratified way that pinterest does
+
+// ======================================================
+// ======================================================
+// ======================================================
+// ======================================================
+
+
 
 function DiscoverInksTwo() {
     const dispatch = useDispatch();
