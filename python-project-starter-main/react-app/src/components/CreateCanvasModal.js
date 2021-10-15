@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+// import { Redirect } from 'react-router-dom';
 // import { useHistory } from "react-router";
 import { createCanvas } from '../store/canvas'
 import "../styles/create-canvas-modal.css";
@@ -9,7 +9,7 @@ import "../styles/create-canvas-modal.css";
 function CreateCanvasModal(props) {
     // const history = useHistory();
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user);
+    // const sessionUser = useSelector(state => state.session.user);
     
     const [name, setName] = useState('');
     const [isPrivate, setIsPrivate] = useState(false);
@@ -26,7 +26,6 @@ function CreateCanvasModal(props) {
     
     // ========================================== Submission Function
     const handleSubmit = (e) => {
-        console.log(isPrivate, 'iiiiiiiiiiis....')
         e.preventDefault();
         const newCanvas = {
             name: name,
@@ -37,7 +36,6 @@ function CreateCanvasModal(props) {
                 setName('');
                 setIsPrivate(false);
             })
-        // history.push(`/`);
     };
 
     if (!props.show) {

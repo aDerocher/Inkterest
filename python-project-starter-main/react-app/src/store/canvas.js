@@ -2,6 +2,7 @@
 
 const ADD_CANVAS = 'users/NEW_CANVAS';
 const ADD_INK_TO_CANVAS = 'users/INK_TO_CANVAS'
+const GET_ONE_CANVAS = 'users/GET_ONE_CANVAS';
 const GET_CANVASES = 'users/GET_CANVASES';
 const GET_USERS_CANVASES = 'users/GET_USERS_CANVASES';
 const DELETE_CANVAS = 'users/DELETE_CANVAS';
@@ -12,6 +13,7 @@ const REMOVE_INK_ON_CANVAS = 'users/INK_OFF_CANVAS'
 
 const addCanvas = (canvas) => ({ type: ADD_CANVAS, canvas });
 const addInkToCanvas = (canvas) => ({ type: ADD_CANVAS, canvas });
+const getCanvas = (canvas) => ({ type: GET_ONE_CANVAS, canvas });
 const getCanvases = (canvases) => ({ type: GET_CANVASES, canvases });
 const getUsersCanvases = (usersCanvases) => ({ type: GET_USERS_CANVASES, usersCanvases });
 const deleteCanvas = (canvas) => ({ type: DELETE_CANVAS, canvas });
@@ -38,6 +40,43 @@ export const createCanvas = (newCanvas) => async (dispatch) => {
     };
 };
 
+// edit selected canvas
+export const editCanvas = (editedCanvas) => async (dispatch) => {
+    const { canvas_id, name, private_canvas } = editedCanvas;
+
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("private_canvas", private_canvas);
+
+    const response = await fetch(`/api/canvases/${canvas_id}`, {
+        method: "PATCH",
+        body: formData
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+
+        const canvas = data.canvas
+        dispatch(getCanvas(canvas));
+        return response;
+    };
+};
+
+// get one canvas by Id
+export const getOneCanvas = (canvasId) => async (dispatch) => {
+    const response = await fetch(`/api/canvases/${canvasId}`, {
+        method: 'GET'
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+
+        const canvas = data.canvas
+        dispatch(getCanvas(canvas));
+        return response;
+    }
+}
+
 // get all canvases
 export const listAllCanvases = () => async (dispatch) => {
     const response = await fetch(`/api/canvases`, {
@@ -61,7 +100,6 @@ export const listUsersCanvases = (userId) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-
         const usersCanvases = data.usersCanvases
         dispatch(getUsersCanvases(usersCanvases));
         return response;
@@ -135,6 +173,8 @@ const canvasReducer = (state = initialState, action) => {
             return [ ...newState, action.canvas ]
         case ADD_INK_TO_CANVAS:
             return [ ...newState, action.canvas ]
+        case GET_ONE_CANVAS:
+            return [ ...action.canvas ]
         case GET_CANVASES:
             return [ ...action.canvases ]
         case GET_USERS_CANVASES:

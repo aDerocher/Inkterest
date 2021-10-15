@@ -6,7 +6,7 @@ import { listAllInks } from '../store/ink'
 function InkToCanvasForm() {
     const dispatch = useDispatch()
     // direct access to session user/slice of state
-    const sessionUser = useSelector(state => state.session.user);
+    // const sessionUser = useSelector(state => state.session.user);
 
     // direct access to inks array/slice of state
     const inks = useSelector(state => state.inks)

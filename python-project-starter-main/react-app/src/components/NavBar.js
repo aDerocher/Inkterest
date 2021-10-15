@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import pinkSquidLogo from "./../images/squid-circle-icon-Black.png";
 import magGlass from "./../images/magGlass.png";
+import "../styles/index.css";
 import "../styles/navbar.css";
 import "../styles/profileDD.css";
 import ProfileDDModal from "./ProfileDDModal";
