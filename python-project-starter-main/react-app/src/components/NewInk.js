@@ -83,24 +83,11 @@ function NewInkForm() {
                 <form className="new-ink-form" onSubmit={handleSubmit}>
                     <div className='form-top'>
                         <div className='top-left'>
-                            <ion-icon name="arrow-back-outline">
-                                {/* FIGURE OUT A FIX FOR THIS */}
-                                <NavLink to={`/users/${sessionUser?.id}`}></NavLink>
-                            </ion-icon>
+                                <NavLink to={`/users/${sessionUser?.id}`}>
+                                    <ion-icon name="arrow-back-outline"></ion-icon>
+                                </NavLink>
                         </div>
                         <div className='top-right'>
-                                {/* {canvases?.length > 0 && (
-                                    canvases?.map((canvas) => {
-                                        // <div key={canvas.id}>
-                                        <p>{canvas.id}</p>
-                                        //  return <option key={canvas.id} value={canvas.name}>{canvas.name}</option>
-                                            // <option  value={canvas.name}>{canvas.name}</option>
-                                        // </div>
-
-                                        })
-                                    )
-                                } */}
-
                             <select id='canvas-list' onChange={(e) => setSelect(e.target.value)}>
                                 <option>Add to your canvas</option>
                                 {canvases?.length > 0 && (

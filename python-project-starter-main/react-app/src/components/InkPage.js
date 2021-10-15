@@ -22,7 +22,6 @@ function InkPage() {
 
     // direct access to user array/slice of state
     const user = useSelector(state => state?.user[0])
-    console.log(user)
 
 
     useEffect(() => {
@@ -61,7 +60,7 @@ function InkPage() {
                                 <div className='user-name'>{user?.username}</div>
                                 <div className='user-followers'>{user?.followers.length} followers</div>
                             </div>
-                            {sessionUser !== ink?.creator_id && <button className='follow-btn'>FOLLOW</button>  }
+                            {sessionUser !== ink?.creator_id && <button className='follow-btn'>Follow</button>  }
                         </div>
                     </div>
                 </div>

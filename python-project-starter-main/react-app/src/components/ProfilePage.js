@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Dropdown from "react-dropdown";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { listAllFollowers, listAllFolloweds } from "../store/follow";
 import "../styles/profile-page.css";
 import CreateCanvasModal from "./CreateCanvasModal"
 import ProfileModal from "./ProfileDDModal";
@@ -46,17 +45,10 @@ function ProfilePage() {
     }
   };
 
-  // useEffect(() => {
-  //   dispatch(listAllFolloweds());
-  //   dispatch(listAllFollowers());
-  // }, [dispatch]);
-
   const user = useSelector((state) => state.session.user);
   const plus = document.getElementById("plus-btn")
-  // const allFollows = useSelector((state) => state.follows);
-  // console.log(allFollows?.followers?.Followers.length);
-  // console.log(user.followed.length);
-  // console.log(user.followers);
+
+  
   useEffect(() => {
     dispatch(listUsersCanvases(viewingUserId));
   }, [dispatch]);
