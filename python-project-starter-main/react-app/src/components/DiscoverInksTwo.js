@@ -29,7 +29,49 @@ function DiscoverInksTwo() {
 
     // direct access to inks array/slice of state
     const inks = useSelector(state => state.inks)
+    let inkDivision0 = []
+    let inkDivision1 = []
+    let inkDivision2 = []
+    let inkDivision3 = []
+    let inkDivision4 = []
+    let inkDivision5 = []
+    let inkDivision6 = []
 
+    for(let i=0; i<inks?.length; i++){
+        let x = i % 7
+        switch (x) {
+            case 0:
+                inkDivision0.push(inks[i])
+                break;
+            case 1:
+                inkDivision1.push(inks[i])
+                break;
+            case 2:
+                inkDivision2.push(inks[i])
+                break;
+            case 3:
+                inkDivision3.push(inks[i])
+                break;
+            case 4:
+                inkDivision4.push(inks[i])
+                break;
+            case 5:
+                inkDivision5.push(inks[i])
+                break;
+            case 6:
+                inkDivision6.push(inks[i])
+                break;
+        }
+    }
+    const allCols = [
+        inkDivision0,
+        inkDivision1,
+        inkDivision2,
+        inkDivision3,
+        inkDivision4,
+        inkDivision5,
+        inkDivision6,
+    ];
     // put all the inks into the state
     // TODO:
     // see if you can filter these by users interest/categorical relationship
@@ -37,8 +79,8 @@ function DiscoverInksTwo() {
         dispatch(listAllInks())
     }, [dispatch])
 
-    const doSomething = () => {
-        if (count === 2){
+    const upCount = () => {
+        if (count >= 4){
             count = 0;
             return
         }
@@ -48,12 +90,66 @@ function DiscoverInksTwo() {
 
   return (
     <div className="discover-inks-two-container">
-        {inks?.map((i) => (
-            <div className={`c-${count}`} key={i.id}>
-                <p>div type: c-{count}</p>
-                {doSomething()}
+        { allCols.map((inkDivisionX) =>(
+            <div className="column">
+                {inkDivisionX?.map((i) => (
+                    <div className={`tile c-${count} `} key={i.id}>
+                        <p>div type: c-{count}</p>
+                        {upCount()}
+                    </div>
+                ))}
             </div>
         ))}
+
+        {/* <div className="column">
+            {inkDivision1?.map((i) => (
+                <div className={`tile c-${count+1} `} key={i.id}>
+                    <p>div type: c-{count+1}</p>
+                    {upCount()}
+                </div>
+            ))}
+        </div>
+        <div className="column">
+            {inkDivision2?.map((i) => (
+                <div className={`tile c-${count+2} `} key={i.id}>
+                    <p>div type: c-{count+2}</p>
+                    {upCount()}
+                </div>
+            ))}
+        </div>
+        <div className="column">
+            {inkDivision2?.map((i) => (
+                <div className={`tile c-${count+3} `} key={i.id}>
+                    <p>div type: c-{count+3}</p>
+                    {upCount()}
+                </div>
+            ))}
+        </div>
+        <div className="column">
+            {inkDivision2?.map((i) => (
+                <div className={`tile c-${count+4} `} key={i.id}>
+                    <p>div type: c-{count+4}</p>
+                    {upCount()}
+                </div>
+            ))}
+        </div>
+        <div className="column">
+            {inkDivision2?.map((i) => (
+                <div className={`tile c-${count} `} key={i.id}>
+                    <p>div type: c-{count}</p>
+                    {upCount()}
+                </div>
+            ))}
+        </div>
+        <div className="column">
+            {inkDivision2?.map((i) => (
+                <div className={`tile c-${count+1} `} key={i.id}>
+                    <p>div type: c-{count+1}</p>
+                    {upCount()}
+                </div>
+            ))}
+        </div> */}
+        
     </div>
   );
 }
