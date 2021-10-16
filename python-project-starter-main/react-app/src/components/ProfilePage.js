@@ -48,6 +48,8 @@ function ProfilePage() {
       history.push("/inks/new-ink");
     } else {
       setShow(true);
+      const canvasDiv = document.querySelector('.Dropdown-placeholder')
+      canvasDiv.setAttribute('hidden', 'true')
     }
   };
 
