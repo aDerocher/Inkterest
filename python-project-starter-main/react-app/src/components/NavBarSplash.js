@@ -47,10 +47,7 @@ const NavBarSplash = () => {
         </div>
 
         <div className="nav-section nav-search-container">
-            {/* <div className='nav-search-box'>
-                <img className="search-icon" src={magGlass} alt="" />
-                <input className='nav-search-input' type="text" placeholder="Search" />
-            </div> */}
+
         </div>
 
         <div className="nav-section nav-items-right">
@@ -69,6 +66,8 @@ const NavBarSplash = () => {
         showLoginModal && (
           <LoginFormModal
             show={showLoginModal}
+            login={setShowLoginModal}
+            signup={setShowSignUpModal}
             onClose={() => setShowLoginModal(false)}
           />
         )
@@ -77,6 +76,8 @@ const NavBarSplash = () => {
         showSignUpModal && (
           <SignUpFormModal
             show={showSignUpModal}
+            login={setShowLoginModal}
+            signup={setShowSignUpModal}
             onClose={() => setShowSignUpModal(false)}
           />
         )

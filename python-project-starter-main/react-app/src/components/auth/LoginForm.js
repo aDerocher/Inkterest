@@ -36,10 +36,15 @@ const LoginFormModal = (props) => {
     return null;
   }
 
+  const handleLoginRedirect = (e) => {
+    props.login(false)
+    props.signup(true)
+  }
+
   return (
     <div className="login-modal" onClick={props.onClose}>
       <div className="login-modal-content" onClick={(e) => e.stopPropagation()}>
-        Log in
+        Welcome back!
         <form className='login-form' onSubmit={onLogin}>
             <div className='login-errors'>
               {errors.map((error, ind) => (
@@ -67,7 +72,11 @@ const LoginFormModal = (props) => {
               />
             </div>
             <div className='login-btn-row'>
-              <div className='signup-redirect' type='submit'>Not a member? Signup</div>
+
+              <div className='signup-redirect'>
+                Need an account?
+                <span onClick={(e) => handleLoginRedirect(e)} className='signup-to-login'> Sign up</span>
+              </div>
                 <button className='login-btn' type='submit'>Login</button>
             </div>
           </form>

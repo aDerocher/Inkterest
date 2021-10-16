@@ -8,6 +8,8 @@ const SignUpFormModal = (props) => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+  const [first_name, setFirst_name] = useState('');
+  const [last_name, setLast_name] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
@@ -16,7 +18,14 @@ const SignUpFormModal = (props) => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(
+        username,
+        email,
+        first_name,
+        last_name,
+        password
+      ));
+
       if (data) {
         setErrors(data)
       }
@@ -44,10 +53,16 @@ const SignUpFormModal = (props) => {
     return null;
   }
 
+  const handleLoginRedirect = (e) => {
+    props.login(true)
+    props.signup(false)
+  }
+
   return (
     <div className = "signup-modal" onClick = { props.onClose } >
       <div className="signup-modal-content" onClick={(e) => e.stopPropagation()}>
-        Sign up
+        Welcome to Inkterest
+        <p className='signup-greet'>Find new ideas to tattoo</p>
         <form className='signup-form' onSubmit={onSignUp}>
           <div className='signup-errors'>
             {errors.map((error, ind) => (
@@ -56,7 +71,7 @@ const SignUpFormModal = (props) => {
           </div>
           <div>
             <input
-              placeholder='username'
+              placeholder='Username'
               className='signup-username'
               type='text'
               name='username'
@@ -66,7 +81,7 @@ const SignUpFormModal = (props) => {
           </div>
           <div>
             <input
-              placeholder='email'
+              placeholder='E-mail'
               className='signup-email'
               type='text'
               name='email'
@@ -74,9 +89,27 @@ const SignUpFormModal = (props) => {
               value={email}
             ></input>
           </div>
+          <div className='fname-lname'>
+            <input
+              placeholder='First name'
+              className='signup-fname'
+              type='text'
+              name='first-name'
+              onChange={(e) => setFirst_name(e.target.value)}
+              value={first_name}
+            ></input>
+            <input
+              placeholder='Last name'
+              className='signup-lname'
+              type='text'
+              name='last-name'
+              onChange={(e) => setLast_name(e.target.value)}
+              value={last_name}
+            ></input>
+          </div>
           <div>
             <input
-              placeholder='password'
+              placeholder='Password'
               className='signup-password'
               type='password'
               name='password'
@@ -86,7 +119,7 @@ const SignUpFormModal = (props) => {
           </div>
           <div>
             <input
-              placeholder='re-enter password'
+              placeholder='Re-enter password'
               className='signup-r-password'
               type='password'
               name='repeat_password'
@@ -96,7 +129,10 @@ const SignUpFormModal = (props) => {
             ></input>
           </div>
           <div className='signup-btn-row'>
-            <div className='signup-redirect'>Already a member? Login</div>
+            <div className='signup-redirect'>
+              Already a member?
+              <span onClick={(e) => handleLoginRedirect(e)} className='signup-to-login'> Login</span>
+            </div>
             <button className='signup-btn' type='submit'>Sign Up</button>
           </div>
         </form>
