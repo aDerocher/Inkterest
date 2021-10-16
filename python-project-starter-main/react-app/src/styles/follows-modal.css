@@ -36,12 +36,26 @@
 }
 
 .close-button {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  padding: 0;
+  background-color: white;
   position: absolute;
-  top: 28px;
-  right: 20px;
-  background-color: transparent;
-  border: none;
+  right: 10px;
+  top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.close-button:hover{
+  background-color: var(--soft-grey);
+}
+.fa {
+  display: flex;
+}
+
 
 .modal-body {
   padding: 10px;

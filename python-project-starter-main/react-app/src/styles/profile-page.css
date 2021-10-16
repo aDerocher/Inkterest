@@ -61,12 +61,13 @@
   background-size: cover;
   height: 36px;
   width: 36px;
-  border-radius: 18px;
+  border-radius: 100%;
   padding: 0;
   background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 10px;
 }
 /* Sets the 'create' label for the two dropdown options */
 .menu {
@@ -91,6 +92,14 @@
 .create-option:hover {
   cursor: pointer;
   background-color: var(--hover-grey);
+  height: 36px;
+  width: 36px;
+  border-radius: 18px;
+  padding: 0;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .create-option {
   /* border: 2px solid black; */
@@ -147,7 +156,7 @@
     padding: 4px;
     text-overflow: ellipsis;
 }
-    
+
 .canvas-tile-image-lock{
     background-color: var(--soft-grey);
     max-height: 15px;
@@ -173,8 +182,20 @@
     margin-left: 5px;
 }
 
+.profile-page-edit {
+  display: flex;
+  justify-content: space-around;
+  margin-left: 10px;
+  height: 36px;
+  width: 36px;
+}
 
+.profile-page-edit:hover{
+  cursor: pointer;
+  background-color: var(--hover-grey);
+  border-radius: 100%;
 
+}
 
 
 
@@ -182,5 +203,7 @@
 /* Don't add additional properties to this. */
 .fas{
     color: #333;
-}
+    background-color: transparent;
+    border:none;
 
+  }

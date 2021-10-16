@@ -108,7 +108,7 @@ function ProfilePage() {
       </div>
       <div className="profile-page-body">
         <div className="profile-page-edit">
-          <button onClick={redirect}>Edit</button>
+          <button className='fas fa-pen' onClick={redirect}></button>
         </div>
         <div className="profile-page-upload">
           <CreateCanvasModal onClose={() => setShow(false)} show={show} />

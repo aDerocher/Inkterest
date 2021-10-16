@@ -31,7 +31,7 @@ const FollowingsModal = (props) => {
           </div>
         </div>
         <div className="close-button">
-          <span onClick={props.onClose}>Ｘ</span>
+          <span className='fas fa-times' onClick={props.onClose}></span>
         </div>
         <div className="follows-modal-body">
           {allFollowings.map((f) => (
