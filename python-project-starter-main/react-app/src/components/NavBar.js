@@ -16,21 +16,23 @@ const NavBar = () => {
   const history = useHistory();
 
   const user = useSelector(state => state.session.user);
-  // const userNameLetter = user?.first_name[0].toUpperCase();
+  const userNameLetter = user?.first_name[0].toUpperCase();
 
   const toProfile = (e) => {
     e.preventDefault();
     history.push(`/users/${user.id}`);
   };
 
+  const toHome = (e) => {
+    e.preventDefault();
+    history.push(`/`);
+  }
+
   return (
       <nav className="nav-bar">
         <div className="nav-section nav-items-left">
-          <div className="nav-item no-pad">
+          <div className="nav-item no-pad" onClick={toHome}>
             <img className="nav-icon" src={pinkSquidLogo} alt="" />
-          </div>
-          <div className="nav-item">
-            <a href="/">Home</a>
           </div>
           <div className="nav-item">Today</div>
         </div>
@@ -56,7 +58,7 @@ const NavBar = () => {
                 <i className="fas fa-comment-dots"></i>
             </div>
             <div className="nav-item no-pad user-letter" onClick={e=> toProfile(e)}>
-              {null}
+              <div className='inner-user-letter'> {userNameLetter} </div>
             </div>
             <div className="nav-item no-pad">
               <button onClick={() => setShow(true) } className="chevron-btn"><i className="fas fa-chevron-down"></i></button>
