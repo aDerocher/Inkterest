@@ -84,14 +84,9 @@ function App() {
             <NewInkForm />
         </ProtectedRoute>
 
-
         <Route path="/inks/:inkId" exact={true}>
           <InkPage />
         </Route>
-
-        {/* <ProtectedRoute path="/inks/:inkId/edit" exact={true}>
-            <EditInkForm />
-        </ProtectedRoute> */}
 
         <ProtectedRoute path='/canvases/:canvas_id' exact={true} >
             <CanvasProfilePage />

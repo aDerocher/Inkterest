@@ -83,14 +83,14 @@ function ProfilePage() {
         </div>
         <div className="profile-name">
           <h1>
-            {user.first_name} {user.last_name}
+            {user?.first_name} {user?.last_name}
           </h1>
         </div>
-        <div className="profile-contact">{user.email}</div>
+        <div className="profile-contact">{user?.email}</div>
         <div className="profile-follwer-follwing">
           {/* <p onClick={}>{user.followers.length} follower</p> */}
           <span onClick={() => setShowFollowers(true)}>
-            {user.followers.length} follower
+            {user?.followers.length} follower
           </span>
           <FollowersModal
             onClose={() => setShowFollowers(false)}

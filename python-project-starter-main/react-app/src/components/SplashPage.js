@@ -1,10 +1,10 @@
-import React from "react";
-// import Dropdown from "react-dropdown";
-// import { Route, Link, NavLink, useHistory } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, Redirect, useParams } from 'react-router-dom';
+
 import '../styles/splash-page.css'
 
 function SplashPage() {
-
     return (
         <div className="splash-container">
             <div className='top-container'>
