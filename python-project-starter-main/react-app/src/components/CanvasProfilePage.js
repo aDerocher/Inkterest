@@ -26,9 +26,9 @@ function CanvasProfilePage() {
     const canvasInksArr = curCanvas?.inks;
 
     console.log("pppppppppppppppp", canvasInksArr)
-    const editCanvas = (e,c) => {
+    const editCanvas = (e) => {
         e.preventDefault();
-        history.push(`/canvases/${c.id}/edit-canvas`)
+        history.push(`/canvases/${curCanvas.id}/edit-canvas`)
     }
 
 
@@ -45,15 +45,15 @@ function CanvasProfilePage() {
         </div>
         <div className="three-canvas-options">
             <div className="canvas-option-container">
-                <button className="canvas-option-btn"><i class="fas fa-star"></i></button>
+                <button className="canvas-option-btn"><i className="fas fa-star"></i></button>
                 <p className="option-label">More Ideas</p>
             </div>
             <div className="canvas-option-container">
-                <button className="canvas-option-btn"><i class="fas fa-th"></i></button>
+                <button className="canvas-option-btn"><i className="fas fa-th"></i></button>
                 <p className="option-label">Organize</p>
             </div>
             <div className="canvas-option-container">
-                <button className="canvas-option-btn"><i class="fas fa-align-left"></i></button>
+                <button className="canvas-option-btn"><i className="fas fa-align-left"></i></button>
                 <p className="option-label">Notes</p>
             </div>
         </div>
@@ -62,7 +62,7 @@ function CanvasProfilePage() {
         
 
         <div className="canvas-p-profile-page-edit">
-            <button onClick={e => editCanvas(e,curCanvas?.id)}>Edit</button>
+            <button onClick={e => editCanvas(e)}>Edit</button>
         </div>
 
       </div>

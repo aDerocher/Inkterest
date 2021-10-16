@@ -8,31 +8,30 @@ import "../styles/canvas-edit.css";
 
 
 function CanvasEdit() {
-    const { canvasId } = useParams();
+    const params = useParams();
+    console.log(params)
     const history = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const canvasToEdit = useSelector(state => state.canvases[0])
     const usersInks = useSelector(state => state.inks)
     
-    const [name, setName] = useState('');
+    const [name, setName] = useState(canvasToEdit?.name);
     const [isPrivate, setIsPrivate] = useState(false);
     const [errors, setErrors] = useState([]);
     const [errorsHidden, setErrorsHidden] = useState(true);
     const [ selectInk, setSelectInk ] = useState(null)
-    console.log(selectInk, "-------------------------")
-    const selectedInk = usersInks?.filter((el) => el.title === selectInk)
 
     
     useEffect(() => {
         let newErrors = [];
-        if (name.length < 2 ) newErrors.push("Name must be at least 3 characters")
-        if (name.length > 50 ) newErrors.push("Canvas names can not exceed 50 characters")
+        if (name?.length < 2 ) newErrors.push("Name must be at least 3 characters")
+        if (name?.length > 50 ) newErrors.push("Canvas names can not exceed 50 characters")
         setErrors(newErrors)
     }, [name])
 
     useEffect(() => {
-        dispatch(getOneCanvas(canvasId))
+        // dispatch(getOneCanvas(canvasId))
     }, [])
 
     
@@ -41,7 +40,7 @@ function CanvasEdit() {
     const handleAddToCanvas = () => {
         const form = {
             canvas_id: canvasToEdit.id,
-            ink_id: selectedInk[0].id
+            ink_id: selectInk
         }
         dispatch(ink2Canvas(form))
     }
@@ -49,7 +48,9 @@ function CanvasEdit() {
     const handleSubmit = (e) => {
         setErrorsHidden(false)
         e.preventDefault();
-        // handleAddToCanvas()
+        if(selectInk){
+            handleAddToCanvas()
+        }
         const editedCanvas = {
             name: name,
             private_canvas: isPrivate,

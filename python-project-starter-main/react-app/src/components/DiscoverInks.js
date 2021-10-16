@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { listAllInks } from '../store/ink'
-import { useHistory } from "react-router";
+import { Redirect, useHistory } from "react-router";
 import imgPlaceholder from "./../images/squid-circle-icon-Black.png"
 import "../styles/discover-inks.css";
 
@@ -25,7 +25,9 @@ function DiscoverInks(props) {
         e.preventDefault();
         history.push(`/inks/${ink_id}`)
     }
-
+    const goToPage = () => {
+        
+    }
   return (
     <div className="discover-inks-container">
         {inks?.map((i) => (
@@ -48,9 +50,9 @@ function DiscoverInks(props) {
                         <div className='ink-tile-bottom-buttons-left'>
                             <a target="_blank" rel="noreferrer" href={i.destination_link}>
                             {i.destination_link &&
-                                    <button className='ink-tile-btn ink-dest-link-btn' onClick={`window.location.href="${i.destination_link}";`}>etsyisthegreatest.com</button>
-                                }
-                                </a>
+                                <button className='ink-tile-btn ink-dest-link-btn'>etsyisthegreatest.com</button>
+                            }
+                            </a>
                         </div>
 
                         {/* <button className='ink-tile-btn ink-dest-link-btn'>etsyisthegreatest.com</button> */}
