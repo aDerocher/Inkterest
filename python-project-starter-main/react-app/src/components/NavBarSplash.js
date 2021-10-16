@@ -24,8 +24,11 @@ const NavBarSplash = () => {
   }
 
   const goAbout = (e) => {
-      loginDemo(e);
-      history.push("/inks"); // ??
+      history.push("/about");
+  }
+
+  const goHome = (e) => {
+      history.push('/')
   }
 
   const handleLogin = (e) => {
@@ -41,7 +44,7 @@ const NavBarSplash = () => {
   return (
     <nav className='nav-bar'>
         <div className="nav-section nav-items-left">
-            <div className="nav-item no-pad">
+            <div className="nav-item no-pad spl-home-btn" onClick={(e) => goHome(e)}>
                 <img className='nav-banner' src={pinkSquidBanner} alt="" />
             </div>
         </div>
@@ -54,16 +57,10 @@ const NavBarSplash = () => {
         </div>
 
         <div className="nav-section nav-items-right">
-            <div className="nav-item no-pad">
-              <button onClick={e => goAbout(e)}>About</button>
-            </div>
-            <div className="nav-item nav-splash-item no-pad" onClick={e=>loginDemo(e)}>Demo User</div>
-            <div className="nav-item nav-splash-item no-pad">
-              <div onClick={(e) => handleLogin(e)}>Log In</div>
-            </div>
-            <div className="nav-item nav-splash-item no-pad">
-              <div onClick={(e) => handleSignup(e)}>Sign up</div>
-            </div>
+            <div  className='spl-about-btn' onClick={e => goAbout(e)}>About</div>
+            <div className="spl-demo-btn" onClick={e=>loginDemo(e)}>Demo</div>
+            <div className="spl-login-btn" onClick={(e) => handleLogin(e)}>Log In</div>
+            <div className="spl-signup-btn" onClick={(e) => handleSignup(e)}>Sign up</div>
         </div>
       {
         showLoginModal && (
