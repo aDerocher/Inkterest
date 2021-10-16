@@ -7,8 +7,8 @@ def seed_users():
         username='Demo',
         profile_picture='https://randomuser.me/api/portraits/men/13.jpg',
         email='demo@aa.com',
-        first_name='demo',
-        last_name='dude',
+        first_name='Aldous',
+        last_name='Inksley',
         password='password',
         )
     leena = User(
