@@ -35,11 +35,7 @@ function CanvasProfilePage() {
   return (
     <div className="canvas-p-profile-page-container">
       <div className="canvas-p-profile-page-header">
-        <div className="canvas-p-profile-image">
-          <span className="canvas-p-image-circle">
-            <img src="" alt="" />
-          </span>
-        </div>
+
         <div className="canvas-p-profile-name">
           <h1>{curCanvas?.name}</h1>
         </div>
@@ -62,7 +58,7 @@ function CanvasProfilePage() {
         
 
         <div className="canvas-p-profile-page-edit">
-            <button onClick={e => editCanvas(e)}>Edit</button>
+            <button onClick={e => editCanvas(e)}><i class="fas fa-sliders-h"></i></button>
         </div>
 
       </div>
@@ -70,6 +66,8 @@ function CanvasProfilePage() {
 
       </div>
         <DiscoverInks user_id={null} canvasInksArr={canvasInksArr}/>
+        <button className='floaty-button help-btn'>?</button>
+        <button className='floaty-button big-plus-btn'>+</button>
     </div>
   );
 }
