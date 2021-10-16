@@ -35,7 +35,7 @@ function NewInkForm() {
         newErrors.push("Title length must be less than 50 characters");
     }
     setErrors(newErrors);
-  }, [dispatch, title]);
+  }, [dispatch, title, sessionUser]);
 
   if (!sessionUser) return <Redirect to="/" />;
 

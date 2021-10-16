@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { listAllInks } from '../store/ink'
-import { Redirect, useHistory } from "react-router";
-import imgPlaceholder from "./../images/squid-circle-icon-Black.png"
+import { useHistory } from "react-router";
 import "../styles/discover-inks.css";
 
 function DiscoverInks(props) {
@@ -34,9 +33,7 @@ function DiscoverInks(props) {
         e.preventDefault();
         history.push(`/users/${userId}/inks/${inkId}`)
     }
-    const goToPage = () => {
 
-    }
   return (
     <div className="discover-inks-container">
         {inks?.map((i) => (

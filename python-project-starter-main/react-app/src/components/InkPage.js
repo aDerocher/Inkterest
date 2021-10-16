@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, Redirect, useParams} from 'react-router-dom';
+import { Redirect, useParams} from 'react-router-dom';
 import { listOneInk } from '../store/ink'
 import { listOneUser, followUser, unfollowUser } from '../store/user'
 import EditInkModal from './EditInkModal';
@@ -9,28 +9,24 @@ import '../styles/reset-styles.css'
 import '../styles/ink-page.css'
 
 function InkPage() {
-    const history = useHistory();
+    // const history = useHistory();
     const dispatch = useDispatch();
     const { userId, inkId } = useParams();
 
-    // direct access to session user/slice of state
-    const sessionUser = useSelector(state => state.session.user);
-
+    // direct access to: session user/slice of state
+        const sessionUser = useSelector(state => state.session.user);
     // direct access to ink slice of state - houses ONE ink
-    const ink = useSelector(state => state?.inks[0])
-
-    // direct access to canvases array/slice of state
-    const canvases = useSelector(state => state.canvases)
-
+        const ink = useSelector(state => state?.inks[0])
     // direct access to user array/slice of state
-    const user = useSelector(state => state?.user[0])
+        const user = useSelector(state => state?.user[0])
+    // direct access to canvases array/slice of state
+        // const canvases = useSelector(state => state.canvases)
 
     const [isFollowing, setIsFollowing] = useState(null)
     const [inkDropdown, setInkDropdown] = useState(false)
 
     const [showEditModal, setShowEditModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
-    console.log(showDeleteModal)
 
     useEffect(() => {
         dispatch(listOneInk(inkId))

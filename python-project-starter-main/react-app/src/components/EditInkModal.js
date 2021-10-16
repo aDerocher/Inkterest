@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, Redirect, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { changeInk, listOneInk } from '../store/ink'
 import "../styles/edit-ink-modal.css";
 
 const EditInkModal = (props) => {
     const dispatch = useDispatch();
     const { inkId } = useParams();
-
-    // direct access to session user/slice of state
-    const sessionUser = useSelector(state => state.session.user);
 
     // direct access to ink slice of state - houses ONE ink
     const ink = useSelector(state => state?.inks[0])
