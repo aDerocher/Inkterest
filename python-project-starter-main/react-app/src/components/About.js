@@ -12,16 +12,16 @@ function About() {
                 <div className="about-image-container">
                     <img className="about-image" src={squidProfile} alt="" />
                 </div>
-                <div className="profile-name">
-                <h1>Alwyn Grant</h1>
+                <div className="about-profile-name">
+                    <h3>Alwyn Grant</h3>
                 </div>
                 <div className="profile-contact">marzgrant@gmail.com</div>
                 <div className='link-buttons-container'>
                     <a target="_blank" rel="noreferrer" href="https://github.com/AlwynGrant">
                         <button className="link-btn git-link" onclick="window.location.href='https://github.com/AlwynGrant';"></button>
                     </a>
-                    <a target="_blank" rel="noreferrer" href="https://www.linkedin.com">
-                        <button className="link-btn linkedin-link" onClick="window.location.href='https://www.linkedin.com/in/andrew-derocher-54003789/';">in</button>
+                    <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/alwyn-grant-928b091a3/">
+                        <button className="link-btn linkedin-link" onClick="window.location.href='https://www.linkedin.com/in/alwyn-grant-928b091a3/';">in</button>
                     </a>
                 </div>
             </div>
@@ -30,8 +30,8 @@ function About() {
                 <div className="about-image-container">
                     <img className="about-image" src={squidProfile} alt="" />
                 </div>
-                <div className="profile-name">
-                <h1>Andrew Derocher</h1>
+                <div className="about-profile-name">
+                <h3>Andrew Derocher</h3>
                 </div>
                 <div className="profile-contact">andrew@andrewderocher.com</div>
                 <div className='link-buttons-container'>
@@ -49,10 +49,10 @@ function About() {
                 <div className="about-image-container">
                     <img className="about-image" src={squidProfile} alt="" />
                 </div>
-                <div className="profile-name">
-                <h1>Grant Chiu</h1>
+                <div className="about-profile-name">
+                <h3>Grant Chiu</h3>
                 </div>
-                <div className="profile-contact">email@email.com</div>
+                <div className="profile-contact">grantcky@gmail.com</div>
                 <div className='link-buttons-container'>
                     <a target="_blank" rel="noreferrer" href="https://github.com/grantc00">
                         <button className="link-btn git-link" onClick="window.location.href='https://github.com/grantc00';"></button>
