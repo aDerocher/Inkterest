@@ -1,27 +1,31 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "../styles/follows-modal.css";
-import { followUser } from '../store/user'
+import { followUser, unfollowUser } from "../store/user";
 
 const FollowersModal = (props) => {
   const allFollowers = useSelector((state) => state.session.user.followers);
 
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+  const [isFollowing, setIsFollowing] = useState(null);
 
-
-
-  const handleFollower = (userId) => {
+  const handleFollow = (userId) => {
     // e.preventDefault();
-    console.log(userId, '-----------------------------');
-    dispatch(followUser(userId))
+    dispatch(followUser(userId));
+    setIsFollowing(true);
   };
 
-  
+  const handleUnFollow = (userId) => {
+    // e.preventDefault();
+    dispatch(unfollowUser(userId));
+    setIsFollowing(false);
+  };
 
   if (!props.show) {
     return null;
   }
+
   return (
     <div className="modal" onClick={props.onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -35,14 +39,31 @@ const FollowersModal = (props) => {
         </div>
         <div className="follows-modal-body">
           {allFollowers.map((f) => (
-            <div key={f[0]} className="follows-modal-row">
+            <div id={f[1]} key={f[1]} className="follows-modal-row">
               <div className="follow-user-container">
                 <img src="" alt="circle" />
-                <p>{f[0]}</p>
+                <p>
+                  {f[0]} {f[1]}
+                </p>
               </div>
-              <button onClick={() => handleFollower(f[1])} className="toggle-follow-btn">
-                Follow
-              </button>
+              {isFollowing ? (
+                <button
+                  id={f[1]}
+                  key={f[1]}
+                  className="unfollow-btn"
+                  onClick={() => handleUnFollow()}
+                >
+                  Unfollow
+                </button>
+              ) : (
+                <button
+                
+                  onClick={() => handleFollow(f[1])}
+                  className="toggle-follow-btn"
+                >
+                  Follow
+                </button>
+              )}
             </div>
           ))}
         </div>
