@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
 import { useHistory } from "react-router";
-import { getOneCanvas,ink2Canvas, editCanvas, removeCanvas } from "./../store/canvas"
+import { ink2Canvas, editCanvas, removeCanvas } from "./../store/canvas"
 import "../styles/index.css";
 import "../styles/canvas-edit.css";
 

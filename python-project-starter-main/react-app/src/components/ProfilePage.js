@@ -39,7 +39,6 @@ function ProfilePage() {
   const [showFollowers, setShowFollowers] = useState(false);
   const [showFollowings, setShowFollowings] = useState(false);
 
-  const user = useSelector((state) => state.session.user);
   const viewUser = useSelector((state) => state.user[0]);
   const curUserCanvases = useSelector((state) => state.canvases);
 
@@ -71,7 +70,7 @@ function ProfilePage() {
   useEffect(() => {
     dispatch(listUsersCanvases(params.userId));
     dispatch(listOneUser(params.userId, 1))
-  }, [dispatch]);
+  }, [dispatch, params]);
 
 
   return (
@@ -109,7 +108,7 @@ function ProfilePage() {
       </div>
       <div className="profile-page-body">
         <div >
-          <button className="profile-page-edit" onClick={redirect}><i class="fas fa-sliders-h"></i></button>
+          <button className="profile-page-edit" onClick={redirect}><i className="fas fa-sliders-h"></i></button>
         </div>
         <div className="profile-page-upload">
           <CreateCanvasModal onClose={() => setShow(false)} show={show} />
