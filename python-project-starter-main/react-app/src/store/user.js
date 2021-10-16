@@ -13,9 +13,8 @@ const unfollow = (user) => ({ type: UNFOLLOW_USER, user });
 // ---------------------------  Defined Thunk(s) --------------------------------
 
 // get one user
-export const listOneUser = (inkId) => async (dispatch) => {
-    // NOTE: THIS ISN'T ACTUALLY THE USERID, THIS IS AN INK ID
-    const response = await fetch(`/api/users/${inkId}`, {
+export const listOneUser = (userId, inkId) => async (dispatch) => {
+    const response = await fetch(`/api/users/${userId}/inks/${inkId}`, {
         method: 'GET'
     });
 

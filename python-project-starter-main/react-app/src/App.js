@@ -60,7 +60,7 @@ function App() {
           <DiscoverInks />
         </Route>
 
-        <Route path="/inks/:inkId" exact={true}>
+        <Route path="/users/:userId/inks/:inkId" exact={true}>
           <InkPage />
         </Route>
 

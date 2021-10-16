@@ -14,16 +14,12 @@ def users():
 
 
 # get ONE user on ink page - USE WITH CAUTION!
-# this route uses routabout measures to query for the user (user inkId)
-# IF YOU DONT HAVE DIRECT ACCESS TO A SPECIFIC INK_ID, DO NOT USE THIS ROUTE!
-@user_routes.route('/<int:id>')
+@user_routes.route('/<int:user_id>/inks/<int:ink_id>')
 @login_required
-def user(id):
-    # this id being passed in is actually the ink id
-    # using the ink id to find the first ink matching id
-    ink = Ink.query.get(id)
+def user(user_id, ink_id):
+    ink = Ink.query.get(ink_id)
     # find user using ink property...
-    user = User.query.get(ink.creator_id)
+    user = User.query.get(user_id)
 
     return user.to_dict()
 

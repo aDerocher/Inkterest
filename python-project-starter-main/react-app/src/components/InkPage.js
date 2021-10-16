@@ -11,7 +11,7 @@ import '../styles/ink-page.css'
 function InkPage() {
     const history = useHistory();
     const dispatch = useDispatch();
-    const { inkId } = useParams();
+    const { userId, inkId } = useParams();
 
     // direct access to session user/slice of state
     const sessionUser = useSelector(state => state.session.user);
@@ -38,7 +38,7 @@ function InkPage() {
     }, [dispatch, user?.id])
 
     useEffect(() => {
-        dispatch(listOneUser(inkId))
+        dispatch(listOneUser(userId,inkId))
     }, [dispatch])
 
     if (!sessionUser) return <Redirect to="/" />;
