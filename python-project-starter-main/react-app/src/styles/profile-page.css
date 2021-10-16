@@ -8,15 +8,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 24px;
   gap: 2px;
+}
+.profile-page-header >*{
+    padding: 4px;
 }
 
 .image-circle {
   height: 120px;
   width: 120px;
+  border-radius: 60px;
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
+  overflow: hidden;
 }
 
 .profile-name {
@@ -39,7 +45,18 @@
 .profile-follwer-follwing:hover {
   cursor: pointer;
 }
-
+.profile-page-edit{
+    background-color: white;
+    margin: 14px;
+    height: 36px;
+    width: 36px;
+    outline: none;
+    border: none;
+    border-radius: 18px;
+}
+.profile-page-edit:hover{
+    background-color: var(--hover-grey);
+}
 /* ================== Create -- Dropdown Menu =========================== */
 .plus-dd {
   /* background-color: rgb(158, 125, 88); */
@@ -182,5 +199,6 @@
 /* Don't add additional properties to this. */
 .fas{
     color: #333;
+    font-weight: bold;
 }
 

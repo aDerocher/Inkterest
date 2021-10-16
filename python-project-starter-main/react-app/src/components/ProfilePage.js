@@ -5,15 +5,17 @@ import { useSelector, useDispatch } from "react-redux";
 import "../styles/profile-page.css";
 
 import CreateCanvasModal from "./CreateCanvasModal";
-import ProfileModal from "./ProfileDDModal";
 import FollowersModal from "./FollowersModal";
 import FollowingsModal from "./FollowingsModal";
 import { useParams } from "react-router-dom";
+import { listOneUser } from "./../store/user";
 import { listUsersCanvases } from "./../store/canvas";
 import canvasCover from "./../images/squid-circle-icon-Black.png"
 import DiscoverInks from "./DiscoverInks";
 
 function ProfilePage() {
+
+// ===== Initial declarations ===============================
   const params = useParams();
   const viewingUserId = params.userId;
 
@@ -32,17 +34,20 @@ function ProfilePage() {
     },
   ];
 
+// ===== State Assc Variables ===============================
   const [show, setShow] = useState(false);
   const [showFollowers, setShowFollowers] = useState(false);
   const [showFollowings, setShowFollowings] = useState(false);
 
   const user = useSelector((state) => state.session.user);
-
+  const viewUser = useSelector((state) => state.user[0]);
+  const curUserCanvases = useSelector((state) => state.canvases);
 
   const redirect = () => {
     history.push("/profile-edit");
   };
 
+  // ===== Functions ===============================
   const pinCreateHandler = (options) => {
     if (options.value === "ink") {
       history.push("/inks/new-ink");
@@ -52,9 +57,6 @@ function ProfilePage() {
       canvasDiv.setAttribute('hidden', 'true')
     }
   };
-
-
-  const curUserCanvases = useSelector((state) => state.canvases);
 
   const goToCanvasProfile = (e, canvas_id) => {
       e.preventDefault();
@@ -66,12 +68,9 @@ function ProfilePage() {
     history.push(`/canvases/${c.id}/edit-canvas`)
   }
 
-
-
-
-
   useEffect(() => {
     dispatch(listUsersCanvases(params.userId));
+    dispatch(listOneUser(params.userId, 1))
   }, [dispatch]);
 
 
@@ -80,19 +79,19 @@ function ProfilePage() {
       <div className="profile-page-header">
         <div className="profile-image">
           <span className="image-circle">
-            <img src="" alt="" />
+            <img src={viewUser?.profile_picture} alt="" />
           </span>
         </div>
         <div className="profile-name">
           <h1>
-            {user?.first_name} {user?.last_name}
+            {viewUser?.first_name} {viewUser?.last_name}
           </h1>
         </div>
-        <div className="profile-contact">{user?.email}</div>
+        <div className="profile-contact">{viewUser?.email}</div>
         <div className="profile-follwer-follwing">
           {/* <p onClick={}>{user.followers.length} follower</p> */}
           <span onClick={() => setShowFollowers(true)}>
-            {user?.followers.length} follower
+            {viewUser?.followers.length} follower
           </span>
           <FollowersModal
             onClose={() => setShowFollowers(false)}
@@ -100,7 +99,7 @@ function ProfilePage() {
           />
           <span> • </span>
           <span onClick={() => setShowFollowings(true)}>
-            {user?.followed?.length} following
+            {viewUser?.followed?.length} following
           </span>
           <FollowingsModal
             onClose={() => setShowFollowings(false)}
@@ -109,8 +108,8 @@ function ProfilePage() {
         </div>
       </div>
       <div className="profile-page-body">
-        <div className="profile-page-edit">
-          <button onClick={redirect}>Edit</button>
+        <div >
+          <button className="profile-page-edit" onClick={redirect}><i class="fas fa-sliders-h"></i></button>
         </div>
         <div className="profile-page-upload">
           <CreateCanvasModal onClose={() => setShow(false)} show={show} />
