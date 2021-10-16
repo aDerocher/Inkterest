@@ -51,6 +51,7 @@ const EditInkModal = (props) => {
                         className='edit-ink-title'
                         type='text'
                         value={title}
+                        required='true'
                         onChange={(e) => setTitle(e.target.value)}
                     />
                     <label className='edit-form-label' for='edit-ink-subtitle'>Subtitle</label>

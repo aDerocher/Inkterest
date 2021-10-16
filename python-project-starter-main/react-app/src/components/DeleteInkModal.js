@@ -31,7 +31,7 @@ const DeleteInkModal = (props) => {
 
     return (
         <div className="ink-modal" onClick={props.onClose}>
-            <div className="ink-modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="delete-ink-modal-content" onClick={(e) => e.stopPropagation()}>
                 Delete Ink?
                 <form className='ink-delete-form' onSubmit={(e) => handleDelete(e, ink?.id)}>
                     <div>Are you sure you want to delete this ink?</div>
