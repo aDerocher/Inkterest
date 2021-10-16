@@ -155,7 +155,9 @@
     border-radius: 6px;
 }
 
-
+.light{
+    opacity: .75;
+}
 .canvas-tile-image{
     /* background-color: rgb(119, 119, 119); */
     width: 100%;

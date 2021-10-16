@@ -10,7 +10,7 @@ import FollowingsModal from "./FollowingsModal";
 import { useParams } from "react-router-dom";
 import { listOneUser } from "./../store/user";
 import { listUsersCanvases } from "./../store/canvas";
-import canvasCover from "./../images/squid-circle-icon-Black.png"
+import canvasCover from "./../images/emptyCanvasCover.png"
 import DiscoverInks from "./DiscoverInks";
 
 function ProfilePage() {
@@ -144,7 +144,7 @@ return (
                             { c.inks[0] &&
                                 <img className="canvas-tile-image" src={c.inks[0].image} alt="Canvas Cover"/>}
                             { !c.inks[0] &&
-                                <img className="canvas-tile-image" src={canvasCover} alt="Canvas Cover"/>}
+                                <img className="canvas-tile-image light" src={canvasCover} alt="Canvas Cover"/>}
 
                         </div>
                         <div className="canvas-tile-footer">
