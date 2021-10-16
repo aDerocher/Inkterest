@@ -8,18 +8,27 @@ import "../styles/discover-inks.css";
 function DiscoverInks(props) {
     const dispatch = useDispatch();
     const history = useHistory();
-    let inks = useSelector(state => state.inks);
 
+    // ==== Filter the inks state array for the inks created by the view user =============
+    let inks = useSelector(state => state.inks);
+    useEffect(() => {
+        dispatch(listAllInks())
+    }, [dispatch])
     if(props.user_id !== null && props.user_id !== undefined){
-        inks = inks.filter(i => i.creator_id = props.user_id)
+        // let newInks = []
+        // for(let i=0; i < inks.length; i++){
+        //     if (inks[i].creator_id.toString() === props.user_id){
+        //         newInks.push(inks[i])
+        //     }
+        // }
+        // inks = newInks
+        inks = inks.filter(i => i.creator_id.toString() === props.user_id)
     }
+    // ==== Or if component is passed an array, use that =============
     if(props.canvasInksArr !== null && props.canvasInksArr !== undefined){
         inks = props.canvasInksArr
     }
 
-    useEffect(() => {
-        dispatch(listAllInks())
-    }, [dispatch])
 
     const goToInkPage = (e,userId,inkId) => {
         e.preventDefault();

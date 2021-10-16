@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import "../styles/profile-page.css";
 
 import CreateCanvasModal from "./CreateCanvasModal";
-import ProfileModal from "./ProfileDDModal";
 import FollowersModal from "./FollowersModal";
 import FollowingsModal from "./FollowingsModal";
 import { useParams } from "react-router-dom";
