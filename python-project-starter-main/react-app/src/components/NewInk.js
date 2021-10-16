@@ -22,15 +22,20 @@ function NewInkForm() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [select, setSelect] = useState(null);
   const [errors, setErrors] = useState([]);
+  const [ errorsHidden, setErrorsHidden ] = useState(true);
 
   useEffect(() => {
     dispatch(listUsersCanvases(sessionUser?.id));
 
     let newErrors = [];
-    if (title.length < 2)
-      newErrors.push("Title is required and must be longer than 2 characters");
+    if (title?.length < 2) {
+        newErrors.push("Title must be longer than 2 characters");
+    }
+    if (title?.length > 50) {
+        newErrors.push("Title length must be less than 50 characters");
+    }
     setErrors(newErrors);
-  }, [dispatch, title.length]);
+  }, [dispatch, title]);
 
   if (!sessionUser) return <Redirect to="/" />;
 
@@ -43,7 +48,10 @@ function NewInkForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setErrorsHidden(false)
+    if(destination_link === "https://www."){
+        setDestination_link(null)
+    }
     const newImage = {
       image: selectedFile,
       title: title,
@@ -150,17 +158,21 @@ function NewInkForm() {
             </div>
 
             <div className="bottom-right">
-              <textarea
+              <input
                 className="title input"
                 type="text"
                 value={title}
+                maxLength="50"
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Add your title"
               />
+            <div hidden={errorsHidden}>
               {errors && errors?.map((error, i) => {
                 return <div className='title-error' key={i}>{error}</div>
               })}
-              <input
+            </div>
+
+              <textarea
                 className="subtitle input"
                 type="text"
                 value={subtitle}

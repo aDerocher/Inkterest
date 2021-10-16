@@ -18,10 +18,10 @@ function About() {
                 <div className="profile-contact">marzgrant@gmail.com</div>
                 <div className='link-buttons-container'>
                     <a target="_blank" rel="noreferrer" href="https://github.com/AlwynGrant">
-                        <button className="link-btn git-link" onclick="window.location.href='https://github.com/AlwynGrant';"></button>
+                        <button className="link-btn git-link"></button>
                     </a>
                     <a target="_blank" rel="noreferrer" href="https://www.linkedin.com">
-                        <button className="link-btn linkedin-link" onClick="window.location.href='https://www.linkedin.com/in/andrew-derocher-54003789/';">in</button>
+                        <button className="link-btn linkedin-link">in</button>
                     </a>
                 </div>
             </div>
@@ -36,12 +36,11 @@ function About() {
                 <div className="profile-contact">andrew@andrewderocher.com</div>
                 <div className='link-buttons-container'>
                     <a target="_blank" rel="noreferrer" href="https://github.com/aDerocher">
-                        <button className="link-btn git-link" onClick="window.location.href='https://github.com/aDerocher';"></button>
+                        <button className="link-btn git-link" ></button>
                     </a>
                     <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/andrew-derocher-54003789/">
-                        <button className="link-btn linkedin-link" onClick="window.location.href='https://www.linkedin.com/in/andrew-derocher-54003789/';">in</button>
+                        <button className="link-btn linkedin-link">in</button>
                     </a>
-                    {/* <a target="_blank" href="https://www.linkedin.com/in/andrew-derocher-54003789/"><button className="link-btn linkedin-link" onClick="window.location.href='https://www.linkedin.com/in/andrew-derocher-54003789/';">in</button> */}
                 </div>
             </div>
 
@@ -55,10 +54,10 @@ function About() {
                 <div className="profile-contact">email@email.com</div>
                 <div className='link-buttons-container'>
                     <a target="_blank" rel="noreferrer" href="https://github.com/grantc00">
-                        <button className="link-btn git-link" onClick="window.location.href='https://github.com/grantc00';"></button>
+                        <button className="link-btn git-link"></button>
                     </a>
                     <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/grant-chiu-964766206/">
-                        <button className="link-btn linkedin-link" onClick="window.location.href='https://www.linkedin.com/in/grant-chiu-964766206/';">in</button>
+                        <button className="link-btn linkedin-link">in</button>
                     </a>
                 </div>
             </div>
