@@ -84,7 +84,6 @@ function App() {
             <NewInkForm />
         </ProtectedRoute>
 
-
         <Route path="/inks/:inkId" exact={true}>
           <InkPage />
         </Route>
