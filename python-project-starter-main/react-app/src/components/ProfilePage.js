@@ -39,9 +39,8 @@ function ProfilePage() {
   const [showFollowers, setShowFollowers] = useState(false);
   const [showFollowings, setShowFollowings] = useState(false);
 
-  const viewUser = useSelector((state) => state.user[0]);
   const curUserCanvases = useSelector((state) => state.canvases);
-
+  
   const redirect = () => {
     history.push("/profile-edit");
   };
@@ -49,14 +48,14 @@ function ProfilePage() {
   // ===== Functions ===============================
   const pinCreateHandler = (options) => {
     if (options.value === "ink") {
-      history.push("/inks/new-ink");
+        history.push("/inks/new-ink");
     } else {
       setShow(true);
       const canvasDiv = document.querySelector('.Dropdown-placeholder')
       canvasDiv.setAttribute('hidden', 'true')
     }
   };
-
+  
   const goToCanvasProfile = (e, canvas_id) => {
       e.preventDefault();
       history.push(`/canvases/${canvas_id}`)
@@ -70,15 +69,16 @@ function ProfilePage() {
   useEffect(() => {
     dispatch(listUsersCanvases(params.userId));
     dispatch(listOneUser(params.userId, 1))
-  }, [dispatch, params]);
+}, [dispatch, params]);
 
+const viewUser = useSelector((state) => state.user[0]);
 
-  return (
+return (
     <div className="profile-page-container">
       <div className="profile-page-header">
         <div className="profile-image">
           <span className="image-circle">
-            <img src={viewUser?.profile_picture} alt="" />
+            <img className="users-profile-img" src={viewUser?.profile_picture} alt="" />
           </span>
         </div>
         <div className="profile-name">
