@@ -21,19 +21,19 @@ function DiscoverInks(props) {
         dispatch(listAllInks())
     }, [dispatch])
 
-    const goToInkPage = (e,ink_id) => {
+    const goToInkPage = (e,userId,inkId) => {
         e.preventDefault();
-        history.push(`/inks/${ink_id}`)
+        history.push(`/users/${userId}/inks/${inkId}`)
     }
     const goToPage = () => {
-        
+
     }
   return (
     <div className="discover-inks-container">
         {inks?.map((i) => (
 
             <div key={i.id} className='tile-container'>
-                <div className="image-container"  onClick={e => goToInkPage(e,i.id)} style={{
+                <div className="image-container"  onClick={e => goToInkPage(e,i.creator_id,i.id)} style={{
                             backgroundImage: `url(${i.image})`,
                             height: `100%`
                             }}>
@@ -45,7 +45,7 @@ function DiscoverInks(props) {
                     }
 
                     <img className='ink-tile-image' src={i.image} alt="" />
-                    
+
                     <div className="ink-tile-bottom-buttons" onClick={e => e.stopPropagation()}>
                         <div className='ink-tile-bottom-buttons-left'>
                             <a target="_blank" rel="noreferrer" href={i.destination_link}>

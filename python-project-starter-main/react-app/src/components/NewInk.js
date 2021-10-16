@@ -12,35 +12,33 @@ function NewInkForm() {
 
   // direct access to session user/slice of state
   const sessionUser = useSelector((state) => state.session.user);
-  const canvases = useSelector((state) => state.canvases);
-
-  // direct access to inks array/slice of state
-  // const inks = useSelector(state => state.inks)
 
   // direct access to canvases array/slice of state
+  const canvases = useSelector((state) => state.canvases);
 
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
   const [destination_link, setDestination_link] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [select, setSelect] = useState(null);
-  const selectedCanvas = canvases?.filter((el) => el.name === select);
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
     dispatch(listUsersCanvases(sessionUser?.id));
+
     let newErrors = [];
     if (title.length < 2)
-      newErrors.push("Titles must be longer than 2 characters");
+      newErrors.push("Title is required and must be longer than 2 characters");
     setErrors(newErrors);
-  }, [dispatch]);
+  }, [dispatch, title.length]);
 
   if (!sessionUser) return <Redirect to="/" />;
 
   const destLinkEdit = (val) => {
-    if (!val.startsWith("https://www.")) {
-      setDestination_link("https://www." + destination_link);
-    }
+    if (val === "") return val
+
+    if (!val.startsWith("https://www.")) return "https://www." + val
+    else return val
   };
 
   const handleSubmit = (e) => {
@@ -50,8 +48,8 @@ function NewInkForm() {
       image: selectedFile,
       title: title,
       subtitle: subtitle,
-      destination_link: destination_link,
-      canvas_id: selectedCanvas ? selectedCanvas[0]?.id : null,
+      destination_link: destLinkEdit(destination_link),
+      canvas_id: select,
     };
 
     dispatch(createInk(newImage)).then(() => {
@@ -79,7 +77,7 @@ function NewInkForm() {
       <div className="form-container">
         <form
           className="new-ink-form"
-          onSubmit={(destLinkEdit(destination_link), handleSubmit)}
+          onSubmit={(e) => handleSubmit(e)}
         >
           <div className="form-top">
             <div className="top-left">
@@ -96,7 +94,7 @@ function NewInkForm() {
                 {canvases?.length > 0 &&
                   canvases?.map((canvas) => {
                     return (
-                      <option key={canvas.id} value={canvas.name}>
+                      <option key={canvas.id} value={canvas.id}>
                         {canvas.name}
                       </option>
                     );
@@ -145,7 +143,7 @@ function NewInkForm() {
               <button
                 type="submit"
                 className="file-upload-btn"
-                disabled={errors.length > 0}
+                disabled={(errors.length > 0 || !selectedFile)}
               >
                 submit ink
               </button>
@@ -159,6 +157,9 @@ function NewInkForm() {
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Add your title"
               />
+              {errors && errors?.map((error, i) => {
+                return <div className='title-error' key={i}>{error}</div>
+              })}
               <input
                 className="subtitle input"
                 type="text"
