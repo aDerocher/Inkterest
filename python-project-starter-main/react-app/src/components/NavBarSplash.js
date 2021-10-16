@@ -6,7 +6,7 @@ import "../styles/navbar.css"
 import pinkSquidBanner from "./../images/bannerLogo-pinkBlack.png"
 import { login } from '../store/session';
 import LoginFormModal from './auth/LoginForm'
-
+import SignUpFormModal from './auth/SignUpForm';
 
 const NavBarSplash = () => {
   const dispatch = useDispatch();
@@ -62,7 +62,7 @@ const NavBarSplash = () => {
               <div onClick={(e) => handleLogin(e)}>Log In</div>
             </div>
             <div className="nav-item nav-splash-item no-pad">
-              <div >Sign up</div>
+              <div onClick={(e) => handleSignup(e)}>Sign up</div>
             </div>
         </div>
       {
@@ -73,14 +73,14 @@ const NavBarSplash = () => {
           />
         )
       }
-      {/* {
+      {
         showSignUpModal && (
           <SignUpFormModal
             show={showSignUpModal}
             onClose={() => setShowSignUpModal(false)}
           />
         )
-      } */}
+      }
     </nav>
   );
 }

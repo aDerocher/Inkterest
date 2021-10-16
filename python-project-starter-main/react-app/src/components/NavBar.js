@@ -16,7 +16,7 @@ const NavBar = () => {
   const history = useHistory();
 
   const user = useSelector(state => state.session.user);
-  const userNameLetter = user.first_name[0].toUpperCase();
+  // const userNameLetter = user?.first_name[0].toUpperCase();
 
   const toProfile = (e) => {
     e.preventDefault();
@@ -56,7 +56,7 @@ const NavBar = () => {
                 <i className="fas fa-comment-dots"></i>
             </div>
             <div className="nav-item no-pad user-letter" onClick={e=> toProfile(e)}>
-              {userNameLetter}
+              {null}
             </div>
             <div className="nav-item no-pad">
               <button onClick={() => setShow(true) } className="chevron-btn"><i className="fas fa-chevron-down"></i></button>

@@ -9,21 +9,12 @@ class User(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
-    profile_picture = db.Column(db.String(2000), nullable=False)
+    profile_picture = db.Column(db.String(2000))
     email = db.Column(db.String(255), nullable=False, unique=True)
-    first_name = db.Column(db.String(50), nullable=False)
-    last_name = db.Column(db.String(50), nullable=False)
+    first_name = db.Column(db.String(50))
+    last_name = db.Column(db.String(50))
     hashed_password = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime(), default=datetime.utcnow)
-
-    # followers = db.relationship(
-    #     "User",
-    #     secondary=follows,
-    #     primaryjoin=(follows.c.follower_id == id),
-    #     secondaryjoin=(follows.c.followed_id == id),
-    #     backref=db.backref("following", lazy="dynamic"),
-    #     lazy="dynamic",
-    # )
 
     followers = db.relationship(
         "User",

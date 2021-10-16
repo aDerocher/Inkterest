@@ -1,4 +1,4 @@
-.login-modal {
+.signup-modal {
     position: fixed;
     left: 0;
     top: 0;
@@ -10,7 +10,7 @@
     justify-content: center;
 }
 
-.login-modal-content {
+.signup-modal-content {
     width: 375px;
     height: 400px;
     background-color: #fff;
@@ -28,7 +28,7 @@
     padding: 10px;
 }
 
-.login-form {
+.signup-form {
     width: 375px;
     height: 300px;
 
@@ -39,7 +39,7 @@
     border-radius: 16px;
 }
 
-.login-errors {
+.signup-errors {
     width: 275px;
     height: 40px;
 
@@ -52,7 +52,7 @@
     justify-content: center;
 }
 
-.login-email {
+.signup-username {
     border: groove;
     border-color: #e6e6e6;
     border-radius: 8px;
@@ -65,7 +65,21 @@
     font-size: 15px;
 }
 
-.login-password {
+
+.signup-email {
+    border: groove;
+    border-color: #e6e6e6;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 2px;
+    min-width: 275px;
+    height: 25px;
+
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.signup-password {
     border: groove;
     border-color: #e6e6e6;
     border-radius: 8px;
@@ -75,18 +89,28 @@
     height: 25px;
 }
 
-.signup-redirect {
+.signup-r-password {
+    border: groove;
+    border-color: #e6e6e6;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 2px;
+    min-width: 275px;
+    height: 25px;
+}
+
+.login-redirect {
     font-size: 14px;
 }
 
-.login-btn-row {
+.signup-btn-row {
     width: 275px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.login-btn {
+.signup-btn {
     border-radius: 8px 8px 8px 8px;
     border: none;
     cursor: pointer;
