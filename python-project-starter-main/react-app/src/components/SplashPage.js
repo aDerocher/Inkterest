@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Redirect, useParams } from 'react-router-dom';
+import illustrative from '../images/Splash-tats/illustrative/illustrative.js';
+import americanTraditional from '../images/Splash-tats/american_traditional/amertrad.js';
+import japaneseTraditional from '../images/Splash-tats/japanese_traditional/japantrad.js';
+import waterColor from '../images/Splash-tats/water_color/water.js';
 import '../styles/splash-page.css'
 
 function SplashPage() {
