@@ -17,6 +17,12 @@ const ProfileModal = (props) => {
     props.onClose()
   };
 
+  const toSettings = (e) => {
+    e.preventDefault();
+    history.push(`/profile-edit`);
+    props.onClose()
+  }
+
   const onLogout = async (e) => {
     e.preventDefault()
     history.push("/")
@@ -38,14 +44,14 @@ const ProfileModal = (props) => {
             <div className="prof-dd-row prof-dd-title">Currently an</div>
 
             <div className="prof-dd-card pd-hov">
-              <img className="prof-dd-uimg" src={demoProfImage} alt="" />
+          <img className="prof-dd-uimg" src={(user?.profile_picture ? user?.profile_picture : demoProfImage)} alt="" />
               <div
                 className="prof-dd-card-content"
                 onClick={(e) => toProfile(e)}
               >
-                <p className="pd-text pd-name">Aldous H</p>
+                <p className="pd-text pd-name">{user?.username}</p>
                 <p className="pd-text pd-acctype">Personal</p>
-                <p className="pd-text pd-email">ahuxley@bnw.com</p>
+                <p className="pd-text pd-email">{user?.email}</p>
               </div>
               <img className="pd-checkmark" src={checkmark} alt="" />
             </div>
@@ -60,10 +66,10 @@ const ProfileModal = (props) => {
             <br />
             <div className="prof-dd-row prof-dd-title">More options</div>
             <div className="prof-dd-row pd-hov">
-              <p>Settings</p>
+              <p onClick={(e) => toSettings(e)}>Settings</p>
             </div>
             <div className="prof-dd-row pd-hov">
-              <p>Tune your home feed</p>
+              <p >Tune your home feed</p>
             </div>
             <div className="prof-dd-row pd-hov">
               <p>Install the Windows app</p>

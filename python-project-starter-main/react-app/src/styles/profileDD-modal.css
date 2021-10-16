@@ -9,7 +9,8 @@
     background-color: transparent;
     justify-content: flex-end;
     margin-top: -15px;
-    margin-right: 20px;
+    margin-right: 10px;
+    z-index: 5;
 }
 
 .modal-content {
