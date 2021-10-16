@@ -14,13 +14,6 @@ function DiscoverInks(props) {
         dispatch(listAllInks())
     }, [dispatch])
     if(props.user_id !== null && props.user_id !== undefined){
-        // let newInks = []
-        // for(let i=0; i < inks.length; i++){
-        //     if (inks[i].creator_id.toString() === props.user_id){
-        //         newInks.push(inks[i])
-        //     }
-        // }
-        // inks = newInks
         inks = inks.filter(i => i.creator_id.toString() === props.user_id)
     }
     // ==== Or if component is passed an array, use that =============
@@ -28,54 +21,103 @@ function DiscoverInks(props) {
         inks = props.canvasInksArr
     }
 
-
     const goToInkPage = (e,userId,inkId) => {
         e.preventDefault();
         history.push(`/users/${userId}/inks/${inkId}`)
     }
 
+    // magical bit that enables magic rendering ===================
+    let inkDivision0 = []
+    let inkDivision1 = []
+    let inkDivision2 = []
+    let inkDivision3 = []
+    let inkDivision4 = []
+    let inkDivision5 = []
+    let inkDivision6 = []
+
+    for(let i=0; i<inks?.length; i++){
+        let x = i % 7
+        switch (x) {
+            case 0:
+                inkDivision0.push(inks[i])
+                break;
+            case 1:
+                inkDivision1.push(inks[i])
+                break;
+            case 2:
+                inkDivision2.push(inks[i])
+                break;
+            case 3:
+                inkDivision3.push(inks[i])
+                break;
+            case 4:
+                inkDivision4.push(inks[i])
+                break;
+            case 5:
+                inkDivision5.push(inks[i])
+                break;
+            case 6:
+                inkDivision6.push(inks[i])
+                break;
+        }
+    }
+    const allCols = [
+        inkDivision0,
+        inkDivision1,
+        inkDivision2,
+        inkDivision3,
+        inkDivision4,
+        inkDivision5,
+        inkDivision6,
+    ];
+
   return (
     <div className="discover-inks-container">
-        {inks?.map((i) => (
 
-            <div key={i.id} className='tile-container'>
-                <div className="image-container"  onClick={e => goToInkPage(e,i.creator_id,i.id)} style={{
-                            backgroundImage: `url(${i.image})`,
-                            height: `100%`
-                            }}>
-                    {/* <a href={`/inks/${i.id}`}>link</a> */}
-                    {!props.user_id &&
-                        <div className="ink-tile-top-buttons">
-                            <button className='ink-tile-btn ink-save-btn'>Save</button>
-                        </div>
-                    }
+        {/* ====================================================================== */}
+        {/* ====== This is the start of rendering the first column of inks ======= */}
 
-                    <img className='ink-tile-image' src={i.image} alt="" />
-
-                    <div className="ink-tile-bottom-buttons" onClick={e => e.stopPropagation()}>
-                        <div className='ink-tile-bottom-buttons-left'>
-                            <a target="_blank" rel="noreferrer" href={i.destination_link}>
-                            {i.destination_link &&
-                                <button className='ink-tile-btn ink-dest-link-btn'>etsyisthegreatest.com</button>
+        { allCols.map((inkDivisionX) =>(
+            <div className="column-of-inks">
+                {inkDivisionX?.map((i) => (
+                    // ====== This is the start of rendering an individual ink tile =======
+                    <div key={i.id} className='tile-container'>
+                        <div className="image-container"  onClick={e => goToInkPage(e,i.creator_id,i.id)} style={{
+                                backgroundImage: `url(${i.image})`,
+                                height: `100%`
+                                }}>
+                            {!props.user_id &&
+                                <div className="ink-tile-top-buttons">
+                                    <button className='ink-tile-btn ink-save-btn'>Save</button>
+                                </div>
                             }
-                            </a>
-                        </div>
 
-                        {/* <button className='ink-tile-btn ink-dest-link-btn'>etsyisthegreatest.com</button> */}
-                        <div className='ink-tile-bottom-buttons-right'>
-                            <button className='ink-tile-btn ink-tile-btn-s'>&#8683;</button>
-                            <button className='ink-tile-btn ink-tile-btn-s'>...</button>
+                            <img className='ink-tile-image' src={i.image} alt="" />
+
+                            <div className="ink-tile-bottom-buttons" onClick={e => e.stopPropagation()}>
+                                <div className='ink-tile-bottom-buttons-left'>
+                                    <a target="_blank" rel="noreferrer" href={i.destination_link}>
+                                    {i.destination_link &&
+                                        <button className='ink-tile-btn ink-dest-link-btn'>etsyisthegreatest.com</button>
+                                    }
+                                    </a>
+                                </div>
+
+                                <div className='ink-tile-bottom-buttons-right'>
+                                    <button className='ink-tile-btn ink-tile-btn-s'>&#8683;</button>
+                                    <button className='ink-tile-btn ink-tile-btn-s'>...</button>
+                                </div>
+                            </div>
                         </div>
+                        {!props.user_id &&
+                            <div className="tile-footer">
+                                <img className='user-image' src="https://randomuser.me/api/portraits/lego/1.jpg" alt="" />
+                                <p className="username"><a href={`/users/${i.creator_id}`}>{i.creator_username}</a></p>
+                            </div>
+                        }
                     </div>
-                </div>
-                {!props.user_id &&
-                    <div className="tile-footer">
-                        <img className='user-image' src="https://randomuser.me/api/portraits/lego/1.jpg" alt="" />
-                        <p className="username"><a href={`/users/${i.creator_id}`}>{i.creator_username}</a></p>
-                    </div>
-                }
+                ))}
             </div>
-
         ))}
     </div>
   );
