@@ -108,8 +108,8 @@ function ProfilePage() {
         </div>
       </div>
       <div className="profile-page-body">
-        <div className="profile-page-edit">
-          <button onClick={redirect}>Edit</button>
+        <div >
+          <button className="profile-page-edit" onClick={redirect}><i class="fas fa-sliders-h"></i></button>
         </div>
         <div className="profile-page-upload">
           <CreateCanvasModal onClose={() => setShow(false)} show={show} />

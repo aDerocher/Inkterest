@@ -39,7 +39,18 @@
 .profile-follwer-follwing:hover {
   cursor: pointer;
 }
-
+.profile-page-edit{
+    background-color: white;
+    margin: 14px;
+    height: 36px;
+    width: 36px;
+    outline: none;
+    border: none;
+    border-radius: 18px;
+}
+.profile-page-edit:hover{
+    background-color: var(--hover-grey);
+}
 /* ================== Create -- Dropdown Menu =========================== */
 .plus-dd {
   /* background-color: rgb(158, 125, 88); */
