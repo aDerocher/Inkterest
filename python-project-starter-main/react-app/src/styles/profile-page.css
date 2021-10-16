@@ -14,12 +14,15 @@
 .profile-page-header >*{
     padding: 4px;
 }
-
+.users-profile-img{
+    max-width: 100%;
+    max-height: 100%;
+}
 .image-circle {
   height: 120px;
   width: 120px;
   border-radius: 60px;
-  background-color: #bbb;
+  background-color: var(--soft-grey);
   border-radius: 50%;
   display: inline-block;
   overflow: hidden;
