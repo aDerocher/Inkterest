@@ -41,6 +41,7 @@ function NewInkForm() {
     else return val
   };
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
