@@ -39,7 +39,7 @@ function SplashPage() {
                 <div className='splash-text-2'>
                     {
                         arrayWords.map((string, i) => {
-                            return <div className={`null`}>{string}</div>
+                            return <div className={`string-${i}`}>{string}</div>
                         })
                     }
                 </div>

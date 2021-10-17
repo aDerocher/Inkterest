@@ -15,7 +15,6 @@
 }
 
 .top-container {
-    background-color: antiquewhite;
     height: 350px;
     display: flex;
     flex-direction: column;
@@ -32,20 +31,23 @@
 .splash-text-2 {
     font-size: 45px;
     font-weight: 600;
-    color:cornflowerblue;
     margin-top: 5px;
+    width: 400px;
+
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
 }
 
 /* ===================== BOTTOM CONTAINER ================= */
 .bottom-container {
-    background-color: rgb(238, 174, 90);
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
 .card-1 {
-    background-color: aqua;
     width: 250px;
     height: 1000px;
     border-radius: 10px;
@@ -57,7 +59,6 @@
 }
 
 .card-2 {
-    background-color: rgb(77, 163, 163);
     width: 250px;
     height: 1000px;
     border-radius: 10px;
@@ -69,7 +70,6 @@
 }
 
 .card-3 {
-    background-color: rgb(151, 172, 85);
     width: 250px;
     height: 1000px;
     border-radius: 10px;
@@ -81,7 +81,6 @@
 }
 
 .card-4 {
-    background-color: rgb(241, 211, 182);
     width: 250px;
     height: 1000px;
     border-radius: 10px;
@@ -93,7 +92,6 @@
 }
 
 .card-5 {
-    background-color: rgb(138, 146, 251);
     width: 250px;
     height: 1000px;
     border-radius: 10px;
@@ -105,7 +103,6 @@
 }
 
 .card-6 {
-    background-color: rgb(193, 221, 168);
     width: 250px;
     height: 1000px;
     border-radius: 10px;
@@ -117,7 +114,6 @@
 }
 
 .card-7 {
-    background-color: rgb(155, 236, 147);
     width: 250px;
     height: 1000px;
     border-radius: 10px;
@@ -130,6 +126,167 @@
 
 
 /* ==================================================== */
+
+
+.string-0 {
+  position: absolute;
+  visibility: hidden;
+  color: rgb(30, 30, 195);
+
+  animation-delay: 0.6s;
+  animation-name: string-0;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes string-0 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+  2.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  22.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  25% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.string-1 {
+  position: absolute;
+  visibility: hidden;
+  color: rgb(82, 82, 82);
+
+  animation-delay: 0.6s;
+  animation-name: string-1;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes string-1 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  25% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  27.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  47.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.string-2 {
+  position: absolute;
+  visibility: hidden;
+  color: rgb(255, 25, 25);
+
+  animation-delay: 0.6s;
+  animation-name: string-2;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes string-2 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  50% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  52.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  72.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  75% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.string-3 {
+  position: absolute;
+  visibility: hidden;
+  color: rgb(27, 216, 27);
+
+  animation-delay: 0.6s;
+  animation-name: string-3;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes string-3 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  75% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  77.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  97.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+
 /* ==================================================== */
 
 .img-card {
@@ -144,7 +301,6 @@
 /* ==================================================== */
 
 .crust-layer-left {
-  background-color: black;
   border-radius: 10px;
   width: 240px;
   height: 320px;
@@ -294,7 +450,6 @@
 /* ==================================================== */
 
 .crust-layer-right {
-    background-color: black;
     border-radius: 10px;
     width: 240px;
     height: 320px;
@@ -462,7 +617,6 @@
 /* ==================================================== */
 
 .mantle-layer-left {
-    background-color: black;
     border-radius: 10px;
     width: 240px;
     height: 320px;
@@ -630,7 +784,6 @@
 /* ==================================================== */
 
 .mantle-layer-right {
-    background-color: black;
     border-radius: 10px;
     width: 240px;
     height: 320px;
@@ -647,7 +800,6 @@
 /* ==================================================== */
 
 .outer-core-layer-left {
-    background-color: black;
     border-radius: 10px;
     width: 240px;
     height: 320px;
@@ -660,7 +812,6 @@
 }
 
 .outer-core-layer-right {
-    background-color: black;
     border-radius: 10px;
     width: 240px;
     height: 320px;
@@ -1131,7 +1282,6 @@
 /* ==================================================== */
 
 .inner-core-layer {
-    background-color: black;
     border-radius: 10px;
     width: 240px;
     height: 320px;
