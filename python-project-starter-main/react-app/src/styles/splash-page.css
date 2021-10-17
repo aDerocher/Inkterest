@@ -131,38 +131,102 @@
 
 /* ==================================================== */
 /* ==================================================== */
+
+.img-card {
+  height: 320px;
+  width: 240px;
+  object-fit: cover;
+  position: absolute;
+  border-radius: 10px;
+}
+
+/* ==================================================== */
 /* ==================================================== */
 
-.crust-layer {
+.crust-layer-left {
     background-color: black;
     border-radius: 10px;
     width: 240px;
     height: 320px;
     margin: 5px 3px 5px 3px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.crust-layer-right {
+    background-color: black;
+    border-radius: 10px;
+    width: 240px;
+    height: 320px;
+    margin: 5px 3px 5px 3px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* ==================================================== */
 /* ==================================================== */
 /* ==================================================== */
 
-.mantle-layer {
+.mantle-layer-left {
     background-color: black;
     border-radius: 10px;
     width: 240px;
     height: 320px;
     margin: 5px 3px 5px 3px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mantle-layer-right {
+    background-color: black;
+    border-radius: 10px;
+    width: 240px;
+    height: 320px;
+    margin: 5px 3px 5px 3px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* ==================================================== */
 /* ==================================================== */
 /* ==================================================== */
 
-.outer-core-layer {
+.outer-core-layer-left {
     background-color: black;
     border-radius: 10px;
     width: 240px;
     height: 320px;
     margin: 5px 3px 5px 3px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.outer-core-layer-right {
+    background-color: black;
+    border-radius: 10px;
+    width: 240px;
+    height: 320px;
+    margin: 5px 3px 5px 3px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* ==================================================== */
@@ -175,10 +239,13 @@
     width: 240px;
     height: 320px;
     margin: 5px 3px 5px 3px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* ==================================================== */
 /* ==================================================== */
 /* ==================================================== */
-
-
