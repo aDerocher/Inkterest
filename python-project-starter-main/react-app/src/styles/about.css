@@ -19,6 +19,11 @@
     border-radius: 12px;
 }
 
+.profile-name{
+    font-size: 18pt;
+    margin: 10px;
+}
+
 .about-image-container{
     max-height: 120px;
 }
