@@ -8,6 +8,12 @@ from app.aws import (
 
 ink_routes = Blueprint('inks', __name__)
 
+# Get one ink - simple
+@ink_routes.route('/<int:ink_id>')
+def get_ink(ink_id):
+    ink  = Ink.query.get(ink_id)
+    return ink.to_dict()
+
 # Get all inks - simple
 @ink_routes.route('')
 def get_inks():
@@ -15,11 +21,14 @@ def get_inks():
     return {'inks': [ink.to_dict() for ink in inks]}
 
 
-# Get one ink - simple
-@ink_routes.route('/<int:ink_id>')
-def get_ink(ink_id):
-    ink  = Ink.query.get(ink_id)
-    return ink.to_dict()
+# Get all inks that belong to session-user
+@ink_routes.route('/my-inks')
+def get_my_inks():
+    inks = Ink.query.filter(Ink.creator_id == int(current_user.get_id()))
+    return {'inks': [ink.to_dict() for ink in inks]}
+
+
+# Get all inks that DONT belong to view-user
 
 
 # Create new ink

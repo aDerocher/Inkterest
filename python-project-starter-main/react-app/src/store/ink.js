@@ -3,6 +3,7 @@
 const ADD_INK = 'users/NEW_INK';
 const GET_INK = 'users/GET_INK';
 const GET_INKS = 'users/GET_INKS';
+const GET_MY_INKS = 'users/GET_MY_INKS';
 const EDIT_INK = 'users/GET_INK';
 const DELETE_INK = 'users/DELETE_INK';
 
@@ -12,6 +13,7 @@ const DELETE_INK = 'users/DELETE_INK';
 const addInk = (ink) => ({ type: ADD_INK, ink });
 const getInk = (ink) => ({ type: GET_INK, ink });
 const getInks = (inks) => ({ type: GET_INKS, inks });
+const getMyInks = (inks) => ({ type: GET_MY_INKS, inks });
 const editInk = (ink) => ({ type: EDIT_INK, ink });
 const deleteInk = (ink) => ({ type: DELETE_INK, ink });
 
@@ -69,6 +71,19 @@ export const listAllInks = () => async (dispatch) => {
     }
 }
 
+// get all SESSION USER inks
+export const listAllMyInks = () => async (dispatch) => {
+    const response = await fetch(`/api/inks/my-inks`, {
+        method: 'GET'
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        console.log(data.inks)
+        dispatch(getMyInks(data.inks));
+        return response;
+    }
+}
 
 // edit ink
 export const changeInk = (ink, inkId) => async (dispatch) => {
@@ -119,6 +134,8 @@ const inksReducer = (state = initialState, action) => {
         case GET_INK:
             return [ action.ink ]
         case GET_INKS:
+            return [ ...action.inks ]
+        case GET_MY_INKS:
             return [ ...action.inks ]
         case EDIT_INK:
             return newState

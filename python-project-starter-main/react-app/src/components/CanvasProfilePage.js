@@ -3,19 +3,22 @@ import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getOneCanvas } from "./../store/canvas";
+import { listAllMyInks } from "./../store/ink"
+
 import DiscoverInks from "./DiscoverInks";
 import "../styles/canvas-profile-page.css";
 
 function CanvasProfilePage() {
-    const params = useParams();    
+    const params = useParams();
     let history = useHistory();
     const dispatch = useDispatch();
     console.log(params)
-  
+
     useEffect(() => {
         dispatch(getOneCanvas(params.canvas_id));
+        dispatch(listAllMyInks());
     }, [dispatch, params]);
-  
+
     const curCanvas = useSelector((state) => state.canvases[0]);
     const canvasInksArr = curCanvas?.inks;
 
@@ -48,7 +51,7 @@ function CanvasProfilePage() {
         </div>
       </div>
       <div className="canvas-p-profile-page-body">
-        
+
 
         <div className="canvas-p-profile-page-edit">
             <button onClick={e => editCanvas(e)}><i className="fas fa-sliders-h"></i></button>
@@ -58,7 +61,7 @@ function CanvasProfilePage() {
       <div className="canvas-p-profile-page-collection">
 
       </div>
-        <DiscoverInks user_id={null} canvasInksArr={canvasInksArr} canvas_id={curCanvas?.id}/>
+        {/* <DiscoverInks user_id={null} canvasInksArr={canvasInksArr} canvas_id={curCanvas?.id}/> */}
         <button className='floaty-button help-btn'>?</button>
         <button className='floaty-button big-plus-btn'>+</button>
     </div>
