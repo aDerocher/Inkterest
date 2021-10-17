@@ -110,7 +110,7 @@ function InkPage() {
                     }
 
 
-                    <a className='ink-link' href={`https://${ink?.destination_link}`}>{ink?.destination_link}</a>
+                    <a className='ink-link' href={ink?.destination_link}>{ink?.destination_link}</a>
                     <div className='ink-title'>{ink?.title}</div>
                     <div className='ink-subtitle'>{ink?.subtitle} </div>
                     <div className='ink-profile'>
