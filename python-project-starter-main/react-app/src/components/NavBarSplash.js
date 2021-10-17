@@ -18,7 +18,7 @@ const NavBarSplash = () => {
   const loginDemo = (e) => {
     e.preventDefault();
     const data = dispatch(login("demo@aa.com", "password"));
-    console.log(data)
+
     history.push("/")
   }
 

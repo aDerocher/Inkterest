@@ -9,7 +9,7 @@ import "../styles/canvas-edit.css";
 
 function CanvasEdit() {
     const params = useParams();
-    console.log(params)
+
     const history = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
@@ -97,9 +97,7 @@ function CanvasEdit() {
                         checked={isPrivate}
                         value={isPrivate}
                         onChange={(e) => {
-                            console.log('the box changed from: ', isPrivate)
                             setIsPrivate(!isPrivate)
-                            console.log('to: ', isPrivate)
                         }}
                     /> <p><em className="bold">Keep this board secret</em></p>
                 </div>
