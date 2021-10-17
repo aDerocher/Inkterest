@@ -15,7 +15,7 @@ function SplashPage() {
 
     const arrayWords = [
          "american traditional idea",
-         "illistrative idea",
+         "illustrative idea",
          "japanese traditional idea",
          "water color idea"
      ]

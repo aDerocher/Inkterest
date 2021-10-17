@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { listAllInks } from '../store/ink'
+import { listAllUsers } from '../store/user'
 import { useHistory } from "react-router";
 import "../styles/discover-inks.css";
 import { inkOffCanvas } from "../store/canvas";
@@ -11,9 +12,14 @@ function DiscoverInks(props) {
 
     // ==== Filter the inks state array for the inks created by the view user =============
     let inks = useSelector(state => state.inks);
+
+    const users = useSelector(state => state.user)
+
     useEffect(() => {
         dispatch(listAllInks())
+        dispatch(listAllUsers())
     }, [dispatch])
+
     if(props.user_id !== null && props.user_id !== undefined){
         inks = inks.filter(i => i.creator_id.toString() === props.user_id)
     }
@@ -101,14 +107,14 @@ function DiscoverInks(props) {
                                     <button className='ink-tile-btn ink-save-btn'>Save</button>
                                 </div>
                             }
-                            
+
                             <img className='ink-tile-image' src={i.image} alt="" />
 
                             <div className="ink-tile-bottom-buttons" onClick={e => e.stopPropagation()}>
                                 <div className='ink-tile-bottom-buttons-left'>
                                     <a target="_blank" rel="noreferrer" href={i.destination_link}>
                                     {i.destination_link &&
-                                        <button className='ink-tile-btn ink-dest-link-btn'>etsyisthegreatest.com</button>
+                                            <button className='ink-dest-link-btn'>{i.destination_link}</button>
                                     }
                                     </a>
                                 </div>
@@ -124,7 +130,13 @@ function DiscoverInks(props) {
                         </div>
                         {!props.user_id &&
                             <div className="tile-footer">
-                                <img className='user-image' src="https://randomuser.me/api/portraits/lego/1.jpg" alt="" />
+                                {
+                                    users?.map((user) => {
+                                        if (user.id === i.creator_id) {
+                                            return <img className='user-image' src={user.profile_picture} alt="" />
+                                        }
+                                    })
+                                }
                                 <p className="username"><a href={`/users/${i.creator_id}`}>{i.creator_username}</a></p>
                             </div>
                         }

@@ -28,6 +28,14 @@ def seed_inks():
         subtitle = "What do you think of my latest work??",
         destination_link = "",
     )
+    ink21 = Ink(
+        creator_id = 4,
+        creator_username='AnimalFarmer',
+        image = "https://www.toptrendsguide.com/wp-content/uploads/2019/11/Celtic-Tattoo-Ideas-For-Men.jpg",
+        title = "Heritage",
+        subtitle = "Got this because my heritage is important. I'm Scottish. Or Irish? I forget...",
+        destination_link = ""
+        )
     ink3 = Ink(
         creator_id = 1,
         creator_username = 'InkyTheDemo',
@@ -59,14 +67,6 @@ def seed_inks():
         title = "Wicked SKull",
         subtitle = "I got this tattoo for a friend",
         destination_link = "",
-    )
-    ink7 = Ink(
-        creator_id = 1,
-        creator_username = 'InkyTheDemo',
-        image = "https://www.toptrendsguide.com/wp-content/uploads/2019/11/Dragon-Tattoo.jpg",
-        title = "Big Dragon!",
-        subtitle = "Met the artist in a bar. He was rad.",
-        destination_link = "https://www.google.com/search?q=tattoos&tbm=isch&ved=2ahUKEwjc96Ky2s_zAhU8ATQIHY_pD4sQ2-cCegQIABAA&oq=tattoos&gs_lcp=CgNpbWcQAzIHCCMQ7wMQJzIHCAAQsQMQQzIICAAQgAQQsQMyCAgAEIAEELEDMggIABCABBCxAzIECAAQQzIHCAAQsQMQQzIICAAQgAQQsQMyBAgAEEMyBAgAEEM6BQgAEIAEUJHPKVi91ylgsdkpaABwAHgAgAHEA4gB0gySAQk0LjEuMC4yLjGYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=cy1rYZzyIryC0PEPj9O_2Ag&bih=716&biw=767"
     )
     ink8 = Ink(
         creator_id = 1,
@@ -164,6 +164,14 @@ def seed_inks():
         subtitle = "Scorpios are a pain in the ass, bruh. JK, Astrology isnt real lol",
         destination_link = ""
         )
+    ink37 = Ink(
+        creator_id = 8,
+        creator_username='Shruggers',
+        image = "https://www.toptrendsguide.com/wp-content/uploads/2019/10/Matching-Mother-Daughter-Tattoos.jpg",
+        title = "Pre-wedding",
+        subtitle = "Best mothers day ever",
+        destination_link = ""
+        )
     ink20 = Ink(
         creator_id = 4,
         creator_username='AnimalFarmer',
@@ -172,14 +180,14 @@ def seed_inks():
         subtitle = "Til death do me and this tattoo part",
         destination_link = ""
         )
-    ink21 = Ink(
-            creator_id = 4,
-        creator_username='AnimalFarmer',
-        image = "https://www.toptrendsguide.com/wp-content/uploads/2019/11/Celtic-Tattoo-Ideas-For-Men.jpg",
-        title = "Heritage",
-        subtitle = "Got this because my heritage is important. I'm Scottish. Or Irish? I forget...",
-        destination_link = ""
-        )
+    ink7 = Ink(
+        creator_id = 1,
+        creator_username = 'InkyTheDemo',
+        image = "https://www.toptrendsguide.com/wp-content/uploads/2019/11/Dragon-Tattoo.jpg",
+        title = "Big Dragon!",
+        subtitle = "Met the artist in a bar. He was rad.",
+        destination_link = "https://www.google.com/search?q=tattoos&tbm=isch&ved=2ahUKEwjc96Ky2s_zAhU8ATQIHY_pD4sQ2-cCegQIABAA&oq=tattoos&gs_lcp=CgNpbWcQAzIHCCMQ7wMQJzIHCAAQsQMQQzIICAAQgAQQsQMyCAgAEIAEELEDMggIABCABBCxAzIECAAQQzIHCAAQsQMQQzIICAAQgAQQsQMyBAgAEEMyBAgAEEM6BQgAEIAEUJHPKVi91ylgsdkpaABwAHgAgAHEA4gB0gySAQk0LjEuMC4yLjGYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=cy1rYZzyIryC0PEPj9O_2Ag&bih=716&biw=767"
+    )
     ink22 = Ink(
         creator_id = 5,
         creator_username='GameEnder',
@@ -300,14 +308,6 @@ def seed_inks():
         subtitle = "To my best girl Sabrina!",
         destination_link = ""
         )
-    ink37 = Ink(
-        creator_id = 8,
-        creator_username='Shruggers',
-        image = "https://www.toptrendsguide.com/wp-content/uploads/2019/10/Matching-Mother-Daughter-Tattoos.jpg",
-        title = "Pre-wedding",
-        subtitle = "Best mothers day ever",
-        destination_link = ""
-        )
     ink38 = Ink(
         creator_id = 1,
         creator_username = 'InkyTheDemo',
@@ -345,48 +345,48 @@ def seed_inks():
     ink1.categories.append(Category.query.get(3))
     ink1.categories.append(Category.query.get(5))
 
-    db.session.add(ink0)
-    db.session.add(ink1)
-    db.session.add(ink2)
-    db.session.add(ink3)
+    db.session.add(ink20)
     db.session.add(ink4)
-    db.session.add(ink5)
     db.session.add(ink6)
     db.session.add(ink7)
-    db.session.add(ink8)
-    db.session.add(ink9)
-    db.session.add(ink10)
-    db.session.add(ink11)
+    db.session.add(ink1)
+    db.session.add(ink3)
+    db.session.add(ink2)
+    db.session.add(ink0)
     db.session.add(ink12)
     db.session.add(ink13)
     db.session.add(ink14)
-    db.session.add(ink15)
-    db.session.add(ink16)
-    db.session.add(ink17)
-    db.session.add(ink18)
+    db.session.add(ink9)
+    db.session.add(ink10)
     db.session.add(ink19)
-    db.session.add(ink20)
-    db.session.add(ink21)
-    db.session.add(ink22)
-    db.session.add(ink23)
-    db.session.add(ink24)
-    db.session.add(ink25)
-    db.session.add(ink26)
+    db.session.add(ink8)
     db.session.add(ink27)
+    db.session.add(ink5)
+    db.session.add(ink17)
+    db.session.add(ink22)
+    db.session.add(ink24)
+    db.session.add(ink11)
+    db.session.add(ink16)
+    db.session.add(ink15)
+    db.session.add(ink26)
     db.session.add(ink28)
     db.session.add(ink29)
-    db.session.add(ink30)
+    db.session.add(ink18)
+    db.session.add(ink25)
     db.session.add(ink31)
-    db.session.add(ink32)
+    db.session.add(ink30)
+    db.session.add(ink21)
+    db.session.add(ink41)
+    db.session.add(ink40)
+    db.session.add(ink23)
     db.session.add(ink33)
+    db.session.add(ink39)
+    db.session.add(ink36)
+    db.session.add(ink38)
+    db.session.add(ink37)
     db.session.add(ink34)
     db.session.add(ink35)
-    db.session.add(ink36)
-    db.session.add(ink37)
-    db.session.add(ink38)
-    db.session.add(ink39)
-    db.session.add(ink40)
-    db.session.add(ink41)
+    db.session.add(ink32)
 
 
 

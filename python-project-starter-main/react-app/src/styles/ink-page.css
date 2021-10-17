@@ -88,14 +88,15 @@
 }
 
 .ink-link {
-    width: 90px;
-    height: 28px;
+    width: 200px;
+    height: 18px;
     font-weight: bold;
     color: black;
-    display: flex;
-    align-items: center;
     margin-top: 10px;
-    transform: translateX(-145px);
+    transform: translateX(-90px);
+
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .ink-title {
