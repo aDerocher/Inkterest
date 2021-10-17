@@ -8,7 +8,7 @@ import CreateCanvasModal from "./CreateCanvasModal";
 import FollowersModal from "./FollowersModal";
 import FollowingsModal from "./FollowingsModal";
 import { useParams } from "react-router-dom";
-import { listOneUser } from "./../store/user";
+import { listOneUser, listAllUsers } from "./../store/user";
 import { listUsersCanvases } from "./../store/canvas";
 import canvasCover from "./../images/emptyCanvasCover.png"
 import DiscoverInks from "./DiscoverInks";
@@ -21,7 +21,9 @@ function ProfilePage() {
 
   let history = useHistory();
   const dispatch = useDispatch();
+    const sessionUser = useSelector((state) => state.session.user);
 
+    let x = sessionUser.id === viewingUserId
   // options are for the new-ink/new-canvas dropdown menu
   const options = [
     {
@@ -38,6 +40,7 @@ function ProfilePage() {
   const [show, setShow] = useState(false);
   const [showFollowers, setShowFollowers] = useState(false);
   const [showFollowings, setShowFollowings] = useState(false);
+  const [ hideButton, setHideButton ] = useState(true)
 
   const curUserCanvases = useSelector((state) => state.canvases);
 
@@ -68,11 +71,13 @@ function ProfilePage() {
 
   useEffect(() => {
     dispatch(listUsersCanvases(params.userId));
-    dispatch(listOneUser(params.userId, 1))
+    // dispatch(listOneUser(params.userId, 1))
+    dispatch(listAllUsers())
 }, [dispatch, params]);
 
-const viewUser = useSelector((state) => state.user[0]);
-const sessionUser = useSelector((state) => state.session.user);
+
+const viewUser = useSelector((state) => state.user).filter(u => u.id.toString() === viewingUserId)[0]
+
 
 return (
     <div className="profile-page-container">
@@ -90,7 +95,7 @@ return (
         <div className="profile-contact">{viewUser?.email}</div>
         <div className="profile-follwer-follwing">
           <span onClick={() => setShowFollowers(true)}>
-            {viewUser?.followers.length} follower
+            {viewUser?.followers?.length} follower
           </span>
           <FollowersModal
             onClose={() => setShowFollowers(false)}
@@ -108,7 +113,7 @@ return (
       </div>
       <div className="profile-page-body">
         <div >
-          <button className="profile-page-edit" onClick={redirect}><i className="fas fa-sliders-h"></i></button>
+          <button disabled={hideButton} className="profile-page-edit" onClick={redirect}><i className="fas fa-sliders-h"></i></button>
         </div>
         <div className="profile-page-upload">
           <CreateCanvasModal onClose={() => setShow(false)} show={show} />
