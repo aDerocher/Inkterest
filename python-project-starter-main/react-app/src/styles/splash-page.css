@@ -306,6 +306,157 @@
     align-items: center;
 }
 
+.card2-0 {
+  visibility: hidden;
+
+  animation-delay: 0.2s;
+  animation-name: card2-0;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card2-0 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+  2.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  22.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  25% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card2-1 {
+  visibility: hidden;
+
+  animation-delay: 0.2s;
+  animation-name: card2-1;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card2-1 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  25% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  27.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  47.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card2-2 {
+  visibility: hidden;
+
+  animation-delay: 0.2s;
+  animation-name: card2-2;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card2-2 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  50% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  52.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  72.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  75% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card2-3 {
+  visibility: hidden;
+
+  animation-delay: 0.2s;
+  animation-name: card2-3;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card2-3 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  75% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  77.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  97.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+
 /* ==================================================== */
 /* ==================================================== */
 /* ==================================================== */
@@ -322,6 +473,161 @@
     justify-content: center;
     align-items: center;
 }
+
+
+
+.card3-0 {
+  visibility: hidden;
+
+  animation-delay: 0.4s;
+  animation-name: card3-0;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card3-0 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+  2.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  22.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  25% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card3-1 {
+  visibility: hidden;
+
+  animation-delay: 0.4s;
+  animation-name: card3-1;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card3-1 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  25% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  27.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  47.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card3-2 {
+  visibility: hidden;
+
+  animation-delay: 0.4s;
+  animation-name: card3-2;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card3-2 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  50% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  52.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  72.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  75% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card3-3 {
+  visibility: hidden;
+
+  animation-delay: 0.4s;
+  animation-name: card3-3;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card3-3 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  75% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  77.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  97.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+/* ==================================================== */
+/* ==================================================== */
 
 .mantle-layer-right {
     background-color: black;
@@ -366,8 +672,462 @@
     align-items: center;
 }
 
+.card5-0 {
+  visibility: hidden;
+
+  animation-delay: 0.8s;
+  animation-name: card5-0;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card5-0 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+  2.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  22.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  25% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card5-1 {
+  visibility: hidden;
+
+  animation-delay: 0.8s;
+  animation-name: card5-1;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card5-1 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  25% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  27.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  47.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card5-2 {
+  visibility: hidden;
+
+  animation-delay: 0.8s;
+  animation-name: card5-2;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card5-2 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  50% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  52.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  72.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  75% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card5-3 {
+  visibility: hidden;
+
+  animation-delay: 0.8s;
+  animation-name: card5-3;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card5-3 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  75% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  77.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  97.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
 /* ==================================================== */
 /* ==================================================== */
+
+.card6-0 {
+  visibility: hidden;
+
+  animation-delay: 1s;
+  animation-name: card6-0;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card6-0 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+  2.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  22.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  25% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card6-1 {
+  visibility: hidden;
+
+  animation-delay: 1s;
+  animation-name: card6-1;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card6-1 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  25% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  27.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  47.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card6-2 {
+  visibility: hidden;
+
+  animation-delay: 1s;
+  animation-name: card6-2;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card6-2 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  50% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  52.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  72.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  75% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card6-3 {
+  visibility: hidden;
+
+  animation-delay: 1s;
+  animation-name: card6-3;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card6-3 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  75% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  77.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  97.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+/* ==================================================== */
+
+
+.card7-0 {
+  visibility: hidden;
+
+  animation-delay: 1.2s;
+  animation-name: card7-0;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card7-0 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+  2.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  22.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  25% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card7-1 {
+  visibility: hidden;
+
+  animation-delay: 1.2s;
+  animation-name: card7-1;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card7-1 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  25% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  27.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  47.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card7-2 {
+  visibility: hidden;
+
+  animation-delay: 1.2s;
+  animation-name: card7-2;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card7-2 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  50% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  52.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  72.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  75% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card7-3 {
+  visibility: hidden;
+
+  animation-delay: 1.2s;
+  animation-name: card7-3;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card7-3 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  75% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  77.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  97.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
 /* ==================================================== */
 
 .inner-core-layer {
@@ -381,6 +1141,156 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.card4-0 {
+  visibility: hidden;
+
+  animation-delay: 0.6s;
+  animation-name: card4-0;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card4-0 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+  2.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  22.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  25% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card4-1 {
+  visibility: hidden;
+
+  animation-delay: 0.6s;
+  animation-name: card4-1;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card4-1 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  25% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  27.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  47.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card4-2 {
+  visibility: hidden;
+
+  animation-delay: 0.6s;
+  animation-name: card4-2;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card4-2 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  50% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  52.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  72.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  75% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card4-3 {
+  visibility: hidden;
+
+  animation-delay: 0.6s;
+  animation-name: card4-3;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card4-3 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  75% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  77.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  97.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
 }
 
 /* ==================================================== */
