@@ -21,7 +21,6 @@ export const changeProfile = (profile, userId) => async (dispatch) => {
   });
 
   if (response.ok) {
-    console.log("if response ok");
     const data = await response.json();
     dispatch(editProfile(data));
   } else {

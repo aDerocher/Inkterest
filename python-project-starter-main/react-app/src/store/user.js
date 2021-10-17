@@ -77,7 +77,7 @@ const initialState = [];
 
 // Image reducer
 const userReducer = (state = initialState, action) => {
-    let newState = [ ...state ]
+    // let newState = [ ...state ]
     switch (action.type) {
         case GET_USER:
             return [ action.user ]

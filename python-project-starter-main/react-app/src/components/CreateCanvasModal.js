@@ -77,9 +77,7 @@ function CreateCanvasModal(props) {
                     checked={isPrivate}
                     value={isPrivate}
                     onChange={(e) => {
-                        console.log('the box changed from: ', isPrivate)
                         setIsPrivate(!isPrivate)
-                        console.log('to: ', isPrivate)
                     }}
                 />
 

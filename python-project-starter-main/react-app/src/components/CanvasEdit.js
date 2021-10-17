@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import { useHistory } from "react-router";
 import { ink2Canvas, editCanvas, removeCanvas } from "./../store/canvas"
 import { listAllInks } from "./../store/ink"
@@ -9,7 +9,9 @@ import "../styles/canvas-edit.css";
 
 
 function CanvasEdit() {
+
     const params = useParams();
+
     const history = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
@@ -99,9 +101,7 @@ function CanvasEdit() {
                         checked={isPrivate}
                         value={isPrivate}
                         onChange={(e) => {
-                            console.log('the box changed from: ', isPrivate)
                             setIsPrivate(!isPrivate)
-                            console.log('to: ', isPrivate)
                         }}
                     /> <p><em className="bold">Keep this board secret</em></p>
                 </div>

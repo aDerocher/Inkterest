@@ -17,7 +17,7 @@ const DeleteInkModal = (props) => {
 
     useEffect(() => {
         dispatch(listOneInk(inkId))
-    }, [dispatch])
+    }, [dispatch, inkId])
 
     const handleDelete = (e, inkId) => {
         e.preventDefault()
