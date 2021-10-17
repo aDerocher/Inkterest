@@ -1,24 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import "../styles/follows-modal.css";
 import { followUser, unfollowUser } from "../store/user";
+import { listAllUsers } from "./../store/user";
 
 const FollowersModal = (props) => {
-  const allFollowers = useSelector((state) => state.session.user.followers);
-
-  const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const [isFollowing, setIsFollowing] = useState(null);
 
+  const { userId } = useParams();
+  const users = useSelector((state) => state.user)
+  const user = users.filter(user => user.id.toString() === userId)[0]
+
+  useEffect(() => {
+    dispatch(listAllUsers())
+  }, [dispatch])
+
   const handleFollow = (userId) => {
-    // e.preventDefault();
     dispatch(followUser(userId));
     setIsFollowing(true);
     window.location.reload(false);
   };
 
   const handleUnFollow = (userId) => {
-    // e.preventDefault();
     dispatch(unfollowUser(userId));
     setIsFollowing(false);
   };
@@ -32,17 +37,26 @@ const FollowersModal = (props) => {
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <div className="modal-title">
-            <h4>{user.followers.length} Follower</h4>
+              {
+                user.followers.length > 1
+                ? <h4>Followers</h4>
+                : <h4>Follower</h4>
+              }
           </div>
         </div>
         <div className="close-button">
-          <span onClick={props.onClose}>Ｘ</span>
         </div>
         <div className="follows-modal-body">
-          {allFollowers.map((f) => (
+          {user?.followers.map((f) => (
             <div id={f[1]} key={f[1]} className="follows-modal-row">
               <div className="follow-user-container">
-                <img src="" alt="circle" />
+                {
+                  users?.map((user) => {
+                    if (user.id === f[1]) {
+                      return <img key={user.id} className='user-image' src={user.profile_picture} alt="user" />
+                    }
+                  })
+                }
                 <p>{f[0]}</p>
               </div>
               {/* {isFollowing ? (

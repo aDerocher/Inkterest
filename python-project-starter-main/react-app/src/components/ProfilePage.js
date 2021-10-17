@@ -66,16 +66,16 @@ function ProfilePage() {
     e.preventDefault();
     history.push(`/canvases/${c.id}/edit-canvas`)
   }
-  
+
   useEffect(() => {
       dispatch(listUsersCanvases(params.userId));
       // dispatch(listOneUser(params.userId, 1))
       dispatch(listAllUsers())
     }, [dispatch, params]);
-    
-    
-    const viewUser = useSelector((state) => state.user).filter(u => u.id.toString() === viewingUserId)[0]
 
+
+    const viewUser = useSelector((state) => state.user).filter(user => user.id.toString() === viewingUserId)[0]
+    
 return (
     <div className="profile-page-container">
       <div className="profile-page-header">
@@ -97,6 +97,7 @@ return (
           <FollowersModal
             onClose={() => setShowFollowers(false)}
             show={showFollowers}
+            user={viewUser}
           />
           <span> • </span>
           <span onClick={() => setShowFollowings(true)}>
@@ -105,6 +106,7 @@ return (
           <FollowingsModal
             onClose={() => setShowFollowings(false)}
             show={showFollowings}
+            user={viewUser}
           />
         </div>
       </div>
