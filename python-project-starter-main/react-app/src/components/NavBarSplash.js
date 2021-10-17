@@ -19,7 +19,7 @@ const NavBarSplash = () => {
     e.preventDefault();
     const data = dispatch(login("demo@aa.com", "password"));
     console.log(data)
-    history.push("/inks")
+    history.push("/")
   }
 
   const goAbout = (e) => {
