@@ -47,6 +47,17 @@
     justify-content: center;
 }
 
+.bottom-grad {
+    width: 100%;
+    height: 225px;
+    /* transform: translateY(-40%); */
+    background-image: linear-gradient(rgba(255,255,255,0), rgba(255,255,255));
+
+
+    position: fixed;
+    bottom: 0;
+}
+
 .card-1 {
     width: 250px;
     height: 1000px;

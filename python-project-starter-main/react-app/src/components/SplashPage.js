@@ -137,6 +137,7 @@ function SplashPage() {
                         }
                     </div>
                 </div>
+                <div className='bottom-grad'></div>
             </div>
         </div>
     );
