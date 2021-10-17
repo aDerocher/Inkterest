@@ -130,7 +130,13 @@ function DiscoverInks(props) {
                         </div>
                         {!props.user_id &&
                             <div className="tile-footer">
-                                <img className='user-image' src="https://randomuser.me/api/portraits/lego/1.jpg" alt="" />
+                                {
+                                    users?.map((user) => {
+                                        if (user.id === i.creator_id) {
+                                            return <img className='user-image' src={user.profile_picture} alt="" />
+                                        }
+                                    })
+                                }
                                 <p className="username"><a href={`/users/${i.creator_id}`}>{i.creator_username}</a></p>
                             </div>
                         }
