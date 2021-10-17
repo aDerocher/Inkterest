@@ -19,7 +19,6 @@ const FollowingsModal = (props) => {
   const { userId } = useParams();
   const users = useSelector((state) => state.user)
   const userFollowing = users.filter(user => user.id.toString() === userId)[0]
-  console.log(userFollowing)
 
   useEffect(() => {
     dispatch(listAllUsers())

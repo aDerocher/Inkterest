@@ -75,7 +75,7 @@ function ProfilePage() {
 
 
     const viewUser = useSelector((state) => state.user).filter(user => user.id.toString() === viewingUserId)[0]
-    
+
 return (
     <div className="profile-page-container">
       <div className="profile-page-header">
@@ -92,7 +92,7 @@ return (
         <div className="profile-contact">{viewUser?.email}</div>
         <div className="profile-follwer-follwing">
           <span onClick={() => setShowFollowers(true)}>
-            {viewUser?.followers?.length} follower
+            {viewUser?.followers.length} follower
           </span>
           <FollowersModal
             onClose={() => setShowFollowers(false)}

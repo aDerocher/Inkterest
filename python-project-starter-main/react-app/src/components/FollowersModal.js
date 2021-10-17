@@ -12,6 +12,7 @@ const FollowersModal = (props) => {
   const { userId } = useParams();
   const users = useSelector((state) => state.user)
   const user = users.filter(user => user.id.toString() === userId)[0]
+  console.log(user?.followers.length)
 
   useEffect(() => {
     dispatch(listAllUsers())
@@ -38,9 +39,9 @@ const FollowersModal = (props) => {
         <div className="modal-header">
           <div className="modal-title">
               {
-                user.followers.length > 1
-                ? <h4>Followers</h4>
-                : <h4>Follower</h4>
+                user?.followers.length > 1
+                ? <h4>{user?.followers.length} Followers</h4>
+                : <h4>{user?.followers.length} Follower</h4>
               }
           </div>
         </div>
