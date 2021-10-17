@@ -7,9 +7,9 @@ import "../styles/profile-edit.css";
 function ProfileEdit() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
+  const [isEditLoading, setIsEditLoading] = useState(true);
 
   const userId = user?.id;
-
 
   const [first_name, setFirst_name] = useState(user?.first_name);
   const [last_name, setLast_name] = useState(user?.last_name);
@@ -24,7 +24,13 @@ function ProfileEdit() {
       username: userId,
     };
 
-    dispatch(changeProfile(profile, userId));
+    dispatch(changeProfile(profile, userId)).then(() => {
+      setIsEditLoading(false);
+    });
+
+    if (!isEditLoading) {
+      return null;
+    }
   };
 
   if (!user) return <Redirect to="/" />;

@@ -37,7 +37,6 @@ def edit_user(id):
         user.first_name = form.first_name.data
         user.last_name = form.last_name.data
         user.email = form.email.data
-        user.username = form.username.data
         db.session.commit()
 
     return user.to_dict()
