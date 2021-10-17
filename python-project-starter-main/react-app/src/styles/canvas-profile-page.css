@@ -25,6 +25,7 @@
   font-size: 36px;
   font-weight: 350;
   padding: 20px;
+  margin-bottom: 20px;
 }
 
 .canvas-p-profile-page-body {
@@ -40,7 +41,25 @@
 .canvas-p-profile-follwer-follwing:hover {
   cursor: pointer;
 }
-
+/* ===== Edit canvas button (right) ==================== */
+.canvas-p-profile-page-edit{
+    /* background-color: lawngreen; */
+    width: 100%;
+    padding: 6px 18px;
+    display: flex;
+    justify-content: flex-end;
+}
+.canvas-p-profile-page-edit > button {
+    height: 36px;
+    width: 36px;
+    outline: none;
+    border: none;
+    background-color: white;
+    border-radius: 18px;
+}
+.canvas-p-profile-page-edit > button:hover{
+    background-color: var(--hover-grey);
+}
 /* ================== Create -- Dropdown Menu =========================== */
 .canvas-p-plus-dd {
   /* background-color: rgb(158, 125, 88); */
@@ -199,6 +218,31 @@
 .option-label{
     font-size: 8pt;
     font-weight: bold;
+}
+/* ======= floaty buttons (bottom of page) ======================== */
+.floaty-button{
+    background-color: rgb(255, 255, 255);
+    border:none;
+    outline: none;
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    position: fixed;
+    bottom: 0;
+    align-self: center;
+    justify-self: center;
+    box-shadow: var(--soft-boxShad);
+    margin: 18px;
+    font-size: 22pt;
+    color: var(--charcoal-grey);
+    font-weight: 700;
+}
+.big-plus-btn{
+    font-size: 22pt;
+}
+.help-btn{
+    font-size: 18pt;
+    right: 0;
 }
 
 /* =========================================== */

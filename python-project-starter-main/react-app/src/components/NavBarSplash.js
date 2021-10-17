@@ -12,7 +12,6 @@ const NavBarSplash = () => {
   const dispatch = useDispatch();
   const history = useHistory()
 
-
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignUpModal, setShowSignUpModal] = useState(false);
 

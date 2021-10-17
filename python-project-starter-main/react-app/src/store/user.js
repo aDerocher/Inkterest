@@ -26,6 +26,7 @@ export const listOneUser = (userId, inkId) => async (dispatch) => {
     }
 }
 
+
 // follow one user
 export const followUser = (userId) => async (dispatch) => {
     const response = await fetch(`/api/users/${userId}/follow`, {
@@ -61,7 +62,7 @@ const initialState = [];
 
 // Image reducer
 const userReducer = (state = initialState, action) => {
-    let newState = [ ...state ]
+    // let newState = [ ...state ]
     switch (action.type) {
         case GET_USER:
             return [ action.user ]

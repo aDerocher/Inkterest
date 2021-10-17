@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "../styles/follows-modal.css";
 import { followUser, unfollowUser } from "../store/user";

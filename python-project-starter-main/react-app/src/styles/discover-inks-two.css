@@ -1,31 +1,63 @@
 .discover-inks-two-container{
     border: 2px solid red;
-    display: flex;
-    flex-direction: column;
+    display: flex; 
+    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
     min-height: 400px;
     flex-grow: 2;
+
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+.tile{
+    border: 1px solid blue;
+    width: 200px;
+    margin: 10px;
 }
 .c-0{
-    border: 1px solid blue;
     height: 100px;
-    width: 30%;
-
+    border: 5px solid rgb(19, 63, 19);
 }
 .c-1{
-    border: 1px solid blue;
     height: 130px;
-    width: 30%;
-
-    float: left;
-    position: relative;
+    border: 5px solid green;
 }
 .c-2{
-    border: 1px solid blue;
     height: 180px;
-    width: 30%;
+    border: 5px solid rgb(103, 238, 103);
+} 
+.c-3{
+    height: 120px;
+    border: 5px solid rgb(159, 202, 59);
+} 
+.c-4{
+    height: 300px;
+    border: 5px solid rgb(113, 114, 42);
+} 
+.c-5{
+    height: 220px;
+    border: 5px solid rgb(65, 189, 141);
+} 
+.c-6{
+    height: 250px;
+    border: 5px solid rgb(98, 65, 189);
+} 
+.c-7{
+    height: 110px;
+    border: 5px solid rgb(4, 126, 79);
+} 
+.c-8{
+    height: 210px;
+    border: 5px solid rgb(65, 123, 189);
 } 
 
 /* .discover-inks-container{
