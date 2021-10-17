@@ -29,6 +29,10 @@ def get_my_inks():
 
 
 # Get all inks that DONT belong to view-user
+@ink_routes.route('/their-inks')
+def get_all_other_inks():
+    inks = Ink.query.filter(Ink.creator_id != int(current_user.get_id()))
+    return {'inks': [ink.to_dict() for ink in inks]}
 
 
 # Create new ink

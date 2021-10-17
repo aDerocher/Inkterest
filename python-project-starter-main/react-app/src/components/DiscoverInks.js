@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { listAllInks } from '../store/ink'
+import { listAllTheirInks } from '../store/ink'
 import { useHistory } from "react-router";
 import "../styles/discover-inks.css";
 import { inkOffCanvas } from "../store/canvas";
@@ -12,7 +12,7 @@ function DiscoverInks(props) {
     // ==== Filter the inks state array for the inks created by the view user =============
     let inks = useSelector(state => state.inks);
     useEffect(() => {
-        dispatch(listAllInks())
+        dispatch(listAllTheirInks())
     }, [dispatch])
     if(props.user_id !== null && props.user_id !== undefined){
         inks = inks.filter(i => i.creator_id.toString() === props.user_id)
@@ -101,7 +101,7 @@ function DiscoverInks(props) {
                                     <button className='ink-tile-btn ink-save-btn'>Save</button>
                                 </div>
                             }
-                            
+
                             <img className='ink-tile-image' src={i.image} alt="" />
 
                             <div className="ink-tile-bottom-buttons" onClick={e => e.stopPropagation()}>
