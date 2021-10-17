@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { useParams } from 'react-router-dom';
+
 import { useHistory } from "react-router";
 import { ink2Canvas, editCanvas, removeCanvas } from "./../store/canvas"
 import { listAllInks } from "./../store/ink"
@@ -10,8 +10,6 @@ import "../styles/canvas-edit.css";
 
 function CanvasEdit() {
 
-    const params = useParams();
-
     const history = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
@@ -19,14 +17,14 @@ function CanvasEdit() {
     const allInks = useSelector(state => state.inks)
 
     let usersInks = allInks.filter(i => i.creator_id === sessionUser.id)
-    
+
     const [name, setName] = useState(canvasToEdit?.name);
     const [isPrivate, setIsPrivate] = useState(false);
     const [errors, setErrors] = useState([]);
     const [errorsHidden, setErrorsHidden] = useState(true);
     const [ selectInk, setSelectInk ] = useState(null)
 
-    
+
     useEffect(() => {
         let newErrors = [];
         if (name?.length < 2 ) newErrors.push("Name must be at least 3 characters")
@@ -38,7 +36,7 @@ function CanvasEdit() {
         dispatch(listAllInks())
     }, [])
 
-    
+
     // ========================================== Submission Functions
 
     const handleAddToCanvas = () => {
@@ -76,7 +74,7 @@ function CanvasEdit() {
 
             <form className="canv-edit-form" onSubmit={handleSubmit}>
                 <h2 className='c-e-title'>Edit your canvas</h2>
-                    
+
                 <div hidden={errorsHidden}>
                     {errors.map((error, ind) => (
                         <div className='c-e-error' key={ind}>{error}</div>
@@ -131,7 +129,7 @@ function CanvasEdit() {
                 </div>
             </form>
             <button className='c-e-close-button'>X</button>
-    </div>    
+    </div>
   );
 }
 
