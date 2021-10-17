@@ -8,7 +8,7 @@ import CreateCanvasModal from "./CreateCanvasModal";
 import FollowersModal from "./FollowersModal";
 import FollowingsModal from "./FollowingsModal";
 import { useParams } from "react-router-dom";
-import { listOneUser, listAllUsers } from "./../store/user";
+import { listAllUsers } from "./../store/user";
 import { listUsersCanvases } from "./../store/canvas";
 import canvasCover from "./../images/emptyCanvasCover.png"
 import DiscoverInks from "./DiscoverInks";
@@ -23,7 +23,6 @@ function ProfilePage() {
   const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
 
-    let x = sessionUser.id === viewingUserId
   // options are for the new-ink/new-canvas dropdown menu
   const options = [
     {
@@ -40,7 +39,6 @@ function ProfilePage() {
   const [show, setShow] = useState(false);
   const [showFollowers, setShowFollowers] = useState(false);
   const [showFollowings, setShowFollowings] = useState(false);
-  const [ hideButton, setHideButton ] = useState(true)
 
   const curUserCanvases = useSelector((state) => state.canvases);
 

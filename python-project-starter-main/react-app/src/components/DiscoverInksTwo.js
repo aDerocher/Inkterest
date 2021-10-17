@@ -61,6 +61,8 @@ function DiscoverInksTwo() {
             case 6:
                 inkDivision6.push(inks[i])
                 break;
+            default:
+                break;
         }
     }
     const allCols = [

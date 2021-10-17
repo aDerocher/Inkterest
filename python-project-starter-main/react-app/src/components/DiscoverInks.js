@@ -75,6 +75,8 @@ function DiscoverInks(props) {
             case 6:
                 inkDivision6.push(inks[i])
                 break;
+            default:
+                break;
         }
     }
     const allCols = [
@@ -133,7 +135,7 @@ function DiscoverInks(props) {
                                 {
                                     users?.map((user) => {
                                         if (user.id === i.creator_id) {
-                                            return <img className='user-image' src={user.profile_picture} alt="" />
+                                            return <img key={user.id} className='user-image' src={user.profile_picture} alt="" />
                                         }
                                     })
                                 }
