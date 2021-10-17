@@ -56,10 +56,6 @@ function App() {
           <ProfilePage />
         </Route>
 
-        <Route path='/inks' exact={true}>
-          <DiscoverInks />
-        </Route>
-
         <Route path="/users/:userId/inks/:inkId" exact={true}>
           <InkPage />
         </Route>

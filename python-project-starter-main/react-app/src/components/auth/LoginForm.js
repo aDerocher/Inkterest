@@ -29,7 +29,7 @@ const LoginFormModal = (props) => {
   };
 
   if (user) {
-    return <Redirect to='/inks' />;
+    return <Redirect to='/' />;
   }
 
   if (!props.show) {
