@@ -14,10 +14,10 @@ function SplashPage() {
     const [ water1, water2, water3, water4, water5, water6, water7, water8, water9, water10, water11 ] = waterColor
 
     const arrayWords = [
-         "American Traditional idea",
-         "Illistrative idea",
-         "Japanese Traditional idea",
-         "Water Color idea"
+         "american traditional idea",
+         "illistrative idea",
+         "japanese traditional idea",
+         "water color idea"
      ]
     const array1 = [ amertrad1, illi1, japantrad1, water1 ]
     const array2 = [ amertrad2, illi2, japantrad2, water2 ]
