@@ -3,18 +3,22 @@ import { useDispatch, useSelector } from "react-redux";
 // import { useParams } from 'react-router-dom';
 import { useHistory } from "react-router";
 import { ink2Canvas, editCanvas, removeCanvas } from "./../store/canvas"
+import { listAllInks } from "./../store/ink"
 import "../styles/index.css";
 import "../styles/canvas-edit.css";
 
 
 function CanvasEdit() {
-    // const params = useParams();
+
+    const params = useParams();
 
     const history = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const canvasToEdit = useSelector(state => state.canvases[0])
-    const usersInks = useSelector(state => state.inks)
+    const allInks = useSelector(state => state.inks)
+
+    let usersInks = allInks.filter(i => i.creator_id === sessionUser.id)
     
     const [name, setName] = useState(canvasToEdit?.name);
     const [isPrivate, setIsPrivate] = useState(false);
@@ -31,7 +35,7 @@ function CanvasEdit() {
     }, [name])
 
     useEffect(() => {
-        // dispatch(getOneCanvas(canvasId))
+        dispatch(listAllInks())
     }, [])
 
     
