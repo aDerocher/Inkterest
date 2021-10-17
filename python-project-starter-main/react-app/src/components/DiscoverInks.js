@@ -101,14 +101,14 @@ function DiscoverInks(props) {
                                     <button className='ink-tile-btn ink-save-btn'>Save</button>
                                 </div>
                             }
-                            
+
                             <img className='ink-tile-image' src={i.image} alt="" />
 
                             <div className="ink-tile-bottom-buttons" onClick={e => e.stopPropagation()}>
                                 <div className='ink-tile-bottom-buttons-left'>
                                     <a target="_blank" rel="noreferrer" href={i.destination_link}>
                                     {i.destination_link &&
-                                        <button className='ink-tile-btn ink-dest-link-btn'>etsyisthegreatest.com</button>
+                                            <button className='ink-dest-link-btn'>{i.destination_link}</button>
                                     }
                                     </a>
                                 </div>
