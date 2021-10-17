@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { listAllInks } from '../store/ink'
 import { useHistory } from "react-router";
 import "../styles/discover-inks.css";
+import { inkOffCanvas } from "../store/canvas";
 
 function DiscoverInks(props) {
     const dispatch = useDispatch();
@@ -24,6 +25,15 @@ function DiscoverInks(props) {
     const goToInkPage = (e,userId,inkId) => {
         e.preventDefault();
         history.push(`/users/${userId}/inks/${inkId}`)
+    }
+    const removeFromCanvas = (e, canvas_id, ink_id) => {
+        e.preventDefault();
+        const form = {
+            canvas_id: canvas_id,
+            ink_id: ink_id
+        }
+        dispatch(inkOffCanvas(form))
+        history.push(`/canvases/${canvas_id}`)
     }
 
     // magical bit that enables magic rendering ===================
@@ -77,8 +87,8 @@ function DiscoverInks(props) {
         {/* ====================================================================== */}
         {/* ====== This is the start of rendering the first column of inks ======= */}
 
-        { allCols.map((inkDivisionX) =>(
-            <div className="column-of-inks">
+        { allCols?.map((inkDivisionX, i) =>(
+            <div key={i} className="column-of-inks">
                 {inkDivisionX?.map((i) => (
                     // ====== This is the start of rendering an individual ink tile =======
                     <div key={i.id} className='tile-container'>
@@ -91,7 +101,7 @@ function DiscoverInks(props) {
                                     <button className='ink-tile-btn ink-save-btn'>Save</button>
                                 </div>
                             }
-
+                            
                             <img className='ink-tile-image' src={i.image} alt="" />
 
                             <div className="ink-tile-bottom-buttons" onClick={e => e.stopPropagation()}>
@@ -107,6 +117,9 @@ function DiscoverInks(props) {
                                     <button className='ink-tile-btn ink-tile-btn-s'>&#8683;</button>
                                     <button className='ink-tile-btn ink-tile-btn-s'>...</button>
                                 </div>
+                                {props.canvas_id &&
+                                    <button className='ink-tile-btn ink-tile-btn-s' onClick={e=>removeFromCanvas(e,props.canvas_id, i.id)}>X</button>
+                                }
                             </div>
                         </div>
                         {!props.user_id &&

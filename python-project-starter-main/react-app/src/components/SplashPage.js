@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, Redirect, useParams } from 'react-router-dom';
+import React from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { useHistory, Redirect, useParams } from 'react-router-dom';
 import illustrative from '../images/Splash-tats/illustrative/illustrative.js';
 import americanTraditional from '../images/Splash-tats/american_traditional/amertrad.js';
 import japaneseTraditional from '../images/Splash-tats/japanese_traditional/japantrad.js';
@@ -39,7 +39,7 @@ function SplashPage() {
                 <div className='splash-text-2'>
                     {
                         arrayWords.map((string, i) => {
-                            return <div className={`string-${i}`}>{string}</div>
+                            return <div key={i} className={`string-${i}`}>{string}</div>
                         })
                     }
                 </div>
@@ -50,14 +50,14 @@ function SplashPage() {
                     <div className='crust-layer-left'>
                         {
                             array1.map((url, i) => {
-                                return <img className={`img-card card1-${i}`} src={url} />
+                                return <img key={i} className={`img-card card1-${i}`} src={url} alt="tattoo" />
                             })
                         }
                     </div>
                     <div className='crust-layer-left'>
                         {
                             array2.map((url, i) => {
-                                return <img className={`img-card card1-${i}`} src={url} />
+                                return <img key={i} className={`img-card card1-${i}`} src={url} alt="tattoo" />
                             })
                         }
                     </div>
@@ -66,14 +66,14 @@ function SplashPage() {
                     <div className='mantle-layer-left'>
                         {
                             array3.map((url, i) => {
-                                return <img className={`img-card card2-${i}`} src={url} />
+                                return <img key={i} className={`img-card card2-${i}`} src={url} alt="tattoo" />
                             })
                         }
                     </div>
                     <div className='mantle-layer-left'>
                         {
                             array4.map((url, i) => {
-                                return <img className={`img-card card2-${i}`} src={url} />
+                                return <img key={i} className={`img-card card2-${i}`} src={url} alt="tattoo" />
                             })
                         }
                     </div>
@@ -82,7 +82,7 @@ function SplashPage() {
                     <div className='outer-core-layer-left'>
                         {
                             array5.map((url, i) => {
-                                return <img className={`img-card card3-${i}`} src={url} />
+                                return <img key={i} className={`img-card card3-${i}`} src={url} alt="tattoo" />
                             })
                         }
                     </div>
@@ -91,7 +91,7 @@ function SplashPage() {
                     <div className='inner-core-layer'>
                         {
                             array6.map((url, i) => {
-                                return <img className={`img-card card4-${i}`} src={url} />
+                                return <img key={i} className={`img-card card4-${i}`} src={url} alt="tattoo" />
                             })
                         }
                     </div>
@@ -100,7 +100,7 @@ function SplashPage() {
                     <div className='outer-core-layer-right'>
                         {
                             array7.map((url, i) => {
-                                return <img className={`img-card card5-${i}`} src={url} />
+                                return <img key={i} className={`img-card card5-${i}`} src={url} alt="tattoo" />
                             })
                         }
                     </div>
@@ -109,14 +109,14 @@ function SplashPage() {
                     <div className='mantle-layer-right'>
                         {
                             array8.map((url, i) => {
-                                return <img className={`img-card card6-${i}`} src={url} />
+                                return <img key={i} className={`img-card card6-${i}`} src={url} alt="tattoo" />
                             })
                         }
                     </div>
                     <div className='mantle-layer-right'>
                         {
                             array9.map((url, i) => {
-                                return <img className={`img-card card6-${i}`} src={url} />
+                                return <img key={i} className={`img-card card6-${i}`} src={url} alt="tattoo" />
                             })
                         }
                     </div>
@@ -125,14 +125,14 @@ function SplashPage() {
                     <div className='crust-layer-right'>
                         {
                             array10.map((url, i) => {
-                                return <img className={`img-card card7-${i}`} src={url} />
+                                return <img key={i} className={`img-card card7-${i}`} src={url} alt="tattoo" />
                             })
                         }
                     </div>
                     <div className='crust-layer-right'>
                         {
                             array11.map((url, i) => {
-                                return <img className={`img-card card7-${i}`} src={url} />
+                                return <img key={i} className={`img-card card7-${i}`} src={url} alt="tattoo" />
                             })
                         }
                     </div>

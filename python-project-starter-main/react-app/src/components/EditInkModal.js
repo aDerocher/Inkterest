@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 import { changeInk, listOneInk } from '../store/ink'
 import "../styles/edit-ink-modal.css";
 
@@ -10,7 +10,6 @@ const EditInkModal = (props) => {
 
     // direct access to ink slice of state - houses ONE ink
     const ink = useSelector(state => state?.inks[0])
-
     const [title, setTitle] = useState(ink?.title);
     const [subtitle, setSubtitle] = useState(ink?.subtitle);
     const [destination_link, setDestination_link] = useState(ink?.destination_link);

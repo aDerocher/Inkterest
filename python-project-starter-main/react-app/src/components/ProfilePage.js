@@ -144,7 +144,7 @@ return (
                             { c.inks[0] &&
                                 <img className="canvas-tile-image" src={c.inks[0].image} alt="Canvas Cover"/>}
                             { !c.inks[0] &&
-                                <img className="canvas-tile-image light" src={canvasCover} alt="Canvas Cover"/>}
+                                <img className="canvas-tile-image" src={canvasCover} alt="Canvas Cover"/>}
 
                         </div>
                         <div className="canvas-tile-footer">
