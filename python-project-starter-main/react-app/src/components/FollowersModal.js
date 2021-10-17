@@ -14,6 +14,7 @@ const FollowersModal = (props) => {
     // e.preventDefault();
     dispatch(followUser(userId));
     setIsFollowing(true);
+    window.location.reload(false);
   };
 
   const handleUnFollow = (userId) => {
@@ -42,14 +43,12 @@ const FollowersModal = (props) => {
             <div id={f[1]} key={f[1]} className="follows-modal-row">
               <div className="follow-user-container">
                 <img src="" alt="circle" />
-                <p>
-                  {f[0]} {f[1]}
-                </p>
+                <p>{f[0]}</p>
               </div>
-              {isFollowing ? (
+              {/* {isFollowing ? (
                 <button
-                  id={f[1]}
-                  key={f[1]}
+                  // id={f[1]}
+                  // key={f[1]}
                   className="unfollow-btn"
                   onClick={() => handleUnFollow()}
                 >
@@ -57,13 +56,19 @@ const FollowersModal = (props) => {
                 </button>
               ) : (
                 <button
-                
+
                   onClick={() => handleFollow(f[1])}
                   className="toggle-follow-btn"
                 >
                   Follow
                 </button>
-              )}
+              )} */}
+              <button
+                onClick={() => handleFollow(f[1])}
+                className="toggle-follow-btn"
+              >
+                Follow
+              </button>
             </div>
           ))}
         </div>

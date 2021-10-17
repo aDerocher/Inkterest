@@ -40,7 +40,7 @@ function ProfilePage() {
   const [showFollowings, setShowFollowings] = useState(false);
 
   const curUserCanvases = useSelector((state) => state.canvases);
-  
+
   const redirect = () => {
     history.push("/profile-edit");
   };
@@ -55,7 +55,7 @@ function ProfilePage() {
       canvasDiv.setAttribute('hidden', 'true')
     }
   };
-  
+
   const goToCanvasProfile = (e, canvas_id) => {
       e.preventDefault();
       history.push(`/canvases/${canvas_id}`)
@@ -155,7 +155,7 @@ return (
             </div>
 
       </div>
-      <DiscoverInks user_id={viewingUserId}/>
+      {/* <DiscoverInks user_id={viewingUserId}/> */}
     </div>
   );
 }
