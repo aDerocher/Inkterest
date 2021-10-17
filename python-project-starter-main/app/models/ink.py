@@ -10,7 +10,6 @@ class Ink(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     creator_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     creator_username = db.Column(db.String, db.ForeignKey("users.username"), nullable=False)
-    creator_profile_pic = db.Column(db.String, db.ForeignKey("users.profile_picture"))
     image = db.Column(db.String(2000), nullable=False)
     title = db.Column(db.String(100), nullable=False)
     subtitle = db.Column(db.String(500))

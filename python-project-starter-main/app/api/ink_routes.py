@@ -54,7 +54,6 @@ def upload_ink():
         new_ink = Ink(
             creator_id=current_user.get_id(),
             creator_username=current_user.username,
-            creator_profile_pic=current_user.profile_picture,
             image=url,
             title=form.title.data,
             subtitle=form.subtitle.data,
