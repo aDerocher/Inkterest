@@ -111,8 +111,13 @@ def seed_users():
     # account for user being unable to follow himself!
     # demo.followers.append(User.query.get(1))
     user1.followers.append(User.query.get(3))
+    user1.followers.append(User.query.get(4))
+    user1.followers.append(User.query.get(5))
     user2.followers.append(User.query.get(1))
+    user2.followers.append(User.query.get(7))
+    user2.followers.append(User.query.get(6))
     user3.followers.append(User.query.get(8))
+    user3.followers.append(User.query.get(9))
     user4.followers.append(User.query.get(7))
     user5.followers.append(User.query.get(9))
     user6.followers.append(User.query.get(1))
