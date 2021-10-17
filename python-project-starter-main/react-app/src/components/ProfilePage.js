@@ -155,7 +155,7 @@ return (
             </div>
 
       </div>
-      {/* <DiscoverInks user_id={viewingUserId}/> */}
+      <DiscoverInks user_id={viewingUserId}/>
     </div>
   );
 }
