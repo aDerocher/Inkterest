@@ -71,7 +71,7 @@ and `user`.
 
 ## Future Features to implement
 
-    - Comments
-    - Likes/Dislikes
-    - Saving inks to profile page
-    - Adding multiple inks to a canvas at once
+   - Comments
+   - Likes/Dislikes
+   - Saving inks to profile page
+   - Adding multiple inks to a canvas at once
