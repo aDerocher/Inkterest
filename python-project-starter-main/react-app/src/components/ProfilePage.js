@@ -68,16 +68,15 @@ function ProfilePage() {
     e.preventDefault();
     history.push(`/canvases/${c.id}/edit-canvas`)
   }
-
+  
   useEffect(() => {
-    dispatch(listUsersCanvases(params.userId));
-    // dispatch(listOneUser(params.userId, 1))
-    dispatch(listAllUsers())
-}, [dispatch, params]);
-
-
-const viewUser = useSelector((state) => state.user).filter(u => u.id.toString() === viewingUserId)[0]
-
+      dispatch(listUsersCanvases(params.userId));
+      // dispatch(listOneUser(params.userId, 1))
+      dispatch(listAllUsers())
+    }, [dispatch, params]);
+    
+    
+    const viewUser = useSelector((state) => state.user).filter(u => u.id.toString() === viewingUserId)[0]
 
 return (
     <div className="profile-page-container">
@@ -111,11 +110,11 @@ return (
           />
         </div>
       </div>
-      <div className="profile-page-body">
+      <div  className="profile-page-body">
         <div >
-          <button disabled={hideButton} className="profile-page-edit" onClick={redirect}><i className="fas fa-sliders-h"></i></button>
+          <button hidden={!(viewUser?.id === sessionUser.id)} className="profile-page-edit" onClick={redirect}><i className="fas fa-sliders-h"></i></button>
         </div>
-        <div className="profile-page-upload">
+        <div hidden={!(viewUser?.id === sessionUser.id)} className="profile-page-upload">
           <CreateCanvasModal onClose={() => setShow(false)} show={show} />
           <Dropdown
             id="plus-btn"
