@@ -15,7 +15,6 @@
 }
 
 .top-container {
-    background-color: antiquewhite;
     height: 350px;
     display: flex;
     flex-direction: column;
@@ -32,20 +31,34 @@
 .splash-text-2 {
     font-size: 45px;
     font-weight: 600;
-    color:cornflowerblue;
     margin-top: 5px;
+    width: 400px;
+
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
 }
 
 /* ===================== BOTTOM CONTAINER ================= */
 .bottom-container {
-    background-color: rgb(238, 174, 90);
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
+.bottom-grad {
+    width: 100%;
+    height: 225px;
+    /* transform: translateY(-40%); */
+    background-image: linear-gradient(rgba(255,255,255,0), rgba(255,255,255));
+
+
+    position: fixed;
+    bottom: 0;
+}
+
 .card-1 {
-    background-color: aqua;
     width: 250px;
     height: 1000px;
     border-radius: 10px;
@@ -57,7 +70,6 @@
 }
 
 .card-2 {
-    background-color: rgb(77, 163, 163);
     width: 250px;
     height: 1000px;
     border-radius: 10px;
@@ -69,7 +81,6 @@
 }
 
 .card-3 {
-    background-color: rgb(151, 172, 85);
     width: 250px;
     height: 1000px;
     border-radius: 10px;
@@ -81,7 +92,6 @@
 }
 
 .card-4 {
-    background-color: rgb(241, 211, 182);
     width: 250px;
     height: 1000px;
     border-radius: 10px;
@@ -93,7 +103,6 @@
 }
 
 .card-5 {
-    background-color: rgb(138, 146, 251);
     width: 250px;
     height: 1000px;
     border-radius: 10px;
@@ -105,7 +114,6 @@
 }
 
 .card-6 {
-    background-color: rgb(193, 221, 168);
     width: 250px;
     height: 1000px;
     border-radius: 10px;
@@ -117,7 +125,6 @@
 }
 
 .card-7 {
-    background-color: rgb(155, 236, 147);
     width: 250px;
     height: 1000px;
     border-radius: 10px;
@@ -128,34 +135,1325 @@
     align-items: center;
 }
 
-.crust-layer {
-    background-color: black;
-    border-radius: 10px;
-    width: 240px;
-    height: 320px;
-    margin: 5px 3px 5px 3px;
+
+/* ==================================================== */
+
+
+.string-0 {
+  position: absolute;
+  visibility: hidden;
+  color: rgb(30, 30, 195);
+
+  animation-delay: 0.6s;
+  animation-name: string-0;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
 }
 
-.mantle-layer {
-    background-color: black;
-    border-radius: 10px;
-    width: 240px;
-    height: 320px;
-    margin: 5px 3px 5px 3px;
+@keyframes string-0 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+  2.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  22.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  25% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
 }
 
-.outer-core-layer {
-    background-color: black;
+.string-1 {
+  position: absolute;
+  visibility: hidden;
+  color: rgb(82, 82, 82);
+
+  animation-delay: 0.6s;
+  animation-name: string-1;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes string-1 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  25% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  27.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  47.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.string-2 {
+  position: absolute;
+  visibility: hidden;
+  color: rgb(255, 25, 25);
+
+  animation-delay: 0.6s;
+  animation-name: string-2;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes string-2 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  50% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  52.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  72.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  75% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.string-3 {
+  position: absolute;
+  visibility: hidden;
+  color: rgb(27, 216, 27);
+
+  animation-delay: 0.6s;
+  animation-name: string-3;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes string-3 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  75% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  77.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  97.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+
+/* ==================================================== */
+
+.img-card {
+  height: 320px;
+  width: 240px;
+  object-fit: cover;
+  position: absolute;
+  border-radius: 10px;
+}
+
+/* ==================================================== */
+/* ==================================================== */
+
+.crust-layer-left {
+  border-radius: 10px;
+  width: 240px;
+  height: 320px;
+  margin: 5px 3px 5px 3px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card1-0 {
+  animation-name: card1-0;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card1-0 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  2.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  22.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  25% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card1-1 {
+  animation-name: card1-1;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card1-1 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+
+  25% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  27.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  47.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card1-2 {
+  animation-name: card1-2;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card1-2 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+
+  50% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  52.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  72.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  75% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card1-3 {
+  animation-name: card1-3;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card1-3 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+
+  75% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  77.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  97.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+/* ==================================================== */
+/* ==================================================== */
+
+.crust-layer-right {
     border-radius: 10px;
     width: 240px;
     height: 320px;
     margin: 5px 3px 5px 3px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+.card2-0 {
+  visibility: hidden;
+
+  animation-delay: 0.2s;
+  animation-name: card2-0;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card2-0 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+  2.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  22.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  25% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card2-1 {
+  visibility: hidden;
+
+  animation-delay: 0.2s;
+  animation-name: card2-1;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card2-1 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  25% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  27.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  47.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card2-2 {
+  visibility: hidden;
+
+  animation-delay: 0.2s;
+  animation-name: card2-2;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card2-2 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  50% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  52.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  72.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  75% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card2-3 {
+  visibility: hidden;
+
+  animation-delay: 0.2s;
+  animation-name: card2-3;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card2-3 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  75% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  77.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  97.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+
+/* ==================================================== */
+/* ==================================================== */
+/* ==================================================== */
+
+.mantle-layer-left {
+    border-radius: 10px;
+    width: 240px;
+    height: 320px;
+    margin: 5px 3px 5px 3px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.card3-0 {
+  visibility: hidden;
+
+  animation-delay: 0.4s;
+  animation-name: card3-0;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card3-0 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+  2.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  22.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  25% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card3-1 {
+  visibility: hidden;
+
+  animation-delay: 0.4s;
+  animation-name: card3-1;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card3-1 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  25% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  27.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  47.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card3-2 {
+  visibility: hidden;
+
+  animation-delay: 0.4s;
+  animation-name: card3-2;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card3-2 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  50% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  52.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  72.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  75% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card3-3 {
+  visibility: hidden;
+
+  animation-delay: 0.4s;
+  animation-name: card3-3;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card3-3 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  75% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  77.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  97.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+/* ==================================================== */
+/* ==================================================== */
+
+.mantle-layer-right {
+    border-radius: 10px;
+    width: 240px;
+    height: 320px;
+    margin: 5px 3px 5px 3px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ==================================================== */
+/* ==================================================== */
+/* ==================================================== */
+
+.outer-core-layer-left {
+    border-radius: 10px;
+    width: 240px;
+    height: 320px;
+    margin: 5px 3px 5px 3px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.outer-core-layer-right {
+    border-radius: 10px;
+    width: 240px;
+    height: 320px;
+    margin: 5px 3px 5px 3px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card5-0 {
+  visibility: hidden;
+
+  animation-delay: 0.8s;
+  animation-name: card5-0;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card5-0 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+  2.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  22.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  25% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card5-1 {
+  visibility: hidden;
+
+  animation-delay: 0.8s;
+  animation-name: card5-1;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card5-1 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  25% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  27.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  47.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card5-2 {
+  visibility: hidden;
+
+  animation-delay: 0.8s;
+  animation-name: card5-2;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card5-2 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  50% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  52.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  72.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  75% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card5-3 {
+  visibility: hidden;
+
+  animation-delay: 0.8s;
+  animation-name: card5-3;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card5-3 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  75% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  77.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  97.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+/* ==================================================== */
+/* ==================================================== */
+
+.card6-0 {
+  visibility: hidden;
+
+  animation-delay: 1s;
+  animation-name: card6-0;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card6-0 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+  2.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  22.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  25% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card6-1 {
+  visibility: hidden;
+
+  animation-delay: 1s;
+  animation-name: card6-1;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card6-1 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  25% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  27.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  47.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card6-2 {
+  visibility: hidden;
+
+  animation-delay: 1s;
+  animation-name: card6-2;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card6-2 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  50% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  52.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  72.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  75% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card6-3 {
+  visibility: hidden;
+
+  animation-delay: 1s;
+  animation-name: card6-3;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card6-3 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  75% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  77.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  97.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+/* ==================================================== */
+
+
+.card7-0 {
+  visibility: hidden;
+
+  animation-delay: 1.2s;
+  animation-name: card7-0;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card7-0 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+  2.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  22.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  25% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card7-1 {
+  visibility: hidden;
+
+  animation-delay: 1.2s;
+  animation-name: card7-1;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card7-1 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  25% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  27.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  47.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card7-2 {
+  visibility: hidden;
+
+  animation-delay: 1.2s;
+  animation-name: card7-2;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card7-2 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  50% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  52.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  72.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  75% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card7-3 {
+  visibility: hidden;
+
+  animation-delay: 1.2s;
+  animation-name: card7-3;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card7-3 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  75% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  77.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  97.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+/* ==================================================== */
 
 .inner-core-layer {
-    background-color: black;
     border-radius: 10px;
     width: 240px;
     height: 320px;
     margin: 5px 3px 5px 3px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+.card4-0 {
+  visibility: hidden;
+
+  animation-delay: 0.6s;
+  animation-name: card4-0;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card4-0 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+  2.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  22.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  25% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card4-1 {
+  visibility: hidden;
+
+  animation-delay: 0.6s;
+  animation-name: card4-1;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card4-1 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  25% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  27.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  47.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card4-2 {
+  visibility: hidden;
+
+  animation-delay: 0.6s;
+  animation-name: card4-2;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card4-2 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  50% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  52.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  72.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  75% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card4-3 {
+  visibility: hidden;
+
+  animation-delay: 0.6s;
+  animation-name: card4-3;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card4-3 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+    visibility: visible;
+  }
+
+  75% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  77.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  97.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+/* ==================================================== */
+/* ==================================================== */
+/* ==================================================== */
