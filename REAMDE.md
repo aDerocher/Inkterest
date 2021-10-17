@@ -8,11 +8,11 @@ Inkterest is a clone of Pinterest, designed to be an image sharing and social me
 
 #### Splash page
 
-![]()
+![](https://github.com/aDerocher/Inkterest/blob/main/github-wiki/README-splash.PNG)
 
 #### Discover feed
 
-![]()
+![](https://github.com/aDerocher/Inkterest/blob/main/github-wiki/README-discover.PNG)
 
 ## Features
 
@@ -71,7 +71,7 @@ and `user`.
 
 ## Future Features to implement
 
-    - Comments
-    - Likes/Dislikes
-    - Saving inks to profile page
-    - Adding multiple inks to a canvas at once
+   - Comments
+   - Likes/Dislikes
+   - Saving inks to profile page
+   - Adding multiple inks to a canvas at once
