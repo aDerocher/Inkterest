@@ -105,7 +105,7 @@ def remove_ink_on_canvas():
 
     canvas = Canvas.query.get(canvas_id)
     canvas.inks.remove(Ink.query.get(ink_id))
-    print('===========================================================')
+    # print('===========================================================')
     db.session.commit()
 
     return canvas.to_dict()

@@ -10,7 +10,6 @@ function CanvasProfilePage() {
     const params = useParams();    
     let history = useHistory();
     const dispatch = useDispatch();
-    console.log(params)
   
     useEffect(() => {
         dispatch(getOneCanvas(params.canvas_id));
