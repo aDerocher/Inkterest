@@ -144,17 +144,154 @@
 /* ==================================================== */
 
 .crust-layer-left {
-    background-color: black;
-    border-radius: 10px;
-    width: 240px;
-    height: 320px;
-    margin: 5px 3px 5px 3px;
+  background-color: black;
+  border-radius: 10px;
+  width: 240px;
+  height: 320px;
+  margin: 5px 3px 5px 3px;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
+.card1-0 {
+  animation-name: card1-0;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card1-0 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  2.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  22.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  25% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card1-1 {
+  animation-name: card1-1;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card1-1 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+
+  25% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  27.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  47.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card1-2 {
+  animation-name: card1-2;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card1-2 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+
+  50% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  52.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  72.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  75% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+.card1-3 {
+  animation-name: card1-3;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 24s;
+}
+
+@keyframes card1-3 {
+  0% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+
+  75% {
+    opacity:0;
+    transform: translateY(15px);
+  }
+  77.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  97.5% {
+    opacity:1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity:0;
+    transform: translateY(-15px);
+  }
+}
+
+/* ==================================================== */
+/* ==================================================== */
 
 .crust-layer-right {
     background-color: black;

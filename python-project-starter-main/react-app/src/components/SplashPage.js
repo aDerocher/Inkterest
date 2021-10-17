@@ -36,7 +36,6 @@ function SplashPage() {
         <div className="splash-container">
             <div className='top-container'>
                 <div className='splash-text-1'>Get your next</div>
-                {/* div below is resevered for rolling text */}
                 <div className='splash-text-2'>
                     {
                         arrayWords.map((string, i) => {
@@ -67,14 +66,14 @@ function SplashPage() {
                     <div className='mantle-layer-left'>
                         {
                             array3.map((url, i) => {
-                                return <img className={`img-card card1-${i}`} src={url} />
+                                return <img className={`img-card card2-${i}`} src={url} />
                             })
                         }
                     </div>
                     <div className='mantle-layer-left'>
                         {
                             array4.map((url, i) => {
-                                return <img className={`img-card card1-${i}`} src={url} />
+                                return <img className={`img-card card2-${i}`} src={url} />
                             })
                         }
                     </div>
@@ -83,7 +82,7 @@ function SplashPage() {
                     <div className='outer-core-layer-left'>
                         {
                             array5.map((url, i) => {
-                                return <img className={`img-card card1-${i}`} src={url} />
+                                return <img className={`img-card card3-${i}`} src={url} />
                             })
                         }
                     </div>
@@ -92,7 +91,7 @@ function SplashPage() {
                     <div className='inner-core-layer'>
                         {
                             array6.map((url, i) => {
-                                return <img className={`img-card card1-${i}`} src={url} />
+                                return <img className={`img-card card4-${i}`} src={url} />
                             })
                         }
                     </div>
@@ -101,7 +100,7 @@ function SplashPage() {
                     <div className='outer-core-layer-right'>
                         {
                             array7.map((url, i) => {
-                                return <img className={`img-card card1-${i}`} src={url} />
+                                return <img className={`img-card card5-${i}`} src={url} />
                             })
                         }
                     </div>
@@ -110,14 +109,14 @@ function SplashPage() {
                     <div className='mantle-layer-right'>
                         {
                             array8.map((url, i) => {
-                                return <img className={`img-card card1-${i}`} src={url} />
+                                return <img className={`img-card card6-${i}`} src={url} />
                             })
                         }
                     </div>
                     <div className='mantle-layer-right'>
                         {
                             array9.map((url, i) => {
-                                return <img className={`img-card card1-${i}`} src={url} />
+                                return <img className={`img-card card6-${i}`} src={url} />
                             })
                         }
                     </div>
@@ -126,14 +125,14 @@ function SplashPage() {
                     <div className='crust-layer-right'>
                         {
                             array10.map((url, i) => {
-                                return <img className={`img-card card1-${i}`} src={url} />
+                                return <img className={`img-card card7-${i}`} src={url} />
                             })
                         }
                     </div>
                     <div className='crust-layer-right'>
                         {
                             array11.map((url, i) => {
-                                return <img className={`img-card card1-${i}`} src={url} />
+                                return <img className={`img-card card7-${i}`} src={url} />
                             })
                         }
                     </div>
