@@ -13,7 +13,7 @@ function About() {
                     <img className="about-image" src={squidProfile} alt="" />
                 </div>
                 <div className="profile-name">
-                <h1>Alwyn Grant</h1>
+                <h3 className='about-dev-name'>Alwyn Grant</h3>
                 </div>
                 <div className="profile-contact">marzgrant@gmail.com</div>
                 <div className='link-buttons-container'>
@@ -31,7 +31,7 @@ function About() {
                     <img className="about-image" src={squidProfile} alt="" />
                 </div>
                 <div className="profile-name">
-                <h1>Andrew Derocher</h1>
+                <h3 className='about-dev-name'>Andrew Derocher</h3>
                 </div>
                 <div className="profile-contact">andrew@andrewderocher.com</div>
                 <div className='link-buttons-container'>
@@ -49,7 +49,7 @@ function About() {
                     <img className="about-image" src={squidProfile} alt="" />
                 </div>
                 <div className="profile-name">
-                <h1>Grant Chiu</h1>
+                <h3 className='about-dev-name'>Grant Chiu</h3>
                 </div>
                 <div className="profile-contact">email@email.com</div>
                 <div className='link-buttons-container'>

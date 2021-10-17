@@ -10,7 +10,7 @@ import FollowingsModal from "./FollowingsModal";
 import { useParams } from "react-router-dom";
 import { listOneUser } from "./../store/user";
 import { listUsersCanvases } from "./../store/canvas";
-import canvasCover from "./../images/squid-circle-icon-Black.png"
+import canvasCover from "./../images/emptyCanvasCover.png"
 import DiscoverInks from "./DiscoverInks";
 
 function ProfilePage() {

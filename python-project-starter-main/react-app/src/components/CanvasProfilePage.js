@@ -58,7 +58,7 @@ function CanvasProfilePage() {
       <div className="canvas-p-profile-page-collection">
 
       </div>
-        <DiscoverInks user_id={null} canvasInksArr={canvasInksArr}/>
+        <DiscoverInks user_id={null} canvasInksArr={canvasInksArr} canvas_id={curCanvas?.id}/>
         <button className='floaty-button help-btn'>?</button>
         <button className='floaty-button big-plus-btn'>+</button>
     </div>
