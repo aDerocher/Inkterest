@@ -1,15 +1,20 @@
-
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "../styles/follows-modal.css";
-
+import { followUser, unfollowUser } from "../store/user";
 
 const FollowingsModal = (props) => {
   const allFollowings = useSelector((state) => state.session.user.followed);
 
   const user = useSelector((state) => state.session.user);
 
-
+  const dispatch = useDispatch();
+  const handleUnFollow = (userId) => {
+    // e.preventDefault();
+    dispatch(unfollowUser(userId));
+    // setIsFollowing(false);
+    window.location.reload(false);
+  };
 
   if (!props.show) {
     return null;
@@ -34,7 +39,14 @@ const FollowingsModal = (props) => {
                 <p>{f[0]}</p>
               </div>
 
-              <button className="toggle-follow-btn">Follow</button>
+              <button
+                // id={f[1]}
+                // key={f[1]}
+                className="unfollow-btn"
+                onClick={() => handleUnFollow(f[1])}
+              >
+                Unfollow
+              </button>
             </div>
           ))}
         </div>
