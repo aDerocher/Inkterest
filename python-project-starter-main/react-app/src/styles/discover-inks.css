@@ -3,7 +3,7 @@
 
     /* border: 1px solid rgb(47, 0, 255); */
     padding-top: 20px;
-    display: flex; 
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
@@ -28,9 +28,9 @@
 .tile-container:hover .image-container{
     background-color: rgba(0,0,0,.4);
 }
-.tile-container:hover 
+.tile-container:hover
 .ink-tile-bottom-buttons,
-.tile-container:hover  
+.tile-container:hover
 .ink-tile-top-buttons{
     opacity: 1;
 }
@@ -55,8 +55,8 @@
 }
 
 /* ========================================== */
- /* You dont actually see the img element. 
- It is included in a smaller size, and invisible 
+ /* You dont actually see the img element.
+ It is included in a smaller size, and invisible
  in order to get variable sizing on the divs */
 .ink-tile-image{
     /* background-color: rgb(168, 212, 65); */
@@ -126,6 +126,7 @@
     flex-wrap: nowrap;
     flex-direction: row;
     align-items: center;
+
 }
 /* ======= Button Classes ================== */
 
@@ -134,7 +135,7 @@
     outline: none;
     margin: 6px 3px;
     padding: 0 12px;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: bold;
     height: 30px;
     border-radius: 15px;
@@ -144,7 +145,7 @@
     height: 32px;
     width: 32px;
     border-radius: 18px;
-    margin: 0 4px;
+    margin: 5px 5px;
     padding: 0px;
 
 }
@@ -158,11 +159,22 @@
 }
 
 .ink-dest-link-btn{
-    background-color: var(--ink-tile-btn);
+    width: 100px;
+
     color: black;
     bottom: 0px;
-    overflow: hidden;
     text-overflow: ellipsis;
+    text-align: center;
+    overflow: hidden;
+
+    border: none;
+    outline: none;
+    margin: 10px 10px;
+    padding: 0 12px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    height: 20px;
+    border-radius: 15px;
 }
 
 .ink-save-btn:hover{ background-color: var(--red-btn-hover);}

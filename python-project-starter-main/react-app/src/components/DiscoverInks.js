@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { listAllInks } from '../store/ink'
+import { listAllUsers } from '../store/user'
 import { useHistory } from "react-router";
 import "../styles/discover-inks.css";
+import { inkOffCanvas } from "../store/canvas";
 
 function DiscoverInks(props) {
     const dispatch = useDispatch();
@@ -10,9 +12,14 @@ function DiscoverInks(props) {
 
     // ==== Filter the inks state array for the inks created by the view user =============
     let inks = useSelector(state => state.inks);
+
+    const users = useSelector(state => state.user)
+
     useEffect(() => {
         dispatch(listAllInks())
+        dispatch(listAllUsers())
     }, [dispatch])
+
     if(props.user_id !== null && props.user_id !== undefined){
         inks = inks.filter(i => i.creator_id.toString() === props.user_id)
     }
@@ -24,6 +31,15 @@ function DiscoverInks(props) {
     const goToInkPage = (e,userId,inkId) => {
         e.preventDefault();
         history.push(`/users/${userId}/inks/${inkId}`)
+    }
+    const removeFromCanvas = (e, canvas_id, ink_id) => {
+        e.preventDefault();
+        const form = {
+            canvas_id: canvas_id,
+            ink_id: ink_id
+        }
+        dispatch(inkOffCanvas(form))
+        history.push(`/canvases/${canvas_id}`)
     }
 
     // magical bit that enables magic rendering ===================
@@ -77,8 +93,8 @@ function DiscoverInks(props) {
         {/* ====================================================================== */}
         {/* ====== This is the start of rendering the first column of inks ======= */}
 
-        { allCols.map((inkDivisionX) =>(
-            <div className="column-of-inks">
+        { allCols?.map((inkDivisionX, i) =>(
+            <div key={i} className="column-of-inks">
                 {inkDivisionX?.map((i) => (
                     // ====== This is the start of rendering an individual ink tile =======
                     <div key={i.id} className='tile-container'>
@@ -98,7 +114,7 @@ function DiscoverInks(props) {
                                 <div className='ink-tile-bottom-buttons-left'>
                                     <a target="_blank" rel="noreferrer" href={i.destination_link}>
                                     {i.destination_link &&
-                                        <button className='ink-tile-btn ink-dest-link-btn'>etsyisthegreatest.com</button>
+                                            <button className='ink-dest-link-btn'>{i.destination_link}</button>
                                     }
                                     </a>
                                 </div>
@@ -107,11 +123,20 @@ function DiscoverInks(props) {
                                     <button className='ink-tile-btn ink-tile-btn-s'>&#8683;</button>
                                     <button className='ink-tile-btn ink-tile-btn-s'>...</button>
                                 </div>
+                                {props.canvas_id &&
+                                    <button className='ink-tile-btn ink-tile-btn-s' onClick={e=>removeFromCanvas(e,props.canvas_id, i.id)}>X</button>
+                                }
                             </div>
                         </div>
                         {!props.user_id &&
                             <div className="tile-footer">
-                                <img className='user-image' src="https://randomuser.me/api/portraits/lego/1.jpg" alt="" />
+                                {
+                                    users?.map((user) => {
+                                        if (user.id === i.creator_id) {
+                                            return <img className='user-image' src={user.profile_picture} alt="" />
+                                        }
+                                    })
+                                }
                                 <p className="username"><a href={`/users/${i.creator_id}`}>{i.creator_username}</a></p>
                             </div>
                         }
