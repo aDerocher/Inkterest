@@ -72,6 +72,7 @@ function ProfilePage() {
 }, [dispatch, params]);
 
 const viewUser = useSelector((state) => state.user[0]);
+const sessionUser = useSelector((state) => state.session.user);
 
 return (
     <div className="profile-page-container">
@@ -88,7 +89,6 @@ return (
         </div>
         <div className="profile-contact">{viewUser?.email}</div>
         <div className="profile-follwer-follwing">
-          {/* <p onClick={}>{user.followers.length} follower</p> */}
           <span onClick={() => setShowFollowers(true)}>
             {viewUser?.followers.length} follower
           </span>
@@ -120,7 +120,6 @@ return (
             className="plus-dd"
             menuClassName="menu"
             controlClassName="control"
-            // className="fas fa-plus"
           />
         </div>
       </div>
@@ -128,7 +127,7 @@ return (
             <div className="users-canvases-collection">
 
                 {curUserCanvases?.map((c) => (
-                    <div className="canvas-tile" key={c.id} onClick={e=>goToCanvasProfile(e,c.id)}>
+                    <div hidden={(c.creator_id !== sessionUser?.id) && c.private_canvas} className="canvas-tile" key={c.id} onClick={e=>goToCanvasProfile(e,c.id)}>
                         <div className="canvas-tile-image-container" >
 
                             <div className="canvas-tile-image-lock" hidden={!c.private_canvas} >
