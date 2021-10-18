@@ -10,8 +10,6 @@ import "../styles/canvas-edit.css";
 
 function CanvasEdit() {
 
-
-
     const history = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
