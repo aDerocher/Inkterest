@@ -47,7 +47,7 @@ def edit_one_canvas(canvas_id):
     canvas = Canvas.query.get(canvas_id)
     form = NewCanvasForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
-    
+
     if current_user and form.validate_on_submit():
         canvas.name = form.name.data
         canvas.private_canvas = form.private_canvas.data
@@ -105,7 +105,7 @@ def remove_ink_on_canvas():
 
     canvas = Canvas.query.get(canvas_id)
     canvas.inks.remove(Ink.query.get(ink_id))
-    # print('===========================================================')
+
     db.session.commit()
 
     return canvas.to_dict()
