@@ -49,9 +49,9 @@ def edit_user(id):
 @login_required
 def follow_user(id):
     user = User.query.get(id)
-    # print(int(current_user.get_id())not in user.followers, '------------------------------------------------------------')
-    # userTuple = (current_user.username, int(current_user.get_id))
-    # if userTuple not in user.followers:
+
+
+
     user.followers.append(User.query.get(int(current_user.get_id())))
 
     db.session.commit()
