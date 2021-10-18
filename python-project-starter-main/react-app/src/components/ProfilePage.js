@@ -69,7 +69,7 @@ function ProfilePage() {
 
   useEffect(() => {
       dispatch(listUsersCanvases(params.userId));
-      // dispatch(listOneUser(params.userId, 1))
+      
       dispatch(listAllUsers())
     }, [dispatch, params]);
 

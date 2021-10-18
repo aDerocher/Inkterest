@@ -5,21 +5,50 @@
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
+
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.modal-content {
-  width: 500px;
+.flw-modal-content {
+  width: 350px;
   background-color: #fff;
   border-radius: 32px;
-  min-height: 155px;
-  overflow: hidden;
+  height: 250px;
+  max-height: 400px;
   position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flw-modal-list {
+
+  width: 275px;
+
+  height: 200px;
+  max-height: 300px;
+  overflow-y: scroll;
+
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+}
+
+.follow-user-container {
+  display: flex;
+  align-items: center;
+
+  width: 200px;
+  margin: 10px;
+}
+
+.fllwer-link {
+  text-decoration: none;
+  color: black;
+  margin-left: 10px;
 }
 
 .modal-header {
@@ -53,7 +82,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 8px 24px;
+  /* padding: 8px 24px; */
 }
 
 .toggle-follow-btn {
