@@ -39,6 +39,8 @@ function DiscoverInks(props) {
             ink_id: ink_id
         }
         dispatch(inkOffCanvas(form))
+        let rInk = document.getElementById(ink_id)
+        rInk.setAttribute("class", "hidden-ink")
         history.push(`/canvases/${canvas_id}`)
     }
 
@@ -99,7 +101,7 @@ function DiscoverInks(props) {
             <div key={i} className="column-of-inks">
                 {inkDivisionX?.map((i) => (
                     // ====== This is the start of rendering an individual ink tile =======
-                    <div key={i.id} className='tile-container'>
+                    <div key={i.id} id={i.id} className='tile-container'>
                         <div className="image-container"  onClick={e => goToInkPage(e,i.creator_id,i.id)} style={{
                                 backgroundImage: `url(${i.image})`,
                                 height: `100%`
