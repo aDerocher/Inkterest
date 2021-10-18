@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { changeProfile } from "../store/profileEdit";
 import "../styles/profile-edit.css";
 
 function ProfileEdit() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const user = useSelector((state) => state.session.user);
   const [isEditLoading, setIsEditLoading] = useState(true);
 
@@ -26,6 +27,7 @@ function ProfileEdit() {
 
     dispatch(changeProfile(profile, userId)).then(() => {
       setIsEditLoading(false);
+      history.push(`/users/${user.id}`)
     });
 
     if (!isEditLoading) {
