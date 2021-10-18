@@ -180,3 +180,9 @@
 .ink-save-btn:hover{ background-color: var(--red-btn-hover);}
 .ink-dest-link-btn:hover{ background-color: var(--ink-tile-btn-hover);}
 .ink-tile-btn-s:hover{ background-color: var(--ink-tile-btn-hover);}
+
+
+.hidden-ink{
+    opacity: 0;
+    display: none;
+}
