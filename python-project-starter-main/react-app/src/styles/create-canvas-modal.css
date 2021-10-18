@@ -9,6 +9,7 @@
     align-items: center;
     justify-content: center;
     font-family: Arial, Helvetica, sans-serif;
+    z-index: 100;
 }
 .cc-modal-content{
     background-color: white;
@@ -21,7 +22,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 50px 70px 30px 70px; 
+    padding: 50px 70px 30px 70px;
 }
 .cc-modal-body{
     /* background-color: rgb(65, 23, 180); */
@@ -66,11 +67,9 @@
     background-color: transparent;
     border:none
 }
-  
+
   .cc-modal-body {
     padding: 10px;
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
   }
-
-
