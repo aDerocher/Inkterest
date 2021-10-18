@@ -11,9 +11,9 @@ const FollowersModal = (props) => {
   const users = useSelector((state) => state.user)
   const user = users.filter(user => user.id.toString() === userId)[0]
 
-  useEffect(() => {
-    dispatch(listAllUsers())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(listAllUsers())
+  // }, [dispatch, user?.id])
 
   if (!props.show) {
     return null;

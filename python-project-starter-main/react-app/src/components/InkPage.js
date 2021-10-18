@@ -61,13 +61,11 @@ function InkPage() {
     const handleDropdownEditClose = (e) => {
         e.preventDefault()
         setShowEditModal(true)
-        // if I try to close the dropdown, modal will not show until I click tooltip btn
     }
 
     const handleDropdownDeleteClose = (e) => {
         e.preventDefault()
         setShowDeleteModal(true)
-
     }
 
     // ========================================== COMPONENT

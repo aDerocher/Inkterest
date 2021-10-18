@@ -169,7 +169,7 @@
     padding: 4px;
     text-overflow: ellipsis;
 }
-    
+
 .canvas-tile-image-lock{
     background-color: var(--soft-grey);
     max-height: 15px;
@@ -206,4 +206,3 @@
     color: #333;
     font-weight: bold;
 }
-
