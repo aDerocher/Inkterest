@@ -8,7 +8,7 @@ import CreateCanvasModal from "./CreateCanvasModal";
 import FollowersModal from "./FollowersModal";
 import FollowingsModal from "./FollowingsModal";
 import { useParams } from "react-router-dom";
-import { listAllUsers } from "./../store/user";
+import { listAllUsers, followUser, unfollowUser } from "./../store/user";
 import { listUsersCanvases } from "./../store/canvas";
 import canvasCover from "./../images/emptyCanvasCover.png"
 import DiscoverInks from "./DiscoverInks";
@@ -39,8 +39,13 @@ function ProfilePage() {
   const [show, setShow] = useState(false);
   const [showFollowers, setShowFollowers] = useState(false);
   const [showFollowings, setShowFollowings] = useState(false);
+  const [isFollowing, setIsFollowing] = useState(null);
+  console.log(isFollowing)
 
   const curUserCanvases = useSelector((state) => state.canvases);
+  const users = useSelector((state) => state.user)
+  const user = users.filter(user => user.id.toString() === params.userId)[0]
+
 
   const redirect = () => {
     history.push("/profile-edit");
@@ -66,15 +71,31 @@ function ProfilePage() {
     e.preventDefault();
     history.push(`/canvases/${c.id}/edit-canvas`)
   }
-  
+
+  const handleFollow = (e, userId) => {
+    e.preventDefault()
+    dispatch(followUser(userId))
+    setIsFollowing(true)
+  }
+
+  const handleUnFollow = (e, userId) => {
+    e.preventDefault()
+    dispatch(unfollowUser(userId))
+    setIsFollowing(false)
+  }
+
+
+  useEffect(() => {
+      dispatch(listAllUsers())
+      setIsFollowing(user?.followers.some((el) => el[1] === sessionUser?.id))
+    }, [dispatch, user?.id]);
+
   useEffect(() => {
       dispatch(listUsersCanvases(params.userId));
-      // dispatch(listOneUser(params.userId, 1))
-      dispatch(listAllUsers())
     }, [dispatch, params]);
-    
-    
-    const viewUser = useSelector((state) => state.user).filter(u => u.id.toString() === viewingUserId)[0]
+
+
+    const viewUser = useSelector((state) => state.user).filter(user => user.id.toString() === viewingUserId)[0]
 
 return (
     <div className="profile-page-container">
@@ -92,11 +113,13 @@ return (
         <div className="profile-contact">{viewUser?.email}</div>
         <div className="profile-follwer-follwing">
           <span onClick={() => setShowFollowers(true)}>
-            {viewUser?.followers?.length} follower
+            {viewUser?.followers.length} follower
           </span>
           <FollowersModal
             onClose={() => setShowFollowers(false)}
             show={showFollowers}
+            isF={isFollowing}
+            user={viewUser}
           />
           <span> • </span>
           <span onClick={() => setShowFollowings(true)}>
@@ -105,13 +128,25 @@ return (
           <FollowingsModal
             onClose={() => setShowFollowings(false)}
             show={showFollowings}
+            isF={isFollowing}
+            user={viewUser}
           />
         </div>
+        {
+          sessionUser &&
+          sessionUser?.id !== user?.id &&
+          (
+            isFollowing
+              ? <button className='unfollow-btn' onClick={(e) => handleUnFollow(e, user?.id)}>Unfollow</button>
+              : <button className='follow-btn' onClick={(e) => handleFollow(e, user?.id)}>Follow</button>
+          )
+        }
       </div>
       <div  className="profile-page-body">
         <div >
           <button hidden={!(viewUser?.id === sessionUser.id)} className="profile-page-edit" onClick={redirect}><i className="fas fa-sliders-h"></i></button>
         </div>
+
         <div hidden={!(viewUser?.id === sessionUser.id)} className="profile-page-upload">
           <CreateCanvasModal onClose={() => setShow(false)} show={show} />
           <Dropdown
