@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from datetime import datetime
 from .follow import follows
+from .saved_inks import saved_inks
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -34,6 +35,12 @@ class User(db.Model, UserMixin):
         lazy="dynamic",
     )
 
+    saved_inks = db.relationship(
+        "Ink",
+        back_populates="saved",
+        secondary=saved_inks
+    )
+
 
     @property
     def password(self):
@@ -57,5 +64,6 @@ class User(db.Model, UserMixin):
             # for the session user, this followers key/value is specifically returning username & id
             'followers': [(follower.username, follower.id) for follower in self.followers ],
             'followed': [(followed.username, followed.id) for followed in self.followed ],
+            'saved_inks': [ink.to_dict() for ink in self.saved_inks ],
             'created_at': self.created_at
         }
