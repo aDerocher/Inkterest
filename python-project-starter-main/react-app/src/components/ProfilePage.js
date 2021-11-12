@@ -10,6 +10,7 @@ import FollowingsModal from "./FollowingsModal";
 import { useParams } from "react-router-dom";
 import { listAllUsers, followUser, unfollowUser } from "./../store/user";
 import { listUsersCanvases } from "./../store/canvas";
+import { getAllSaved } from "./../store/saved_inks";
 import canvasCover from "./../images/emptyCanvasCover.png"
 import DiscoverInks from "./DiscoverInks";
 
@@ -22,6 +23,8 @@ function ProfilePage() {
   let history = useHistory();
   const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
+    const inks = useSelector((state) => state.inks);
+    const saved_inks = useSelector((state) => state.saved_inks);
 
   // options are for the new-ink/new-canvas dropdown menu
   const options = [
@@ -92,7 +95,8 @@ function ProfilePage() {
 
   useEffect(() => {
       dispatch(listUsersCanvases(params.userId));
-    }, [dispatch, params]);
+      dispatch(getAllSaved(params.userId))
+    }, [dispatch, params, inks]);
 
 
     const viewUser = useSelector((state) => state.user).filter(user => user.id.toString() === viewingUserId)[0]
@@ -191,7 +195,7 @@ return (
             </div>
 
       </div>
-      <DiscoverInks user_id={viewingUserId}/>
+      <DiscoverInks canvasInksArr={saved_inks}/>
     </div>
   );
 }
