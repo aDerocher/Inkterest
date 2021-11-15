@@ -63,12 +63,12 @@ const initialState = [];
 const savedInksReducer = (state = initialState, action) => {
     let newState = [ ...state ]
     switch (action.type) {
+        case GET_SAVED:
+            return [ ...action.ink ]
         case ADD_TO_SAVED:
             return [ ...newState, action.ink ]
         case REMOVE_FROM_SAVED:
             return newState.filter((el) => action.ink.id !== el.id)
-        case GET_SAVED:
-            return [ ...action.ink ]
         default:
             return state;
     }

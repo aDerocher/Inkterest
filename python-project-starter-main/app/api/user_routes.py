@@ -81,15 +81,17 @@ def get_saved(user_id):
 @login_required
 def save_ink(user_id, ink_id):
     user = User.query.get(user_id)
-    user.saved_inks.append(Ink.query.get(ink_id))
+    ink = Ink.query.get(ink_id)
+    user.saved_inks.append(ink)
     db.session.commit()
-    return user.to_dict()
+    return ink.to_dict()
 
 # remove an ink from a users saved list
 @user_routes.route("/<int:user_id>/saved-inks/<int:ink_id>/remove", methods=["POST"])
 @login_required
 def unsave_ink(user_id, ink_id):
     user = User.query.get(user_id)
-    user.saved_inks.remove(Ink.query.get(ink_id))
+    ink = Ink.query.get(ink_id)
+    user.saved_inks.remove(ink)
     db.session.commit()
-    return user.to_dict()
+    return ink.to_dict()
