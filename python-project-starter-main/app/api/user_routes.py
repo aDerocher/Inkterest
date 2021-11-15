@@ -69,9 +69,15 @@ def unfollow_user(id):
 
     return user.to_dict()
 
+# get users saved list
+@user_routes.route("/<int:user_id>/saved-inks", methods=["GET"])
+@login_required
+def get_saved(user_id):
+    user = User.query.get(user_id)
+    return {"saved_inks": [ink.to_dict() for ink in user.saved_inks]}
 
 # add an ink to a users saved list
-@user_routes.route("/<int:user_id>/saved-inks/<int:ink_id>", methods=["POST"])
+@user_routes.route("/<int:user_id>/saved-inks/<int:ink_id>/add", methods=["POST"])
 @login_required
 def save_ink(user_id, ink_id):
     user = User.query.get(user_id)
@@ -79,11 +85,11 @@ def save_ink(user_id, ink_id):
     db.session.commit()
     return user.to_dict()
 
-# add an ink to a users saved list
-@user_routes.route("/<int:user_id>/saved-inks", methods=["GET"])
+# remove an ink from a users saved list
+@user_routes.route("/<int:user_id>/saved-inks/<int:ink_id>/remove", methods=["POST"])
 @login_required
-def get_saved(user_id):
+def unsave_ink(user_id, ink_id):
     user = User.query.get(user_id)
-    return {"saved_inks": [ink.to_dict() for ink in user.saved_inks]}
-
-
+    user.saved_inks.remove(Ink.query.get(ink_id))
+    db.session.commit()
+    return user.to_dict()

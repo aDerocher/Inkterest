@@ -2,7 +2,7 @@ from app.models import db, Ink, Category
 
 # Adds a demo user, you can add other users here if you want
 def seed_inks():
-
+    pass
 
     # ink0 = Ink(
     #     creator_id = 1,
