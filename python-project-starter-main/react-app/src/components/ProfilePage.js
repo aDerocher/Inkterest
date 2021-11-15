@@ -174,7 +174,7 @@ return (
                                 <i className="fas fa-lock"></i>
                             </div>
 
-                            <div onClick={e=>e.stopPropagation()}>
+                            <div hidden={(c.creator_id !== sessionUser?.id)} onClick={e=>e.stopPropagation()}>
                                 <button className="canvas-tile-image-pen" onClick={(e) => editCanvas(e,c)} >
                                     <i className="fas fa-pen"></i>
                                 </button>
