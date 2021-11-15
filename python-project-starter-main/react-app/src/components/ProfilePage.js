@@ -43,7 +43,6 @@ function ProfilePage() {
   const [showFollowers, setShowFollowers] = useState(false);
   const [showFollowings, setShowFollowings] = useState(false);
   const [isFollowing, setIsFollowing] = useState(null);
-  console.log(isFollowing)
 
   const curUserCanvases = useSelector((state) => state.canvases);
   const users = useSelector((state) => state.user)

@@ -84,7 +84,6 @@ def save_ink(user_id, ink_id):
 @login_required
 def get_saved(user_id):
     user = User.query.get(user_id)
-    print('=====================================================================================================================================================',user.saved_inks)
     return {"saved_inks": [ink.to_dict() for ink in user.saved_inks]}
 
 

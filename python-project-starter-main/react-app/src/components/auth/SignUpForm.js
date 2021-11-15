@@ -47,8 +47,6 @@ const SignUpFormModal = (props) => {
     return null;
   }
 
-  console.log(errors, '--------------------------------------');
-
   const handleLoginRedirect = (e) => {
     props.login(true);
     props.signup(false);
