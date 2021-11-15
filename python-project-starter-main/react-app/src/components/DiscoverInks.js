@@ -5,6 +5,7 @@ import { listAllUsers } from '../store/user'
 import { useHistory } from "react-router";
 import "../styles/discover-inks.css";
 import { inkOffCanvas } from "../store/canvas";
+import { addToSaved } from "../store/saved_inks";
 
 function DiscoverInks(props) {
     const dispatch = useDispatch();
@@ -13,6 +14,7 @@ function DiscoverInks(props) {
     // ==== Filter the inks state array for the inks created by the view user =============
     let inks = useSelector(state => state.inks);
 
+    const sessionUser = useSelector(state => state.session.user)
     const users = useSelector(state => state.user)
 
     useEffect(() => {
@@ -28,8 +30,16 @@ function DiscoverInks(props) {
         inks = props.canvasInksArr
     }
 
+    const handleSaveInk = (e, inkId) => {
+        e.preventDefault();
+        
+        e.stopPropagation();
+        dispatch(addToSaved(inkId, sessionUser.id))
+    }
+
     const goToInkPage = (e,userId,inkId) => {
         e.preventDefault();
+        e.stopPropagation();
         history.push(`/users/${userId}/inks/${inkId}`)
     }
     const removeFromCanvas = (e, canvas_id, ink_id) => {
@@ -108,7 +118,7 @@ function DiscoverInks(props) {
                                 }}>
                             {!props.user_id &&
                                 <div className="ink-tile-top-buttons">
-                                    <button className='ink-tile-btn ink-save-btn'>Save</button>
+                                    <button className='ink-tile-btn ink-save-btn' onClick={e=> handleSaveInk(e, i.id)}>Save</button>
                                 </div>
                             }
 

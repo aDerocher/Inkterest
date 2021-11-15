@@ -2,7 +2,7 @@ from .db import db
 from datetime import datetime
 from .ink_categories import ink_categories
 from .ink_on_canvas import inks_on_canvases
-
+from .saved_inks import saved_inks
 
 class Ink(db.Model):
     __tablename__ = 'inks'
@@ -28,6 +28,13 @@ class Ink(db.Model):
         back_populates="inks",
         secondary=inks_on_canvases
         )
+
+    saved = db.relationship(
+        "User",
+        back_populates="saved_inks",
+        secondary=saved_inks
+    )
+
 
     def to_dict(self):
         return {

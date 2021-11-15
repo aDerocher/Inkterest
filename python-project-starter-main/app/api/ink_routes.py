@@ -47,8 +47,10 @@ def upload_ink():
         # so we send back that error message
 
         return upload, 400
-    
+
     url = upload["url"]
+
+    user = User.query.get(int(current_user.get_id()))
 
     if form.validate_on_submit():
         new_ink = Ink(
@@ -62,6 +64,7 @@ def upload_ink():
 
 
         db.session.add(new_ink)
+        user.saved_inks.append(new_ink)
         db.session.commit()
 
         if form.canvas_id.data != None:
@@ -103,6 +106,7 @@ def delete_ink(ink_id):
         # condition - Try to delete as a logged out user - Should not work
 
     if int(user_id) == int(ink.creator_id):
+        ink.saved.clear()
         db.session.delete(ink)
         db.session.commit()
 

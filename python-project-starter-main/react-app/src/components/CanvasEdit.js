@@ -66,6 +66,11 @@ function CanvasEdit() {
         e.preventDefault();
         dispatch(removeCanvas(canvas_id))
         history.push(`/users/${sessionUser.id}`)
+    };
+
+    const backToProfile = (e) => {
+        e.preventDefault();
+        history.push(`/users/${sessionUser.id}`)
     }
 
     // ========================================== COMPONENT
@@ -128,7 +133,7 @@ function CanvasEdit() {
                     </button>
                 </div>
             </form>
-            <button className='c-e-close-button'>X</button>
+            <button onClick={e=>backToProfile(e)} className='c-e-close-button'>X</button>
     </div>
   );
 }

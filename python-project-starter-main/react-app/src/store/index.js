@@ -4,12 +4,14 @@ import session from './session'
 import inks from './ink'
 import canvases from './canvas'
 import user from './user'
+import saved_inks from './saved_inks'
 
 const rootReducer = combineReducers({
   session,
   inks,
   canvases,
-  user
+  user,
+  saved_inks
 });
 
 

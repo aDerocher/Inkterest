@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Redirect, NavLink } from "react-router-dom";
 import { createInk } from "../store/ink";
 import { listUsersCanvases } from "../store/canvas";
+import { getAllSaved } from "../store/saved_inks";
 import "../styles/reset-styles.css";
 import "../styles/new-ink.css";
 
@@ -66,6 +67,7 @@ function NewInkForm() {
       setSubtitle("");
       setDestination_link("");
     });
+    // dispatch(getAllSaved(sessionUser?.id))
     history.push(`/users/${sessionUser?.id}`);
   };
 
