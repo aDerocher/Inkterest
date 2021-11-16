@@ -55,20 +55,20 @@ const ProfileModal = (props) => {
               </div>
               <img className="pd-checkmark" src={checkmark} alt="" />
             </div>
-            <br />
-            <div className="prof-dd-row prof-dd-title">Your accounts</div>
+            {/* <br /> */}
+            {/* <div className="prof-dd-row prof-dd-title">Your accounts</div>
             <div className="prof-dd-row pd-hov">
               <p>Add account</p>
             </div>
             <div className="prof-dd-row pd-hov">
               <p>Convert to business</p>
-            </div>
-            <br />
-            <div className="prof-dd-row prof-dd-title">More options</div>
+            </div> */}
+            {/* <br /> */}
+            <div className="prof-dd-row prof-dd-title">Options</div>
             <div className="prof-dd-row pd-hov">
               <p onClick={(e) => toSettings(e)}>Settings</p>
             </div>
-            <div className="prof-dd-row pd-hov">
+            {/* <div className="prof-dd-row pd-hov">
               <p >Tune your home feed</p>
             </div>
             <div className="prof-dd-row pd-hov">
@@ -79,7 +79,7 @@ const ProfileModal = (props) => {
             </div>
             <div className="prof-dd-row pd-hov">
               <p>See terms and privacy</p>
-            </div>
+            </div> */}
             <div className="prof-dd-row pd-hov" onClick={onLogout}>
               <p>Log out</p>
             </div>
