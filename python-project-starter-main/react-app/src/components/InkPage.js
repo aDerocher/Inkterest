@@ -7,7 +7,7 @@ import EditInkModal from './EditInkModal';
 import DeleteInkModal from './DeleteInkModal';
 import '../styles/reset-styles.css'
 import '../styles/ink-page.css'
-import { getAllSaved } from "./../store/saved_inks";
+import { addToSaved, removeFromSaved, getAllSaved } from "../store/saved_inks";
 
 
 function InkPage() {
@@ -22,9 +22,14 @@ function InkPage() {
     // direct access to user array/slice of state
         const user = useSelector(state => state?.user[0])
     // direct access to canvases array/slice of state
-        // const canvases = useSelector(state => state.canvases)
+    // const canvases = useSelector(state => state.canvases)
+    // direct access to saved inks array/slice of state
+    const saved_inks = useSelector(state => state.saved_inks)
 
     const [isFollowing, setIsFollowing] = useState(null)
+    const [isSaved, setIsSaved] = useState(null)
+    console.log(isSaved)
+    console.log(ink?.id)
     const [inkDropdown, setInkDropdown] = useState(false)
 
     const [showEditModal, setShowEditModal] = useState(false);
@@ -34,6 +39,11 @@ function InkPage() {
         dispatch(listOneInk(inkId))
         setIsFollowing(user?.followers.some((el) => el[1] === sessionUser?.id))
     }, [dispatch, user?.id])
+
+    useEffect(() => {
+        dispatch(getAllSaved(sessionUser?.id))
+        setIsSaved((sessionUser?.saved_inks.some((el) => el.id === ink?.id)))
+    }, [dispatch, ink?.id])
 
     useEffect(() => {
         dispatch(listOneUser(userId,inkId))
@@ -68,6 +78,22 @@ function InkPage() {
     const handleDropdownDeleteClose = (e) => {
         e.preventDefault()
         setShowDeleteModal(true)
+    }
+
+    const handleSaveInk = (e, inkId) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        dispatch(addToSaved(inkId, sessionUser.id))
+        setIsSaved(true)
+    }
+
+    const handleUnsaveInk = (e, inkId) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        dispatch(removeFromSaved(inkId, sessionUser.id))
+        setIsSaved(false)
     }
 
     // ========================================== COMPONENT
@@ -111,6 +137,11 @@ function InkPage() {
 
 
                     <a className='ink-link' href={ink?.destination_link}>{ink?.destination_link}</a>
+                    {
+                    isSaved
+                    ? <button className='unsave-btn' onClick={e => handleUnsaveInk(e, ink?.id)}>Unsave</button>
+                    : <button className='save-btn' onClick={e => handleSaveInk(e, ink?.id)}>Save</button>
+                    }
                     <div className='ink-title'>{ink?.title}</div>
                     <div className='ink-subtitle'>{ink?.subtitle} </div>
                     <div className='ink-profile'>

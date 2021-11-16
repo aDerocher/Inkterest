@@ -5,7 +5,7 @@ import { listAllUsers } from '../store/user'
 import { useHistory } from "react-router";
 import "../styles/discover-inks.css";
 import { inkOffCanvas } from "../store/canvas";
-import { addToSaved } from "../store/saved_inks";
+import { addToSaved, removeFromSaved, getAllSaved } from "../store/saved_inks";
 
 function DiscoverInks(props) {
     const dispatch = useDispatch();
@@ -15,11 +15,16 @@ function DiscoverInks(props) {
     let inks = useSelector(state => state.inks);
 
     const sessionUser = useSelector(state => state.session.user)
+    const saved_inks = useSelector(state => state.saved_inks)
     const users = useSelector(state => state.user)
 
     useEffect(() => {
         dispatch(listAllInks())
         dispatch(listAllUsers())
+    }, [dispatch])
+
+    useEffect(() => {
+        dispatch(getAllSaved(sessionUser?.id))
     }, [dispatch])
 
     if(props.user_id !== null && props.user_id !== undefined){
@@ -32,9 +37,16 @@ function DiscoverInks(props) {
 
     const handleSaveInk = (e, inkId) => {
         e.preventDefault();
-        
         e.stopPropagation();
+
         dispatch(addToSaved(inkId, sessionUser.id))
+    }
+
+    const handleUnsaveInk = (e, inkId) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        dispatch(removeFromSaved(inkId, sessionUser.id))
     }
 
     const goToInkPage = (e,userId,inkId) => {
@@ -118,7 +130,11 @@ function DiscoverInks(props) {
                                 }}>
                             {!props.user_id &&
                                 <div className="ink-tile-top-buttons">
-                                    <button className='ink-tile-btn ink-save-btn' onClick={e=> handleSaveInk(e, i.id)}>Save</button>
+                                    {
+                                        saved_inks?.includes(i)
+                                        ? <button className='ink-tile-btn ink-save-btn' onClick={e=> handleUnsaveInk(e, i.id)}>Unsave</button>
+                                        : <button className='ink-tile-btn ink-save-btn' onClick={e=> handleSaveInk(e, i.id)}>Save</button>
+                                    }
                                 </div>
                             }
 
