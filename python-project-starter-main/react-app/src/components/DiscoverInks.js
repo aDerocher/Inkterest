@@ -13,8 +13,8 @@ function DiscoverInks(props) {
 
     // ==== Filter the inks state array for the inks created by the view user =============
     let inks = useSelector(state => state.inks);
-
     const sessionUser = useSelector(state => state.session.user)
+    const discoverInks = inks.filter((ink) => ink.creator_id !== sessionUser?.id)
     const users = useSelector(state => state.user)
 
     useEffect(() => {
@@ -32,7 +32,7 @@ function DiscoverInks(props) {
 
     const handleSaveInk = (e, inkId) => {
         e.preventDefault();
-        
+
         e.stopPropagation();
         dispatch(addToSaved(inkId, sessionUser.id))
     }
@@ -63,29 +63,29 @@ function DiscoverInks(props) {
     let inkDivision5 = []
     let inkDivision6 = []
 
-    for(let i=0; i<inks?.length; i++){
+    for(let i=0; i<discoverInks?.length; i++){
         let x = i % 7
         switch (x) {
             case 0:
-                inkDivision0.push(inks[i])
+                inkDivision0.push(discoverInks[i])
                 break;
             case 1:
-                inkDivision1.push(inks[i])
+                inkDivision1.push(discoverInks[i])
                 break;
             case 2:
-                inkDivision2.push(inks[i])
+                inkDivision2.push(discoverInks[i])
                 break;
             case 3:
-                inkDivision3.push(inks[i])
+                inkDivision3.push(discoverInks[i])
                 break;
             case 4:
-                inkDivision4.push(inks[i])
+                inkDivision4.push(discoverInks[i])
                 break;
             case 5:
-                inkDivision5.push(inks[i])
+                inkDivision5.push(discoverInks[i])
                 break;
             case 6:
-                inkDivision6.push(inks[i])
+                inkDivision6.push(discoverInks[i])
                 break;
             default:
                 break;
