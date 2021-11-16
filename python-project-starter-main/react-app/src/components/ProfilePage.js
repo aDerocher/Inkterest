@@ -94,9 +94,11 @@ function ProfilePage() {
 
   useEffect(() => {
       dispatch(listUsersCanvases(params.userId));
-      dispatch(getAllSaved(params.userId))
-    }, [dispatch, params, inks]);
+    }, [dispatch]);
 
+    // useEffect(() => {
+    //   dispatch(getAllSaved(params.userId))
+    // }, [dispatch, saved_inks])
 
     const viewUser = useSelector((state) => state.user).filter(user => user.id.toString() === viewingUserId)[0]
 

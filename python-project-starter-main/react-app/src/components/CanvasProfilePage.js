@@ -16,6 +16,7 @@ function CanvasProfilePage() {
     }, [dispatch, params]);
 
     const sessionUser = useSelector(state => state.session.user);
+
     const curCanvas = useSelector((state) => state.canvases[0]);
     const canvasInksArr = curCanvas?.inks;
 
@@ -32,7 +33,7 @@ function CanvasProfilePage() {
         <div className="canvas-p-profile-name">
           <h1>{curCanvas?.name}</h1>
         </div>
-        <div className="three-canvas-options">
+        {/* <div className="three-canvas-options">
             <div className="canvas-option-container">
                 <button className="canvas-option-btn"><i className="fas fa-star"></i></button>
                 <p className="option-label">More Ideas</p>
@@ -45,7 +46,7 @@ function CanvasProfilePage() {
                 <button className="canvas-option-btn"><i className="fas fa-align-left"></i></button>
                 <p className="option-label">Notes</p>
             </div>
-        </div>
+        </div> */}
       </div>
       <div className="canvas-p-profile-page-body">
 
@@ -61,8 +62,8 @@ function CanvasProfilePage() {
 
       </div>
         <DiscoverInks user_id={null} canvasInksArr={canvasInksArr} canvas_id={curCanvas?.id}/>
-        <button className='floaty-button help-btn'>?</button>
-        <button className='floaty-button big-plus-btn'>+</button>
+        {/* <button className='floaty-button help-btn'>?</button>
+        <button className='floaty-button big-plus-btn'>+</button> */}
     </div>
   );
 }

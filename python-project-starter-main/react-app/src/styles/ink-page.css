@@ -178,3 +178,38 @@
     border: none;
     cursor: pointer;
 }
+
+
+.save-btn {
+    background-color: #e60023;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    width: 80px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+
+    margin-top: 10px;
+    transform: translateX(-150px);
+}
+
+.unsave-btn {
+    background-color: #e60023;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    width: 80px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+
+    margin-top: 10px;
+    transform: translateX(-150px);
+}
