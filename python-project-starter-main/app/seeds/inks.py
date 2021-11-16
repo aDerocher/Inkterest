@@ -1,4 +1,4 @@
-from app.models import db, Ink, Category
+from app.models import db, Ink, Category, User
 
 # Adds a demo user, you can add other users here if you want
 def seed_inks():
@@ -388,7 +388,79 @@ def seed_inks():
     db.session.add(ink35)
     db.session.add(ink32)
 
+    db.session.commit()
 
+    inky_the_demo = User.query.get(1)
+
+    inky_the_demo.saved_inks.append(Ink.query.get(17))
+    inky_the_demo.saved_inks.append(Ink.query.get(38))
+    inky_the_demo.saved_inks.append(Ink.query.get(26))
+    inky_the_demo.saved_inks.append(Ink.query.get(4))
+    inky_the_demo.saved_inks.append(Ink.query.get(5))
+    inky_the_demo.saved_inks.append(Ink.query.get(6))
+    inky_the_demo.saved_inks.append(Ink.query.get(7))
+    inky_the_demo.saved_inks.append(Ink.query.get(8))
+    inky_the_demo.saved_inks.append(Ink.query.get(12))
+    inky_the_demo.saved_inks.append(Ink.query.get(15))
+
+    lady_leena = User.query.get(2)
+
+    lady_leena.saved_inks.append(Ink.query.get(21))
+    lady_leena.saved_inks.append(Ink.query.get(13))
+    lady_leena.saved_inks.append(Ink.query.get(9))
+    lady_leena.saved_inks.append(Ink.query.get(10))
+
+    never_gonna_give = User.query.get(3)
+
+    never_gonna_give.saved_inks.append(Ink.query.get(11))
+    never_gonna_give.saved_inks.append(Ink.query.get(18))
+    never_gonna_give.saved_inks.append(Ink.query.get(22))
+    never_gonna_give.saved_inks.append(Ink.query.get(23))
+
+    animal_farmer = User.query.get(4)
+
+    animal_farmer.saved_inks.append(Ink.query.get(31))
+    animal_farmer.saved_inks.append(Ink.query.get(27))
+    animal_farmer.saved_inks.append(Ink.query.get(14))
+    animal_farmer.saved_inks.append(Ink.query.get(2))
+
+    game_ender = User.query.get(5)
+
+    game_ender.saved_inks.append(Ink.query.get(19))
+    game_ender.saved_inks.append(Ink.query.get(20))
+    game_ender.saved_inks.append(Ink.query.get(28))
+    game_ender.saved_inks.append(Ink.query.get(34))
+
+    chain_breaker = User.query.get(6)
+
+    chain_breaker.saved_inks.append(Ink.query.get(24))
+    chain_breaker.saved_inks.append(Ink.query.get(16))
+    chain_breaker.saved_inks.append(Ink.query.get(25))
+    chain_breaker.saved_inks.append(Ink.query.get(3))
+
+    queenie_v = User.query.get(7)
+
+    queenie_v.saved_inks.append(Ink.query.get(42))
+    queenie_v.saved_inks.append(Ink.query.get(40))
+    queenie_v.saved_inks.append(Ink.query.get(35))
+    queenie_v.saved_inks.append(Ink.query.get(29))
+    queenie_v.saved_inks.append(Ink.query.get(30))
+
+    manhattan = User.query.get(8)
+
+    manhattan.saved_inks.append(Ink.query.get(1))
+    manhattan.saved_inks.append(Ink.query.get(37))
+    manhattan.saved_inks.append(Ink.query.get(41))
+    manhattan.saved_inks.append(Ink.query.get(39))
+
+    shruggers = User.query.get(9)
+
+    shruggers.saved_inks.append(Ink.query.get(36))
+    shruggers.saved_inks.append(Ink.query.get(33))
+
+    so_it_goes = User.query.get(10)
+
+    so_it_goes.saved_inks.append(Ink.query.get(32))
 
     db.session.commit()
 

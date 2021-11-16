@@ -34,18 +34,18 @@ const NavBar = () => {
           <div className="nav-item no-pad" onClick={toHome}>
             <img className="nav-icon" src={pinkSquidLogo} alt="" />
           </div>
-          <div className="nav-item">Today</div>
+          {/* <div className="nav-item">Today</div> */}
         </div>
 
         <div className="nav-section nav-search-container">
-          <div className="nav-search-box">
+          {/* <div className="nav-search-box">
             <img className="search-icon" src={magGlass} alt="" />
             <input
               className="nav-search-input"
               type="text"
               placeholder="Search"
             />
-          </div>
+          </div> */}
         </div>
 
         <div className="nav-section nav-items-right">
@@ -54,9 +54,9 @@ const NavBar = () => {
                 <i className="fas fa-bell"></i>
                 <a href="/about" className='bell-text'>About</a>
             </div>
-            <div className="nav-item no-pad">
+            {/* <div className="nav-item no-pad">
                 <i className="fas fa-comment-dots"></i>
-            </div>
+            </div> */}
             <div className="nav-item no-pad user-letter" onClick={e=> toProfile(e)}>
               <div className='inner-user-letter'> {userNameLetter} </div>
             </div>
