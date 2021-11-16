@@ -15,6 +15,8 @@ function CanvasProfilePage() {
         dispatch(getOneCanvas(params.canvas_id));
     }, [dispatch, params]);
 
+    const sessionUser = useSelector(state => state.session.user);
+
     const curCanvas = useSelector((state) => state.canvases[0]);
     const canvasInksArr = curCanvas?.inks;
 
@@ -48,10 +50,12 @@ function CanvasProfilePage() {
       </div>
       <div className="canvas-p-profile-page-body">
 
-
+      {
+        curCanvas?.creator_id === sessionUser?.id &&
         <div className="canvas-p-profile-page-edit">
             <button onClick={e => editCanvas(e)}><i className="fas fa-sliders-h"></i></button>
         </div>
+      }
 
       </div>
       <div className="canvas-p-profile-page-collection">
