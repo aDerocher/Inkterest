@@ -25,7 +25,7 @@ function DiscoverInks(props) {
 
     useEffect(() => {
         dispatch(getAllSaved(sessionUser?.id))
-    }, [dispatch])
+    }, [dispatch, sessionUser?.id, saved_inks?.length])
 
     if(props.user_id !== null && props.user_id !== undefined){
         inks = inks.filter(i => i.creator_id.toString() === props.user_id)
@@ -131,7 +131,7 @@ function DiscoverInks(props) {
                             {!props.user_id &&
                                 <div className="ink-tile-top-buttons">
                                     {
-                                        saved_inks?.includes(i)
+                                        saved_inks.some((el) => el.id === i.id)
                                         ? <button className='ink-tile-btn ink-save-btn' onClick={e=> handleUnsaveInk(e, i.id)}>Unsave</button>
                                         : <button className='ink-tile-btn ink-save-btn' onClick={e=> handleSaveInk(e, i.id)}>Save</button>
                                     }
