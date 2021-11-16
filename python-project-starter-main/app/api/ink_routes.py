@@ -101,10 +101,6 @@ def delete_ink(ink_id):
     # note for future reference: current_user.get_id() is returned as a string!
     user_id = current_user.get_id()
 
-    # Make sure to test this validation once login form is setup!
-        # condition - Try to delete an ink a different user - Should not work
-        # condition - Try to delete as a logged out user - Should not work
-
     if int(user_id) == int(ink.creator_id):
         ink.saved.clear()
         db.session.delete(ink)

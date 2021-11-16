@@ -1,26 +1,34 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { listAllInks } from '../store/ink'
 import { listAllUsers } from '../store/user'
 import { useHistory } from "react-router";
 import "../styles/discover-inks.css";
 import { inkOffCanvas } from "../store/canvas";
-import { addToSaved } from "../store/saved_inks";
+import { addToSaved, removeFromSaved, getAllSaved } from "../store/saved_inks";
 
 function DiscoverInks(props) {
     const dispatch = useDispatch();
     const history = useHistory();
+    const params = useParams();
 
     // ==== Filter the inks state array for the inks created by the view user =============
     let inks = useSelector(state => state.inks);
 
     const sessionUser = useSelector(state => state.session.user)
+    const saved_inks = useSelector(state => state.saved_inks)
     const users = useSelector(state => state.user)
 
     useEffect(() => {
         dispatch(listAllInks())
         dispatch(listAllUsers())
     }, [dispatch])
+
+    useEffect(() => {
+        if (params.userId) dispatch(getAllSaved(params.userId));
+        else dispatch(getAllSaved(sessionUser?.id));
+    }, [dispatch, sessionUser?.id, saved_inks?.length])
 
     if(props.user_id !== null && props.user_id !== undefined){
         inks = inks.filter(i => i.creator_id.toString() === props.user_id)
@@ -32,9 +40,16 @@ function DiscoverInks(props) {
 
     const handleSaveInk = (e, inkId) => {
         e.preventDefault();
-
         e.stopPropagation();
+
         dispatch(addToSaved(inkId, sessionUser.id))
+    }
+
+    const handleUnsaveInk = (e, inkId) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        dispatch(removeFromSaved(inkId, sessionUser.id))
     }
 
     const goToInkPage = (e,userId,inkId) => {
@@ -118,7 +133,11 @@ function DiscoverInks(props) {
                                 }}>
                             {!props.user_id &&
                                 <div className="ink-tile-top-buttons">
-                                    <button className='ink-tile-btn ink-save-btn' onClick={e=> handleSaveInk(e, i.id)}>Save</button>
+                                    {
+                                        saved_inks.some((el) => el.id === i.id)
+                                        ? <button className='ink-tile-btn ink-save-btn' onClick={e=> handleUnsaveInk(e, i.id)}>Unsave</button>
+                                        : <button className='ink-tile-btn ink-save-btn' onClick={e=> handleSaveInk(e, i.id)}>Save</button>
+                                    }
                                 </div>
                             }
 
