@@ -152,10 +152,10 @@ function DiscoverInks(props) {
                                     </a>
                                 </div>
 
-                                <div className='ink-tile-bottom-buttons-right'>
+                                {/* <div className='ink-tile-bottom-buttons-right'>
                                     <button className='ink-tile-btn ink-tile-btn-s'>&#8683;</button>
                                     <button className='ink-tile-btn ink-tile-btn-s'>...</button>
-                                </div>
+                                </div> */}
                                 {props.canvas_id &&
                                     <button className='ink-tile-btn ink-tile-btn-s' onClick={e=>removeFromCanvas(e,props.canvas_id, i.id)}>X</button>
                                 }
