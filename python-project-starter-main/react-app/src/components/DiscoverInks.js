@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { listAllInks } from '../store/ink'
 import { listAllUsers } from '../store/user'
 import { useHistory } from "react-router";
@@ -10,6 +11,7 @@ import { addToSaved, removeFromSaved, getAllSaved } from "../store/saved_inks";
 function DiscoverInks(props) {
     const dispatch = useDispatch();
     const history = useHistory();
+    const params = useParams();
 
     // ==== Filter the inks state array for the inks created by the view user =============
     let inks = useSelector(state => state.inks);
@@ -24,7 +26,8 @@ function DiscoverInks(props) {
     }, [dispatch])
 
     useEffect(() => {
-        dispatch(getAllSaved(sessionUser?.id))
+        if (params.userId) dispatch(getAllSaved(params.userId));
+        else dispatch(getAllSaved(sessionUser?.id));
     }, [dispatch, sessionUser?.id, saved_inks?.length])
 
     if(props.user_id !== null && props.user_id !== undefined){
