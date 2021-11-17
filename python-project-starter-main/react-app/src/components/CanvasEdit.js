@@ -6,6 +6,7 @@ import { ink2Canvas, editCanvas, removeCanvas } from "./../store/canvas"
 import { listAllInks } from "./../store/ink"
 import "../styles/index.css";
 import "../styles/canvas-edit.css";
+import { getAllSaved } from "../store/saved_inks";
 
 
 function CanvasEdit() {
@@ -15,6 +16,7 @@ function CanvasEdit() {
     const sessionUser = useSelector(state => state.session.user);
     const canvasToEdit = useSelector(state => state.canvases[0])
     const allInks = useSelector(state => state.inks)
+    const saved_inks = useSelector(state => state.saved_inks)
 
     let usersInks = allInks.filter(i => i.creator_id === sessionUser.id)
 
@@ -33,6 +35,7 @@ function CanvasEdit() {
     }, [name])
 
     useEffect(() => {
+        dispatch(getAllSaved(sessionUser?.id))
         dispatch(listAllInks())
     }, [])
 
@@ -111,8 +114,8 @@ function CanvasEdit() {
 
                 <select id='canvas-list' onChange={(e) => setSelectInk(e.target.value)}>
                     <option>Select an ink</option>
-                    {usersInks?.length > 0 && (
-                        usersInks?.map((ink) => {
+                    {saved_inks?.length > 0 && (
+                        saved_inks?.map((ink) => {
                             return <option key={ink.id} value={ink.id}>{ink.title}</option>
                         }))
                     }

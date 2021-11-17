@@ -42,6 +42,10 @@
     width: 46px;
 }
 
+#nav-icon-inky{
+    border: 1px solid blue;
+    margin: 0 0.5rem;
+}
 .nav-icon{
     max-height: 30px;
     max-width: 30px;
@@ -95,9 +99,9 @@
     flex-grow: 1;
     margin: 0 8px;
 }
-.nav-search-box:hover{
+/* .nav-search-box:hover{
     background-color: var(--hover-grey);
-}
+} */
 .nav-search-input{
     background-color: var(--off-white);
 }

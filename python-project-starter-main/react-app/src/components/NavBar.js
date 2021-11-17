@@ -31,27 +31,28 @@ const NavBar = () => {
   return (
       <nav className="nav-bar">
         <div className="nav-section nav-items-left">
-          <div className="nav-item no-pad" onClick={toHome}>
-            <img className="nav-icon" src={pinkSquidLogo} alt="" />
+          <div id='nav-icon-inky' className="nav-item no-pad" onClick={toHome}>
+            <img  className="nav-icon" src={pinkSquidLogo} alt="" />
           </div>
           {/* <div className="nav-item">Today</div> */}
         </div>
 
         <div className="nav-section nav-search-container">
-          {/* <div className="nav-search-box">
-            <img className="search-icon" src={magGlass} alt="" />
+          <div className="nav-search-box"> 
+            {/* <img className="search-icon" src={magGlass} alt="" />
             <input
               className="nav-search-input"
               type="text"
               placeholder="Search"
-            />
-          </div> */}
+            /> */}
+          </div>
         </div>
 
         <div className="nav-section nav-items-right">
+        
 
             <div className="nav-item nav-bell no-pad">
-                <i className="fas fa-bell"></i>
+                <i className="fas fa-info"></i>
                 <a href="/about" className='bell-text'>About</a>
             </div>
             {/* <div className="nav-item no-pad">

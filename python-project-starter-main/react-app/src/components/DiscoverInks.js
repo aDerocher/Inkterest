@@ -30,13 +30,25 @@ function DiscoverInks(props) {
         else dispatch(getAllSaved(sessionUser?.id));
     }, [dispatch, sessionUser?.id, saved_inks?.length])
 
+    // ==== If component is passed a user ID, filter all inks =============
     if(props.user_id !== null && props.user_id !== undefined){
         inks = inks.filter(i => i.creator_id.toString() === props.user_id)
     }
     // ==== Or if component is passed an array, use that =============
     if(props.canvasInksArr !== null && props.canvasInksArr !== undefined){
+        // ==== If this is the home screen, dont show active users inks =============
         inks = props.canvasInksArr
     }
+    
+    if(props.home === true){
+        let saved_ids = saved_inks?.map((i) => {
+            return i.id
+        })
+        inks = inks.filter((i) => {
+            return saved_ids.includes(i.id) === false
+        })
+    }
+
 
     const handleSaveInk = (e, inkId) => {
         e.preventDefault();
@@ -78,29 +90,29 @@ function DiscoverInks(props) {
     let inkDivision5 = []
     let inkDivision6 = []
 
-    for(let i=0; i<discoverInks?.length; i++){
+    for(let i=0; i<inks?.length; i++){
         let x = i % 7
         switch (x) {
             case 0:
-                inkDivision0.push(discoverInks[i])
+                inkDivision0.push(inks[i])
                 break;
             case 1:
-                inkDivision1.push(discoverInks[i])
+                inkDivision1.push(inks[i])
                 break;
             case 2:
-                inkDivision2.push(discoverInks[i])
+                inkDivision2.push(inks[i])
                 break;
             case 3:
-                inkDivision3.push(discoverInks[i])
+                inkDivision3.push(inks[i])
                 break;
             case 4:
-                inkDivision4.push(discoverInks[i])
+                inkDivision4.push(inks[i])
                 break;
             case 5:
-                inkDivision5.push(discoverInks[i])
+                inkDivision5.push(inks[i])
                 break;
             case 6:
-                inkDivision6.push(discoverInks[i])
+                inkDivision6.push(inks[i])
                 break;
             default:
                 break;

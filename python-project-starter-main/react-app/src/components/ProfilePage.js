@@ -148,7 +148,7 @@ return (
         }
       </div>
       <div  className="profile-page-body">
-        <div >
+        <div>
           <button hidden={!(viewUser?.id === sessionUser.id)} className="profile-page-edit" onClick={redirect}><i className="fas fa-sliders-h"></i></button>
         </div>
 
@@ -166,8 +166,10 @@ return (
         </div>
       </div>
       <div className="profile-page-collection">
+          <div className='prof-title-divider'>
+            <p>Canvases</p>
+          </div>
             <div className="users-canvases-collection">
-
                 {curUserCanvases?.map((c) => (
                     <div hidden={(c.creator_id !== sessionUser?.id) && c.private_canvas} className="canvas-tile" key={c.id} onClick={e=>goToCanvasProfile(e,c.id)}>
                         <div className="canvas-tile-image-container" >
@@ -194,8 +196,10 @@ return (
                     </div>
               ))}
             </div>
-
       </div>
+      <div className='prof-title-divider'>
+            <p>Unorganized Inks</p>
+        </div>                    
       <DiscoverInks canvasInksArr={saved_inks}/>
     </div>
   );
