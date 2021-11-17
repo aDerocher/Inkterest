@@ -1,14 +1,15 @@
 
-div { border: 1px solid red;}
+/* div { border: 1px solid red;} */
 
 .prof-title-divider{
-    /* border-top: 2px solid lightgrey; */
+    border-top: 2px solid lightgrey;
     padding: 10px;
     font-size: 14pt;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     color: var(--charcoal-grey);
     width: 100%;
+    margin-top: 10px;
 }
 
 .profile-page-container {

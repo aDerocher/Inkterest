@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import pinkSquidLogo from "./../images/squid-circle-icon-Black.png";
 import magGlass from "./../images/magGlass.png";
 import "../styles/index.css";
@@ -38,7 +38,7 @@ const NavBar = () => {
         </div>
 
         <div className="nav-section nav-search-container">
-          <div className="nav-search-box"> 
+          <div className="nav-search-box">
             {/* <img className="search-icon" src={magGlass} alt="" />
             <input
               className="nav-search-input"
@@ -49,7 +49,7 @@ const NavBar = () => {
         </div>
 
         <div className="nav-section nav-items-right">
-        
+
 
             <div className="nav-item nav-bell no-pad">
                 <i className="fas fa-info"></i>
@@ -58,9 +58,9 @@ const NavBar = () => {
             {/* <div className="nav-item no-pad">
                 <i className="fas fa-comment-dots"></i>
             </div> */}
-            <div className="nav-item no-pad user-letter" onClick={e=> toProfile(e)}>
+        <Link className="nav-item no-pad user-letter" to={`/users/${user.id}`}>
               <div className='inner-user-letter'> {userNameLetter} </div>
-            </div>
+            </Link>
             <div className="nav-item no-pad">
               <button onClick={() => setShow(true) } className="chevron-btn"><i className="fas fa-chevron-down"></i></button>
               <ProfileDDModal onClose={() => setShow(false)} show={show}/>
