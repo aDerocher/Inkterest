@@ -51,15 +51,19 @@ export const getAllSaved= (user_id) => async (dispatch) => {
     }
 }
 
+// update state
+export const updateState = (ink) => async (dispatch) => {
+    dispatch(removeSaved(ink))
+}
 
 // ---------------------------  State & Reducer --------------------------------
 
 
-// Image state
+// saved inks state
 const initialState = [];
 
 
-// Image reducer
+// users saved reducer
 const savedInksReducer = (state = initialState, action) => {
     let newState = [ ...state ]
     switch (action.type) {

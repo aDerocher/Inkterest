@@ -6,8 +6,8 @@ import { listAllUsers } from '../store/user'
 import { useHistory } from "react-router";
 import "../styles/discover-inks.css";
 import { inkOffCanvas } from "../store/canvas";
-import { addToSaved, removeFromSaved, getAllSaved } from "../store/saved_inks";
-import { getAllSessionSaved } from "../store/session_saved_inks";
+import { getAllSaved, updateState } from "../store/saved_inks";
+import { addToSessionSaved, removeFromSessionSaved, getAllSessionSaved } from "../store/sessionSaved_inks";
 
 function DiscoverInks(props) {
     const dispatch = useDispatch();
@@ -25,17 +25,12 @@ function DiscoverInks(props) {
     useEffect(() => {
         dispatch(listAllInks())
         dispatch(listAllUsers())
-        dispatch(getAllSessionSaved(sessionUser?.id));
-    }, [dispatch, saved_inks])
+    }, [dispatch])
 
     useEffect(() => {
-        if (params.userId) {
             dispatch(getAllSaved(params.userId));
-        }
-        else {
-            dispatch(getAllSaved(sessionUser?.id));
-        }
-    }, [dispatch, sessionUser?.id, saved_inks?.length])
+            dispatch(getAllSessionSaved(sessionUser?.id));
+    }, [dispatch, sessionUser?.id])
 
     // ==== If component is passed a user ID, filter all inks =============
     if(props.user_id !== null && props.user_id !== undefined){
@@ -57,18 +52,18 @@ function DiscoverInks(props) {
     }
 
 
-    const handleSaveInk = (e, inkId) => {
+    const handleSaveInk = (e, ink) => {
         e.preventDefault();
         e.stopPropagation();
-
-        dispatch(addToSaved(inkId, sessionUser.id))
+        dispatch(addToSessionSaved(ink.id, sessionUser.id))
     }
 
-    const handleUnsaveInk = (e, inkId) => {
+    const handleUnsaveInk = (e, ink) => {
         e.preventDefault();
         e.stopPropagation();
-
-        dispatch(removeFromSaved(inkId, sessionUser.id))
+        dispatch(removeFromSessionSaved(ink.id, sessionUser.id))
+        console.log(+params.userId)
+        if (sessionUser?.id === +params.userId) dispatch(updateState(ink))
     }
 
     const goToInkPage = (e,userId,inkId) => {
@@ -153,9 +148,9 @@ function DiscoverInks(props) {
                             {!props.user_id &&
                                 <div className="ink-tile-top-buttons">
                                     {
-                                        session_saved_inks.some((el) => el.id === i.id)
-                                        ? <button className='ink-tile-btn ink-save-btn' onClick={e=> handleUnsaveInk(e, i.id)}>Unsave</button>
-                                        : <button className='ink-tile-btn ink-save-btn' onClick={e=> handleSaveInk(e, i.id)}>Save</button>
+                                        session_saved_inks?.some((el) => el.id === i.id)
+                                        ? <button className='ink-tile-btn ink-save-btn' onClick={e=> handleUnsaveInk(e, i)}>Unsave</button>
+                                        : <button className='ink-tile-btn ink-save-btn' onClick={e=> handleSaveInk(e, i)}>Save</button>
                                     }
                                 </div>
                             }
