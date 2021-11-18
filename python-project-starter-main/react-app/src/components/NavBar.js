@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import pinkSquidLogo from "./../images/squid-circle-icon-Black.png";
 import magGlass from "./../images/magGlass.png";
 import "../styles/index.css";
@@ -31,35 +31,36 @@ const NavBar = () => {
   return (
       <nav className="nav-bar">
         <div className="nav-section nav-items-left">
-          <div className="nav-item no-pad" onClick={toHome}>
-            <img className="nav-icon" src={pinkSquidLogo} alt="" />
+          <div id='nav-icon-inky' className="nav-item no-pad" onClick={toHome}>
+            <img  className="nav-icon" src={pinkSquidLogo} alt="" />
           </div>
           {/* <div className="nav-item">Today</div> */}
         </div>
 
         <div className="nav-section nav-search-container">
-          {/* <div className="nav-search-box">
-            <img className="search-icon" src={magGlass} alt="" />
+          <div className="nav-search-box">
+            {/* <img className="search-icon" src={magGlass} alt="" />
             <input
               className="nav-search-input"
               type="text"
               placeholder="Search"
-            />
-          </div> */}
+            /> */}
+          </div>
         </div>
 
         <div className="nav-section nav-items-right">
 
+
             <div className="nav-item nav-bell no-pad">
-                <i className="fas fa-bell"></i>
+                <i className="fas fa-info"></i>
                 <a href="/about" className='bell-text'>About</a>
             </div>
             {/* <div className="nav-item no-pad">
                 <i className="fas fa-comment-dots"></i>
             </div> */}
-            <div className="nav-item no-pad user-letter" onClick={e=> toProfile(e)}>
+        <Link className="nav-item no-pad user-letter" to={`/users/${user.id}`}>
               <div className='inner-user-letter'> {userNameLetter} </div>
-            </div>
+            </Link>
             <div className="nav-item no-pad">
               <button onClick={() => setShow(true) } className="chevron-btn"><i className="fas fa-chevron-down"></i></button>
               <ProfileDDModal onClose={() => setShow(false)} show={show}/>

@@ -96,9 +96,9 @@ function ProfilePage() {
       dispatch(listUsersCanvases(params.userId));
     }, [dispatch]);
 
-    // useEffect(() => {
-    //   dispatch(getAllSaved(params.userId))
-    // }, [dispatch, saved_inks])
+    useEffect(() => {
+      dispatch(getAllSaved(params.userId))
+    }, [dispatch, params.userId])
 
     const viewUser = useSelector((state) => state.user).filter(user => user.id.toString() === viewingUserId)[0]
 
@@ -146,12 +146,10 @@ return (
               : <button className='follow-btn' onClick={(e) => handleFollow(e, user?.id)}>Follow</button>
           )
         }
+        <button hidden={!(viewUser?.id === sessionUser.id)} className="profile-page-edit" onClick={redirect}><i className="fas fa-sliders-h"></i></button>
       </div>
       <div  className="profile-page-body">
-        <div >
-          <button hidden={!(viewUser?.id === sessionUser.id)} className="profile-page-edit" onClick={redirect}><i className="fas fa-sliders-h"></i></button>
-        </div>
-
+        <div></div>
         <div hidden={!(viewUser?.id === sessionUser.id)} className="profile-page-upload">
           <CreateCanvasModal onClose={() => setShow(false)} show={show} />
           <Dropdown
@@ -166,8 +164,10 @@ return (
         </div>
       </div>
       <div className="profile-page-collection">
+          <div className='prof-title-divider'>
+            <p>Canvases</p>
+          </div>
             <div className="users-canvases-collection">
-
                 {curUserCanvases?.map((c) => (
                     <div hidden={(c.creator_id !== sessionUser?.id) && c.private_canvas} className="canvas-tile" key={c.id} onClick={e=>goToCanvasProfile(e,c.id)}>
                         <div className="canvas-tile-image-container" >
@@ -194,8 +194,10 @@ return (
                     </div>
               ))}
             </div>
-
       </div>
+      <div className='prof-title-divider'>
+            <p>Unorganized Inks</p>
+        </div>
       <DiscoverInks canvasInksArr={saved_inks}/>
     </div>
   );

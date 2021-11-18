@@ -5,13 +5,16 @@ import inks from './ink'
 import canvases from './canvas'
 import user from './user'
 import saved_inks from './saved_inks'
+import session_saved_inks from './sessionSaved_inks'
+
 
 const rootReducer = combineReducers({
   session,
   inks,
   canvases,
   user,
-  saved_inks
+  saved_inks,
+  session_saved_inks
 });
 
 

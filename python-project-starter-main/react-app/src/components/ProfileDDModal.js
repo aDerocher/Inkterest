@@ -41,13 +41,13 @@ const ProfileModal = (props) => {
     //     </div>
         // <div className="modal-body"> */}
           <div className="profile-dd-container" onClick={(e) => e.stopPropagation()}>
-            <div className="prof-dd-row prof-dd-title">Currently an</div>
+            <div className="prof-dd-row prof-dd-title">Logged in as:</div>
 
-            <div className="prof-dd-card pd-hov">
+            <div className="prof-dd-card pd-hov" onClick={(e) => toProfile(e)}>
           <img className="prof-dd-uimg" src={(user?.profile_picture ? user?.profile_picture : demoProfImage)} alt="" />
               <div
                 className="prof-dd-card-content"
-                onClick={(e) => toProfile(e)}
+
               >
                 <p className="pd-text pd-name">{user?.username}</p>
                 <p className="pd-text pd-acctype">Personal</p>

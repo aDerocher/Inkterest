@@ -6,7 +6,8 @@ import { listAllUsers } from '../store/user'
 import { useHistory } from "react-router";
 import "../styles/discover-inks.css";
 import { inkOffCanvas } from "../store/canvas";
-import { addToSaved, removeFromSaved, getAllSaved } from "../store/saved_inks";
+import { getAllSaved, updateState } from "../store/saved_inks";
+import { addToSessionSaved, removeFromSessionSaved, getAllSessionSaved } from "../store/sessionSaved_inks";
 
 function DiscoverInks(props) {
     const dispatch = useDispatch();
@@ -16,8 +17,9 @@ function DiscoverInks(props) {
     // ==== Filter the inks state array for the inks created by the view user =============
     let inks = useSelector(state => state.inks);
     const sessionUser = useSelector(state => state.session.user)
-    const discoverInks = inks.filter((ink) => ink.creator_id !== sessionUser?.id)
+    // const discoverInks = inks.filter((ink) => ink.creator_id !== sessionUser?.id)
     const saved_inks = useSelector(state => state.saved_inks)
+    const session_saved_inks = useSelector(state => state.session_saved_inks)
     const users = useSelector(state => state.user)
 
     useEffect(() => {
@@ -26,30 +28,42 @@ function DiscoverInks(props) {
     }, [dispatch])
 
     useEffect(() => {
-        if (params.userId) dispatch(getAllSaved(params.userId));
-        else dispatch(getAllSaved(sessionUser?.id));
-    }, [dispatch, sessionUser?.id, saved_inks?.length])
+            dispatch(getAllSaved(params.userId));
+            dispatch(getAllSessionSaved(sessionUser?.id));
+    }, [dispatch, sessionUser?.id])
 
+    // ==== If component is passed a user ID, filter all inks =============
     if(props.user_id !== null && props.user_id !== undefined){
         inks = inks.filter(i => i.creator_id.toString() === props.user_id)
     }
     // ==== Or if component is passed an array, use that =============
     if(props.canvasInksArr !== null && props.canvasInksArr !== undefined){
+        // ==== If this is the home screen, dont show active users inks =============
         inks = props.canvasInksArr
     }
 
-    const handleSaveInk = (e, inkId) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        dispatch(addToSaved(inkId, sessionUser.id))
+    if(props.home === true){
+        let saved_ids = saved_inks?.map((i) => {
+            return i.id
+        })
+        inks = inks.filter((i) => {
+            return saved_ids.includes(i.id) === false
+        })
     }
 
-    const handleUnsaveInk = (e, inkId) => {
+
+    const handleSaveInk = (e, ink) => {
         e.preventDefault();
         e.stopPropagation();
+        dispatch(addToSessionSaved(ink.id, sessionUser.id))
+    }
 
-        dispatch(removeFromSaved(inkId, sessionUser.id))
+    const handleUnsaveInk = (e, ink) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dispatch(removeFromSessionSaved(ink.id, sessionUser.id))
+        console.log(+params.userId)
+        if (sessionUser?.id === +params.userId) dispatch(updateState(ink))
     }
 
     const goToInkPage = (e,userId,inkId) => {
@@ -78,29 +92,29 @@ function DiscoverInks(props) {
     let inkDivision5 = []
     let inkDivision6 = []
 
-    for(let i=0; i<discoverInks?.length; i++){
+    for(let i=0; i<inks?.length; i++){
         let x = i % 7
         switch (x) {
             case 0:
-                inkDivision0.push(discoverInks[i])
+                inkDivision0.push(inks[i])
                 break;
             case 1:
-                inkDivision1.push(discoverInks[i])
+                inkDivision1.push(inks[i])
                 break;
             case 2:
-                inkDivision2.push(discoverInks[i])
+                inkDivision2.push(inks[i])
                 break;
             case 3:
-                inkDivision3.push(discoverInks[i])
+                inkDivision3.push(inks[i])
                 break;
             case 4:
-                inkDivision4.push(discoverInks[i])
+                inkDivision4.push(inks[i])
                 break;
             case 5:
-                inkDivision5.push(discoverInks[i])
+                inkDivision5.push(inks[i])
                 break;
             case 6:
-                inkDivision6.push(discoverInks[i])
+                inkDivision6.push(inks[i])
                 break;
             default:
                 break;
@@ -134,9 +148,9 @@ function DiscoverInks(props) {
                             {!props.user_id &&
                                 <div className="ink-tile-top-buttons">
                                     {
-                                        saved_inks.some((el) => el.id === i.id)
-                                        ? <button className='ink-tile-btn ink-save-btn' onClick={e=> handleUnsaveInk(e, i.id)}>Unsave</button>
-                                        : <button className='ink-tile-btn ink-save-btn' onClick={e=> handleSaveInk(e, i.id)}>Save</button>
+                                        session_saved_inks?.some((el) => el.id === i.id)
+                                        ? <button className='ink-tile-btn ink-save-btn' onClick={e=> handleUnsaveInk(e, i)}>Unsave</button>
+                                        : <button className='ink-tile-btn ink-save-btn' onClick={e=> handleSaveInk(e, i)}>Save</button>
                                     }
                                 </div>
                             }

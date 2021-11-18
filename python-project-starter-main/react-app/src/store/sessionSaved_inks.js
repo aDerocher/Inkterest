@@ -1,17 +1,17 @@
 // --------------------------- Defined Action Types as Constants ---------------------
-const GET_SAVED = 'users/GET_SAVED';
-const ADD_TO_SAVED = 'users/ADD_TO_SAVED';
-const REMOVE_FROM_SAVED = 'users/REMOVE_FROM_SAVED';
+const GET_S_SAVED = 'users/GET_S_SAVED';
+const ADD_TO_S_SAVED = 'users/ADD_TO_S_SAVED';
+const REMOVE_FROM_S_SAVED = 'users/REMOVE_FROM_S_SAVED';
 
 // --------------------------- Defined Action Creator(s) --------------------------
-const getSaved = (ink) => ({ type: GET_SAVED, ink });
-const addSaved = (ink) => ({ type: ADD_TO_SAVED, ink });
-const removeSaved = (ink) => ({ type: REMOVE_FROM_SAVED, ink });
+const getSessionSaved = (ink) => ({ type: GET_S_SAVED, ink });
+const addSessionSaved = (ink) => ({ type: ADD_TO_S_SAVED, ink });
+const removeSessionSaved = (ink) => ({ type: REMOVE_FROM_S_SAVED, ink });
 
 // ---------------------------  Defined Thunk(s) --------------------------------
 
 // create a new saved ink
-export const addToSaved = (ink_id, user_id) => async (dispatch) => {
+export const addToSessionSaved = (ink_id, user_id) => async (dispatch) => {
 
     const response = await fetch(`/api/users/${user_id}/saved-inks/${ink_id}/add`, {
         method: "POST"
@@ -19,12 +19,12 @@ export const addToSaved = (ink_id, user_id) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(addSaved(data));
+        dispatch(addSessionSaved(data));
     };
 };
 
 // create a new saved ink
-export const removeFromSaved = (ink_id, user_id) => async (dispatch) => {
+export const removeFromSessionSaved = (ink_id, user_id) => async (dispatch) => {
 
     const response = await fetch(`/api/users/${user_id}/saved-inks/${ink_id}/remove`, {
         method: "POST"
@@ -32,12 +32,12 @@ export const removeFromSaved = (ink_id, user_id) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(removeSaved(data));
+        dispatch(removeSessionSaved(data));
     };
 };
 
 // get all a users saved inks
-export const getAllSaved= (user_id) => async (dispatch) => {
+export const getAllSessionSaved= (user_id) => async (dispatch) => {
     const response = await fetch(`/api/users/${user_id}/saved-inks`, {
         method: 'GET'
     });
@@ -46,36 +46,32 @@ export const getAllSaved= (user_id) => async (dispatch) => {
         const data = await response.json();
 
         const saved_inks = data.saved_inks
-        dispatch(getSaved(saved_inks));
+        dispatch(getSessionSaved(saved_inks));
         return response;
     }
 }
 
-// update state
-export const updateState = (ink) => async (dispatch) => {
-    dispatch(removeSaved(ink))
-}
 
 // ---------------------------  State & Reducer --------------------------------
 
 
-// saved inks state
+// Image state
 const initialState = [];
 
 
-// users saved reducer
-const savedInksReducer = (state = initialState, action) => {
+// sessionusers saved reducer
+const sessionSavedInksReducer = (state = initialState, action) => {
     let newState = [ ...state ]
     switch (action.type) {
-        case GET_SAVED:
+        case GET_S_SAVED:
             return [ ...action.ink ]
-        case ADD_TO_SAVED:
+        case ADD_TO_S_SAVED:
             return [ ...newState, action.ink ]
-        case REMOVE_FROM_SAVED:
+        case REMOVE_FROM_S_SAVED:
             return newState.filter((el) => action.ink.id !== el.id)
         default:
             return state;
     }
 }
 // Export the reducer
-export default savedInksReducer;
+export default sessionSavedInksReducer;

@@ -49,7 +49,7 @@ function App() {
       <Switch>
 
         <Route path="/" exact={true}>
-            {user ? <DiscoverInks /> : <SplashPage />}
+            {user ? <DiscoverInks home={true} /> : <SplashPage />}
         </Route>
 
         <Route path="/users/:userId" exact={true}>
