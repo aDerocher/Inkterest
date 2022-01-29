@@ -33,7 +33,7 @@ function About() {
                 <div className="profile-name">
                 <h3 className='about-dev-name'>Andrew Derocher</h3>
                 </div>
-                <div className="profile-contact">andrew@andrewderocher.com</div>
+                <div className="profile-contact">am.derocher@gmail.com</div>
                 <div className='link-buttons-container'>
                     <a target="_blank" rel="noreferrer" href="https://github.com/aDerocher">
                         <button className="link-btn git-link" ></button>

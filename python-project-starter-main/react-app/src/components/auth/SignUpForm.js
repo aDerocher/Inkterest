@@ -15,32 +15,65 @@ const SignUpFormModal = (props) => {
   //   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  const passwordChecker = (arg, password) => {
+    let pwArr = password.split()
+    let checker = {
+        letters: 'abcdefghijklmnopqrstuvwxyz',
+        specials: '!@#$%^&*()',
+        integers: '1234567890',
+    }
+    switch(arg){
+        case 'let':
+            pwArr.forEach(char => {
+                if(checker.letters.includes(char)) return true;
+            })
+            break;
+        case 'int':
+            pwArr.forEach(char => {
+                if(checker.integers.includes(char)) return true;
+            })
+            break;
+        case 'spec':
+            pwArr.forEach(char => {
+                if(checker.specials.includes(char)) return true;
+            })
+            break;
+        default:
+            console.log('Error: passwordChecker: argument not recognized')
+            break;
+    }
+    return false
+  }
+
+  const errorCheckOK = () => {
+    let newErrors = [];
+    if (username.length < 4 || username.length > 14) {newErrors.push("Username must be between 4 and 14 characters")}
+    if (first_name.length < 3) {newErrors.push("Name must be longer")}
+    if (first_name.length > 25) {newErrors.push("First name can not exceed 25 characters")}
+    if (last_name.length < 3) {newErrors.push("Last name must be longer")}
+    if (last_name.length > 25) {newErrors.push("Last name can not exceed 25 characters")}
+    if (password.length < 8) {newErrors.push("Password must be at least 8 characters")}
+    // ========= These work, but it makes testing annoying. Comment in later =======================
+    // if (passwordChecker('let')) {newErrors.push("Password must contain at least 1 character a-z")}
+    // if (passwordChecker('int')) {newErrors.push("Password must contain at least 1 number")}
+    // if (passwordChecker('spec')) {newErrors.push("Password must contain at least 1 special character: !@#$%^&*()")}
+    if (password !== repeatPassword) {newErrors.push("Passwords must match")}
+    
+    setErrors(newErrors)
+    if(errors.length){
+        return false
+    }
+    return true
+  }
+
   const onSignUp = async (e) => {
     e.preventDefault();
-    // if (password === repeatPassword) {
     const data = await dispatch(
       signUp(username, email, first_name, last_name, password)
     );
-
     if (data) {
       setErrors(data);
     }
-  };
-
-  const updateUsername = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const updateRepeatPassword = (e) => {
-    setRepeatPassword(e.target.value);
   };
 
   if (!props.show) {
@@ -72,7 +105,7 @@ const SignUpFormModal = (props) => {
               className="signup-username"
               type="text"
               name="username"
-              onChange={updateUsername}
+              onChange={e => setUsername(e.target.value)}
               value={username}
               required
             ></input>
@@ -83,7 +116,7 @@ const SignUpFormModal = (props) => {
               className="signup-email"
               type="text"
               name="email"
-              onChange={updateEmail}
+              onChange={e => setEmail(e.target.value)}
               value={email}
               required
             ></input>
@@ -114,7 +147,7 @@ const SignUpFormModal = (props) => {
               className="signup-password"
               type="password"
               name="password"
-              onChange={updatePassword}
+              onChange={(e) => setPassword(e.target.value)}
               value={password}
               required
             ></input>
@@ -125,7 +158,7 @@ const SignUpFormModal = (props) => {
               className="signup-r-password"
               type="password"
               name="repeat_password"
-              onChange={updateRepeatPassword}
+              onChange={(e) => setRepeatPassword(e.target.value)}
               value={repeatPassword}
               required={true}
             ></input>
