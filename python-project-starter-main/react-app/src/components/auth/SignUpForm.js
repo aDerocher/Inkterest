@@ -96,7 +96,9 @@ const SignUpFormModal = (props) => {
         <form className="signup-form" onSubmit={onSignUp}>
           <div className="signup-errors">
             {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
+                <div key={ind}>
+                  <p class='error'>{error}</p>
+                </div>
             ))}
           </div>
           <div>
@@ -174,7 +176,7 @@ const SignUpFormModal = (props) => {
                 Login
               </span>
             </div>
-            <button className="signup-btn" type="submit">
+            <button disabled={errors.length > 0} className="signup-btn" type="submit">
               Sign Up
             </button>
           </div>
