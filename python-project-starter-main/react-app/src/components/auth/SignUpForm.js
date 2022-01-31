@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 // import { Redirect } from 'react-router-dom';
 import { signUp } from "../../store/session";
 import "../../styles/signup-modal.css";
 
 const SignUpFormModal = (props) => {
+    const [ showErrors, setShowErrors ] = useState(false)
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -45,36 +46,41 @@ const SignUpFormModal = (props) => {
     return false
   }
 
-  const errorCheckOK = () => {
+  useEffect(() => {
     let newErrors = [];
     if (username.length < 4 || username.length > 14) {newErrors.push("Username must be between 4 and 14 characters")}
     if (first_name.length < 3) {newErrors.push("Name must be longer")}
     if (first_name.length > 25) {newErrors.push("First name can not exceed 25 characters")}
     if (last_name.length < 3) {newErrors.push("Last name must be longer")}
     if (last_name.length > 25) {newErrors.push("Last name can not exceed 25 characters")}
+    if (email.length < 6) {newErrors.push("Email must be at least 6 characters")}
+    if (!(email.includes('@') && email.includes('.'))) {newErrors.push("Invalid email address")}
     if (password.length < 8) {newErrors.push("Password must be at least 8 characters")}
-    // ========= These work, but it makes testing annoying. Comment in later =======================
+    // ========= These work, but its clunky and makes testing harder. Comment in/Refactor later =======================
     // if (passwordChecker('let')) {newErrors.push("Password must contain at least 1 character a-z")}
     // if (passwordChecker('int')) {newErrors.push("Password must contain at least 1 number")}
     // if (passwordChecker('spec')) {newErrors.push("Password must contain at least 1 special character: !@#$%^&*()")}
     if (password !== repeatPassword) {newErrors.push("Passwords must match")}
-    
     setErrors(newErrors)
-    if(errors.length){
-        return false
-    }
-    return true
-  }
+},[username, email, first_name, last_name, password, repeatPassword])
 
-  const onSignUp = async (e) => {
-    e.preventDefault();
-    const data = await dispatch(
-      signUp(username, email, first_name, last_name, password)
-    );
-    if (data) {
-      setErrors(data);
+    const handleSignUp = (e) => {
+        e.preventDefault();
+        setShowErrors(true)
+        if(errors.length > 0){
+            return
+        }
+        onSignUp()
     }
-  };
+
+    const onSignUp = async () => {
+        const data = await dispatch(
+            signUp(username, email, first_name, last_name, password)
+        );
+        if (data) {
+            setErrors(data);
+        }
+    };
 
   if (!props.show) {
     return null;
@@ -93,13 +99,17 @@ const SignUpFormModal = (props) => {
       >
         Welcome to Inkterest
         <p className="signup-greet">Find new ideas to tattoo</p>
-        <form className="signup-form" onSubmit={onSignUp}>
+        <form className="signup-form">
           <div className="signup-errors">
-            {errors.map((error, ind) => (
-                <div key={ind}>
-                  <p class='error'>{error}</p>
-                </div>
-            ))}
+              { showErrors &&
+                <>
+                {errors.map((error, ind) => (
+                    <div key={ind}>
+                    <p class='signup-error'>· {error}</p>
+                    </div>
+                ))}
+                </>
+              }
           </div>
           <div>
             <input
@@ -176,7 +186,7 @@ const SignUpFormModal = (props) => {
                 Login
               </span>
             </div>
-            <button disabled={errors.length > 0} className="signup-btn" type="submit">
+            <button disabled={showErrors && errors.length > 0} className="signup-btn" onClick={handleSignUp}>
               Sign Up
             </button>
           </div>
