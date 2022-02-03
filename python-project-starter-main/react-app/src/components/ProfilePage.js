@@ -12,7 +12,7 @@ import { useParams } from "react-router-dom";
 import { listAllUsers, followUser, unfollowUser } from "./../store/user";
 import { listUsersCanvases } from "./../store/canvas";
 import { getAllSaved } from "./../store/saved_inks";
-import canvasCover from "./../images/emptyCanvasCover.png"
+import canvasCover from "./../images/emptyCanvasCover.png";
 import DiscoverInks from "./DiscoverInks";
 
 function ProfilePage() {

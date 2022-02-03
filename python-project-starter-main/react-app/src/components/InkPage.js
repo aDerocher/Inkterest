@@ -8,6 +8,7 @@ import DeleteInkModal from './DeleteInkModal';
 import '../styles/reset-styles.css'
 import '../styles/ink-page.css'
 import { addToSaved, removeFromSaved, getAllSaved } from "../store/saved_inks";
+import demoProfImage from "./../images/prof-Img_defaultSquid.png";
 
 
 function InkPage() {
@@ -145,7 +146,7 @@ function InkPage() {
                     <div className='ink-title'>{ink?.title}</div>
                     <div className='ink-subtitle'>{ink?.subtitle} </div>
                     <div className='ink-profile'>
-                        <img className='ink-user-img' src={user?.profile_picture} alt='user'/>
+                        <img className='ink-user-img' src={(user?.profile_picture ? user?.profile_picture : demoProfImage)} alt='user'/>
                         <div className='user-info'>
                             <div className='user-text'>
                                 <a className='user-name' href={`/users/${user?.id}`}>{user?.username}</a>
