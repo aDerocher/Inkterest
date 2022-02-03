@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import { changeProfile } from "../store/profileEdit";
+import { authenticate } from "../store/session"
 import "../styles/profile-edit.css";
 
 function ProfileEdit() {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
+
   const [isEditLoading, setIsEditLoading] = useState(true);
 
   const userId = user?.id;
@@ -15,6 +17,7 @@ function ProfileEdit() {
   const [first_name, setFirst_name] = useState(user?.first_name);
   const [last_name, setLast_name] = useState(user?.last_name);
   const [email, setEmail] = useState(user?.email);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();

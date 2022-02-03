@@ -14,6 +14,7 @@ import { listUsersCanvases } from "./../store/canvas";
 import { getAllSaved } from "./../store/saved_inks";
 import canvasCover from "./../images/emptyCanvasCover.png";
 import DiscoverInks from "./DiscoverInks";
+import { authenticate } from "../store/session"
 
 function ProfilePage() {
 
@@ -87,6 +88,10 @@ function ProfilePage() {
     setIsFollowing(false)
   }
 
+  // to watch for changes made after submitting and profile edit request
+  useEffect(() => {
+    dispatch(authenticate())
+  }, [user?.first_name, user?.last_name, user?.email])
 
   useEffect(() => {
       dispatch(listAllUsers())

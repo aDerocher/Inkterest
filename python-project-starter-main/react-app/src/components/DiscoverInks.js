@@ -8,6 +8,7 @@ import "../styles/discover-inks.css";
 import { inkOffCanvas } from "../store/canvas";
 import { getAllSaved, updateState } from "../store/saved_inks";
 import { addToSessionSaved, removeFromSessionSaved, getAllSessionSaved } from "../store/sessionSaved_inks";
+import demoProfImage from "./../images/prof-Img_defaultSquid.png";
 
 function DiscoverInks(props) {
     const dispatch = useDispatch();
@@ -180,7 +181,7 @@ function DiscoverInks(props) {
                                 {
                                     users?.map((user) => {
                                         if (user.id === i.creator_id) {
-                                            return <img key={user.id} className='user-image' src={user.profile_picture} alt="" />
+                                            return <img key={user.id} className='user-image' src={(user.profile_picture ? user.profile_picture : demoProfImage)} alt="" />
                                         }
                                     })
                                 }
