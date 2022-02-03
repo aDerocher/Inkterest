@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Dropdown from "react-dropdown";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import demoProfImage from "./../images/prof-Img_defaultSquid.png";
 import "../styles/profile-page.css";
 
 import CreateCanvasModal from "./CreateCanvasModal";
@@ -107,7 +108,7 @@ return (
       <div className="profile-page-header">
         <div className="profile-image">
           <span className="image-circle">
-            <img className="users-profile-img" src={viewUser?.profile_picture} alt="" />
+            <img className="users-profile-img" src={(viewUser?.profile_picture ? viewUser?.profile_picture : demoProfImage)} alt="" />
           </span>
         </div>
         <div className="profile-name">
